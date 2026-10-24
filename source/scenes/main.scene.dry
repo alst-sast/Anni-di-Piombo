@@ -1,25 +1,16 @@
+
 title: Anni di piombo
-subtitle: Italy, 1969–1983
-new-page: true
-on-arrival: {! if (typeof Q.inflation !== 'number') Q.inflation = 5; if (typeof Q.public_support !== 'number') Q.public_support = 50; if (typeof Q.security !== 'number') Q.security = 50; if (typeof Q.stability !== 'number') Q.stability = 50; if (typeof Q.month !== 'number') Q.month = 12; if (typeof Q.year !== 'number') Q.year = 1969; if (typeof Q.party_name !== 'string') Q.party_name = 'None'; !}
-
-ANNI DI PIOMBO
-
-Italy, December 1969. The post-war political order is under pressure. Strikes and student protests have shaken the country, political extremism is growing, and the bombing in Piazza Fontana has deepened fear and uncertainty.
-
-Lead an Italian political party through the Years of Lead. Your choices will shape public support, economic pressure, public security, and the stability of the Republic.
-
-Choose a party and decide how Italy should face the crisis.
-
-- @party_selection: Begin campaign
-
-
-@party_selection
-title: Choose your party
-subtitle: Four political forces, four different paths
 new-page: true
 
-Italy stands at a crossroads. Which party will you lead?
+on-arrival: {! if (typeof Q.inflation !== 'number') Q.inflation = 65; if (typeof Q.public_support !== 'number') Q.public_support = 50; if (typeof Q.security !== 'number') Q.security = 45; if (typeof Q.stability !== 'number') Q.stability = 55; if (typeof Q.month !== 'number') Q.month = 12; if (typeof Q.year !== 'number') Q.year = 1969; if (typeof Q.party_name !== 'string') Q.party_name = 'Not selected'; !}
+
+ITALY, DECEMBER 1969
+
+The Italian Republic is entering a period of profound political crisis. Bombings, street clashes, militant organisations and industrial unrest are testing the institutions of the post-war state.
+
+You will lead a political party through the Years of Lead. Every policy has consequences. Economic pressure, public support, public security and political stability will shape your future.
+
+Choose your political organisation.
 
 - @dc_start: Democrazia Cristiana (DC)
 - @pci_start: Partito Comunista Italiano (PCI)
@@ -28,143 +19,228 @@ Italy stands at a crossroads. Which party will you lead?
 
 
 @dc_start
-title: Democrazia Cristiana
-on-arrival: {! Q.party_name = 'Democrazia Cristiana (DC)'; Q.public_support = 52; Q.stability = 55; !}
+title: Christian Democracy
+new-page: true
+on-arrival: {! Q.party_name = 'DC'; Q.public_support = 52; Q.stability = 58; !}
 
-You lead the dominant party of post-war Italian government. Hold together competing factions, maintain coalition support, and respond to demands for reform while defending democratic institutions.
+**Democrazia Cristiana**
 
-- @piazza_fontana: Face the Piazza Fontana crisis
+The Christian Democrats dominate the governing system but face pressure from labour unrest, the communist opposition and internal divisions.
+
+Your challenge is to preserve parliamentary government while responding to social demands and political violence.
+
+- @piazza_fontana: Continue to the national crisis
 
 
 @pci_start
-title: Partito Comunista Italiano
-on-arrival: {! Q.party_name = 'Partito Comunista Italiano (PCI)'; Q.public_support = 38; Q.stability = 45; !}
+title: Italian Communist Party
+new-page: true
+on-arrival: {! Q.party_name = 'PCI'; Q.public_support = 48; Q.stability = 48; !}
 
-You lead the largest communist party in Western Europe. Build electoral strength, organise workers, negotiate political influence, and decide how to respond to the pressures of the Cold War and domestic unrest.
+**Partito Comunista Italiano**
 
-- @piazza_fontana: Face the Piazza Fontana crisis
+The Communist Party has a powerful working-class base and substantial electoral support, but remains excluded from national government by Cold War alignments.
+
+Your challenge is to turn social mobilisation into political influence without deepening the crisis.
+
+- @piazza_fontana: Continue to the national crisis
 
 
 @psi_start
-title: Partito Socialista Italiano
-on-arrival: {! Q.party_name = 'Partito Socialista Italiano (PSI)'; Q.public_support = 24; Q.stability = 48; !}
+title: Italian Socialist Party
+new-page: true
+on-arrival: {! Q.party_name = 'PSI'; Q.public_support = 42; Q.stability = 50; !}
 
-You lead a socialist party seeking influence between the Christian Democrats and Communists. Coalition bargaining and political reform will define your strategy.
+**Partito Socialista Italiano**
 
-- @piazza_fontana: Face the Piazza Fontana crisis
+The Socialists occupy a difficult position between reformist government and pressure from the labour movement.
+
+Your challenge is to pursue reforms while holding together a divided political coalition.
+
+- @piazza_fontana: Continue to the national crisis
 
 
 @msi_start
-title: Movimento Sociale Italiano
-on-arrival: {! Q.party_name = 'Movimento Sociale Italiano (MSI)'; Q.public_support = 12; Q.stability = 40; !}
+title: Italian Social Movement
+new-page: true
+on-arrival: {! Q.party_name = 'MSI'; Q.public_support = 28; Q.stability = 38; !}
 
-You lead a post-fascist party operating on the margins of mainstream coalition politics. Decide how to build support while navigating political isolation and escalating conflict.
+**Movimento Sociale Italiano**
 
-- @piazza_fontana: Face the Piazza Fontana crisis
+The post-fascist right seeks a larger role in national politics amid street violence, polarisation and growing distrust of the political establishment.
+
+Your challenge is to expand your influence in a fragile parliamentary system.
+
+- @piazza_fontana: Continue to the national crisis
 
 
 @piazza_fontana
-title: The Piazza Fontana bombing
-subtitle: Milan, 12 December 1969
+title: Piazza Fontana
+subtitle: Milan — 12 December 1969
 new-page: true
+on-arrival: {! Q.security = Math.max(0, Q.security - 8); Q.stability = Math.max(0, Q.stability - 7); !}
 
-On 12 December 1969, a bomb exploded at the Banca Nazionale dell'Agricoltura in Milan's Piazza Fontana, killing 17 people and injuring many others. The attack marked a turning point in Italy's Years of Lead. The country demands answers, while fear and political suspicion spread.
+**A bombing shakes the Republic**
 
-Your party must respond. How should Italy proceed in the aftermath of the bombing?
+On 12 December 1969, a bomb exploded at the Piazza Fontana bank in Milan, killing 17 people and injuring many others. The attack became a defining event in Italy's Years of Lead.
 
-- @public_inquiry: Demand an independent public inquiry
-- @security_response: Prioritise security and policing
-- @calm_appeal: Call for calm and democratic unity
+The country demands answers. Rumours spread, political tensions intensify and the authorities face pressure to act.
+
+How will your political leadership respond?
+
+- @public_inquiry: Demand a transparent investigation
+- @security_response: Prioritise emergency security measures
+- @calm_appeal: Appeal for restraint and national unity
 
 
 @public_inquiry
-title: An independent public inquiry
-on-arrival: {! Q.public_support = Math.min(100, Q.public_support + 3); Q.stability = Math.min(100, Q.stability + 4); Q.security = Math.max(0, Q.security - 1); !}
+title: Demand an Investigation
+new-page: true
+on-arrival: {! Q.public_support = Math.min(100, Q.public_support + 5); Q.stability = Math.min(100, Q.stability + 2); Q.security = Math.min(100, Q.security + 1); !}
 
-You call for a transparent investigation, parliamentary scrutiny, and protection of civil liberties. The approach reassures some citizens that democratic institutions can respond to violence, although critics argue that it may appear insufficiently forceful.
+You call for a thorough investigation, public accountability and respect for constitutional safeguards.
 
-- @monthly_briefing: Continue to the political briefing
+The appeal reassures citizens who fear abuses of power, though some political opponents accuse you of weakening the authorities.
+
+- @monthly_briefing: Enter government
 
 
 @security_response
-title: Security first
-on-arrival: {! Q.security = Math.min(100, Q.security + 6); Q.stability = Math.min(100, Q.stability + 1); Q.public_support = Math.max(0, Q.public_support - 2); !}
+title: Emergency Security Measures
+new-page: true
+on-arrival: {! Q.security = Math.min(100, Q.security + 8); Q.public_support = Math.max(0, Q.public_support - 3); Q.stability = Math.max(0, Q.stability - 2); !}
 
-You demand a stronger security response and additional resources for investigators. The decision signals resolve, but civil-liberties groups warn that public fear must not become an excuse for indiscriminate measures.
+You support stronger security measures and demand rapid action from the authorities.
 
-- @monthly_briefing: Continue to the political briefing
+Some citizens welcome a firm response. Others fear that emergency measures could undermine civil liberties and increase political polarisation.
+
+- @monthly_briefing: Enter government
 
 
 @calm_appeal
-title: Democratic unity
-on-arrival: {! Q.public_support = Math.min(100, Q.public_support + 4); Q.stability = Math.min(100, Q.stability + 2); !}
+title: National Unity Appeal
+new-page: true
+on-arrival: {! Q.public_support = Math.min(100, Q.public_support + 3); Q.stability = Math.min(100, Q.stability + 4); !}
 
-You appeal for restraint, solidarity with the victims, and a united defence of democratic institutions. The statement lowers the temperature for now, but the public will expect concrete action as the investigation develops.
+You appeal for restraint, reject political violence and call for cooperation across democratic institutions.
 
-- @monthly_briefing: Continue to the political briefing
+The speech offers a brief moment of calm, but citizens expect practical action.
+
+- @monthly_briefing: Enter government
 
 
 @monthly_briefing
-title: Political briefing
-subtitle: Italy — month [+ month +], [+ year +]
+title: Government
+subtitle: Italy — [+ month +] / [+ year +]
 new-page: true
-on-arrival: {! if (typeof Q.month !== 'number') Q.month = 12; if (typeof Q.year !== 'number') Q.year = 1969; !}
+is-hand: true
+max-cards: 3
 
-THE SITUATION IN ITALY
+**THE GOVERNMENT**
 
-**Your party:** [+ party_name +]
+Your party: [+ party_name +]
 
-**Date:** Month [+ month +], [+ year +]
+The country faces economic pressure and political violence. Draw policy cards from the deck and choose which measures to pursue.
 
-**Public support:** [+ public_support +] / 100
+Each card represents a government initiative. Its consequences will affect the balance of power and the stability of the Republic.
 
-**Economic pressure:** [+ inflation +] / 100
+- @policy_deck
+- #pinnedCard
 
-**Public security:** [+ security +] / 100
-
-**Political stability:** [+ stability +] / 100
-
-The Piazza Fontana bombing has intensified public anxiety. The government faces pressure to restore security, address social grievances, and preserve democratic institutions. You have one major political action this month.
-
-Choose your priority. Each decision changes the political situation and advances the calendar by one month.
-
-- @economic_policy: Economic relief and labour negotiations
-- @security_policy: Strengthen public security
-- @reform_policy: Pursue political and institutional reform
-- @wait_policy: Maintain the current course
+- @advance_month: End the month
 
 
-@economic_policy
-title: Economic relief and labour negotiations
-on-arrival: {! Q.inflation = Math.max(0, Q.inflation - 5); Q.public_support = Math.min(100, Q.public_support + 3); Q.stability = Math.max(0, Q.stability - 1); Q.month = Q.month + 1; if (Q.month > 12) { Q.month = 1; Q.year = Q.year + 1; } !}
+@policy_deck
+title: Government Policy Deck
+subtitle: Draw a policy card
+is-deck: true
 
-You announce an economic relief programme and open negotiations with labour representatives. The measure offers immediate political benefits, but business groups warn that continued intervention could deepen economic uncertainty.
-
-- @monthly_briefing: Continue to next month
-
-
-@security_policy
-title: Strengthen public security
-on-arrival: {! Q.security = Math.min(100, Q.security + 6); Q.public_support = Math.max(0, Q.public_support - 2); Q.stability = Math.min(100, Q.stability + 2); Q.month = Q.month + 1; if (Q.month > 12) { Q.month = 1; Q.year = Q.year + 1; } !}
-
-You prioritise public security and the protection of democratic institutions. Some citizens welcome decisive action, while others warn that emergency measures must not undermine civil liberties.
-
-- @monthly_briefing: Continue to next month
+- #policy_deck
 
 
-@reform_policy
-title: Political and institutional reform
-on-arrival: {! Q.public_support = Math.min(100, Q.public_support + 4); Q.stability = Math.min(100, Q.stability + 3); Q.month = Q.month + 1; if (Q.month > 12) { Q.month = 1; Q.year = Q.year + 1; } !}
+@economic_relief
+title: Economic Relief
+subtitle: Wages, prices and living standards
+is-card: true
+new-page: true
+tags: policy_deck
 
-You pursue political reform, parliamentary dialogue, and a negotiated response to social unrest. Your approach may strengthen trust, although entrenched interests could resist changes to the existing balance of power.
+Prices and wages are under pressure. Your government proposes targeted relief and negotiations with trade unions.
 
-- @monthly_briefing: Continue to next month
+- @relief_success: Fund the relief programme
+- @return_government: Return without action
 
 
-@wait_policy
-title: Maintain the current course
-on-arrival: {! Q.stability = Math.max(0, Q.stability - 3); Q.security = Math.max(0, Q.security - 1); Q.month = Q.month + 1; if (Q.month > 12) { Q.month = 1; Q.year = Q.year + 1; } !}
+@relief_success
+title: Relief Programme Approved
+new-page: true
+on-arrival: {! Q.inflation = Math.max(0, Q.inflation - 5); Q.public_support = Math.min(100, Q.public_support + 4); Q.stability = Math.max(0, Q.stability - 1); !}
 
-You postpone major changes and preserve the current political course. This avoids an immediate confrontation, but unresolved pressures continue to build.
+The government commits to economic relief. Workers welcome the measure, but business leaders question its cost.
 
-- @monthly_briefing: Continue to next month
+- @monthly_briefing: Return to government
+
+
+@public_security
+title: Public Security
+subtitle: Policing and civil liberties
+is-card: true
+new-page: true
+tags: policy_deck
+
+Political violence is putting pressure on the government to act. You must balance public safety with democratic safeguards.
+
+- @security_success: Expand security operations
+- @return_government: Return without action
+
+
+@security_success
+title: Security Measures Approved
+new-page: true
+on-arrival: {! Q.security = Math.min(100, Q.security + 6); Q.public_support = Math.max(0, Q.public_support - 2); Q.stability = Math.min(100, Q.stability + 1); !}
+
+The government expands security operations. Some citizens feel safer, while civil-liberties advocates demand oversight.
+
+- @monthly_briefing: Return to government
+
+
+@institutional_reform
+title: Institutional Reform
+subtitle: Parliament and democratic legitimacy
+is-card: true
+new-page: true
+tags: policy_deck
+
+Your government proposes reforms intended to rebuild public confidence and strengthen democratic institutions.
+
+- @reform_success: Begin reform negotiations
+- @return_government: Return without action
+
+
+@reform_success
+title: Reform Negotiations
+new-page: true
+on-arrival: {! Q.public_support = Math.min(100, Q.public_support + 3); Q.stability = Math.min(100, Q.stability + 4); !}
+
+Negotiations begin. Reform could strengthen democratic legitimacy, but entrenched political interests may resist.
+
+- @monthly_briefing: Return to government
+
+
+@return_government
+title: Return to Government
+go-to: monthly_briefing
+
+
+@advance_month
+title: A New Month
+new-page: true
+on-arrival: {! Q.month = Q.month + 1; if (Q.month > 12) { Q.month = 1; Q.year = Q.year + 1; } Q.inflation = Math.min(100, Q.inflation + 2); Q.stability = Math.max(0, Q.stability - 1); !}
+
+**The calendar moves forward**
+
+Another month begins. Economic pressure continues, political factions manoeuvre and the government must decide what to prioritise next.
+
+Your administration remains under pressure to deliver results.
+
+- @monthly_briefing: Continue governing
