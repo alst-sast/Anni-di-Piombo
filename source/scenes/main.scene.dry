@@ -13,22 +13,19 @@ Choose your party to begin.
 
 - @party_selection: Begin campaign
 
+
 @party_selection
 title: Choose your party
-subtitle: Select a political organisation
+subtitle: The four major political forces
 new-page: true
 
-Choose the party whose leadership you will assume. Each party will have different political strengths and strategic challenges.
+Italy stands at a crossroads. Choose the party you will lead through the Years of Lead.
 
 - @dc_start: Democrazia Cristiana (DC)
 - @pci_start: Partito Comunista Italiano (PCI)
 - @psi_start: Partito Socialista Italiano (PSI)
 - @msi_start: Movimento Sociale Italiano (MSI)
-- @pri_start: Partito Repubblicano Italiano (PRI)
-- @psdi_start: Partito Socialista Democratico Italiano (PSDI)
-- @pli_start: Partito Liberale Italiano (PLI)
-- @pr_start: Partito Radicale (PR)
-- @dp_start: Democrazia Proletaria (DP)
+
 
 @dc_start
 title: Democrazia Cristiana
