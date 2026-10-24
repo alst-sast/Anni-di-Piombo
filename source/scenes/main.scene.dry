@@ -1,8 +1,7 @@
-
-title: Anni di piombo
+title: Main
 new-page: true
 
-on-arrival: {! if (typeof Q.inflation !== 'number') Q.inflation = 65; if (typeof Q.public_support !== 'number') Q.public_support = 50; if (typeof Q.security !== 'number') Q.security = 45; if (typeof Q.stability !== 'number') Q.stability = 55; if (typeof Q.month !== 'number') Q.month = 12; if (typeof Q.year !== 'number') Q.year = 1969; if (typeof Q.party_name !== 'string') Q.party_name = 'Not selected'; !}
+on-arrival: if (typeof Q.inflation !== 'number') Q.inflation = 65; if (typeof Q.public_support !== 'number') Q.public_support = 50; if (typeof Q.security !== 'number') Q.security = 45; if (typeof Q.stability !== 'number') Q.stability = 55; if (typeof Q.month !== 'number') Q.month = 12; if (typeof Q.year !== 'number') Q.year = 1969; if (typeof Q.party_name !== 'string') Q.party_name = 'Not selected';
 
 ITALY, DECEMBER 1969
 
@@ -17,228 +16,72 @@ Choose your political organisation.
 - @psi_start: Partito Socialista Italiano (PSI)
 - @msi_start: Movimento Sociale Italiano (MSI)
 
-
 @dc_start
-title: Christian Democracy
+title: Democrazia Cristiana
 new-page: true
-on-arrival: {! Q.party_name = 'DC'; Q.public_support = 52; Q.stability = 58; !}
 
-**Democrazia Cristiana**
+on-arrival: Q.party_name = 'Democrazia Cristiana (DC)'; Q.public_support = 55; Q.stability = 60;
 
-The Christian Democrats dominate the governing system but face pressure from labour unrest, the communist opposition and internal divisions.
+You lead the Christian Democrats, the dominant force in Italy's post-war political system.
 
-Your challenge is to preserve parliamentary government while responding to social demands and political violence.
-
-- @piazza_fontana: Continue to the national crisis
-
+- @monthly_briefing: Continue
 
 @pci_start
-title: Italian Communist Party
+title: Partito Comunista Italiano
 new-page: true
-on-arrival: {! Q.party_name = 'PCI'; Q.public_support = 48; Q.stability = 48; !}
 
-**Partito Comunista Italiano**
+on-arrival: Q.party_name = 'Partito Comunista Italiano (PCI)'; Q.public_support = 45; Q.stability = 45;
 
-The Communist Party has a powerful working-class base and substantial electoral support, but remains excluded from national government by Cold War alignments.
+You lead the Communist opposition, seeking greater influence amid social unrest and political polarisation.
 
-Your challenge is to turn social mobilisation into political influence without deepening the crisis.
-
-- @piazza_fontana: Continue to the national crisis
-
+- @monthly_briefing: Continue
 
 @psi_start
-title: Italian Socialist Party
+title: Partito Socialista Italiano
 new-page: true
-on-arrival: {! Q.party_name = 'PSI'; Q.public_support = 42; Q.stability = 50; !}
 
-**Partito Socialista Italiano**
+on-arrival: Q.party_name = 'Partito Socialista Italiano (PSI)'; Q.public_support = 40; Q.stability = 50;
 
-The Socialists occupy a difficult position between reformist government and pressure from the labour movement.
+You lead the Socialists, balancing reform, coalition politics and pressure from the left.
 
-Your challenge is to pursue reforms while holding together a divided political coalition.
-
-- @piazza_fontana: Continue to the national crisis
-
+- @monthly_briefing: Continue
 
 @msi_start
-title: Italian Social Movement
+title: Movimento Sociale Italiano
 new-page: true
-on-arrival: {! Q.party_name = 'MSI'; Q.public_support = 28; Q.stability = 38; !}
 
-**Movimento Sociale Italiano**
+on-arrival: Q.party_name = 'Movimento Sociale Italiano (MSI)'; Q.public_support = 25; Q.stability = 35;
 
-The post-fascist right seeks a larger role in national politics amid street violence, polarisation and growing distrust of the political establishment.
+You lead the neo-fascist Italian Social Movement, operating on the margins of the parliamentary system.
 
-Your challenge is to expand your influence in a fragile parliamentary system.
-
-- @piazza_fontana: Continue to the national crisis
-
-
-@piazza_fontana
-title: Piazza Fontana
-subtitle: Milan — 12 December 1969
-new-page: true
-on-arrival: {! Q.security = Math.max(0, Q.security - 8); Q.stability = Math.max(0, Q.stability - 7); !}
-
-**A bombing shakes the Republic**
-
-On 12 December 1969, a bomb exploded at the Piazza Fontana bank in Milan, killing 17 people and injuring many others. The attack became a defining event in Italy's Years of Lead.
-
-The country demands answers. Rumours spread, political tensions intensify and the authorities face pressure to act.
-
-How will your political leadership respond?
-
-- @public_inquiry: Demand a transparent investigation
-- @security_response: Prioritise emergency security measures
-- @calm_appeal: Appeal for restraint and national unity
-
-
-@public_inquiry
-title: Demand an Investigation
-new-page: true
-on-arrival: {! Q.public_support = Math.min(100, Q.public_support + 5); Q.stability = Math.min(100, Q.stability + 2); Q.security = Math.min(100, Q.security + 1); !}
-
-You call for a thorough investigation, public accountability and respect for constitutional safeguards.
-
-The appeal reassures citizens who fear abuses of power, though some political opponents accuse you of weakening the authorities.
-
-- @monthly_briefing: Enter government
-
-
-@security_response
-title: Emergency Security Measures
-new-page: true
-on-arrival: {! Q.security = Math.min(100, Q.security + 8); Q.public_support = Math.max(0, Q.public_support - 3); Q.stability = Math.max(0, Q.stability - 2); !}
-
-You support stronger security measures and demand rapid action from the authorities.
-
-Some citizens welcome a firm response. Others fear that emergency measures could undermine civil liberties and increase political polarisation.
-
-- @monthly_briefing: Enter government
-
-
-@calm_appeal
-title: National Unity Appeal
-new-page: true
-on-arrival: {! Q.public_support = Math.min(100, Q.public_support + 3); Q.stability = Math.min(100, Q.stability + 4); !}
-
-You appeal for restraint, reject political violence and call for cooperation across democratic institutions.
-
-The speech offers a brief moment of calm, but citizens expect practical action.
-
-- @monthly_briefing: Enter government
-
-
+- @monthly_briefing: Continue
 
 @monthly_briefing
 title: Government
-subtitle: Italy — [+ month +] / [+ year +]
 new-page: true
-is-hand: true
-max-cards: 3
 
-**THE GOVERNMENT**
+ITALIAN REPUBLIC
 
-Your party: [+ party_name +]
+Date: [+ month +] / [+ year +]
 
-The country faces economic pressure and political violence. Draw policy cards from the deck and choose which measures to pursue.
+Governing party: [+ party_name +]
 
-Each card represents a government initiative. Its consequences will affect the balance of power and the stability of the Republic.
+Public support: [+ public_support +] / 100
 
-- @policy_deck
+Economic pressure: [+ inflation +] / 100
 
+Public security: [+ security +] / 100
 
-@policy_deck
-title: Government Policy Deck
-subtitle: Draw a policy card
-is-deck: true
+Political stability: [+ stability +] / 100
 
-- #policy_deck
-
-
-@economic_relief
-title: Economic Relief
-subtitle: Wages, prices and living standards
-is-card: true
-new-page: true
-tags: policy_deck
-
-Prices and wages are under pressure. Your government proposes targeted relief and negotiations with trade unions.
-
-- @relief_success: Fund the relief programme
-- @return_government: Return without action
-
-
-@relief_success
-title: Relief Programme Approved
-new-page: true
-on-arrival: {! Q.inflation = Math.max(0, Q.inflation - 5); Q.public_support = Math.min(100, Q.public_support + 4); Q.stability = Math.max(0, Q.stability - 1); !}
-
-The government commits to economic relief. Workers welcome the measure, but business leaders question its cost.
-
-- @monthly_briefing: Return to government
-
-
-@public_security
-title: Public Security
-subtitle: Policing and civil liberties
-is-card: true
-new-page: true
-tags: policy_deck
-
-Political violence is putting pressure on the government to act. You must balance public safety with democratic safeguards.
-
-- @security_success: Expand security operations
-- @return_government: Return without action
-
-
-@security_success
-title: Security Measures Approved
-new-page: true
-on-arrival: {! Q.security = Math.min(100, Q.security + 6); Q.public_support = Math.max(0, Q.public_support - 2); Q.stability = Math.min(100, Q.stability + 1); !}
-
-The government expands security operations. Some citizens feel safer, while civil-liberties advocates demand oversight.
-
-- @monthly_briefing: Return to government
-
-
-@institutional_reform
-title: Institutional Reform
-subtitle: Parliament and democratic legitimacy
-is-card: true
-new-page: true
-tags: policy_deck
-
-Your government proposes reforms intended to rebuild public confidence and strengthen democratic institutions.
-
-- @reform_success: Begin reform negotiations
-- @return_government: Return without action
-
-
-@reform_success
-title: Reform Negotiations
-new-page: true
-on-arrival: {! Q.public_support = Math.min(100, Q.public_support + 3); Q.stability = Math.min(100, Q.stability + 4); !}
-
-Negotiations begin. Reform could strengthen democratic legitimacy, but entrenched political interests may resist.
-
-- @monthly_briefing: Return to government
-
-
-@return_government
-title: Return to Government
-go-to: monthly_briefing
-
+- @advance_month: End the month
 
 @advance_month
-title: A New Month
+title: Next Month
 new-page: true
-on-arrival: {! Q.month = Q.month + 1; if (Q.month > 12) { Q.month = 1; Q.year = Q.year + 1; } Q.inflation = Math.min(100, Q.inflation + 2); Q.stability = Math.max(0, Q.stability - 1); !}
 
-**The calendar moves forward**
+on-arrival: Q.month = Q.month + 1; if (Q.month > 12) { Q.month = 1; Q.year = Q.year + 1; } Q.inflation = Math.min(100, Q.inflation + 2); Q.stability = Math.max(0, Q.stability - 1);
 
-Another month begins. Economic pressure continues, political factions manoeuvre and the government must decide what to prioritise next.
-
-Your administration remains under pressure to deliver results.
+A new month begins. Economic and political pressures continue to test the Republic.
 
 - @monthly_briefing: Continue governing
