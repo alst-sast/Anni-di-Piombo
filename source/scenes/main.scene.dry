@@ -1,0 +1,157 @@
+title: Anni di piombo
+subtitle: Italy, 1969–1983
+new-page: true
+on-arrival: {! if (typeof Q.inflation !== 'number') Q.inflation = 5; if (typeof Q.public_support !== 'number') Q.public_support = 50; if (typeof Q.security !== 'number') Q.security = 50; if (typeof Q.stability !== 'number') Q.stability = 50; if (typeof Q.month !== 'number') Q.month = 12; if (typeof Q.year !== 'number') Q.year = 1969; if (typeof Q.party_name !== 'string') Q.party_name = 'None'; !}
+
+BENVENUTI IN ITALIA
+
+Italy, 1969. The post-war political order faces mounting pressure. Strikes and student protests shake the country, extremist violence is growing, and the parties of the Republic face difficult choices about democracy, reform, and public order.
+
+You will lead a political party through the Years of Lead. Your decisions will affect public support, economic conditions, security, and the stability of the political system.
+
+Choose your party to begin.
+
+- @party_selection: Begin campaign
+
+@party_selection
+title: Choose your party
+subtitle: Select a political organisation
+new-page: true
+
+Choose the party whose leadership you will assume. Each party will have different political strengths and strategic challenges.
+
+- @dc_start: Democrazia Cristiana (DC)
+- @pci_start: Partito Comunista Italiano (PCI)
+- @psi_start: Partito Socialista Italiano (PSI)
+- @msi_start: Movimento Sociale Italiano (MSI)
+- @pri_start: Partito Repubblicano Italiano (PRI)
+- @psdi_start: Partito Socialista Democratico Italiano (PSDI)
+- @pli_start: Partito Liberale Italiano (PLI)
+- @pr_start: Partito Radicale (PR)
+- @dp_start: Democrazia Proletaria (DP)
+
+@dc_start
+title: Democrazia Cristiana
+on-arrival: {! Q.party_name = 'Democrazia Cristiana'; Q.public_support = 52; Q.stability = 55; !}
+
+You lead the dominant party of post-war Italian government. Your challenge is to hold together competing factions, maintain coalition support, and respond to demands for reform while defending democratic institutions.
+
+- @monthly_briefing: Enter political briefing
+
+@pci_start
+title: Partito Comunista Italiano
+on-arrival: {! Q.party_name = 'Partito Comunista Italiano'; Q.public_support = 38; Q.stability = 45; !}
+
+You lead the largest communist party in Western Europe. Build electoral strength, organise workers, negotiate political influence, and decide how to respond to the pressures of the Cold War and domestic unrest.
+
+- @monthly_briefing: Enter political briefing
+
+@psi_start
+title: Partito Socialista Italiano
+on-arrival: {! Q.party_name = 'Partito Socialista Italiano'; Q.public_support = 24; Q.stability = 48; !}
+
+You lead a socialist party seeking influence between the Christian Democrats and Communists. Coalition bargaining and party identity will define your strategy.
+
+- @monthly_briefing: Enter political briefing
+
+@msi_start
+title: Movimento Sociale Italiano
+on-arrival: {! Q.party_name = 'Movimento Sociale Italiano'; Q.public_support = 12; Q.stability = 40; !}
+
+You lead a post-fascist party operating on the margins of mainstream coalition politics. Decide how to build support while navigating isolation and escalating political conflict.
+
+- @monthly_briefing: Enter political briefing
+
+@pri_start
+title: Partito Repubblicano Italiano
+on-arrival: {! Q.party_name = 'Partito Repubblicano Italiano'; Q.public_support = 7; Q.stability = 50; !}
+
+You lead a small republican party focused on institutional reform and secular politics. Your influence will depend on alliances and parliamentary negotiation.
+
+- @monthly_briefing: Enter political briefing
+
+@psdi_start
+title: Partito Socialista Democratico Italiano
+on-arrival: {! Q.party_name = 'Partito Socialista Democratico Italiano'; Q.public_support = 8; Q.stability = 50; !}
+
+You lead a social-democratic party committed to parliamentary government. Your challenge is to remain relevant in a fragmented centre-left.
+
+- @monthly_briefing: Enter political briefing
+
+@pli_start
+title: Partito Liberale Italiano
+on-arrival: {! Q.party_name = 'Partito Liberale Italiano'; Q.public_support = 6; Q.stability = 50; !}
+
+You lead a liberal party defending individual liberties, constitutional government, and market-oriented policies. Build influence through negotiation and public debate.
+
+- @monthly_briefing: Enter political briefing
+
+@pr_start
+title: Partito Radicale
+on-arrival: {! Q.party_name = 'Partito Radicale'; Q.public_support = 4; Q.stability = 45; !}
+
+You lead a radical movement campaigning for civil liberties, secular reform, and direct democratic action. Turn public campaigns into political influence.
+
+- @monthly_briefing: Enter political briefing
+
+@dp_start
+title: Democrazia Proletaria
+on-arrival: {! Q.party_name = 'Democrazia Proletaria'; Q.public_support = 3; Q.stability = 40; !}
+
+You lead a far-left coalition rooted in workers' and student movements. Navigate the tension between parliamentary politics, grassroots mobilisation, and ideological divisions.
+
+- @monthly_briefing: Enter political briefing
+
+@monthly_briefing
+title: Political briefing
+subtitle: Italy, [+ year +]
+new-page: true
+on-arrival: {! if (typeof Q.month !== 'number') Q.month = 12; if (typeof Q.year !== 'number') Q.year = 1969; !}
+
+= Government and opposition briefing
+
+**Party:** [+ party_name +]
+
+**Year:** [+ year +]
+
+**Public support:** [+ public_support +] / 100
+
+**Economic pressure:** [+ inflation +]
+
+**Public security:** [+ security +] / 100
+
+**Political stability:** [+ stability +] / 100
+
+Italy is entering a period of profound political conflict. Choose your immediate priority. These are prototype decisions; their effects will be expanded as the simulation develops.
+
+@economic_policy
+title: Economic intervention
+on-arrival: {! Q.inflation = Math.max(0, Q.inflation - 1); Q.public_support = Math.min(100, Q.public_support + 2); Q.stability = Math.max(0, Q.stability - 1); !}
+
+You announce an economic relief programme. The measure offers immediate political benefits, but its longer-term economic consequences remain uncertain.
+
+- @monthly_briefing: Return to briefing
+
+@security_policy
+title: Public order and security
+on-arrival: {! Q.security = Math.min(100, Q.security + 5); Q.public_support = Math.max(0, Q.public_support - 2); Q.stability = Math.min(100, Q.stability + 1); !}
+
+You prioritise public security and the protection of democratic institutions. Some citizens welcome decisive action, while others worry about civil liberties.
+
+- @monthly_briefing: Return to briefing
+
+@reform_policy
+title: Political and institutional reform
+on-arrival: {! Q.public_support = Math.min(100, Q.public_support + 3); Q.stability = Math.min(100, Q.stability + 2); !}
+
+You pursue political reform and dialogue. Your approach may strengthen trust, although opponents may resist changes to the existing balance of power.
+
+- @monthly_briefing: Return to briefing
+
+@wait_policy
+title: Maintain the current course
+on-arrival: {! Q.stability = Math.max(0, Q.stability - 1); !}
+
+You postpone major changes and preserve the current political course. This avoids an immediate confrontation, but unresolved pressures continue to build.
+
+- @monthly_briefing: Return to briefing
