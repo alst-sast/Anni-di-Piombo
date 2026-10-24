@@ -1,0 +1,29 @@
+title: Political situation
+subtitle: Italian Republic, 1969–1983
+new-page: true
+is-special: true
+on-arrival: {! if (typeof Q.inflation !== 'number') Q.inflation = 5; if (typeof Q.public_support !== 'number') Q.public_support = 50; if (typeof Q.security !== 'number') Q.security = 50; if (typeof Q.stability !== 'number') Q.stability = 50; if (typeof Q.month !== 'number') Q.month = 12; if (typeof Q.year !== 'number') Q.year = 1969; if (typeof Q.party_name !== 'string') Q.party_name = 'Not selected'; !}
+
+ITALIAN REPUBLIC
+
+**Date**
+[+ month +] / [+ year +]
+
+**Your party**
+[+ party_name +]
+
+**Public support**
+[+ public_support +] / 100
+
+**Economic pressure**
+[+ inflation +] / 100
+
+**Public security**
+[+ security +] / 100
+
+**Political stability**
+[+ stability +] / 100
+
+The Republic faces political violence, social conflict, and uncertainty. Your decisions will shape the country's future.
+
+- @monthly_briefing: Return to the political briefing
