@@ -33,7 +33,7 @@ on-arrival: {! Q.party_name = 'Democrazia Cristiana (DC)'; Q.public_support = 52
 
 You lead the dominant party of post-war Italian government. Hold together competing factions, maintain coalition support, and respond to demands for reform while defending democratic institutions.
 
-- @monthly_briefing: Enter the political briefing
+- @piazza_fontana: Face the Piazza Fontana crisis
 
 
 @pci_start
@@ -42,7 +42,7 @@ on-arrival: {! Q.party_name = 'Partito Comunista Italiano (PCI)'; Q.public_suppo
 
 You lead the largest communist party in Western Europe. Build electoral strength, organise workers, negotiate political influence, and decide how to respond to the pressures of the Cold War and domestic unrest.
 
-- @monthly_briefing: Enter the political briefing
+- @piazza_fontana: Face the Piazza Fontana crisis
 
 
 @psi_start
@@ -51,7 +51,7 @@ on-arrival: {! Q.party_name = 'Partito Socialista Italiano (PSI)'; Q.public_supp
 
 You lead a socialist party seeking influence between the Christian Democrats and Communists. Coalition bargaining and political reform will define your strategy.
 
-- @monthly_briefing: Enter the political briefing
+- @piazza_fontana: Face the Piazza Fontana crisis
 
 
 @msi_start
@@ -60,7 +60,48 @@ on-arrival: {! Q.party_name = 'Movimento Sociale Italiano (MSI)'; Q.public_suppo
 
 You lead a post-fascist party operating on the margins of mainstream coalition politics. Decide how to build support while navigating political isolation and escalating conflict.
 
-- @monthly_briefing: Enter the political briefing
+- @piazza_fontana: Face the Piazza Fontana crisis
+
+
+@piazza_fontana
+title: The Piazza Fontana bombing
+subtitle: Milan, 12 December 1969
+new-page: true
+
+On 12 December 1969, a bomb exploded at the Banca Nazionale dell'Agricoltura in Milan's Piazza Fontana, killing 17 people and injuring many others. The attack marked a turning point in Italy's Years of Lead. The country demands answers, while fear and political suspicion spread.
+
+Your party must respond. How should Italy proceed in the aftermath of the bombing?
+
+- @public_inquiry: Demand an independent public inquiry
+- @security_response: Prioritise security and policing
+- @calm_appeal: Call for calm and democratic unity
+
+
+@public_inquiry
+title: An independent public inquiry
+on-arrival: {! Q.public_support = Math.min(100, Q.public_support + 3); Q.stability = Math.min(100, Q.stability + 4); Q.security = Math.max(0, Q.security - 1); !}
+
+You call for a transparent investigation, parliamentary scrutiny, and protection of civil liberties. The approach reassures some citizens that democratic institutions can respond to violence, although critics argue that it may appear insufficiently forceful.
+
+- @monthly_briefing: Continue to the political briefing
+
+
+@security_response
+title: Security first
+on-arrival: {! Q.security = Math.min(100, Q.security + 6); Q.stability = Math.min(100, Q.stability + 1); Q.public_support = Math.max(0, Q.public_support - 2); !}
+
+You demand a stronger security response and additional resources for investigators. The decision signals resolve, but civil-liberties groups warn that public fear must not become an excuse for indiscriminate measures.
+
+- @monthly_briefing: Continue to the political briefing
+
+
+@calm_appeal
+title: Democratic unity
+on-arrival: {! Q.public_support = Math.min(100, Q.public_support + 4); Q.stability = Math.min(100, Q.stability + 2); !}
+
+You appeal for restraint, solidarity with the victims, and a united defence of democratic institutions. The statement lowers the temperature for now, but the public will expect concrete action as the investigation develops.
+
+- @monthly_briefing: Continue to the political briefing
 
 
 @monthly_briefing
