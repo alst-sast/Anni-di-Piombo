@@ -1,7 +1,7 @@
 title: Anni di piombo
 subtitle: Italy, 1969–1983
 new-page: true
-on-arrival: {! if (typeof Q.inflation !== 'number') Q.inflation = 5; if (typeof Q.public_support !== 'number') Q.public_support = 50; if (typeof Q.security !== 'number') Q.security = 50; if (typeof Q.stability !== 'number') Q.stability = 50; if (typeof Q.month !== 'number') Q.month = 12; if (typeof Q.year !== 'number') Q.year = 1969; if (typeof Q.party_name !== 'string') Q.party_name = 'None'; !}
+on-arrival: if (typeof Q.inflation !== 'number') Q.inflation = 5; if (typeof Q.public_support !== 'number') Q.public_support = 50; if (typeof Q.security !== 'number') Q.security = 50; if (typeof Q.stability !== 'number') Q.stability = 50; if (typeof Q.month !== 'number') Q.month = 12; if (typeof Q.year !== 'number') Q.year = 1969; if (typeof Q.party_name !== 'string') Q.party_name = 'None';
 
 ANNI DI PIOMBO
 
@@ -29,7 +29,7 @@ Italy stands at a crossroads. Which party will you lead?
 
 @dc_start
 title: Democrazia Cristiana
-on-arrival: {! Q.party_name = 'Democrazia Cristiana (DC)'; Q.public_support = 52; Q.stability = 55; !}
+on-arrival: Q.party_name = 'Democrazia Cristiana (DC)'; Q.public_support = 52; Q.stability = 55;
 
 You lead the dominant party of post-war Italian government. Hold together competing factions, maintain coalition support, and respond to demands for reform while defending democratic institutions.
 
@@ -38,7 +38,7 @@ You lead the dominant party of post-war Italian government. Hold together compet
 
 @pci_start
 title: Partito Comunista Italiano
-on-arrival: {! Q.party_name = 'Partito Comunista Italiano (PCI)'; Q.public_support = 38; Q.stability = 45; !}
+on-arrival: Q.party_name = 'Partito Comunista Italiano (PCI)'; Q.public_support = 38; Q.stability = 45;
 
 You lead the largest communist party in Western Europe. Build electoral strength, organise workers, negotiate political influence, and decide how to respond to the pressures of the Cold War and domestic unrest.
 
@@ -47,7 +47,7 @@ You lead the largest communist party in Western Europe. Build electoral strength
 
 @psi_start
 title: Partito Socialista Italiano
-on-arrival: {! Q.party_name = 'Partito Socialista Italiano (PSI)'; Q.public_support = 24; Q.stability = 48; !}
+on-arrival: Q.party_name = 'Partito Socialista Italiano (PSI)'; Q.public_support = 24; Q.stability = 48;
 
 You lead a socialist party seeking influence between the Christian Democrats and Communists. Coalition bargaining and political reform will define your strategy.
 
@@ -56,7 +56,7 @@ You lead a socialist party seeking influence between the Christian Democrats and
 
 @msi_start
 title: Movimento Sociale Italiano
-on-arrival: {! Q.party_name = 'Movimento Sociale Italiano (MSI)'; Q.public_support = 12; Q.stability = 40; !}
+on-arrival: Q.party_name = 'Movimento Sociale Italiano (MSI)'; Q.public_support = 12; Q.stability = 40;
 
 You lead a post-fascist party operating on the margins of mainstream coalition politics. Decide how to build support while navigating political isolation and escalating conflict.
 
@@ -79,7 +79,7 @@ Your party must respond. How should Italy proceed in the aftermath of the bombin
 
 @public_inquiry
 title: An independent public inquiry
-on-arrival: {! Q.public_support = Math.min(100, Q.public_support + 3); Q.stability = Math.min(100, Q.stability + 4); Q.security = Math.max(0, Q.security - 1); !}
+on-arrival: Q.public_support = Math.min(100, Q.public_support + 3); Q.stability = Math.min(100, Q.stability + 4); Q.security = Math.max(0, Q.security - 1);
 
 You call for a transparent investigation, parliamentary scrutiny, and protection of civil liberties. The approach reassures some citizens that democratic institutions can respond to violence, although critics argue that it may appear insufficiently forceful.
 
@@ -88,7 +88,7 @@ You call for a transparent investigation, parliamentary scrutiny, and protection
 
 @security_response
 title: Security first
-on-arrival: {! Q.security = Math.min(100, Q.security + 6); Q.stability = Math.min(100, Q.stability + 1); Q.public_support = Math.max(0, Q.public_support - 2); !}
+on-arrival: Q.security = Math.min(100, Q.security + 6); Q.stability = Math.min(100, Q.stability + 1); Q.public_support = Math.max(0, Q.public_support - 2);
 
 You demand a stronger security response and additional resources for investigators. The decision signals resolve, but civil-liberties groups warn that public fear must not become an excuse for indiscriminate measures.
 
@@ -97,7 +97,7 @@ You demand a stronger security response and additional resources for investigato
 
 @calm_appeal
 title: Democratic unity
-on-arrival: {! Q.public_support = Math.min(100, Q.public_support + 4); Q.stability = Math.min(100, Q.stability + 2); !}
+on-arrival: Q.public_support = Math.min(100, Q.public_support + 4); Q.stability = Math.min(100, Q.stability + 2);
 
 You appeal for restraint, solidarity with the victims, and a united defence of democratic institutions. The statement lowers the temperature for now, but the public will expect concrete action as the investigation develops.
 
@@ -108,7 +108,7 @@ You appeal for restraint, solidarity with the victims, and a united defence of d
 title: Political briefing
 subtitle: Italy — month [+ month +], [+ year +]
 new-page: true
-on-arrival: {! if (typeof Q.month !== 'number') Q.month = 12; if (typeof Q.year !== 'number') Q.year = 1969; !}
+on-arrival: if (typeof Q.month !== 'number') Q.month = 12; if (typeof Q.year !== 'number') Q.year = 1969;
 
 THE SITUATION IN ITALY
 
@@ -136,7 +136,7 @@ Choose your priority. Each decision changes the political situation and advances
 
 @economic_policy
 title: Economic relief and labour negotiations
-on-arrival: {! Q.inflation = Math.max(0, Q.inflation - 5); Q.public_support = Math.min(100, Q.public_support + 3); Q.stability = Math.max(0, Q.stability - 1); Q.month = Q.month + 1; if (Q.month > 12) { Q.month = 1; Q.year = Q.year + 1; } !}
+on-arrival: Q.inflation = Math.max(0, Q.inflation - 5); Q.public_support = Math.min(100, Q.public_support + 3); Q.stability = Math.max(0, Q.stability - 1); Q.month = Q.month + 1; if (Q.month > 12) { Q.month = 1; Q.year = Q.year + 1; }
 
 You announce an economic relief programme and open negotiations with labour representatives. The measure offers immediate political benefits, but business groups warn that continued intervention could deepen economic uncertainty.
 
@@ -145,7 +145,7 @@ You announce an economic relief programme and open negotiations with labour repr
 
 @security_policy
 title: Strengthen public security
-on-arrival: {! Q.security = Math.min(100, Q.security + 6); Q.public_support = Math.max(0, Q.public_support - 2); Q.stability = Math.min(100, Q.stability + 2); Q.month = Q.month + 1; if (Q.month > 12) { Q.month = 1; Q.year = Q.year + 1; } !}
+on-arrival: Q.security = Math.min(100, Q.security + 6); Q.public_support = Math.max(0, Q.public_support - 2); Q.stability = Math.min(100, Q.stability + 2); Q.month = Q.month + 1; if (Q.month > 12) { Q.month = 1; Q.year = Q.year + 1; }
 
 You prioritise public security and the protection of democratic institutions. Some citizens welcome decisive action, while others warn that emergency measures must not undermine civil liberties.
 
@@ -154,7 +154,7 @@ You prioritise public security and the protection of democratic institutions. So
 
 @reform_policy
 title: Political and institutional reform
-on-arrival: {! Q.public_support = Math.min(100, Q.public_support + 4); Q.stability = Math.min(100, Q.stability + 3); Q.month = Q.month + 1; if (Q.month > 12) { Q.month = 1; Q.year = Q.year + 1; } !}
+on-arrival: Q.public_support = Math.min(100, Q.public_support + 4); Q.stability = Math.min(100, Q.stability + 3); Q.month = Q.month + 1; if (Q.month > 12) { Q.month = 1; Q.year = Q.year + 1; }
 
 You pursue political reform, parliamentary dialogue, and a negotiated response to social unrest. Your approach may strengthen trust, although entrenched interests could resist changes to the existing balance of power.
 
@@ -163,7 +163,7 @@ You pursue political reform, parliamentary dialogue, and a negotiated response t
 
 @wait_policy
 title: Maintain the current course
-on-arrival: {! Q.stability = Math.max(0, Q.stability - 3); Q.security = Math.max(0, Q.security - 1); Q.month = Q.month + 1; if (Q.month > 12) { Q.month = 1; Q.year = Q.year + 1; } !}
+on-arrival: Q.stability = Math.max(0, Q.stability - 3); Q.security = Math.max(0, Q.security - 1); Q.month = Q.month + 1; if (Q.month > 12) { Q.month = 1; Q.year = Q.year + 1; }
 
 You postpone major changes and preserve the current political course. This avoids an immediate confrontation, but unresolved pressures continue to build.
 
