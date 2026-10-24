@@ -129,6 +129,7 @@ The speech offers a brief moment of calm, but citizens expect practical action.
 - @monthly_briefing: Enter government
 
 
+
 @monthly_briefing
 title: Government
 subtitle: Italy — [+ month +] / [+ year +]
@@ -146,8 +147,6 @@ Each card represents a government initiative. Its consequences will affect the b
 
 - @policy_deck
 - #pinnedCard
-
-- @advance_month: End the month
 
 
 @policy_deck
