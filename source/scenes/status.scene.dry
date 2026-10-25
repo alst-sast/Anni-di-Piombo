@@ -10,6 +10,8 @@ Party: [+ party_name +]
 
 Position: [+ government_position +]
 
+Party resources: [+ resources +]
+
 Internal dissent: [+ dissent +]
 
 # Government

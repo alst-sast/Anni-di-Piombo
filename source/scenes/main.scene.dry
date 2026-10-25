@@ -96,6 +96,7 @@ is-deck: true
 title: Economic Relief
 is-card: true
 new-page: true
+choose-if: resources >= 1
 tags: policy_deck
 
 Your party advances emergency economic measures intended to ease pressure on households and restore confidence.
@@ -106,7 +107,7 @@ Your party advances emergency economic measures intended to ease pressure on hou
 title: Economic Relief
 new-page: true
 
-on-arrival: Q.inflation = Math.max(0, Q.inflation - 8); Q.public_support = Math.min(100, Q.public_support + 5);
+on-arrival: Q.resources = Math.max(0, Q.resources - 1); Q.inflation = Math.max(0, Q.inflation - 8); Q.public_support = Math.min(100, Q.public_support + 5);
 
 Your party's economic programme gains traction. The economic pressure index falls and public support improves.
 
@@ -116,6 +117,7 @@ Your party's economic programme gains traction. The economic pressure index fall
 title: Public Security
 is-card: true
 new-page: true
+choose-if: resources >= 1
 tags: policy_deck
 
 Your party must respond to political violence while defending its position on public order and the institutions of the Republic.
@@ -126,7 +128,7 @@ Your party must respond to political violence while defending its position on pu
 title: Public Security
 new-page: true
 
-on-arrival: Q.security = Math.min(100, Q.security + 10); Q.stability = Math.min(100, Q.stability + 3);
+on-arrival: Q.resources = Math.max(0, Q.resources - 1); Q.security = Math.min(100, Q.security + 10); Q.stability = Math.min(100, Q.stability + 3);
 
 Your party's public-security initiative improves the security index, though the long-term political consequences remain uncertain.
 
@@ -136,6 +138,7 @@ Your party's public-security initiative improves the security index, though the 
 title: Institutional Reform
 is-card: true
 new-page: true
+choose-if: resources >= 1
 tags: policy_deck
 
 Your party proposes institutional reforms intended to restore confidence in the Italian Republic.
@@ -146,7 +149,7 @@ Your party proposes institutional reforms intended to restore confidence in the 
 title: Institutional Reform
 new-page: true
 
-on-arrival: Q.stability = Math.min(100, Q.stability + 8); Q.public_support = Math.min(100, Q.public_support + 3);
+on-arrival: Q.resources = Math.max(0, Q.resources - 1); Q.stability = Math.min(100, Q.stability + 8); Q.public_support = Math.min(100, Q.public_support + 3);
 
 Your party's institutional reform initiative gains support. Political stability and public support improve.
 
@@ -158,7 +161,7 @@ is-pinned-card: true
 tags: advance_month
 new-page: true
 
-on-arrival: Q.month = Q.month + 1; if (Q.month > 12) { Q.month = 1; Q.year = Q.year + 1; } Q.inflation = Math.min(100, Q.inflation + 2); Q.stability = Math.max(0, Q.stability - 1);
+on-arrival: Q.month = Q.month + 1; if (Q.month > 12) { Q.month = 1; Q.year = Q.year + 1; } Q.inflation = Math.min(100, Q.inflation + 2); Q.stability = Math.max(0, Q.stability - 1); Q.resources = Math.min(6, Q.resources + 1);
 
 The month ends. Economic pressure rises and political stability comes under renewed strain.
 
