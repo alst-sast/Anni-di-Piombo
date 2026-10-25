@@ -70,23 +70,23 @@ You lead the neo-fascist Italian Social Movement, operating on the margins of th
 - @monthly_briefing: Enter Government
 
 @monthly_briefing
-title: Government
+title: Political Strategy
 subtitle: Italy — [+ month +] / [+ year +]
 new-page: true
 is-hand: true
 max-cards: 3
 
-THE GOVERNMENT
+POLITICAL STRATEGY
 
-Governing party: [+ party_name +]
+Your party: [+ party_name +]
 
-The government faces economic pressure, political violence and declining confidence in public institutions. Draw policy cards from the deck and choose which initiatives to pursue.
+Your party must respond to economic pressure, political violence and declining confidence in public institutions. Whether you govern, support a coalition or lead the opposition, draw strategy cards and choose which initiatives to pursue.
 
 - @policy_deck
 - #advance_month
 
 @policy_deck
-title: Government Policy Deck
+title: Strategy Deck
 subtitle: Draw a policy card
 is-deck: true
 
@@ -98,7 +98,7 @@ is-card: true
 new-page: true
 tags: policy_deck
 
-Your cabinet proposes emergency economic measures to ease pressure on households and restore confidence.
+Your party advances emergency economic measures intended to ease pressure on households and restore confidence.
 
 - @economic_relief_result: Introduce relief measures
 
@@ -108,7 +108,7 @@ new-page: true
 
 on-arrival: Q.inflation = Math.max(0, Q.inflation - 8); Q.public_support = Math.min(100, Q.public_support + 5);
 
-The government introduces an economic relief programme. Economic pressure falls and public support improves.
+Your party's economic programme gains traction. The economic pressure index falls and public support improves.
 
 - @monthly_briefing: Return to government
 
@@ -118,7 +118,7 @@ is-card: true
 new-page: true
 tags: policy_deck
 
-Your cabinet must respond to political violence while maintaining public order and confidence in the institutions of the Republic.
+Your party must respond to political violence while defending its position on public order and the institutions of the Republic.
 
 - @public_security_result: Strengthen public security
 
@@ -128,7 +128,7 @@ new-page: true
 
 on-arrival: Q.security = Math.min(100, Q.security + 10); Q.stability = Math.min(100, Q.stability + 3);
 
-The government strengthens public security. The immediate sense of order improves, though the long-term political consequences remain uncertain.
+Your party's public-security initiative improves the security index, though the long-term political consequences remain uncertain.
 
 - @monthly_briefing: Return to government
 
@@ -138,7 +138,7 @@ is-card: true
 new-page: true
 tags: policy_deck
 
-Your cabinet proposes institutional reforms intended to restore confidence in the Italian Republic.
+Your party proposes institutional reforms intended to restore confidence in the Italian Republic.
 
 - @institutional_reform_result: Begin institutional reform
 
@@ -148,7 +148,7 @@ new-page: true
 
 on-arrival: Q.stability = Math.min(100, Q.stability + 8); Q.public_support = Math.min(100, Q.public_support + 3);
 
-The government begins institutional reform. Political stability and public support improve.
+Your party's institutional reform initiative gains support. Political stability and public support improve.
 
 - @monthly_briefing: Return to government
 
