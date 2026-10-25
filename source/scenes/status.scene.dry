@@ -2,6 +2,8 @@ title: Main
 new-page: true
 is-special: true
 
+= Main
+
 **[+ month +] / [+ year +]**
 
 Resources available: [+ resources +]
@@ -35,3 +37,11 @@ Economic growth: Not yet modelled
 Public security: [+ security +] / 100
 
 Political stability: [+ stability +] / 100
+
+@politics
+
+= Politics
+
+@polls
+
+= Polls
