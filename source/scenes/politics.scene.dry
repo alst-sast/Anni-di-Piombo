@@ -1,0 +1,19 @@
+title: Politics
+new-page: true
+is-special: true
+
+POLITICAL SITUATION
+
+**Governing party**
+
+[+ party_name +]
+
+**Political stability**
+
+[+ stability +] / 100
+
+**Public security**
+
+[+ security +] / 100
+
+The party must navigate parliamentary conflict, street violence and pressure from competing political movements.
