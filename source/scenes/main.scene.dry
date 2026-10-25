@@ -82,6 +82,21 @@ Your party: [+ party_name +]
 
 Your party must respond to economic pressure, political violence and declining confidence in public institutions. Whether you govern, support a coalition or lead the opposition, draw strategy cards and choose which initiatives to pursue.
 
+[? if year = 1969 and month = 12 : **Historical briefing — Piazza Fontana.** On 12 December, a bomb explodes at the Banca Nazionale dell'Agricoltura in Milan, killing 17 people and injuring many more. The attack intensifies fear, suspicion and political polarisation. ?]
+[? if year = 1970 and month = 5 : **Historical briefing — Workers' Statute.** Parliament approves major protections for workers' rights, reflecting years of labour mobilisation. ?]
+[? if year = 1970 and month = 7 : **Historical briefing — Reggio Calabria unrest.** Protests erupt over the designation of Catanzaro as the regional capital, developing into months of street clashes and unrest. ?]
+[? if year = 1972 and month = 5 : **Historical briefing — General election.** The Christian Democrats remain the largest party as Italy's party system faces pressure from polarisation and political violence. ?]
+[? if year = 1973 and month = 10 : **Historical briefing — Oil crisis.** The international oil shock places new pressure on prices, production and household budgets. ?]
+[? if year = 1974 and month = 5 : **Historical briefing — Divorce referendum.** Voters reject the proposal to repeal Italy's divorce law, delivering a major defeat to conservative campaigners. ?]
+[? if year = 1974 and month = 8 : **Historical briefing — Italicus bombing.** A bomb on the Italicus express train kills 12 people, deepening public fear of political terrorism. ?]
+[? if year = 1976 and month = 6 : **Historical briefing — General election.** The Christian Democrats remain ahead while the Communist Party achieves a major electoral result, sharpening debate over whether it can be brought closer to government. ?]
+[? if year = 1978 and month = 3 : **Historical briefing — Aldo Moro kidnapped.** Red Brigades kidnap the former prime minister on 16 March and kill five members of his escort. The crisis places extraordinary pressure on the state. ?]
+[? if year = 1978 and month = 5 : **Historical briefing — Moro murdered.** After 55 days in captivity, Aldo Moro is found dead on 9 May. The killing leaves a lasting wound in Italian political life. ?]
+[? if year = 1980 and month = 8 : **Historical briefing — Bologna station bombing.** On 2 August, a bomb kills 85 people at Bologna Centrale railway station. The country demands answers and accountability. ?]
+[? if year = 1981 and month = 5 : **Historical briefing — P2 scandal.** The discovery of the P2 masonic lodge's membership lists exposes a clandestine network with links to powerful figures and triggers a political crisis. ?]
+[? if year = 1982 and month = 9 : **Historical briefing — Dalla Chiesa assassinated.** General Carlo Alberto dalla Chiesa, his wife and a police escort are killed in Palermo on 3 September, underscoring the threat posed by organised crime. ?]
+[? if year = 1983 and month = 6 : **Historical briefing — General election.** The June election weakens the Christian Democrats and opens the way to a new political arrangement, with Bettino Craxi becoming prime minister in August. ?]
+
 - @policy_deck
 - #advance_month
 
@@ -163,9 +178,39 @@ new-page: true
 
 on-arrival: Q.month = Q.month + 1; if (Q.month > 12) { Q.month = 1; Q.year = Q.year + 1; } Q.inflation = Math.min(100, Q.inflation + 2); Q.stability = Math.max(0, Q.stability - 1); Q.resources = Math.min(6, Q.resources + 1);
 
-The month ends. Economic pressure rises and political stability comes under renewed strain.
+The month ends. Economic pressure rises and political stability comes under renewed strain. The campaign covers the Years of Lead through 1983.
 
+go-to: campaign_ending if year > 1983
 - @monthly_briefing: Begin next month
+
+@campaign_ending
+title: The End of the Years of Lead
+new-page: true
+
+**December 1983 — Campaign conclusion**
+
+The Years of Lead did not end neatly, and Italy's political, social and institutional tensions continued beyond this point. Your decisions have shaped the condition of the Republic at the end of this campaign.
+
+[? if stability >= 65 and public_support >= 55 : **A resilient republic.** Institutions retain public confidence, and your political choices have helped preserve a path through the crisis. ?]
+[? if stability < 35 or security < 25 : **A republic under severe strain.** Political instability and insecurity have undermined confidence in the state's ability to protect democratic life. ?]
+[? if stability >= 35 and stability < 65 and security >= 25 and public_support < 55 : **An unsettled compromise.** The Republic endures, but public confidence remains fragile and the future is uncertain. ?]
+[? if stability >= 35 and security >= 25 and public_support >= 55 and stability < 65 : **A guarded recovery.** Public support has improved, but institutions remain vulnerable to renewed crises. ?]
+
+**Final indicators**
+
+Party: [+ party_name +]
+
+Political position: [+ government_position +]
+
+Public support: [+ public_support +] / 100
+
+Political stability: [+ stability +] / 100
+
+Public security: [+ security +] / 100
+
+Economic pressure: [+ inflation +] / 100
+
+- @main_menu: Return to title
 
 @main_menu
 title: Main Menu
