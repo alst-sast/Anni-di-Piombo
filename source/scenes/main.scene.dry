@@ -3,85 +3,191 @@ new-page: true
 
 on-arrival: if (typeof Q.inflation !== 'number') Q.inflation = 65; if (typeof Q.public_support !== 'number') Q.public_support = 50; if (typeof Q.security !== 'number') Q.security = 45; if (typeof Q.stability !== 'number') Q.stability = 55; if (typeof Q.month !== 'number') Q.month = 12; if (typeof Q.year !== 'number') Q.year = 1969; if (typeof Q.party_name !== 'string') Q.party_name = 'Not selected';
 
+ANNI DI PIOMBO
+
 ITALY, DECEMBER 1969
 
-The Italian Republic is entering a period of profound political crisis. Bombings, street clashes, militant organisations and industrial unrest are testing the institutions of the post-war state.
+A political strategy game set during Italy's Years of Lead.
 
-You will lead a political party through the Years of Lead. Every policy has consequences. Economic pressure, public support, public security and political stability will shape your future.
+The Italian Republic faces political violence, industrial unrest, economic uncertainty and a crisis of confidence in democratic institutions. Choose a party, manage your government, and face the consequences of your decisions.
 
-Choose your political organisation.
+- @party_select: Start Game
+- @credits: Credits
+- @achievements: Achievements
+
+@party_select
+title: Choose Your Party
+new-page: true
+
+ITALIAN REPUBLIC — DECEMBER 1969
+
+Choose the political organisation you will lead. After choosing, you will go directly to the government card hand.
 
 - @dc_start: Democrazia Cristiana (DC)
 - @pci_start: Partito Comunista Italiano (PCI)
 - @psi_start: Partito Socialista Italiano (PSI)
 - @msi_start: Movimento Sociale Italiano (MSI)
+- @main_menu: Return to title
 
 @dc_start
 title: Democrazia Cristiana
 new-page: true
 
-on-arrival: Q.party_name = 'Democrazia Cristiana (DC)'; Q.public_support = 55; Q.stability = 60;
+on-arrival: Q.party_name = 'Democrazia Cristiana (DC)'; Q.public_support = 55; Q.stability = 60; Q.security = 45; Q.inflation = 65; Q.month = 12; Q.year = 1969;
 
-You lead the Christian Democrats, the dominant force in Italy's post-war political system.
+You lead the Christian Democrats, the dominant force in Italy's post-war political system. Your government must preserve order while responding to economic strain and growing political polarisation.
 
-- @monthly_briefing: Continue
+- @monthly_briefing: Enter Government
 
 @pci_start
 title: Partito Comunista Italiano
 new-page: true
 
-on-arrival: Q.party_name = 'Partito Comunista Italiano (PCI)'; Q.public_support = 45; Q.stability = 45;
+on-arrival: Q.party_name = 'Partito Comunista Italiano (PCI)'; Q.public_support = 45; Q.stability = 45; Q.security = 45; Q.inflation = 65; Q.month = 12; Q.year = 1969;
 
-You lead the Communist opposition, seeking greater influence amid social unrest and political polarisation.
+You lead the Communist opposition, seeking greater influence amid labour unrest, social conflict and political polarisation.
 
-- @monthly_briefing: Continue
+- @monthly_briefing: Enter Government
 
 @psi_start
 title: Partito Socialista Italiano
 new-page: true
 
-on-arrival: Q.party_name = 'Partito Socialista Italiano (PSI)'; Q.public_support = 40; Q.stability = 50;
+on-arrival: Q.party_name = 'Partito Socialista Italiano (PSI)'; Q.public_support = 40; Q.stability = 50; Q.security = 45; Q.inflation = 65; Q.month = 12; Q.year = 1969;
 
-You lead the Socialists, balancing reform, coalition politics and pressure from the left.
+You lead the Socialists, balancing reform, coalition politics and pressure from competing political forces.
 
-- @monthly_briefing: Continue
+- @monthly_briefing: Enter Government
 
 @msi_start
 title: Movimento Sociale Italiano
 new-page: true
 
-on-arrival: Q.party_name = 'Movimento Sociale Italiano (MSI)'; Q.public_support = 25; Q.stability = 35;
+on-arrival: Q.party_name = 'Movimento Sociale Italiano (MSI)'; Q.public_support = 25; Q.stability = 35; Q.security = 45; Q.inflation = 65; Q.month = 12; Q.year = 1969;
 
-You lead the neo-fascist Italian Social Movement, operating on the margins of the parliamentary system.
+You lead the neo-fascist Italian Social Movement, operating on the margins of the parliamentary system in a deeply polarised republic.
 
-- @monthly_briefing: Continue
+- @monthly_briefing: Enter Government
 
 @monthly_briefing
 title: Government
+subtitle: Italy — [+ month +] / [+ year +]
 new-page: true
+is-hand: true
+max-cards: 3
 
-ITALIAN REPUBLIC
-
-Date: [+ month +] / [+ year +]
+THE GOVERNMENT
 
 Governing party: [+ party_name +]
 
-Public support: [+ public_support +] / 100
+The government faces economic pressure, political violence and declining confidence in public institutions. Draw policy cards from the deck and choose which initiatives to pursue.
 
-Economic pressure: [+ inflation +] / 100
+- @policy_deck
+- #advance_month
 
-Public security: [+ security +] / 100
+@policy_deck
+title: Government Policy Deck
+subtitle: Draw a policy card
+is-deck: true
 
-Political stability: [+ stability +] / 100
+- #policy_deck
 
-- @advance_month: End the month
+@economic_relief
+title: Economic Relief
+is-card: true
+new-page: true
+tags: policy_deck
+
+Your cabinet proposes emergency economic measures to ease pressure on households and restore confidence.
+
+- @economic_relief_result: Introduce relief measures
+
+@economic_relief_result
+title: Economic Relief
+new-page: true
+
+on-arrival: Q.inflation = Math.max(0, Q.inflation - 8); Q.public_support = Math.min(100, Q.public_support + 5);
+
+The government introduces an economic relief programme. Economic pressure falls and public support improves.
+
+- @monthly_briefing: Return to government
+
+@public_security
+title: Public Security
+is-card: true
+new-page: true
+tags: policy_deck
+
+Your cabinet must respond to political violence while maintaining public order and confidence in the institutions of the Republic.
+
+- @public_security_result: Strengthen public security
+
+@public_security_result
+title: Public Security
+new-page: true
+
+on-arrival: Q.security = Math.min(100, Q.security + 10); Q.stability = Math.min(100, Q.stability + 3);
+
+The government strengthens public security. The immediate sense of order improves, though the long-term political consequences remain uncertain.
+
+- @monthly_briefing: Return to government
+
+@institutional_reform
+title: Institutional Reform
+is-card: true
+new-page: true
+tags: policy_deck
+
+Your cabinet proposes institutional reforms intended to restore confidence in the Italian Republic.
+
+- @institutional_reform_result: Begin institutional reform
+
+@institutional_reform_result
+title: Institutional Reform
+new-page: true
+
+on-arrival: Q.stability = Math.min(100, Q.stability + 8); Q.public_support = Math.min(100, Q.public_support + 3);
+
+The government begins institutional reform. Political stability and public support improve.
+
+- @monthly_briefing: Return to government
 
 @advance_month
-title: Next Month
+title: End the Month
+is-pinned-card: true
 new-page: true
 
 on-arrival: Q.month = Q.month + 1; if (Q.month > 12) { Q.month = 1; Q.year = Q.year + 1; } Q.inflation = Math.min(100, Q.inflation + 2); Q.stability = Math.max(0, Q.stability - 1);
 
-A new month begins. Economic and political pressures continue to test the Republic.
+The month ends. Economic pressure rises and political stability comes under renewed strain.
 
-- @monthly_briefing: Continue governing
+- @monthly_briefing: Begin next month
+
+@main_menu
+title: Main Menu
+new-page: true
+go-to: main
+
+@credits
+title: Credits
+new-page: true
+
+ANNI DI PIOMBO
+
+A political strategy game about Italy during the Years of Lead, 1969–1983.
+
+Game design and implementation: alst-sast
+
+Built with DendryNexus.
+
+- @main_menu: Return to title
+
+@achievements
+title: Achievements
+new-page: true
+
+ACHIEVEMENTS
+
+Your achievements will be recorded here as the campaign's objectives and historical milestones are implemented.
+
+- @main_menu: Return to title
