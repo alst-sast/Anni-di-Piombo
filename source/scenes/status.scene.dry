@@ -1,31 +1,37 @@
-title: Main
+title: Status
 new-page: true
 is-special: true
 
-ITALIAN REPUBLIC
+**[+ month +] / [+ year +]**
 
-**Date**
+Resources available: [+ resources +]
 
-[+ month +] / [+ year +]
+Party: [+ party_name +]
 
-**Governing party**
+Position: [+ government_position +]
 
-[+ party_name +]
+Internal dissent: [+ dissent +]
 
-**Public support**
+# Government
 
-[+ public_support +] / 100
+President: Giuseppe Saragat
 
-**Economic pressure**
+Prime Minister: Mariano Rumor
 
-[+ inflation +] / 100
+Parliamentary situation: Christian Democrat-led coalition; Communist Party is the principal opposition force.
 
-**Public security**
+Next general election: 1972 (scheduled)
 
-[+ security +] / 100
+# Economics
 
-**Political stability**
+Economic pressure: [+ inflation +] / 100
 
-[+ stability +] / 100
+Public support: [+ public_support +] / 100
 
-The Republic faces political violence, economic uncertainty and a deep crisis of confidence. Your decisions will determine the country's future.
+Economic growth: Not yet modelled
+
+# Public Order
+
+Public security: [+ security +] / 100
+
+Political stability: [+ stability +] / 100
