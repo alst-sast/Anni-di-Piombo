@@ -1,0 +1,4 @@
+name: Public support
+initial: 50
+min: 0
+max: 100

@@ -1,0 +1,4 @@
+name: Political stability
+initial: 55
+min: 0
+max: 100
