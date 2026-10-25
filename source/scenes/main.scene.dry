@@ -191,9 +191,9 @@ new-page: true
 
 The Years of Lead did not end neatly, and Italy's political, social and institutional tensions continued beyond this point. Your decisions have shaped the condition of the Republic at the end of this campaign.
 
-[? if stability >= 65 and public_support >= 55 : **A resilient republic.** Institutions retain public confidence, and your political choices have helped preserve a path through the crisis. ?]
+[? if stability >= 65 and public_support >= 55 and security >= 25 : **A resilient republic.** Institutions retain public confidence, and your political choices have helped preserve a path through the crisis. ?]
 [? if stability < 35 or security < 25 : **A republic under severe strain.** Political instability and insecurity have undermined confidence in the state's ability to protect democratic life. ?]
-[? if stability >= 35 and stability < 65 and security >= 25 and public_support < 55 : **An unsettled compromise.** The Republic endures, but public confidence remains fragile and the future is uncertain. ?]
+[? if stability >= 35 and security >= 25 and public_support < 55 : **An unsettled compromise.** The Republic endures, but public confidence remains fragile and the future is uncertain. ?]
 [? if stability >= 35 and security >= 25 and public_support >= 55 and stability < 65 : **A guarded recovery.** Public support has improved, but institutions remain vulnerable to renewed crises. ?]
 
 **Final indicators**
