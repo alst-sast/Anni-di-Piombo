@@ -22,9 +22,21 @@ ITALIAN REPUBLIC — JANUARY 1969
 Choose the political organisation you will lead. After choosing, you will go directly to the government card hand.
 
 - @dc_start: Democrazia Cristiana (DC)
+
+![Democrazia Cristiana party logo](https://commons.wikimedia.org/wiki/Special:Redirect/file/DC_Party_Logo_%281968-1992%29.svg)
+
 - @pci_start: Partito Comunista Italiano (PCI)
+
+![Partito Comunista Italiano party logo](https://commons.wikimedia.org/wiki/Special:Redirect/file/Logo_Partito_Comunista_Italiano.svg)
+
 - @psi_start: Partito Socialista Italiano (PSI)
+
+![Partito Socialista Italiano party logo](https://commons.wikimedia.org/wiki/Special:Redirect/file/Partito_Socialista_Italiano_%281947-1966%3B1969-1971%29.svg)
+
 - @msi_start: Movimento Sociale Italiano (MSI)
+
+![Movimento Sociale Italiano party logo](https://commons.wikimedia.org/wiki/Special:Redirect/file/Movimento_Sociale_Italiano_Logo.svg)
+
 - @main_menu: Return to title
 
 @dc_start
