@@ -6,8 +6,6 @@ is-special: true
 
 **[+ month +] / [+ year +]**
 
-Resources available: [+ resources +]
-
 Party: [+ party_name +]
 
 Position: [+ government_position +]
@@ -42,7 +40,7 @@ Political stability: [+ stability +] / 100
 
 = Politics
 
-**Governing party**
+**Your party**
 
 [+ party_name +]
 
@@ -64,9 +62,9 @@ The party must navigate parliamentary conflict, street violence and pressure fro
 
 [+ public_support +] / 100
 
-[? if public_support >= 60 : Your government enjoys relatively strong public support. ?]
-[? if public_support >= 40 and public_support < 60 : Public opinion is divided, and confidence remains uncertain. ?]
-[? if public_support < 40 : Your government faces a serious public confidence problem. ?]
+[? if public_support >= 60 : Your party enjoys relatively strong public support. ?]
+[? if public_support >= 40 and public_support < 60 : Public opinion is divided, and your party's support remains uncertain. ?]
+[? if public_support < 40 : Your party faces a serious public confidence problem. ?]
 
 **Economic pressure**
 
