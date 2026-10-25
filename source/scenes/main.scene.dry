@@ -155,6 +155,7 @@ The government begins institutional reform. Political stability and public suppo
 @advance_month
 title: End the Month
 is-pinned-card: true
+tags: advance_month
 new-page: true
 
 on-arrival: Q.month = Q.month + 1; if (Q.month > 12) { Q.month = 1; Q.year = Q.year + 1; } Q.inflation = Math.min(100, Q.inflation + 2); Q.stability = Math.max(0, Q.stability - 1);
