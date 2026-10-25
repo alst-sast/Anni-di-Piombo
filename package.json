@@ -5,7 +5,7 @@
   "description": "An Italian political strategy simulation, 1969-1983",
   "main": "out/html/index.html",
   "scripts": {
-    "build": "dendrynexus make-html --force --pretty"
+    "build": "dendrynexus make-html --template default-tabbed-sidebar --force --pretty && node scripts/fix-template.js"
   },
   "dependencies": {
     "dendrynexus": "github:aucchen/dendrynexus"
