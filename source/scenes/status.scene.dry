@@ -4,7 +4,7 @@ is-special: true
 
 = Status
 
-**[+ month +] / [+ year +]**
+**[+ month : month +] / [+ year +]**
 
 Party: [+ party_name +]
 

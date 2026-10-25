@@ -71,7 +71,7 @@ You lead the neo-fascist Italian Social Movement, operating on the margins of th
 
 @monthly_briefing
 title: Political Strategy
-subtitle: Italy — [+ month +] / [+ year +]
+subtitle: Italy — [+ month : month +] / [+ year +]
 new-page: true
 is-hand: true
 max-cards: 3
