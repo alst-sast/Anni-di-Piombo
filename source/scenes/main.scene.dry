@@ -3,12 +3,6 @@ new-page: true
 
 ANNI DI PIOMBO
 
-ITALY, JANUARY 1969
-
-A political strategy game set during Italy's Years of Lead.
-
-The Italian Republic faces political violence, industrial unrest, economic uncertainty and a crisis of confidence in democratic institutions. Choose a party, manage your government, and face the consequences of your decisions.
-
 - @party_select: Start Game
 - @credits: Credits
 - @achievements: Achievements
