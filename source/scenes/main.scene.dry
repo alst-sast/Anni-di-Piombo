@@ -300,6 +300,6 @@ Milestones are calculated from your current campaign state. They are not a perma
 [? if resources >= 6 : **Party Organisation** — Your party has built up its maximum available resources. ?]
 [? if year >= 1983 : **Veteran of the Years of Lead** — You have reached the final campaign year. ?]
 [? if stability < 30 or security < 20 : **Republic in Peril** — The state is facing a severe political or security crisis. ?]
-[? if stability < 65 and public_support < 65 and inflation > 50 and resources < 6 and year < 1983 and security >= 20 : No campaign milestone has been reached yet. Continue making decisions to shape the Republic's future. ?]
+[? if (stability < 65 or security < 50) and public_support < 65 and inflation > 50 and resources < 6 and year < 1983 and stability >= 30 and security >= 20 : No campaign milestone has been reached yet. Continue making decisions to shape the Republic's future. ?]
 
 - @main_menu: Return to title
