@@ -3,35 +3,23 @@ new-page: true
 
 ANNI DI PIOMBO
 
-- @party_select: Start Game
+- @party_select: Start Campaign as the PCI
 - @credits: Credits
 - @achievements: Achievements
 
 @party_select
-title: Choose Your Party
+title: The Italian Communist Party
 new-page: true
-
-**Democrazia Cristiana (DC)**
-
-{! <img src="https://commons.wikimedia.org/wiki/Special:Redirect/file/DC_Party_Logo_%281968-1992%29.svg" alt="Democrazia Cristiana (DC) logo" style="display:block;max-width:220px;max-height:130px;width:auto;height:auto;object-fit:contain;margin:12px 0 24px;" /> !}
 
 **Partito Comunista Italiano (PCI)**
 
-{! <img src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Logo_Partito_Comunista_Italiano.svg" alt="Partito Comunista Italiano (PCI) logo" style="display:block;max-width:220px;max-height:130px;width:auto;height:auto;object-fit:contain;margin:12px 0 24px;" /> !}
+{! <img src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Logo_Partito_Comunista_Italiano.svg" alt="Partito Comunista Italiano (PCI) logo" style="display:block;max-width:260px;max-height:160px;width:auto;height:auto;object-fit:contain;margin:12px 0 24px;" /> !}
 
-**Partito Socialista Italiano–Partito Socialista Democratico Italiano (PSI–PSDI Unificati)**
+You will lead the Italian Communist Party (PCI) from January 1969 through the Years of Lead. Build working-class support, navigate parliamentary opposition, respond to political violence and decide how the PCI should pursue influence in the Italian Republic.
 
-{! <img src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Logo_of_PSU_%281966-1969%29.svg" alt="PSI–PSDI Unificati party emblem, 1966–1969" style="display:block;max-width:220px;max-height:130px;width:auto;height:auto;object-fit:contain;margin:12px 0 24px;" /> !}
-
-**Movimento Sociale Italiano (MSI)**
-
-{! <img src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Movimento_Sociale_Italiano_Logo.svg" alt="Movimento Sociale Italiano (MSI) logo" style="display:block;max-width:220px;max-height:130px;width:auto;height:auto;object-fit:contain;margin:12px 0 24px;" /> !}
-
-- @dc_start: Democrazia Cristiana (DC)
-- @pci_start: Partito Comunista Italiano (PCI)
-- @psi_start: Partito Socialista Italiano (PSI)
-- @msi_start: Movimento Sociale Italiano (MSI)
+- @pci_start: Begin campaign as the PCI
 - @main_menu: Return to title
+
 @dc_start
 title: Democrazia Cristiana
 new-page: true
