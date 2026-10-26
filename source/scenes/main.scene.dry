@@ -180,9 +180,61 @@ tags: advance_month
 new-page: true
 go-to: campaign_ending if year = 1983 and month = 12
 
-on-arrival: Q.month = Q.month + 1; if (Q.month > 12) { Q.month = 1; Q.year = Q.year + 1; } if (Q.month == 3 || Q.month == 6 || Q.month == 9 || Q.month == 12) { Q.inflation = Math.min(100, Q.inflation + 2); if (Q.inflation >= 85 || Q.security < 25) { Q.stability = Math.max(0, Q.stability - 2); } else if (Q.public_support >= 60 && Q.security >= 40) { Q.stability = Math.min(100, Q.stability + 1); } else if (Q.inflation >= 75 || Q.security < 35) { Q.stability = Math.max(0, Q.stability - 1); } } Q.resources = Math.min(6, Q.resources + 1);
+on-arrival: {!
+/* Resolve the month that is ending before advancing the calendar. */
+if (Q.year === 1969 && Q.month === 12) {
+    Q.security = Math.max(0, Q.security - 8);
+    Q.stability = Math.max(0, Q.stability - 3);
+}
+if (Q.year === 1970 && Q.month === 7) {
+    Q.security = Math.max(0, Q.security - 5);
+    Q.stability = Math.max(0, Q.stability - 2);
+}
+if (Q.year === 1974 && Q.month === 8) {
+    Q.security = Math.max(0, Q.security - 8);
+    Q.stability = Math.max(0, Q.stability - 3);
+}
+if (Q.year === 1978 && Q.month === 3) {
+    Q.security = Math.max(0, Q.security - 10);
+    Q.stability = Math.max(0, Q.stability - 5);
+}
+if (Q.year === 1978 && Q.month === 5) {
+    Q.security = Math.max(0, Q.security - 8);
+    Q.stability = Math.max(0, Q.stability - 5);
+}
+if (Q.year === 1980 && Q.month === 8) {
+    Q.security = Math.max(0, Q.security - 10);
+    Q.stability = Math.max(0, Q.stability - 5);
+}
+if (Q.year === 1981 && Q.month === 5) {
+    Q.public_support = Math.max(0, Q.public_support - 5);
+    Q.stability = Math.max(0, Q.stability - 8);
+}
+if (Q.year === 1982 && Q.month === 9) {
+    Q.security = Math.max(0, Q.security - 8);
+    Q.stability = Math.max(0, Q.stability - 3);
+}
+/* Apply quarterly economic pressure on March, June, September and December. */
+if (Q.month === 3 || Q.month === 6 || Q.month === 9 || Q.month === 12) {
+    Q.inflation = Math.min(100, Q.inflation + 2);
+    if (Q.inflation >= 85 || Q.security < 25) {
+        Q.stability = Math.max(0, Q.stability - 2);
+    } else if (Q.public_support >= 60 && Q.security >= 40) {
+        Q.stability = Math.min(100, Q.stability + 1);
+    } else if (Q.inflation >= 75 || Q.security < 35) {
+        Q.stability = Math.max(0, Q.stability - 1);
+    }
+}
+Q.resources = Math.min(6, Q.resources + 1);
+if (Q.month >= 12) {
+    Q.month = 1;
+    Q.year = Q.year + 1;
+} else {
+    Q.month = Q.month + 1;
+}
+!}
 
-The month ends. Party resources recover slightly. Economic pressure rises quarterly, while political stability now responds to the severity of the economic and security situation and to public confidence.
+The month ends. Historical crises can damage public security, stability or confidence. Party resources recover slightly. Economic pressure rises at the end of each quarter, and political stability responds to economic strain, security and public confidence.
 
 - @monthly_briefing: Begin next month
 
