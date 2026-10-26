@@ -178,7 +178,7 @@ title: End the Month
 is-pinned-card: true
 tags: advance_month
 new-page: true
-go-to: campaign_ending if year > 1983
+go-to: campaign_ending if year = 1983 and month = 12
 
 on-arrival: Q.month = Q.month + 1; if (Q.month > 12) { Q.month = 1; Q.year = Q.year + 1; } if (Q.month == 3 || Q.month == 6 || Q.month == 9 || Q.month == 12) { Q.inflation = Math.min(100, Q.inflation + 2); if (Q.inflation >= 85 || Q.security < 25) { Q.stability = Math.max(0, Q.stability - 2); } else if (Q.public_support >= 60 && Q.security >= 40) { Q.stability = Math.min(100, Q.stability + 1); } else if (Q.inflation >= 75 || Q.security < 35) { Q.stability = Math.max(0, Q.stability - 1); } } Q.resources = Math.min(6, Q.resources + 1);
 
