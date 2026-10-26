@@ -292,6 +292,14 @@ new-page: true
 
 ACHIEVEMENTS
 
-Your achievements will be recorded here as the campaign's objectives and historical milestones are implemented.
+Milestones are calculated from your current campaign state. They are not a permanent cross-save record.
+
+[? if stability >= 65 and security >= 50 : **Guardian of the Republic** — Political stability and public security remain strong. ?]
+[? if public_support >= 65 : **Popular Mandate** — Your party enjoys broad public support. ?]
+[? if inflation <= 50 : **Economic Relief** — Economic pressure has been brought under control. ?]
+[? if resources >= 6 : **Party Organisation** — Your party has built up its maximum available resources. ?]
+[? if year >= 1983 : **Veteran of the Years of Lead** — You have reached the final campaign year. ?]
+[? if stability < 30 or security < 20 : **Republic in Peril** — The state is facing a severe political or security crisis. ?]
+[? if stability < 65 and public_support < 65 and inflation > 50 and resources < 6 and year < 1983 and security >= 20 : No campaign milestone has been reached yet. Continue making decisions to shape the Republic's future. ?]
 
 - @main_menu: Return to title
