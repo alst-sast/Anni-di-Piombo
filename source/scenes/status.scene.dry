@@ -20,23 +20,21 @@ President: [? if year <= 1971 : Giuseppe Saragat ?][? if year >= 1972 and year <
 
 Prime Minister: [? if year <= 1970 and month <= 8 : Mariano Rumor ?][? if year = 1970 and month > 8 or year = 1971 or year = 1972 and month <= 2 : Emilio Colombo ?][? if year = 1972 and month > 2 and month <= 6 : Giulio Andreotti ?][? if year = 1972 and month > 6 or year = 1973 and month <= 6 : Giulio Andreotti ?][? if year = 1973 and month > 6 or year = 1974 and month <= 11 : Mariano Rumor ?][? if year = 1974 and month > 11 or year = 1975 or year = 1976 and month <= 7 : Aldo Moro ?][? if year = 1976 and month > 7 or year = 1977 or year = 1978 or year = 1979 and month <= 8 : Giulio Andreotti ?][? if year = 1979 and month > 8 or year = 1980 and month <= 10 : Francesco Cossiga ?][? if year = 1980 and month > 10 or year = 1981 and month <= 6 : Arnaldo Forlani ?][? if year = 1981 and month > 6 or year = 1982 and month <= 12 : Giovanni Spadolini ?][? if year = 1982 and month > 12 or year = 1983 and month <= 8 : Amintore Fanfani ?][? if year = 1983 and month > 8 : Bettino Craxi ?]
 
-Parliamentary situation: The Christian Democrats remain the largest governing force for much of the period; the Communist Party is the principal opposition force, with coalition arrangements changing over time.
-
 Next general election: [? if year <= 1971 : 1972 ?][? if year >= 1972 and year <= 1975 : 1976 ?][? if year >= 1976 and year <= 1978 : 1979 ?][? if year >= 1979 and year <= 1982 : 1983 ?][? if year >= 1983 : 1987 ?]
 
-# Economics
+# Chamber of Deputies
 
-Economic pressure: [+ inflation +] / 100
+Composition of the 630-seat Chamber, based on the most recent general election.
 
-Public support: [+ public_support +] / 100
+**Christian Democracy (DC):** [? if year < 1972 : 266 seats ?][? if year >= 1972 and year < 1976 : 266 seats ?][? if year >= 1976 and year < 1979 : 263 seats ?][? if year >= 1979 and year < 1983 : 262 seats ?][? if year >= 1983 : 225 seats ?]
 
-Economic growth: Not yet modelled
+**Italian Communist Party (PCI):** [? if year < 1972 : 177 seats ?][? if year >= 1972 and year < 1976 : 179 seats ?][? if year >= 1976 and year < 1979 : 227 seats ?][? if year >= 1979 and year < 1983 : 201 seats ?][? if year >= 1983 : 198 seats ?]
 
-# Public Order
+**Socialists:** [? if year < 1972 : Unified Socialist Party (PSI–PSDI), 91 seats ?][? if year >= 1972 and year < 1976 : PSI 61; PSDI 29 seats ?][? if year >= 1976 and year < 1979 : PSI 57; PSDI 15 seats ?][? if year >= 1979 and year < 1983 : PSI 62; PSDI 20 seats ?][? if year >= 1983 : PSI 73; PSDI 23 seats ?]
 
-Public security: [+ security +] / 100
+**Italian Social Movement (MSI):** [? if year < 1972 : 24 seats ?][? if year >= 1972 and year < 1976 : MSI–Monarchists 56 seats ?][? if year >= 1976 and year < 1979 : MSI–National Right 35 seats ?][? if year >= 1979 and year < 1983 : 30 seats ?][? if year >= 1983 : 42 seats ?]
 
-Political stability: [+ stability +] / 100
+**Other parliamentary groups:** [? if year < 1972 : Liberals 31; PSIUP 23; Republicans 9; Monarchists 6; South Tyroleans 3 ?][? if year >= 1972 and year < 1976 : Liberals 20; Republicans 15; Social Democrats 29; others and regional lists ?][? if year >= 1976 and year < 1979 : Republicans 14; Liberals 5; Proletarian Democrats 6; Radicals 4; others ?][? if year >= 1979 and year < 1983 : Radicals 18; Republicans 16; Liberals 9; PDUP 6; regional and other lists ?][? if year >= 1983 : Republicans 29; Liberals 16; Radicals 11; other groups ?]
 
 @politics
 
