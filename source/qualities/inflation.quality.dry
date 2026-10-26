@@ -1,4 +1,4 @@
 name: Economic pressure
-initial: 65
+initial: 25
 min: 0
 max: 100
