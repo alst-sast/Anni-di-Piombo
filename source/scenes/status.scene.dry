@@ -98,9 +98,7 @@ The Christian Democrats remain the largest parliamentary force. The left is infl
 
 **Policy priorities**
 
-- Protect real wages and purchasing power.
-- Expand public services and reduce regional inequality.
-- Balance immediate relief with long-term economic stability.
+Priorities: protect real wages and purchasing power; expand public services and reduce regional inequality; balance immediate relief with long-term economic stability.
 
 Party resources: [+ resources +] / 6
 
@@ -136,10 +134,7 @@ Party resources: [+ resources +] / 6
 
 **Strategic challenges**
 
-- Maintain unity between parliamentary strategy and extra-parliamentary movements.
-- Work with socialist and trade-union forces without losing the PCI's independent identity.
-- Convert labour mobilisation into lasting political influence.
-- Respond to terrorism without allowing political violence to define the entire left.
+Strategic priorities: maintain unity between parliamentary strategy and extra-parliamentary movements; work with socialist and trade-union forces without losing the PCI's independent identity; convert labour mobilisation into lasting political influence; respond to terrorism without allowing political violence to define the entire left.
 
 [? if public_support >= 60 : The party has a strong public mandate and room to pursue an ambitious strategy. ?]
 [? if public_support >= 40 and public_support < 60 : The party has a substantial base, but its next moves will determine whether it can broaden support. ?]
