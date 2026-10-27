@@ -61,3 +61,101 @@ The party must navigate parliamentary conflict, street violence and pressure fro
 **Economic pressure**
 
 [+ inflation +] / 100
+
+@government
+
+= Government
+
+**The Italian Republic**
+
+President: [? if year <= 1971 : Giuseppe Saragat ?][? if year >= 1972 and year <= 1977 or year = 1978 and month <= 6 : Giovanni Leone ?][? if year > 1978 or year = 1978 and month >= 7 : Sandro Pertini ?]
+
+Prime Minister: [? if year = 1968 and month <= 6 : Aldo Moro ?][? if year = 1968 and month > 6 : Giovanni Leone ?][? if year = 1969 or year = 1970 and month <= 7 : Mariano Rumor ?][? if year = 1970 and month >= 8 or year = 1971 or year = 1972 and month <= 2 : Emilio Colombo ?][? if year = 1972 and month >= 3 and year <= 1973 and month <= 6 : Giulio Andreotti ?][? if year = 1973 and month > 6 or year = 1974 and month <= 11 : Mariano Rumor ?][? if year = 1974 and month > 11 or year = 1975 or year = 1976 and month < 7 : Aldo Moro ?][? if year = 1976 and month >= 7 or year = 1977 or year = 1978 or year = 1979 and month < 8 : Giulio Andreotti ?][? if year = 1979 and month >= 8 or year = 1980 and month <= 10 : Francesco Cossiga ?][? if year = 1980 and month > 10 or year = 1981 and month <= 6 : Arnaldo Forlani ?][? if year = 1981 and month > 6 or year = 1982 and month <= 11 : Giovanni Spadolini ?][? if year = 1982 and month > 11 or year = 1983 and month < 8 : Amintore Fanfani ?][? if year = 1983 and month >= 8 : Bettino Craxi ?]
+
+**Your position**
+
+[+ government_position +]
+
+The PCI begins the campaign in opposition. Parliamentary influence depends on electoral strength, alliances, public legitimacy and the ability to sustain pressure on the governing parties.
+
+**Parliamentary balance — 1963 election**
+
+DC: 260 seats · PCI: 166 seats · PSI: 87 seats · PLI: 39 seats · PSDI: 33 seats · MSI: 27 seats · Others: 18 seats
+
+The Christian Democrats remain the largest parliamentary force. The left is influential but divided across communist, socialist and social-democratic traditions.
+
+@economy
+
+= Economy
+
+**Economic pressure**
+
+[+ inflation +] / 100
+
+[? if inflation < 35 : Price pressures are relatively contained, but employment, wages and regional inequality remain major political issues. ?]
+[? if inflation >= 35 and inflation < 70 : Household budgets are under pressure. Wage bargaining and the cost of living are becoming central political questions. ?]
+[? if inflation >= 70 : Severe economic pressure threatens living standards and risks intensifying strikes, polarisation and public distrust. ?]
+
+**Policy priorities**
+
+- Protect real wages and purchasing power.
+- Expand public services and reduce regional inequality.
+- Balance immediate relief with long-term economic stability.
+
+Party resources: [+ resources +] / 6
+
+Economic initiatives cost political resources. Use policy cards carefully; the effects of economic decisions can spill into public support and institutional stability.
+
+@defense
+
+= Public Security
+
+**Security index**
+
+[+ security +] / 100
+
+[? if security >= 65 : Public security is comparatively resilient, although political violence remains a serious concern. ?]
+[? if security >= 35 and security < 65 : The security situation is fragile. Terrorist attacks, extremist mobilisation and heavy-handed state responses could deepen the crisis. ?]
+[? if security < 35 : Public security is in a dangerous state. The government faces mounting pressure to act, while democratic legitimacy is at risk. ?]
+
+**Democratic safeguards**
+
+The PCI must decide how to respond to political violence while defending civil liberties, due process and democratic institutions. Security measures may improve immediate stability but can also carry political costs.
+
+@party
+
+= Party Organisation
+
+**Partito Comunista Italiano (PCI)**
+
+Public support: [+ public_support +] / 100
+
+Internal dissent: [+ dissent +]
+
+Party resources: [+ resources +] / 6
+
+**Strategic challenges**
+
+- Maintain unity between parliamentary strategy and extra-parliamentary movements.
+- Work with socialist and trade-union forces without losing the PCI's independent identity.
+- Convert labour mobilisation into lasting political influence.
+- Respond to terrorism without allowing political violence to define the entire left.
+
+[? if public_support >= 60 : The party has a strong public mandate and room to pursue an ambitious strategy. ?]
+[? if public_support >= 40 and public_support < 60 : The party has a substantial base, but its next moves will determine whether it can broaden support. ?]
+[? if public_support < 40 : The party's influence is under pressure. Rebuilding trust should be a priority. ?]
+
+@elections
+
+= Elections
+
+**Next general election**
+
+[? if year = 1968 and month <= 5 : June 1968 ?][? if year = 1968 and month > 5 or year = 1969 or year = 1970 or year = 1971 or year = 1972 and month <= 5 : 1972 ?][? if year = 1972 and month > 5 or year > 1972 and year < 1976 or year = 1976 and month <= 6 : 1976 ?][? if year = 1976 and month > 6 or year > 1976 and year < 1979 or year = 1979 and month <= 6 : 1979 ?][? if year = 1979 and month > 6 or year > 1979 and year < 1983 or year = 1983 and month <= 6 : 1983 ?][? if year = 1983 and month > 6 or year > 1983 : 1987 ?]
+
+**1963 Chamber of Deputies — 630 seats**
+
+DC: 260 · PCI: 166 · PSI: 87 · PLI: 39 · PSDI: 33 · MSI: 27 · Others: 18
+
+The PCI's long-term challenge is to turn a large opposition electorate into a credible path to influence while navigating Cold War alignments, coalition arithmetic and fears of political extremism.
+
