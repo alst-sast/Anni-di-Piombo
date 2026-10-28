@@ -33,7 +33,8 @@ body{background:#30251d url('https://upload.wikimedia.org/wikipedia/commons/7/7c
 body.anni-title-screen{margin:0;background:#332a21 url('https://upload.wikimedia.org/wikipedia/commons/7/7c/Quarto_Stato.jpg') center center/cover fixed no-repeat!important;color:#35251b}
 body.anni-title-screen #page{width:100%;max-width:none;margin:0 auto;padding:0}
 body.anni-title-screen header{width:100%;max-width:none;min-height:0;margin:0;padding:0;background:rgba(245,235,211,.78);border-bottom:1px solid rgba(90,53,34,.45);box-shadow:0 2px 10px rgba(0,0,0,.15);text-shadow:none}
-body.anni-title-screen header h1{display:none!important}\nbody.anni-title-screen #content h1.anni-main-title{display:block!important;margin:10px 0 6px!important;color:#4a2019!important;font:bold clamp(2.25rem,5.5vw,4.2rem)/1.05 Georgia,'Times New Roman',serif!important;letter-spacing:.045em!important;text-transform:uppercase;text-shadow:0 1px 0 rgba(255,246,221,.7)}
+body.anni-title-screen header h1{display:none!important}
+body.anni-title-screen #content h1.anni-main-title{display:block!important;margin:10px 0 6px!important;color:#4a2019!important;font:bold clamp(2.25rem,5.5vw,4.2rem)/1.05 Georgia,'Times New Roman',serif!important;letter-spacing:.045em!important;text-transform:uppercase;text-shadow:0 1px 0 rgba(255,246,221,.7)}
 body.anni-title-screen #header-links{float:none!important;display:flex!important;flex-wrap:wrap;align-items:center;justify-content:center;gap:0;margin:0 auto;padding:7px 12px;line-height:1.4}
 body.anni-title-screen #header-links a{display:inline-block;color:#8b2722!important;background:transparent!important;border:0!important;padding:3px 10px!important;font:600 15px Georgia,'Times New Roman',serif;text-decoration:none}
 body.anni-title-screen #header-links a:hover{background:rgba(125,45,35,.1)!important;text-decoration:underline}
@@ -64,7 +65,7 @@ body.anni-title-screen #content ul.choices li:hover{background:#ead9b8}
 body.anni-title-screen .anni-banner{display:block;width:min(100%,720px);max-height:340px;object-fit:cover;margin:16px auto 22px;border:4px solid #3b2c22;box-shadow:0 5px 18px rgba(0,0,0,.35)}
 @media(max-width:700px){body{background-attachment:scroll}body:not(.anni-title-screen) #mid_panel{margin:0 auto}body.anni-title-screen #mid_panel{padding:10px}body.anni-title-screen #content{margin:12px auto;padding:18px}}
 </style>`;
-if (!html.includes('id="anni-title-screen-style"')) html = html.replace('</head>', titleScreenStyles + '\\n</head>');
+if (!html.includes('id="anni-title-screen-style"')) html = html.replace('</head>', titleScreenStyles + '\n</head>');
 
 const titleScreenScript = `
 <script id="anni-title-screen-script">
@@ -121,7 +122,7 @@ const titleScreenScript = `
   setTimeout(installHook,0);
 })();
 </script>`
-if (!html.includes('id="anni-title-screen-script"')) html = html.replace('</body>', titleScreenScript + '\\n</body>');
+if (!html.includes('id="anni-title-screen-script"')) html = html.replace('</body>', titleScreenScript + '\n</body>');
 
 /* Copy the user's banner into the published site when it exists in the repository's assets folder. */
 const bannerSource = path.join(__dirname, '..', 'assets', 'pci-banner.jpg');
