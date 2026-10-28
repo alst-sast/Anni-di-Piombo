@@ -6,10 +6,12 @@ new-page: true
 - @achievements: Achievements
 
 @party_select
-title: Start Campaign
+title: Select Difficulty
 new-page: true
 
-- @pci_start: Begin campaign as the PCI
+- @pci_easy_start: Easy — More resources and stronger starting support
+- @pci_start: Normal — Standard campaign
+- @pci_hard_start: Hard — Fewer resources and weaker starting support
 - @main_menu: Return to title
 
 @dc_start
@@ -21,6 +23,22 @@ on-arrival: Q.party_name = 'Democrazia Cristiana (DC)'; Q.government_position = 
 You lead the Christian Democrats, the dominant force in Italy's post-war political system. Your government must preserve order while responding to economic strain and growing political polarisation.
 
 - @monthly_briefing: Enter Government
+
+@pci_easy_start
+title: Easy Difficulty
+new-page: true
+
+on-arrival: Q.difficulty = 'Easy'; Q.party_name = 'Partito Comunista Italiano (PCI)'; Q.government_position = 'Opposition'; Q.dissent = 'Low'; Q.resources = 6; Q.public_support = 60; Q.stability = 65; Q.security = 65; Q.inflation = 15; Q.month = 1; Q.year = 1968;
+
+- @monthly_briefing: Begin Easy Campaign
+
+@pci_hard_start
+title: Hard Difficulty
+new-page: true
+
+on-arrival: Q.difficulty = 'Hard'; Q.party_name = 'Partito Comunista Italiano (PCI)'; Q.government_position = 'Opposition'; Q.dissent = 'Moderate'; Q.resources = 2; Q.public_support = 35; Q.stability = 45; Q.security = 45; Q.inflation = 40; Q.month = 1; Q.year = 1968;
+
+- @monthly_briefing: Begin Hard Campaign
 
 @pci_start
 title: Partito Comunista Italiano
