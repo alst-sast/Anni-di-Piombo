@@ -63,6 +63,17 @@ body.anni-title-screen #content ul.choices li{padding:14px 18px;border-bottom:1p
 body.anni-title-screen #content ul.choices li a{color:#8e2027;font:bold 1.15em Georgia,'Times New Roman',serif}
 body.anni-title-screen #content ul.choices li:hover{background:#ead9b8}
 body.anni-title-screen .anni-banner{display:block;width:min(100%,720px);max-height:340px;object-fit:cover;margin:16px auto 22px;border:4px solid #3b2c22;box-shadow:0 5px 18px rgba(0,0,0,.35)}
+/* Final overrides: keep the title screen rules stronger than the base template rules above. */
+body.anni-title-screen header{width:100%!important;max-width:none!important;min-height:0!important;margin:0!important;padding:0!important;background:rgba(245,235,211,.9)!important;border-bottom:1px solid #76543a!important;box-shadow:none!important;text-shadow:none!important;text-align:center!important}
+body.anni-title-screen header h1{display:none!important}
+body.anni-title-screen #header-links{float:none!important;display:flex!important;justify-content:center!important;flex-wrap:wrap!important;gap:8px!important;margin:0 auto!important;padding:8px!important}
+body.anni-title-screen #header-links a{color:#8e2027!important;background:transparent!important;border:0!important;padding:5px 10px!important}
+body.anni-title-screen #mid_panel{width:100%!important;max-width:760px!important;margin:0 auto!important;padding:12px 16px 28px!important}
+body.anni-title-screen #content{width:100%!important;max-width:680px!important;margin:0 auto!important;padding:10px 12px 18px!important;background:transparent!important;border:0!important;box-shadow:none!important;text-align:center!important}
+body.anni-title-screen #content h1.anni-main-title{display:block!important;color:#4a2019!important;font:bold clamp(2.25rem,5.5vw,4.2rem)/1.05 Georgia,'Times New Roman',serif!important;letter-spacing:.045em!important;text-transform:uppercase!important}
+body.anni-title-screen #content ul.choices{width:100%!important;max-width:600px!important;margin:14px auto 0!important;padding:0!important;background:rgba(245,235,213,.9)!important;border:1px solid #76543a!important;box-shadow:0 5px 18px rgba(0,0,0,.22)!important}
+body.anni-title-screen #content ul.choices li{padding:12px 16px!important;border-bottom:1px solid rgba(115,83,60,.38)!important;text-align:center!important}
+body.anni-title-screen #content ul.choices li a{color:#922923!important;font:bold 1.15rem Georgia,'Times New Roman',serif!important}
 @media(max-width:700px){body{background-attachment:scroll}body:not(.anni-title-screen) #mid_panel{margin:0 auto}body.anni-title-screen #mid_panel{padding:10px}body.anni-title-screen #content{margin:12px auto;padding:18px}}
 </style>`;
 if (!html.includes('id="anni-title-screen-style"')) html = html.replace('</head>', titleScreenStyles + '\n</head>');
@@ -74,7 +85,7 @@ const titleScreenScript = `
     var content=document.getElementById('content');
     if(!content)return;
     var text=(content.innerText||content.textContent||'').replace(/\\s+/g,' ').trim();
-    var links=Array.prototype.map.call(content.querySelectorAll('a'),function(a){return (a.innerText||a.textContent||'').trim();});
+    var links=Array.prototype.map.call(document.querySelectorAll('a'),function(a){return (a.innerText||a.textContent||'').trim().toLowerCase();});
     var header=document.querySelector('header');
     var headerHeading=header?header.querySelector('h1'):null;
     var headerTitle=headerHeading?(headerHeading.innerText||headerHeading.textContent||'').trim():'';
@@ -82,9 +93,11 @@ const titleScreenScript = `
     var headingText=heading?(heading.innerText||heading.textContent||'').trim():'';
     /* The engine renders the scene title in the global header, not inside #content.
        Move a copy into the title-screen stack so it appears between nav and artwork. */
-    var isTitle=(links.indexOf('Start Campaign')!==-1 && links.indexOf('Credits')!==-1 && links.indexOf('Achievements')!==-1)
-      || headerTitle.toLowerCase()==='anni di piombo'
-      || headingText.toLowerCase()==='anni di piombo';
+    var allText=(document.body.innerText||document.body.textContent||'').replace(/\\s+/g,' ').toLowerCase();
+    var isTitle=(links.indexOf('start campaign')!==-1 && links.indexOf('credits')!==-1 && links.indexOf('achievements')!==-1)
+      || headerTitle.toLowerCase().indexOf('anni di piombo')!==-1
+      || headingText.toLowerCase().indexOf('anni di piombo')!==-1
+      || (allText.indexOf('anni di piombo')!==-1 && allText.indexOf('start campaign')!==-1 && allText.indexOf('achievements')!==-1);
     document.body.classList.toggle('anni-title-screen',isTitle);
     var wrapper=document.getElementById('tools_wrapper');
     if(wrapper)wrapper.style.display=isTitle?'none':'';
