@@ -59,6 +59,7 @@ const titleScreenScript = `
       const banner = document.createElement('img');
       banner.className = 'anni-banner';
       banner.src = 'assets/pci-banner.jpg';
+      banner.onerror = function(){ this.onerror = null; this.src = 'https://commons.wikimedia.org/wiki/Special:Redirect/file/Logo_Partito_Comunista_Italiano.svg'; this.style.objectFit = 'contain'; this.style.maxHeight = '220px'; };
       banner.alt = 'Anni di piombo — PCI historical campaign banner';
       heading.insertAdjacentElement('afterend', banner);
     }
