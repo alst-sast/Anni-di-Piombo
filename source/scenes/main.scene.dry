@@ -71,6 +71,7 @@ Your party: [+ party_name +]
 
 Your party must respond to economic pressure, political violence and declining confidence in public institutions. Whether you govern, support a coalition or lead the opposition, draw strategy cards and choose which initiatives to pursue.
 
+[? if year = 1968 and month = 5 : **Historical briefing — General election.** In the 19 May election, the Christian Democrats remain the largest party while the PCI consolidates its position as the principal opposition force. The result leaves the communists influential but outside national government. ?]
 [? if year = 1969 and month = 12 : **Historical briefing — Piazza Fontana.** On 12 December, a bomb explodes at the Banca Nazionale dell'Agricoltura in Milan, killing 17 people and injuring many more. The attack intensifies fear, suspicion and political polarisation. ?]
 [? if year = 1970 and month = 5 : **Historical briefing — Workers' Statute.** Parliament approves major protections for workers' rights, reflecting years of labour mobilisation. ?]
 [? if year = 1970 and month = 7 : **Historical briefing — Reggio Calabria unrest.** Protests erupt over the designation of Catanzaro as the regional capital, developing into months of street clashes and unrest. ?]
@@ -82,7 +83,7 @@ Your party must respond to economic pressure, political violence and declining c
 [? if year = 1978 and month = 3 : **Historical briefing — Aldo Moro kidnapped.** Red Brigades kidnap the former prime minister on 16 March and kill five members of his escort. The crisis places extraordinary pressure on the state. ?]
 [? if year = 1978 and month = 5 : **Historical briefing — Moro murdered.** After 55 days in captivity, Aldo Moro is found dead on 9 May. The killing leaves a lasting wound in Italian political life. ?]
 [? if year = 1980 and month = 8 : **Historical briefing — Bologna station bombing.** On 2 August, a bomb kills 85 people at Bologna Centrale railway station. The country demands answers and accountability. ?]
-[? if year = 1981 and month = 5 : **Historical briefing — P2 scandal.** The discovery of the P2 masonic lodge's membership lists exposes a clandestine network with links to powerful figures and triggers a political crisis. ?]
+[? if year = 1981 and month = 3 : **Historical briefing — P2 scandal.** The discovery of the P2 masonic lodge's membership lists exposes a clandestine network with links to powerful figures and triggers a political crisis. ?]
 [? if year = 1982 and month = 9 : **Historical briefing — Dalla Chiesa assassinated.** General Carlo Alberto dalla Chiesa, his wife and a police escort are killed in Palermo on 3 September, underscoring the threat posed by organised crime. ?]
 [? if year = 1983 and month = 6 : **Historical briefing — General election.** The June election weakens the Christian Democrats and opens the way to a new political arrangement, with Bettino Craxi becoming prime minister in August. ?]
 
@@ -166,7 +167,7 @@ new-page: true
 choose-if: resources >= 1
 tags: policy_deck
 
-The autumn of labour unrest has transformed Italian politics. Factory committees, trade unions and workplace assemblies are pressing for better wages, safer conditions and a stronger voice in decisions.
+Factory committees, trade unions and workplace assemblies are pressing for better wages, safer conditions and a stronger voice in decisions. Industrial mobilisation is growing, and labour conflict is likely to intensify as the decade advances.
 
 - @workers_mobilisation_result: Support a coordinated labour campaign
 
@@ -234,7 +235,7 @@ if (Q.year === 1980 && Q.month === 8) {
     Q.security = Math.max(0, Q.security - 10);
     Q.stability = Math.max(0, Q.stability - 5);
 }
-if (Q.year === 1981 && Q.month === 5) {
+if (Q.year === 1981 && Q.month === 3) {
     Q.public_support = Math.max(0, Q.public_support - 5);
     Q.stability = Math.max(0, Q.stability - 8);
 }
