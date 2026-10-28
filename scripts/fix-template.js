@@ -30,8 +30,8 @@ html, body { min-height:100%; }
 body { background:#4d171d; }
 body.anni-title-screen { background:#30251d url('https://upload.wikimedia.org/wikipedia/commons/7/7c/Quarto_Stato.jpg') center center / cover fixed no-repeat !important; }
 body.anni-title-screen:before { content:""; position:fixed; inset:0; background:linear-gradient(90deg,rgba(25,16,12,.48),rgba(255,244,218,.30),rgba(25,16,12,.48)); pointer-events:none; z-index:0; }
-body.anni-title-screen #game, body.anni-title-screen #content, body.anni-title-screen .game { position:relative; z-index:1; }
-body.anni-title-screen .scene, body.anni-title-screen .page, body.anni-title-screen #main { background:rgba(248,239,213,.86); border:1px solid rgba(90,54,30,.65); box-shadow:0 10px 35px rgba(0,0,0,.32); }
+body.anni-title-screen #game, body.anni-title-screen #content, body.anni-title-screen .game, body.anni-title-screen #app, body.anni-title-screen #wrapper, body.anni-title-screen .container { position:relative; z-index:1; background:transparent !important; }
+body.anni-title-screen .scene, body.anni-title-screen .page, body.anni-title-screen #main, body.anni-title-screen #content, body.anni-title-screen main { background:rgba(248,239,213,.92) !important; color:#30251d !important; border:1px solid rgba(90,54,30,.65); box-shadow:0 10px 35px rgba(0,0,0,.32); max-width:900px; margin:24px auto; padding:24px; box-sizing:border-box; }
 body.anni-title-screen h1, body.anni-title-screen h2 { color:#392819; font-family:Georgia,'Times New Roman',serif; text-transform:uppercase; letter-spacing:.09em; text-shadow:0 1px 0 #fff4dc; }
 body.anni-title-screen a, body.anni-title-screen button, body.anni-title-screen input[type=button] { color:#8e2027; font-family:Georgia,'Times New Roman',serif; font-weight:bold; }
 body.anni-title-screen a:hover, body.anni-title-screen button:hover { color:#bd1e35; }
@@ -48,10 +48,10 @@ const titleScreenScript = `
 (function(){
   function decorate(){
     const text = (document.body.innerText || '').toLowerCase();
-    const isTitle = text.includes('start campaign') || text.includes('start game') || text.includes('select difficulty');
+    const links = Array.from(document.querySelectorAll('a, button, input[type=button]')).map(function(el){ return (el.innerText || el.value || el.textContent || '').toLowerCase(); }).join(' ');\n    const isTitle = text.includes('start campaign') || text.includes('start game') || text.includes('select difficulty') || links.includes('start campaign') || links.includes('select difficulty');
     if (!isTitle) return;
     document.body.classList.add('anni-title-screen');
-    const main = document.querySelector('#main, #content, .scene, .page, main');
+    const main = document.querySelector('#main, #content, main, .scene:not([hidden]), .page:not([hidden]), #game, .game') || document.body;
     if (!main || main.dataset.anniDecorated) return;
     main.dataset.anniDecorated = 'true';
     const heading = main.querySelector('h1, h2');
