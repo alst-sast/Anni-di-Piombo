@@ -6,14 +6,8 @@ new-page: true
 - @achievements: Achievements
 
 @party_select
-title: Partito Comunista Italiano (PCI)
+title: Start Campaign
 new-page: true
-
-**Partito Comunista Italiano (PCI)**
-
-{! <img src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Logo_Partito_Comunista_Italiano.svg" alt="Partito Comunista Italiano (PCI) logo" style="display:block;max-width:260px;max-height:160px;width:auto;height:auto;object-fit:contain;margin:12px 0 24px;" /> !}
-
-You will lead the Italian Communist Party (PCI) from January 1968 through the Years of Lead. Build working-class support, navigate parliamentary opposition, respond to political violence and decide how the PCI should pursue influence in the Italian Republic.
 
 - @pci_start: Begin campaign as the PCI
 - @main_menu: Return to title
