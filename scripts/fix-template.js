@@ -35,7 +35,7 @@ body.anni-title-screen .scene, body.anni-title-screen .page, body.anni-title-scr
 body.anni-title-screen h1, body.anni-title-screen h2 { color:#392819; font-family:Georgia,'Times New Roman',serif; text-transform:uppercase; letter-spacing:.09em; text-shadow:0 1px 0 #fff4dc; }
 body.anni-title-screen a, body.anni-title-screen button, body.anni-title-screen input[type=button] { color:#8e2027; font-family:Georgia,'Times New Roman',serif; font-weight:bold; }
 body.anni-title-screen a:hover, body.anni-title-screen button:hover { color:#bd1e35; }
-body.anni-title-screen .anni-banner { display:block; width:min(100%,650px); max-height:240px; object-fit:contain; background:rgba(255,255,255,.72); margin:12px auto 18px; border:3px solid #3b2c22; box-shadow:0 5px 18px rgba(0,0,0,.35); }
+body.anni-title-screen .anni-banner { display:block; width:min(100%,650px); max-height:340px; object-fit:cover; background:rgba(255,255,255,.72); margin:12px auto 18px; border:3px solid #3b2c22; box-shadow:0 5px 18px rgba(0,0,0,.35); }
 body.anni-title-screen .anni-menu { max-width:650px; margin:0 auto; padding:14px 22px; background:rgba(247,237,213,.76); border:1px solid rgba(93,63,39,.65); text-align:center; }
 body.anni-title-screen .anni-menu a { display:block; padding:8px 4px; font-size:1.12em; }
 @media(max-width:700px) { body.anni-title-screen { background-attachment:scroll !important; } body.anni-title-screen .anni-banner { max-height:240px; } }
@@ -58,8 +58,8 @@ const titleScreenScript = `
     if (heading && !main.querySelector('.anni-banner')) {
       const banner = document.createElement('img');
       banner.className = 'anni-banner';
-      banner.src = 'https://commons.wikimedia.org/wiki/Special:Redirect/file/Logo_Partito_Comunista_Italiano.svg';
-      banner.alt = 'Partito Comunista Italiano emblem';
+      banner.src = 'assets/pci-banner.jpg';
+      banner.alt = 'Anni di piombo — PCI historical campaign banner';
       heading.insertAdjacentElement('afterend', banner);
     }
     main.classList.add('anni-menu');
@@ -70,6 +70,18 @@ const titleScreenScript = `
 </script>`;
 if (!html.includes('id="anni-title-screen-script"')) {
   html = html.replace('</body>', titleScreenScript + '\n</body>');
+}
+
+
+/* Copy the user's banner into the published site when it exists in the repository's assets folder. */
+const bannerSource = path.join(__dirname, '..', 'assets', 'pci-banner.jpg');
+if (fs.existsSync(bannerSource)) {
+  const publicAssets = path.join(__dirname, '..', 'out', 'html', 'assets');
+  fs.mkdirSync(publicAssets, { recursive: true });
+  fs.copyFileSync(bannerSource, path.join(publicAssets, 'pci-banner.jpg'));
+  console.log('Copied assets/pci-banner.jpg into the published site.');
+} else {
+  console.warn('Custom PCI banner not found. Add it to assets/pci-banner.jpg to show it on the title screen.');
 }
 
 console.log('Applied the period-inspired title-screen layout.');
