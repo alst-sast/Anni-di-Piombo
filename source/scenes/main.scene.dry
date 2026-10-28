@@ -1,9 +1,7 @@
-title: Main
+title: Anni di piombo
 new-page: true
 
-ANNI DI PIOMBO
-
-- @party_select: Start Campaign as the PCI
+- @party_select: Start Campaign
 - @credits: Credits
 - @achievements: Achievements
 
