@@ -2,7 +2,7 @@
   "name": "anni-di-piombo",
   "version": "1.0.0",
   "private": true,
-  "description": "An Italian political strategy simulation, 1969-1983",
+  "description": "An Italian political strategy simulation, 1968-1983",
   "main": "out/html/index.html",
   "scripts": {
     "build": "dendrynexus make-html --template default-tabbed-sidebar --force --pretty && node scripts/fix-template.js"
