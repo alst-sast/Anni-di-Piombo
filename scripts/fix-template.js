@@ -33,7 +33,7 @@ body{background:#30251d url('https://upload.wikimedia.org/wikipedia/commons/7/7c
 body.anni-title-screen{margin:0;background:#332a21 url('https://upload.wikimedia.org/wikipedia/commons/7/7c/Quarto_Stato.jpg') center center/cover fixed no-repeat!important;color:#35251b}
 body.anni-title-screen #page{width:100%;max-width:none;margin:0 auto;padding:0}
 body.anni-title-screen header{width:100%;max-width:none;min-height:0;margin:0;padding:0;background:rgba(245,235,211,.78);border-bottom:1px solid rgba(90,53,34,.45);box-shadow:0 2px 10px rgba(0,0,0,.15);text-shadow:none}
-body.anni-title-screen header h1{display:none!important}
+body.anni-title-screen header h1{display:none!important}\nbody.anni-title-screen #content h1.anni-main-title{display:block!important;margin:10px 0 6px!important;color:#4a2019!important;font:bold clamp(2.25rem,5.5vw,4.2rem)/1.05 Georgia,'Times New Roman',serif!important;letter-spacing:.045em!important;text-transform:uppercase;text-shadow:0 1px 0 rgba(255,246,221,.7)}
 body.anni-title-screen #header-links{float:none!important;display:flex!important;flex-wrap:wrap;align-items:center;justify-content:center;gap:0;margin:0 auto;padding:7px 12px;line-height:1.4}
 body.anni-title-screen #header-links a{display:inline-block;color:#8b2722!important;background:transparent!important;border:0!important;padding:3px 10px!important;font:600 15px Georgia,'Times New Roman',serif;text-decoration:none}
 body.anni-title-screen #header-links a:hover{background:rgba(125,45,35,.1)!important;text-decoration:underline}
@@ -74,20 +74,30 @@ const titleScreenScript = `
     if(!content)return;
     var text=(content.innerText||content.textContent||'').replace(/\\s+/g,' ').trim();
     var links=Array.prototype.map.call(content.querySelectorAll('a'),function(a){return (a.innerText||a.textContent||'').trim();});
+    var header=document.querySelector('header');
+    var headerHeading=header?header.querySelector('h1'):null;
+    var headerTitle=headerHeading?(headerHeading.innerText||headerHeading.textContent||'').trim():'';
     var heading=content.querySelector('h1');
     var headingText=heading?(heading.innerText||heading.textContent||'').trim():'';
-    /* Detect the actual rendered title/menu content instead of relying on undocumented engine state. */
+    /* The engine renders the scene title in the global header, not inside #content.
+       Move a copy into the title-screen stack so it appears between nav and artwork. */
     var isTitle=(links.indexOf('Start Campaign')!==-1 && links.indexOf('Credits')!==-1 && links.indexOf('Achievements')!==-1)
-      || headingText==='Select Difficulty'
-      || headingText==='Credits'
-      || headingText==='Achievements'
-      || headingText==='Main Menu';
+      || headerTitle.toLowerCase()==='anni di piombo'
+      || headingText.toLowerCase()==='anni di piombo';
     document.body.classList.toggle('anni-title-screen',isTitle);
     var wrapper=document.getElementById('tools_wrapper');
     if(wrapper)wrapper.style.display=isTitle?'none':'';
     var mid=document.getElementById('mid_panel');
     if(mid)mid.style.margin=isTitle?'0 auto':'';
-    if(isTitle && heading && !content.querySelector('.anni-banner') && headingText==='Anni di piombo'){
+    if(isTitle && !content.querySelector('.anni-main-title')){
+      var mainTitle=document.createElement('h1');
+      mainTitle.className='anni-main-title';
+      mainTitle.textContent=headerTitle || headingText || 'Anni di piombo';
+      content.insertBefore(mainTitle,content.firstChild);
+      heading=mainTitle;
+      headingText=mainTitle.textContent;
+    }
+    if(isTitle && heading && !content.querySelector('.anni-banner') && headingText.toLowerCase()==='anni di piombo'){
       var banner=document.createElement('img');
       banner.className='anni-banner';
       banner.src='assets/pci-banner.jpg';
