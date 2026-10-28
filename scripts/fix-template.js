@@ -50,28 +50,31 @@ if (!html.includes('id="anni-title-screen-style"')) html = html.replace('</head>
 const titleScreenScript = `
 <script id="anni-title-screen-script">
 (function(){
-  var titleScenes=['main','party_select','main_menu','credits','achievements'];
   function syncLayout(){
-    var engine=window.dendryUI&&window.dendryUI.dendryEngine;
-    var sceneId=engine&&engine.state&&engine.state.sceneId;
-    if(!sceneId)return;
-    var isTitle=titleScenes.indexOf(sceneId)!==-1;
+    var content=document.getElementById('content');
+    if(!content)return;
+    var text=(content.innerText||content.textContent||'').replace(/\\s+/g,' ').trim();
+    var links=Array.prototype.map.call(content.querySelectorAll('a'),function(a){return (a.innerText||a.textContent||'').trim();});
+    var heading=content.querySelector('h1');
+    var headingText=heading?(heading.innerText||heading.textContent||'').trim():'';
+    /* Detect the actual rendered title/menu content instead of relying on undocumented engine state. */
+    var isTitle=(links.indexOf('Start Campaign')!==-1 && links.indexOf('Credits')!==-1 && links.indexOf('Achievements')!==-1)
+      || headingText==='Select Difficulty'
+      || headingText==='Credits'
+      || headingText==='Achievements'
+      || headingText==='Main Menu';
     document.body.classList.toggle('anni-title-screen',isTitle);
     var wrapper=document.getElementById('tools_wrapper');
     if(wrapper)wrapper.style.display=isTitle?'none':'';
     var mid=document.getElementById('mid_panel');
     if(mid)mid.style.margin=isTitle?'0 auto':'';
-    var content=document.getElementById('content');
-    if(content&&isTitle){
-      var heading=content.querySelector('h1');
-      if(heading&&!content.querySelector('.anni-banner')){
-        var banner=document.createElement('img');
-        banner.className='anni-banner';
-        banner.src='assets/pci-banner.jpg';
-        banner.onerror=function(){this.onerror=null;this.src='https://commons.wikimedia.org/wiki/Special:Redirect/file/Logo_Partito_Comunista_Italiano.svg';this.style.objectFit='contain';this.style.maxHeight='220px';};
-        banner.alt='Partito Comunista Italiano historical campaign banner';
-        heading.insertAdjacentElement('afterend',banner);
-      }
+    if(isTitle && heading && !content.querySelector('.anni-banner') && headingText==='Anni di piombo'){
+      var banner=document.createElement('img');
+      banner.className='anni-banner';
+      banner.src='assets/pci-banner.jpg';
+      banner.onerror=function(){this.onerror=null;this.src='https://commons.wikimedia.org/wiki/Special:Redirect/file/Logo_Partito_Comunista_Italiano.svg';this.style.objectFit='contain';this.style.maxHeight='220px';};
+      banner.alt='Partito Comunista Italiano historical campaign banner';
+      heading.insertAdjacentElement('afterend',banner);
     }
   }
   function installHook(){
@@ -85,10 +88,10 @@ const titleScreenScript = `
   }
   document.addEventListener('DOMContentLoaded',installHook);
   window.addEventListener('load',installHook);
-  new MutationObserver(installHook).observe(document.documentElement,{childList:true,subtree:true});
+  new MutationObserver(syncLayout).observe(document.documentElement,{childList:true,subtree:true});
   setTimeout(installHook,0);
 })();
-</script>`;
+</script>`
 if (!html.includes('id="anni-title-screen-script"')) html = html.replace('</body>', titleScreenScript + '\\n</body>');
 
 /* Copy the user's banner into the published site when it exists in the repository's assets folder. */
