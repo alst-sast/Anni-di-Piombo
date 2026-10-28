@@ -23,84 +23,73 @@ if (/id="paramilitary_tab"/.test(html)) {
 
 console.log('Sidebar configured with switchable Main, Politics, and Polls tabs.');
 
-/* Give the title screen its own full-window layout and keep campaign status out of it. */
-const titleScreenStyles = `
+/* Style the actual DendryNexus template: #tools_wrapper/#stats_sidebar and #content. */
+const titleScreenStyles = \`
 <style id="anni-title-screen-style">
-html, body { min-height:100%; }
-body { background:#4d171d; }
-body.anni-title-screen { margin:0; padding:0; min-height:100vh; background:#30251d url('https://upload.wikimedia.org/wikipedia/commons/7/7c/Quarto_Stato.jpg') center center / cover fixed no-repeat !important; color:#30251d; }
-body.anni-title-screen:before { content:""; position:fixed; inset:0; background:linear-gradient(90deg,rgba(25,16,12,.48),rgba(255,244,218,.20),rgba(25,16,12,.48)); pointer-events:none; z-index:0; }
-body.anni-title-screen #sidebar, body.anni-title-screen .sidebar, body.anni-title-screen #status, body.anni-title-screen .tabbed_sidebar, body.anni-title-screen .tabbed-sidebar, body.anni-title-screen .sidebar-tabs, body.anni-title-screen .tab_buttons, body.anni-title-screen #main_tab, body.anni-title-screen #politics_tab, body.anni-title-screen #poll_tab, body.anni-title-screen #paramilitary_tab { display:none !important; }
-body.anni-title-screen #game, body.anni-title-screen #content, body.anni-title-screen .game, body.anni-title-screen #app, body.anni-title-screen #wrapper, body.anni-title-screen .container { position:relative; z-index:1; background:transparent !important; width:100% !important; max-width:none !important; margin:0 !important; padding:0 !important; }
-body.anni-title-screen .scene, body.anni-title-screen .page, body.anni-title-screen #main, body.anni-title-screen main { background:rgba(248,239,213,.94) !important; color:#30251d !important; border:1px solid rgba(90,54,30,.65); box-shadow:0 10px 35px rgba(0,0,0,.32); width:min(900px, calc(100% - 32px)); max-width:900px; margin:28px auto !important; padding:30px !important; box-sizing:border-box; text-align:center; }
-body.anni-title-screen h1, body.anni-title-screen h2 { color:#392819; font-family:Georgia,'Times New Roman',serif; text-transform:uppercase; letter-spacing:.09em; text-shadow:0 1px 0 #fff4dc; }
-body.anni-title-screen h1 { font-size:clamp(2rem,5vw,3.6rem); margin:.2em 0 .4em; }
-body.anni-title-screen a, body.anni-title-screen button, body.anni-title-screen input[type=button] { color:#8e2027; font-family:Georgia,'Times New Roman',serif; font-weight:bold; }
-body.anni-title-screen a:hover, body.anni-title-screen button:hover { color:#bd1e35; }
-body.anni-title-screen .anni-banner { display:block; width:min(100%,720px); max-height:380px; object-fit:cover; background:rgba(255,255,255,.72); margin:18px auto 22px; border:4px solid #3b2c22; box-shadow:0 5px 18px rgba(0,0,0,.35); }
-body.anni-title-screen .anni-menu { max-width:720px; margin:0 auto !important; padding:18px 24px !important; background:rgba(247,237,213,.80) !important; border:1px solid rgba(93,63,39,.65); text-align:center; }
-body.anni-title-screen .anni-menu a { display:block; padding:10px 4px; font-size:1.18em; text-decoration:none; border-bottom:1px solid rgba(93,63,39,.18); }
-body.anni-title-screen .anni-menu a:last-child { border-bottom:0; }
-@media(max-width:700px) { body.anni-title-screen { background-attachment:scroll !important; } body.anni-title-screen .scene, body.anni-title-screen .page, body.anni-title-screen #main, body.anni-title-screen main { padding:18px !important; } body.anni-title-screen .anni-banner { max-height:240px; } }
-</style>`;
-if (!html.includes('id="anni-title-screen-style"')) html = html.replace('</head>', titleScreenStyles + '\n</head>');
+html,body{min-height:100%}
+body{background:#30251d url('https://upload.wikimedia.org/wikipedia/commons/7/7c/Quarto_Stato.jpg') center/cover fixed no-repeat;color:#30251d}
+#page{max-width:1200px}
+body.anni-title-screen #tools_wrapper{display:none!important}
+body.anni-title-screen #mid_panel{margin:0 auto!important;max-width:1000px;padding:20px;box-sizing:border-box}
+body.anni-title-screen header{max-width:900px;text-align:center;color:#fff0d0;text-shadow:0 2px 4px #000}
+body.anni-title-screen header h1{display:block;font:bold clamp(2rem,5vw,3.6rem) Georgia,'Times New Roman',serif;text-transform:uppercase;letter-spacing:.09em}
+body.anni-title-screen header h2{display:none}
+body.anni-title-screen #header-links{float:none;display:flex;justify-content:center;gap:18px;margin:8px auto}
+body.anni-title-screen #header-links a{color:#fff0d0;padding:6px 12px;background:rgba(35,20,14,.72);border:1px solid rgba(255,240,208,.55)}
+body.anni-title-screen #content{max-width:900px;margin:20px auto;padding:clamp(18px,4vw,38px);box-sizing:border-box;background:rgba(248,239,213,.96);border:2px solid #67472e;box-shadow:0 12px 36px rgba(0,0,0,.42);text-align:center}
+body.anni-title-screen #content h1{margin:.2em 0 .5em;font:bold clamp(2rem,5vw,3.4rem) Georgia,'Times New Roman',serif;letter-spacing:.08em;color:#392819}
+body.anni-title-screen #content ul.choices{max-width:680px;margin:20px auto 0;border:1px solid #8a6b4a;border-radius:0;background:rgba(255,250,235,.7)}
+body.anni-title-screen #content ul.choices li{padding:14px 18px;border-bottom:1px solid #c6b294;text-align:center}
+body.anni-title-screen #content ul.choices li a{color:#8e2027;font:bold 1.15em Georgia,'Times New Roman',serif}
+body.anni-title-screen #content ul.choices li:hover{background:#ead9b8}
+body.anni-title-screen .anni-banner{display:block;width:min(100%,720px);max-height:340px;object-fit:cover;margin:16px auto 22px;border:4px solid #3b2c22;box-shadow:0 5px 18px rgba(0,0,0,.35)}
+@media(max-width:700px){body{background-attachment:scroll}body:not(.anni-title-screen) #mid_panel{margin:0 auto}body.anni-title-screen #mid_panel{padding:10px}body.anni-title-screen #content{margin:12px auto;padding:18px}}
+</style>\`;
+if (!html.includes('id="anni-title-screen-style"')) html = html.replace('</head>', titleScreenStyles + '\\n</head>');
 
-const titleScreenScript = `
+const titleScreenScript = \`
 <script id="anni-title-screen-script">
 (function(){
-  function decorate(){
-    const clickable = Array.from(document.querySelectorAll('a, button, input[type=button]'));
-    const labels = clickable.map(function(el){ return (el.innerText || el.value || el.textContent || '').trim().toLowerCase(); }).join(' ');
-    const isTitle = labels.includes('start campaign') || labels.includes('start game') || labels.includes('select difficulty');
-    if (!isTitle) {
-      document.body.classList.remove('anni-title-screen');
-      document.querySelectorAll('[data-anni-hidden-sidebar="true"]').forEach(function(el){ el.style.display = ''; delete el.dataset.anniHiddenSidebar; });
-      return;
-    }
-    document.body.classList.add('anni-title-screen');
-
-    /* Find the real sidebar from its visible tab buttons, then hide its enclosing layout column. */
-    const tab = document.querySelector('#main_tab, #politics_tab, #poll_tab, #paramilitary_tab');
-    if (tab) {
-      let node = tab;
-      for (let depth = 0; node && depth < 7; depth++, node = node.parentElement) {
-        const t = (node.innerText || '').toLowerCase();
-        const hasStatus = t.includes('party resources') || t.includes('internal dissent') || t.includes('next general election');
-        const hasTabs = t.includes('main') && t.includes('politics') && t.includes('polls');
-        if (hasStatus && hasTabs && node !== document.body && node !== document.documentElement) {
-          node.style.setProperty('display', 'none', 'important');
-          node.dataset.anniHiddenSidebar = 'true';
-          break;
-        }
+  var titleScenes=['main','party_select','main_menu','credits','achievements'];
+  function syncLayout(){
+    var engine=window.dendryUI&&window.dendryUI.dendryEngine;
+    var sceneId=engine&&engine.state&&engine.state.sceneId;
+    if(!sceneId)return;
+    var isTitle=titleScenes.indexOf(sceneId)!==-1;
+    document.body.classList.toggle('anni-title-screen',isTitle);
+    var wrapper=document.getElementById('tools_wrapper');
+    if(wrapper)wrapper.style.display=isTitle?'none':'';
+    var mid=document.getElementById('mid_panel');
+    if(mid)mid.style.margin=isTitle?'0 auto':'';
+    var content=document.getElementById('content');
+    if(content&&isTitle){
+      var heading=content.querySelector('h1');
+      if(heading&&!content.querySelector('.anni-banner')){
+        var banner=document.createElement('img');
+        banner.className='anni-banner';
+        banner.src='assets/pci-banner.jpg';
+        banner.onerror=function(){this.onerror=null;this.src='https://commons.wikimedia.org/wiki/Special:Redirect/file/Logo_Partito_Comunista_Italiano.svg';this.style.objectFit='contain';this.style.maxHeight='220px';};
+        banner.alt='Partito Comunista Italiano historical campaign banner';
+        heading.insertAdjacentElement('afterend',banner);
       }
     }
-
-    /* Hide a status-only column even if the template's tab IDs have changed. */
-    Array.from(document.querySelectorAll('aside, [role="complementary"], .sidebar, #sidebar, .tabbed_sidebar, .tabbed-sidebar')).forEach(function(node){
-      const t = (node.innerText || '').toLowerCase();
-      if (t.includes('party resources') && t.includes('internal dissent')) {
-        node.style.setProperty('display', 'none', 'important');
-        node.dataset.anniHiddenSidebar = 'true';
-      }
-    });
-
-    const heading = document.querySelector('#content h1, #main h1, main h1, .scene h1, .page h1, h1');
-    if (heading && !document.querySelector('.anni-banner')) {
-      const banner = document.createElement('img');
-      banner.className = 'anni-banner';
-      banner.src = 'assets/pci-banner.jpg';
-      banner.onerror = function(){ this.onerror = null; this.src = 'https://commons.wikimedia.org/wiki/Special:Redirect/file/Logo_Partito_Comunista_Italiano.svg'; this.style.objectFit = 'contain'; this.style.maxHeight = '220px'; };
-      banner.alt = 'Anni di piombo — PCI historical campaign banner';
-      heading.insertAdjacentElement('afterend', banner);
-    }
-    const menuRoot = heading && (heading.closest('.scene, .page') || heading.parentElement);
-    if (menuRoot) menuRoot.classList.add('anni-menu');
   }
-  document.addEventListener('DOMContentLoaded', decorate);
-  new MutationObserver(decorate).observe(document.documentElement,{childList:true,subtree:true});
+  function installHook(){
+    if(typeof window.onDisplayContent==='function'&&!window.onDisplayContent.__anniWrapped){
+      var original=window.onDisplayContent;
+      var wrapped=function(){var result=original.apply(this,arguments);syncLayout();return result;};
+      wrapped.__anniWrapped=true;
+      window.onDisplayContent=wrapped;
+    }
+    syncLayout();
+  }
+  document.addEventListener('DOMContentLoaded',installHook);
+  window.addEventListener('load',installHook);
+  new MutationObserver(installHook).observe(document.documentElement,{childList:true,subtree:true});
+  setTimeout(installHook,0);
 })();
-</script>`;
-if (!html.includes('id="anni-title-screen-script"')) html = html.replace('</body>', titleScreenScript + '\n</body>');
+</script>\`;
+if (!html.includes('id="anni-title-screen-script"')) html = html.replace('</body>', titleScreenScript + '\\n</body>');
 
 /* Copy the user's banner into the published site when it exists in the repository's assets folder. */
 const bannerSource = path.join(__dirname, '..', 'assets', 'pci-banner.jpg');
