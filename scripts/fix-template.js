@@ -24,7 +24,7 @@ if (/id="paramilitary_tab"/.test(html)) {
 console.log('Sidebar configured with switchable Main, Politics, and Polls tabs.');
 
 /* Style the actual DendryNexus template: #tools_wrapper/#stats_sidebar and #content. */
-const titleScreenStyles = \`
+const titleScreenStyles = `
 <style id="anni-title-screen-style">
 html,body{min-height:100%}
 body{background:#30251d url('https://upload.wikimedia.org/wikipedia/commons/7/7c/Quarto_Stato.jpg') center/cover fixed no-repeat;color:#30251d}
@@ -44,10 +44,10 @@ body.anni-title-screen #content ul.choices li a{color:#8e2027;font:bold 1.15em G
 body.anni-title-screen #content ul.choices li:hover{background:#ead9b8}
 body.anni-title-screen .anni-banner{display:block;width:min(100%,720px);max-height:340px;object-fit:cover;margin:16px auto 22px;border:4px solid #3b2c22;box-shadow:0 5px 18px rgba(0,0,0,.35)}
 @media(max-width:700px){body{background-attachment:scroll}body:not(.anni-title-screen) #mid_panel{margin:0 auto}body.anni-title-screen #mid_panel{padding:10px}body.anni-title-screen #content{margin:12px auto;padding:18px}}
-</style>\`;
+</style>`;
 if (!html.includes('id="anni-title-screen-style"')) html = html.replace('</head>', titleScreenStyles + '\\n</head>');
 
-const titleScreenScript = \`
+const titleScreenScript = `
 <script id="anni-title-screen-script">
 (function(){
   var titleScenes=['main','party_select','main_menu','credits','achievements'];
@@ -88,7 +88,7 @@ const titleScreenScript = \`
   new MutationObserver(installHook).observe(document.documentElement,{childList:true,subtree:true});
   setTimeout(installHook,0);
 })();
-</script>\`;
+</script>`;
 if (!html.includes('id="anni-title-screen-script"')) html = html.replace('</body>', titleScreenScript + '\\n</body>');
 
 /* Copy the user's banner into the published site when it exists in the repository's assets folder. */
