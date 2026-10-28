@@ -49,10 +49,41 @@ const titleScreenScript = `
 <script id="anni-title-screen-script">
 (function(){
   function decorate(){
-    const links = Array.from(document.querySelectorAll('a, button, input[type=button]')).map(function(el){ return (el.innerText || el.value || el.textContent || '').trim().toLowerCase(); }).join(' ');
-    const isTitle = links.includes('start campaign') || links.includes('start game') || links.includes('select difficulty');
-    if (!isTitle) { document.body.classList.remove('anni-title-screen'); return; }
+    const clickable = Array.from(document.querySelectorAll('a, button, input[type=button]'));
+    const labels = clickable.map(function(el){ return (el.innerText || el.value || el.textContent || '').trim().toLowerCase(); }).join(' ');
+    const isTitle = labels.includes('start campaign') || labels.includes('start game') || labels.includes('select difficulty');
+    if (!isTitle) {
+      document.body.classList.remove('anni-title-screen');
+      document.querySelectorAll('[data-anni-hidden-sidebar="true"]').forEach(function(el){ el.style.display = ''; delete el.dataset.anniHiddenSidebar; });
+      return;
+    }
     document.body.classList.add('anni-title-screen');
+
+    /* Find the real sidebar from its visible tab buttons, then hide its enclosing layout column. */
+    const tab = document.querySelector('#main_tab, #politics_tab, #poll_tab, #paramilitary_tab');
+    if (tab) {
+      let node = tab;
+      for (let depth = 0; node && depth < 7; depth++, node = node.parentElement) {
+        const t = (node.innerText || '').toLowerCase();
+        const hasStatus = t.includes('party resources') || t.includes('internal dissent') || t.includes('next general election');
+        const hasTabs = t.includes('main') && t.includes('politics') && t.includes('polls');
+        if (hasStatus && hasTabs && node !== document.body && node !== document.documentElement) {
+          node.style.setProperty('display', 'none', 'important');
+          node.dataset.anniHiddenSidebar = 'true';
+          break;
+        }
+      }
+    }
+
+    /* Hide a status-only column even if the template's tab IDs have changed. */
+    Array.from(document.querySelectorAll('aside, [role="complementary"], .sidebar, #sidebar, .tabbed_sidebar, .tabbed-sidebar')).forEach(function(node){
+      const t = (node.innerText || '').toLowerCase();
+      if (t.includes('party resources') && t.includes('internal dissent')) {
+        node.style.setProperty('display', 'none', 'important');
+        node.dataset.anniHiddenSidebar = 'true';
+      }
+    });
+
     const heading = document.querySelector('#content h1, #main h1, main h1, .scene h1, .page h1, h1');
     if (heading && !document.querySelector('.anni-banner')) {
       const banner = document.createElement('img');
