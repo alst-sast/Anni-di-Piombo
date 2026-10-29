@@ -27,17 +27,15 @@ You lead the Christian Democrats, the dominant force in Italy's post-war politic
 @pci_easy_start
 title: Easy Difficulty
 new-page: true
-go-to: monthly_briefing
-
 on-arrival: Q.difficulty = 'Easy'; Q.party_name = 'Partito Comunista Italiano (PCI)'; Q.government_position = 'Opposition'; Q.dissent = 'Low'; Q.resources = 6; Q.public_support = 60; Q.stability = 65; Q.security = 65; Q.inflation = 15; Q.month = 1; Q.year = 1968;
+go-to: monthly_briefing
 
 
 @pci_hard_start
 title: Hard Difficulty
 new-page: true
-go-to: monthly_briefing
-
 on-arrival: Q.difficulty = 'Hard'; Q.party_name = 'Partito Comunista Italiano (PCI)'; Q.government_position = 'Opposition'; Q.dissent = 'Moderate'; Q.resources = 2; Q.public_support = 35; Q.stability = 45; Q.security = 45; Q.inflation = 40; Q.month = 1; Q.year = 1968;
+go-to: monthly_briefing
 
 
 @pci_start
