@@ -50,18 +50,30 @@ The party must navigate parliamentary conflict, street violence and pressure fro
 
 = Polls
 
-**Public support**
+**Projected election results**
+*(if the election were to be held now):*
 
-[+ public_support +] / 100
+**DC**: 38.3%
 
-[? if public_support >= 60 : Your party enjoys relatively strong public support. ?]
-[? if public_support >= 40 and public_support < 60 : Public opinion is divided, and your party's support remains uncertain. ?]
-[? if public_support < 40 : Your party faces a serious public confidence problem. ?]
+**PCI**: [+ public_support +]%
 
-**Economic pressure**
+**PSI–PSDI**: 14.0%
 
-[+ inflation +] / 100
+**PLI**: 7.0%
 
+**PSDI**: 6.1%
+
+**MSI**: 5.1%
+
+**PRI**: 1.6%
+
+**Others**: 2.6%
+
+**Support for the Republic**: [+ stability +]%
+
+**Support for Socialism**: [+ public_support +]%
+
+**Support for Nationalism**: [+ security +]%
 @government
 
 = Government
