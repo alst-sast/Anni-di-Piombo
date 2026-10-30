@@ -16,7 +16,7 @@ html = html.replace(
   ''
 );
 for (const id of ['main_tab', 'politics_tab', 'poll_tab']) {
-  if (!new RegExp('\\bid=["\\']' + id + '["\\']').test(html)) {
+  if (!html.includes('id="' + id + '"')) {
     throw new Error('Expected sidebar tab "' + id + '" is missing from generated HTML.');
   }
 }
