@@ -94,20 +94,25 @@ const titleScreenScript = `
     /* The engine renders the scene title in the global header, not inside #content.
        Move a copy into the title-screen stack so it appears between nav and artwork. */
     var allText=(document.body.innerText||document.body.textContent||'').replace(/\\s+/g,' ').toLowerCase();
-    var isTitle=(links.indexOf('start campaign')!==-1 && links.indexOf('credits')!==-1 && links.indexOf('achievements')!==-1)
-      || headerTitle.toLowerCase().indexOf('anni di piombo')!==-1
-      || headingText.toLowerCase().indexOf('anni di piombo')!==-1
-      || (allText.indexOf('anni di piombo')!==-1 && allText.indexOf('start campaign')!==-1 && allText.indexOf('achievements')!==-1);
+    /* Identify the title screen by its three menu choices, then move the actual
+       engine-generated page title into the content panel. Do not rely on a
+       particular header structure or on the title text being repeated in content. */
+    var choices=content.querySelector('ul.choices');
+    var hasStart=links.indexOf('start campaign')!==-1;
+    var isTitle=!!choices && hasStart && links.indexOf('credits')!==-1 && links.indexOf('achievements')!==-1;
     document.body.classList.toggle('anni-title-screen',isTitle);
     var wrapper=document.getElementById('tools_wrapper');
     if(wrapper)wrapper.style.display=isTitle?'none':'';
     var mid=document.getElementById('mid_panel');
     if(mid)mid.style.margin=isTitle?'0 auto':'';
-    if(isTitle && !content.querySelector('.anni-main-title')){
-      var mainTitle=document.createElement('h1');
-      mainTitle.className='anni-main-title';
-      mainTitle.textContent=headerTitle || headingText || 'Anni di piombo';
-      content.insertBefore(mainTitle,content.firstChild);
+    if(isTitle){
+      var mainTitle=content.querySelector('.anni-main-title');
+      if(!mainTitle){
+        mainTitle=document.createElement('h1');
+        mainTitle.className='anni-main-title';
+        mainTitle.textContent=headerTitle || headingText || 'Anni di piombo';
+        content.insertBefore(mainTitle,content.firstChild);
+      }
       heading=mainTitle;
       headingText=mainTitle.textContent;
     }
