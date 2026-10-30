@@ -9,9 +9,9 @@ new-page: true
 title: Select Difficulty
 new-page: true
 
-- @pci_easy_start: Easy — More resources and stronger starting support
-- @pci_start: Normal — Standard campaign
-- @pci_hard_start: Hard — Fewer resources and weaker starting support
+- @pci_easy_start: Easy
+- @pci_start: Normal
+- @pci_hard_start: Hard
 - @main_menu: Return to title
 
 @dc_start
