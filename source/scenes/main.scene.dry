@@ -41,7 +41,8 @@ Q.security = 65;
 Q.inflation = 15;
 Q.month = 1;
 Q.year = 1968;
-!}\ngo-to: monthly_briefing
+!}
+go-to: monthly_briefing
 
 
 @pci_hard_start
@@ -58,7 +59,8 @@ Q.security = 45;
 Q.inflation = 40;
 Q.month = 1;
 Q.year = 1968;
-!}\ngo-to: monthly_briefing
+!}
+go-to: monthly_briefing
 
 
 @pci_start
@@ -75,7 +77,8 @@ Q.security = 55;
 Q.inflation = 25;
 Q.month = 1;
 Q.year = 1968;
-!}\ngo-to: monthly_briefing
+!}
+go-to: monthly_briefing
 
 
 @psi_start
