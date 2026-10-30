@@ -50,30 +50,32 @@ The party must navigate parliamentary conflict, street violence and pressure fro
 
 = Polls
 
-**Projected election results**
-*(if the election were to be held now):*
+**Baseline election results — 1963**
 
-**DC**: 38.3%
+The following figures are the actual national vote shares from the 1963 Chamber of Deputies election. They are a historical baseline, not a live opinion poll.
 
-**PCI**: [+ public_support +]%
+DC: 38.28%
 
-**PSI–PSDI**: 14.0%
+PCI: 25.26%
 
-**PLI**: 7.0%
+PSI: 13.84%
 
-**PSDI**: 6.1%
+PLI: 6.97%
 
-**MSI**: 5.1%
+PSDI: 6.10%
 
-**PRI**: 1.6%
+MSI: 5.11%
 
-**Others**: 2.6%
+Others: 4.44%
 
-**Support for the Republic**: [+ stability +]%
+**PCI political indicators**
 
-**Support for Socialism**: [+ public_support +]%
+Public support index: [+ public_support +] / 100
 
-**Support for Nationalism**: [+ security +]%
+Political stability: [+ stability +] / 100
+
+Public security: [+ security +] / 100
+
 @government
 
 = Government
