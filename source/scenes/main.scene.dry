@@ -126,7 +126,11 @@ Your party advances emergency economic measures intended to ease pressure on hou
 @economic_relief_result
 title: Economic Relief
 new-page: true
-on-arrival: Q.resources = Math.max(0, Q.resources - 1); Q.inflation = Math.max(0, Q.inflation - 8); Q.public_support = Math.min(100, Q.public_support + 5);
+on-arrival: {!
+Q.resources = Math.max(0, Q.resources - 1);
+Q.inflation = Math.max(0, Q.inflation - 8);
+Q.public_support = Math.min(100, Q.public_support + 5);
+!}
 
 Your party's economic programme gains traction. The economic pressure index falls and public support improves.
 
@@ -146,7 +150,11 @@ Your party must respond to political violence while defending its position on pu
 @public_security_result
 title: Public Security
 new-page: true
-on-arrival: Q.resources = Math.max(0, Q.resources - 1); Q.security = Math.min(100, Q.security + 10); Q.stability = Math.min(100, Q.stability + 3);
+on-arrival: {!
+Q.resources = Math.max(0, Q.resources - 1);
+Q.security = Math.min(100, Q.security + 10);
+Q.stability = Math.min(100, Q.stability + 3);
+!}
 
 Your party's public-security initiative improves the security index, though the long-term political consequences remain uncertain.
 
@@ -166,7 +174,11 @@ Your party proposes institutional reforms intended to restore confidence in the 
 @institutional_reform_result
 title: Institutional Reform
 new-page: true
-on-arrival: Q.resources = Math.max(0, Q.resources - 1); Q.stability = Math.min(100, Q.stability + 8); Q.public_support = Math.min(100, Q.public_support + 3);
+on-arrival: {!
+Q.resources = Math.max(0, Q.resources - 1);
+Q.stability = Math.min(100, Q.stability + 8);
+Q.public_support = Math.min(100, Q.public_support + 3);
+!}
 
 Your party's institutional reform initiative gains support. Political stability and public support improve.
 
@@ -186,7 +198,12 @@ Factory committees, trade unions and workplace assemblies are pressing for bette
 @workers_mobilisation_result
 title: Workers' Mobilisation
 new-page: true
-on-arrival: Q.resources = Math.max(0, Q.resources - 1); Q.public_support = Math.min(100, Q.public_support + 7); Q.inflation = Math.min(100, Q.inflation + 3); Q.stability = Math.max(0, Q.stability - 1);
+on-arrival: {!
+Q.resources = Math.max(0, Q.resources - 1);
+Q.public_support = Math.min(100, Q.public_support + 7);
+Q.inflation = Math.min(100, Q.inflation + 3);
+Q.stability = Math.max(0, Q.stability - 1);
+!}
 
 The PCI backs a coordinated campaign for workers' rights. Support rises among organised labour, but employers warn of disruption and economic pressure ticks upward.
 
@@ -206,7 +223,12 @@ The party's parliamentary leadership, trade-union organisers and local branches 
 @party_unity_result
 title: Party Unity
 new-page: true
-on-arrival: Q.resources = Math.max(0, Q.resources - 1); Q.stability = Math.min(100, Q.stability + 4); Q.public_support = Math.min(100, Q.public_support + 2); Q.dissent = 'Low';
+on-arrival: {!
+Q.resources = Math.max(0, Q.resources - 1);
+Q.stability = Math.min(100, Q.stability + 4);
+Q.public_support = Math.min(100, Q.public_support + 2);
+Q.dissent = 'Low';
+!}
 
 A party conference establishes a shared line for the next stage of the campaign. Organisational discipline improves and the PCI gains a modest boost in public confidence.
 
