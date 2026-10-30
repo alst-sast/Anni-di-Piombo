@@ -17,15 +17,6 @@ new-page: true
 - @pci_hard_start: Hard
 - @main_menu: Return to title
 
-@dc_start
-title: Democrazia Cristiana
-new-page: true
-
-on-arrival: Q.party_name = 'Democrazia Cristiana (DC)'; Q.government_position = 'Governing coalition'; Q.dissent = 'Moderate'; Q.resources = 4; Q.public_support = 55; Q.stability = 60; Q.security = 45; Q.inflation = 65; Q.month = 1; Q.year = 1969;
-
-You lead the Christian Democrats, the dominant force in Italy's post-war political system. Your government must preserve order while responding to economic strain and growing political polarisation.
-
-- @monthly_briefing: Enter Government
 
 @pci_easy_start
 title: Easy Difficulty
@@ -81,25 +72,6 @@ Q.year = 1968;
 go-to: monthly_briefing
 
 
-@psi_start
-title: PSI–PSDI Unificati
-new-page: true
-
-on-arrival: Q.party_name = 'PSI–PSDI Unificati'; Q.government_position = 'Coalition partner'; Q.dissent = 'Moderate'; Q.resources = 4; Q.public_support = 40; Q.stability = 50; Q.security = 45; Q.inflation = 65; Q.month = 1; Q.year = 1969;
-
-You lead the unified Socialists, balancing reform, coalition politics and pressure from competing political forces.
-
-- @monthly_briefing: Enter Government
-
-@msi_start
-title: Movimento Sociale Italiano
-new-page: true
-
-on-arrival: Q.party_name = 'Movimento Sociale Italiano (MSI)'; Q.government_position = 'Opposition'; Q.dissent = 'High'; Q.resources = 4; Q.public_support = 25; Q.stability = 35; Q.security = 45; Q.inflation = 65; Q.month = 1; Q.year = 1969;
-
-You lead the neo-fascist Italian Social Movement, operating on the margins of the parliamentary system in a deeply polarised republic.
-
-- @monthly_briefing: Enter Government
 
 @monthly_briefing
 title: Political Strategy
@@ -250,7 +222,7 @@ title: End the Month
 is-pinned-card: true
 tags: advance_month
 new-page: true
-go-to: campaign_ending if year = 1983 and month = 12
+go-to: campaign_ending if year >= 1984
 
 on-arrival: {!
 /* Resolve the month that is ending before advancing the calendar. */
