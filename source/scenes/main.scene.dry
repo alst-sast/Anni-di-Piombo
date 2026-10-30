@@ -1,4 +1,4 @@
-@main
+@title_screen
 title: Anni di piombo
 new-page: true
 
@@ -30,7 +30,8 @@ You lead the Christian Democrats, the dominant force in Italy's post-war politic
 @pci_easy_start
 title: Easy Difficulty
 new-page: true
-on-arrival: {!\nQ.party_name = 'Partito Comunista Italiano (PCI)';
+on-arrival: {!
+Q.party_name = 'Partito Comunista Italiano (PCI)';
 Q.government_position = 'Opposition';
 Q.dissent = 'Low';
 Q.resources = 6;
@@ -46,7 +47,8 @@ Q.year = 1968;
 @pci_hard_start
 title: Hard Difficulty
 new-page: true
-on-arrival: {!\nQ.party_name = 'Partito Comunista Italiano (PCI)';
+on-arrival: {!
+Q.party_name = 'Partito Comunista Italiano (PCI)';
 Q.government_position = 'Opposition';
 Q.dissent = 'Moderate';
 Q.resources = 2;
@@ -62,7 +64,8 @@ Q.year = 1968;
 @pci_start
 title: Partito Comunista Italiano
 new-page: true
-on-arrival: {!\nQ.party_name = 'Partito Comunista Italiano (PCI)';
+on-arrival: {!
+Q.party_name = 'Partito Comunista Italiano (PCI)';
 Q.government_position = 'Opposition';
 Q.dissent = 'Low';
 Q.resources = 4;
@@ -336,7 +339,7 @@ Economic pressure: [+ inflation +] / 100
 @main_menu
 title: Main Menu
 new-page: true
-go-to: main
+go-to: title_screen
 
 @credits
 title: Credits
