@@ -34,7 +34,7 @@ body.anni-title-screen{margin:0;background:#332a21 url('https://upload.wikimedia
 body.anni-title-screen #page{width:100%;max-width:none;margin:0 auto;padding:0}
 body.anni-title-screen header{width:100%;max-width:none;min-height:0;margin:0;padding:0;background:rgba(245,235,211,.78);border-bottom:1px solid rgba(90,53,34,.45);box-shadow:0 2px 10px rgba(0,0,0,.15);text-shadow:none}
 body.anni-title-screen header h1{display:none!important}
-body.anni-title-screen #content h1.anni-main-title{display:block!important;margin:10px 0 6px!important;color:#4a2019!important;font:bold clamp(2.25rem,5.5vw,4.2rem)/1.05 Georgia,'Times New Roman',serif!important;letter-spacing:.045em!important;text-transform:uppercase;text-shadow:0 1px 0 rgba(255,246,221,.7)}
+body.anni-title-screen #content h1.anni-main-title{display:block!important;margin:10px 0 0!important;color:#4a2019!important;font:bold clamp(2.25rem,5.5vw,4.2rem)/1.05 Georgia,'Times New Roman',serif!important;letter-spacing:.045em!important;text-transform:uppercase;text-shadow:0 1px 0 rgba(255,246,221,.7)}
 body.anni-title-screen #header-links{float:none!important;display:flex!important;flex-wrap:wrap;align-items:center;justify-content:center;gap:0;margin:0 auto;padding:7px 12px;line-height:1.4}
 body.anni-title-screen #header-links a{display:inline-block;color:#8b2722!important;background:transparent!important;border:0!important;padding:3px 10px!important;font:600 15px Georgia,'Times New Roman',serif;text-decoration:none}
 body.anni-title-screen #header-links a:hover{background:rgba(125,45,35,.1)!important;text-decoration:underline}
@@ -42,7 +42,7 @@ body.anni-title-screen #mid_panel{width:100%;max-width:700px;margin:0 auto!impor
 body.anni-title-screen #content{width:100%;max-width:620px;margin:0 auto!important;padding:12px 12px 18px!important;box-sizing:border-box;background:transparent!important;border:0!important;box-shadow:none!important;text-align:center}
 body.anni-title-screen #content h1{margin:10px 0 6px!important;color:#4a2019!important;font:bold clamp(2.25rem,5.5vw,4.2rem)/1.05 Georgia,'Times New Roman',serif!important;letter-spacing:.045em!important;text-transform:uppercase;text-shadow:0 1px 0 rgba(255,246,221,.7)}
 body.anni-title-screen .anni-banner{display:block;width:100%!important;max-width:600px!important;max-height:340px!important;height:auto;object-fit:cover;margin:16px auto 18px!important;padding:4px;background:#f2e6ca;border:1px solid #5b3d2c!important;box-shadow:0 3px 12px rgba(0,0,0,.42)!important}
-body.anni-title-screen #content ul.choices{width:100%;max-width:600px!important;margin:14px auto 0!important;padding:0!important;list-style:none;background:rgba(245,235,213,.83)!important;border:1px solid rgba(90,61,43,.8)!important;border-radius:0!important;box-shadow:0 5px 18px rgba(0,0,0,.22)}
+body.anni-title-screen #content ul.choices{width:100%;max-width:600px!important;margin:0 auto 0!important;padding:0!important;list-style:none;background:rgba(245,235,213,.83)!important;border:1px solid rgba(90,61,43,.8)!important;border-radius:0!important;box-shadow:0 5px 18px rgba(0,0,0,.22)}
 body.anni-title-screen #content ul.choices li{margin:0!important;padding:10px 16px!important;border-bottom:1px solid rgba(115,83,60,.38)!important;text-align:center}
 body.anni-title-screen #content ul.choices li:last-child{border-bottom:0!important}
 body.anni-title-screen #content ul.choices li a{color:#922923!important;font:bold 1.15rem Georgia,'Times New Roman',serif!important;text-decoration:none}
@@ -106,23 +106,28 @@ const titleScreenScript = `
     var mid=document.getElementById('mid_panel');
     if(mid)mid.style.margin=isTitle?'0 auto':'';
     if(isTitle){
-      var mainTitle=content.querySelector('.anni-main-title');
+      /* Reuse the heading rendered from the title scene, then place it directly
+         before the menu list. This avoids duplicate titles and keeps Start
+         Campaign immediately beneath the game title. */
+      var mainTitle=content.querySelector('.anni-main-title') || content.querySelector('h1');
       if(!mainTitle){
         mainTitle=document.createElement('h1');
-        mainTitle.className='anni-main-title';
-        mainTitle.textContent=headerTitle || headingText || 'Anni di piombo';
-        content.insertBefore(mainTitle,content.firstChild);
+        mainTitle.textContent=headerTitle || 'Anni di piombo';
       }
-      heading=mainTitle;
-      headingText=mainTitle.textContent;
-    }
-    if(isTitle && heading && !content.querySelector('.anni-banner') && headingText.toLowerCase()==='anni di piombo'){
-      var banner=document.createElement('img');
-      banner.className='anni-banner';
-      banner.src='assets/pci-banner.jpg';
-      banner.onerror=function(){this.onerror=null;this.src='https://commons.wikimedia.org/wiki/Special:Redirect/file/Logo_Partito_Comunista_Italiano.svg';this.style.objectFit='contain';this.style.maxHeight='220px';};
-      banner.alt='Partito Comunista Italiano historical campaign banner';
-      heading.insertAdjacentElement('afterend',banner);
+      mainTitle.classList.add('anni-main-title');
+      mainTitle.textContent='ANNI DI PIOMBO';
+
+      /* Remove the old optional banner: it was sitting between the title and
+         the Start Campaign menu entry, contrary to the requested layout. */
+      var banner=content.querySelector('.anni-banner');
+      if(banner)banner.remove();
+
+      /* Remove extra headings so there is exactly one game title. */
+      Array.prototype.forEach.call(content.querySelectorAll('h1'),function(h){
+        if(h!==mainTitle)h.remove();
+      });
+
+      choices.parentNode.insertBefore(mainTitle,choices);
     }
   }
   function installHook(){
