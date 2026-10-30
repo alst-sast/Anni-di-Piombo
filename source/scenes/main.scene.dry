@@ -1,6 +1,8 @@
 title: Anni di piombo
 new-page: true
 
+= Anni di piombo
+
 - @party_select: Start Campaign
 - @credits: Credits
 - @achievements: Achievements
