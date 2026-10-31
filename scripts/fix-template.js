@@ -98,197 +98,201 @@ html = html.replace(/<script id=["']anni-game-layout-script["']>[\s\S]*?<\/scrip
 
 const gameplayStyles = `
 <style id="anni-game-layout-style">
+/* Keep the approved three-column structure; native DendryNexus CSS supplies the skin. */
 body.anni-campaign-active {
-  color:#382d20!important;
-  background:#d8ceb9 url('https://commons.wikimedia.org/wiki/Special:FilePath/Map_of_Italy_-_1905.jpg') center center/cover fixed no-repeat!important;
+  background: #f3f3e3 url('https://commons.wikimedia.org/wiki/Special:FilePath/Map_of_Italy_-_1905.jpg') center center / cover fixed no-repeat;
 }
-body.anni-campaign-active .background { background:transparent!important; background-image:none!important; }
+body.anni-campaign-active .background {
+  background-color: transparent;
+  background-image: none;
+}
+
+/* Top navigation: positioning only. */
 body.anni-campaign-active header {
-  position:fixed; z-index:20; top:0; left:0; right:0; width:100%; max-width:none;
-  box-sizing:border-box; padding:.3rem .8rem .4rem; margin:0; text-align:center;
-  background:#eee8d9; border-bottom:1px solid #8f846f;
+  position: fixed;
+  z-index: 20;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  max-width: none;
+  box-sizing: border-box;
+  margin: 0;
+  padding: .25rem .8rem;
 }
-body.anni-campaign-active header h1,body.anni-campaign-active header h2 { display:none!important; }
+body.anni-campaign-active header h1,
+body.anni-campaign-active header h2 { display: none; }
 body.anni-campaign-active #header-links {
-  float:none; display:flex; align-items:center; justify-content:center; flex-wrap:wrap;
-  gap:.25rem 1.1rem; margin:0; text-align:center; line-height:1.45;
+  display: flex;
+  float: none;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: .25rem 1.1rem;
+  margin: 0;
+  text-align: center;
 }
-body.anni-campaign-active #header-links a {
-  padding:0 .15rem; color:#8e211b; font-weight:bold; white-space:nowrap; text-decoration:none;
-}
-body.anni-campaign-active #header-links a:hover { color:#315f79; text-decoration:underline; }
+
+/* Three-column layout. Existing .tools and #content rules keep their native appearance. */
 body.anni-campaign-active #mid_panel {
-  width:36rem; max-width:calc(100vw - 34rem); min-width:28rem;
-  box-sizing:border-box; margin:0 auto; padding:2.85rem 0 2rem;
+  width: 36rem;
+  min-width: 28rem;
+  max-width: calc(100vw - 34rem);
+  box-sizing: border-box;
+  margin: 0 auto;
+  padding: 2.85rem 0 2rem;
 }
 body.anni-campaign-active #tools_wrapper {
-  position:absolute; z-index:5; top:2.85rem; left:50%; right:auto;
-  width:min(76rem,calc(100vw - 2rem)); max-width:none; height:1px;
-  margin:0; padding:0; transform:translateX(-50%); pointer-events:none;
+  position: absolute;
+  z-index: 5;
+  top: 2.85rem;
+  left: 50%;
+  right: auto;
+  width: min(76rem, calc(100vw - 2rem));
+  max-width: none;
+  height: 1px;
+  margin: 0;
+  padding: 0;
+  transform: translateX(-50%);
+  pointer-events: none;
 }
 body.anni-campaign-active #stats_sidebar {
-  position:absolute; top:0; left:0; float:none; width:17rem;
-  max-height:calc(100vh - 5rem); overflow:auto; box-sizing:border-box; padding:.65rem;
-  color:#3d3021; background:#eeeadd;
-  border:1px solid #9e927c; box-shadow:none;
-  pointer-events:auto;
+  position: absolute;
+  top: 0;
+  left: 0;
+  float: none;
+  width: 17rem;
+  max-height: calc(100vh - 5rem);
+  overflow: auto;
+  box-sizing: border-box;
+  pointer-events: auto;
 }
 body.anni-campaign-active #stats_sidebar .tab_container {
-  display:flex; flex-wrap:wrap; margin:-.65rem -.65rem .7rem; background:#dedbd4;
+  display: flex;
+  flex-wrap: wrap;
 }
 body.anni-campaign-active #stats_sidebar .tab_button {
-  flex:1 0 25%; min-width:0; padding:.48rem .2rem; color:#403322;
-  font-size:.91rem; line-height:1.2; background:#e3e0da;
-  border:0; border-bottom:1px solid rgba(95,79,57,.22); cursor:pointer;
+  flex: 1 0 25%;
+  min-width: 0;
 }
-body.anni-campaign-active #stats_sidebar .tab_button.active {
-  background:#f7f4ec; box-shadow:inset 0 -2px 0 #a18a62;
-}
-body.anni-campaign-active #stats_sidebar .tab_button:hover { background:#f2eee5; }
-body.anni-campaign-active #qualities { font-size:.94rem; line-height:1.35; overflow-wrap:anywhere; }
-body.anni-campaign-active #qualities h1,body.anni-campaign-active #qualities h2 {
-  color:#4b3824; font-family:Georgia,"Times New Roman",serif;
-}
-body.anni-campaign-active #qualities p { margin:0 0 .8rem; text-indent:0; }
-body.anni-campaign-active #qualities img {
-  display:block; width:100%; height:auto; margin:.5rem auto;
-  border:1px solid #b9ad98; box-shadow:0 2px 7px rgba(0,0,0,.15);
-}
+
+/* Newspaper uses the framework's native .tools right panel. */
 body.anni-campaign-active #anni-news-panel {
-  position:absolute; top:0; right:0; float:none; width:17rem;
-  max-height:calc(100vh - 5rem); overflow:auto; box-sizing:border-box;
-  padding:.85rem .9rem 1rem; color:#292521; background:#f1ecdf;
-  border:1px solid #9e927c; box-shadow:none;
-  font-family:Georgia,"Times New Roman",serif; line-height:1.38; pointer-events:auto;
+  position: absolute;
+  top: 0;
+  right: 0;
+  float: none;
+  width: 17rem;
+  max-height: calc(100vh - 5rem);
+  overflow: auto;
+  box-sizing: border-box;
+  pointer-events: auto;
 }
-body.anni-campaign-active .anni-paper-masthead {
-  margin:0 0 .25rem; color:#33291f; font:italic 1.7rem/1.05 Georgia,"Times New Roman",serif;
-  text-align:center; letter-spacing:0;
-}
-body.anni-campaign-active .anni-paper-kicker {
-  margin:0 0 .55rem; color:#62594b; font-size:.62rem; font-style:normal; font-variant:small-caps;
-  letter-spacing:.07em; text-align:center;
-}
-body.anni-campaign-active .anni-paper-rule { height:1px; margin:.5rem 0 .8rem; background:#8e806b; border:0; }
-body.anni-campaign-active .anni-paper-date {
-  margin:0 0 .7rem; color:#806b4b; font-size:.77rem; font-weight:bold;
-  text-align:center; text-transform:uppercase; letter-spacing:.08em;
-}
-body.anni-campaign-active .anni-paper-headline {
-  margin:.35rem 0 .55rem; color:#28231d; font-size:1.16rem;
-  font-weight:bold; line-height:1.16; text-align:left;
-}
-body.anni-campaign-active .anni-paper-copy { margin:0 0 .75rem; font-size:.91rem; line-height:1.38; text-indent:.8rem; }
-body.anni-campaign-active .anni-paper-section {
-  margin:.45rem 0 .25rem; color:#6d251e; font-size:.67rem; font-weight:bold;
-  font-variant:small-caps; letter-spacing:.08em;
-}
-body.anni-campaign-active .anni-paper-footer {
-  color:#746a59; font-size:.63rem; font-variant:small-caps; letter-spacing:.07em; text-align:center;
-}
+
+/* Profile and advisors also use the native .tools panel appearance. */
 body.anni-campaign-active #anni-party-profile {
-  width:100%; max-width:40rem; box-sizing:border-box; margin:0 auto .65rem; padding:.55rem 1rem .7rem;
-  color:#3b2d1c; background:#efede5; border:1px solid #a69b88;
-  box-shadow:none; text-align:center;
+  width: 100%;
+  max-width: 40rem;
+  box-sizing: border-box;
+  margin: 0 auto .65rem;
+  text-align: center;
 }
-body.anni-campaign-active .anni-profile-title {
-  margin:0 0 .4rem; color:#42311f; font-size:1.26rem; font-weight:normal; line-height:1.25;
-}
-body.anni-campaign-active .anni-profile-title span { color:#3d84a8; font-weight:bold; }
 body.anni-campaign-active .anni-profile-photo {
-  display:block; width:auto; height:10.5rem; max-width:10rem; margin:.35rem auto .4rem;
-  padding:3px; object-fit:contain; background:#f3efe5; border:1px solid #716957;
-  filter:none; box-shadow:none;
+  display: block;
+  width: auto;
+  height: 10.5rem;
+  max-width: 10rem;
+  margin: .35rem auto .4rem;
+  object-fit: contain;
 }
-body.anni-campaign-active .anni-profile-name { margin:.2rem 0 0; font-size:1.03rem; font-weight:bold; }
-body.anni-campaign-active .anni-profile-role { margin:.05rem 0 0; color:#77716a; font-size:.9rem; font-style:italic; }
 body.anni-campaign-active #content {
-  width:100%; max-width:none; box-sizing:border-box; margin:0 auto; padding:.9rem 1.35rem 1.3rem;
-  color:#403322; background:#efede6; border:1px solid #a69b88;
-  box-shadow:none;
+  width: 100%;
+  max-width: none;
+  box-sizing: border-box;
+  margin: 0 auto;
 }
-body.anni-campaign-active #content h1 {
-  margin-top:.25rem; color:#44321e; font-family:Georgia,"Times New Roman",serif; letter-spacing:.05em;
-}
-body.anni-campaign-active #content h2 {
-  margin:.1rem 0 .7rem; padding:0 0 .6rem; color:#6b5b43;
-  border-bottom:1px solid #b6ab99; font-size:1rem; font-weight:normal; text-align:center;
-}
-body.anni-campaign-active #content h2.anni-date-heading {
-  margin:0 0 .65rem; padding:.15rem 0 .55rem; color:#49351f;
-  font:bold 1.45rem/1.2 Georgia,"Times New Roman",serif;
-  border-bottom:1px solid #b6ab99; text-align:center; letter-spacing:.025em;
-}
-body.anni-campaign-active #content p { text-indent:0; }
+body.anni-campaign-active #content h2.anni-date-heading { text-align: center; }
 body.anni-campaign-active #content ul.decks,
 body.anni-campaign-active #content ul.hand,
 body.anni-campaign-active #content ul.pinned-cards {
-  margin:.55rem 0 .9rem; padding:0; border:0;
+  margin: .55rem 0 .9rem;
+  padding: 0;
 }
-body.anni-campaign-active #content a.card {
-  border:7px solid #c8c2b6; box-shadow:1px 1px 2px rgba(45,36,24,.12);
-}
-body.anni-campaign-active #content a.card:hover {
-  left:0; top:0; box-shadow:1px 1px 2px rgba(45,36,24,.12);
-}
-body.anni-campaign-active #content div.blank-card {
-  background:#e0ddd5; border:7px solid #c8c2b6;
-}
-body.anni-campaign-active #content .card-caption {
-  color:#403322; font-family:Georgia,"Times New Roman",serif; font-size:.92rem;
-}
-
 body.anni-campaign-active #anni-advisors {
-  margin:1.1rem -1.35rem -1.3rem; padding:.7rem 1rem .9rem;
-  color:#403322; background:#e6e3d9; border-top:1px solid #b8ae9a; text-align:center;
+  width: auto;
+  max-width: none;
+  box-sizing: border-box;
+  margin: 1.1rem 0 0;
+  text-align: center;
 }
-body.anni-campaign-active .anni-advisors-title { margin:0 0 .35rem; font-size:1.08rem; font-weight:bold; font-variant:small-caps; letter-spacing:.04em; }
-body.anni-campaign-active .anni-advisor-meter {
-  display:grid; grid-template-columns:repeat(4,1fr); gap:2px; height:8px;
-  margin:0 auto .35rem; padding:1px; background:#eee9dd; border:1px solid #8a806c;
-}
-body.anni-campaign-active .anni-advisor-meter span { background:#8f897a; }
-body.anni-campaign-active .anni-advisor-meter span:nth-child(4) { background:#164f3a; }
-
 body.anni-campaign-active .anni-advisor-grid {
-  display:flex; flex-wrap:wrap; align-items:flex-start; justify-content:center; gap:.8rem 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: center;
+  gap: .8rem 1rem;
 }
-body.anni-campaign-active .anni-advisor { width:7rem; margin:0; text-align:center; }
+body.anni-campaign-active .anni-advisor {
+  display: inline-block;
+  width: 7rem;
+  margin: 0;
+  vertical-align: top;
+  text-align: center;
+}
 body.anni-campaign-active .anni-advisor img {
-  display:block; width:auto; height:8rem; max-width:6.4rem; box-sizing:border-box; margin:0 auto .28rem;
-  padding:3px; object-fit:contain; background:#f2eee4; border:1px solid #746b5d;
-  box-shadow:none; filter:none;
+  display: block;
+  width: auto;
+  height: 8rem;
+  max-width: 6.4rem;
+  margin: 0 auto .28rem;
+  object-fit: contain;
 }
-body.anni-campaign-active .anni-advisor figcaption { font-variant:small-caps; }
-body.anni-campaign-active .anni-advisor figcaption { color:#403322; font-size:.84rem; line-height:1.15; }
-body.anni-campaign-active .anni-advisor-role { margin-top:.12rem; color:#746a59; font-size:.68rem; font-style:italic; }
-body.anni-campaign-active .anni-image-credits { margin:.7rem 0 0; color:#756b5a; font-size:.65rem; line-height:1.35; }
-body.anni-campaign-active .anni-image-credits a { color:#5c7683; }
-body.anni-title-screen #header-links { display:none!important; }
-@media screen and (max-width:960px) {
+body.anni-campaign-active .anni-image-credits { margin: .7rem 0 0; font-size: .75em; }
+
+@media screen and (max-width: 960px) {
   body.anni-campaign-active #mid_panel {
-    width:min(46rem,calc(100vw - 2rem)); min-width:0; max-width:none; padding-top:2.85rem;
+    width: min(46rem, calc(100vw - 2rem));
+    min-width: 0;
+    max-width: none;
+    padding-top: 2.85rem;
   }
   body.anni-campaign-active #tools_wrapper {
-    position:static; display:flex; align-items:flex-start; justify-content:center; flex-wrap:wrap;
-    gap:.8rem; width:min(46rem,calc(100vw - 2rem)); height:auto; margin:.2rem auto .8rem; transform:none;
+    position: static;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: .8rem;
+    width: min(46rem, calc(100vw - 2rem));
+    height: auto;
+    margin: .2rem auto .8rem;
+    transform: none;
   }
   body.anni-campaign-active #stats_sidebar,
   body.anni-campaign-active #anni-news-panel {
-    position:static; width:min(21.8rem,calc(50% - .4rem)); max-height:none; margin:0;
+    position: static;
+    width: min(21.8rem, calc(50% - .4rem));
+    max-height: none;
+    margin: 0;
   }
-  body.anni-campaign-active #anni-party-profile { max-width:none; }
+  body.anni-campaign-active #anni-party-profile { max-width: none; }
 }
-@media screen and (max-width:640px) {
-  body.anni-campaign-active #mid_panel { width:calc(100% - .75rem); padding-top:3.6rem; }
-  body.anni-campaign-active #tools_wrapper { display:block; width:100%; }
+@media screen and (max-width: 640px) {
+  body.anni-campaign-active #mid_panel {
+    width: calc(100% - .75rem);
+    padding-top: 3.6rem;
+  }
+  body.anni-campaign-active #tools_wrapper { display: block; width: 100%; }
   body.anni-campaign-active #stats_sidebar,
-  body.anni-campaign-active #anni-news-panel { width:100%; max-height:none; margin:0 0 .7rem; }
-  body.anni-campaign-active #content { padding:.8rem .8rem 1.1rem; }
-  body.anni-campaign-active #anni-advisors { margin:1rem -.8rem -1.1rem; padding:.75rem .45rem .9rem; }
-  body.anni-campaign-active .anni-advisor { width:6.3rem; }
-  body.anni-campaign-active .anni-advisor img { width:5.8rem; height:7.5rem; }
-  body.anni-campaign-active .anni-paper-headline { font-size:1.05rem; }
+  body.anni-campaign-active #anni-news-panel {
+    width: 100%;
+    max-height: none;
+    margin: 0 0 .7rem;
+  }
+  body.anni-campaign-active #content { padding: .8rem; }
+  body.anni-campaign-active #anni-advisors { margin-top: .8rem; }
+  body.anni-campaign-active .anni-advisor { width: 6.3rem; }
+  body.anni-campaign-active .anni-advisor img { height: 7.5rem; max-width: 5.8rem; }
 }
 </style>
 `;
@@ -400,7 +404,7 @@ const gameplayScript = `
   function addProfile(d) {
     var c=document.getElementById('content');if(!c)return;
     var p=document.getElementById('anni-party-profile');
-    if(!p){p=document.createElement('section');p.id='anni-party-profile';c.parentNode.insertBefore(p,c);}
+    if(!p){p=document.createElement('section');p.id='anni-party-profile';p.className='tools';c.parentNode.insertBefore(p,c);}
     var leader=d.year<1972?{name:'Luigi Longo',image:'https://commons.wikimedia.org/wiki/Special:FilePath/Luigi_Longo_1968.jpg'}:{name:'Enrico Berlinguer',image:'https://commons.wikimedia.org/wiki/Special:FilePath/Enrico_Berlinguer.jpg'};
     if(p.getAttribute('data-leader')===leader.name)return;
     p.setAttribute('data-leader',leader.name);
@@ -413,7 +417,7 @@ const gameplayScript = `
       if(p.parentNode!==c || p!==c.lastElementChild)c.appendChild(p);
       return;
     }
-    p=document.createElement('section');p.id='anni-advisors';p.setAttribute('data-scene',scene);
+    p=document.createElement('section');p.id='anni-advisors';p.className='tools';p.setAttribute('data-scene',scene);
     var portraits=advisors.map(function(x){return '<figure class="anni-advisor"><img src="'+x.image+'" alt="'+x.name+'" loading="lazy"><figcaption>'+x.name+'</figcaption><div class="anni-advisor-role">'+x.role+'</div></figure>';}).join('');
     p.innerHTML=
       '<div class="anni-advisors-title">Dirigenti del partito</div>'+
