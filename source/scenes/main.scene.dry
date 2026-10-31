@@ -89,7 +89,7 @@ max-cards: 3
 title: Party Affairs
 subtitle: Party organisation, unity and democratic institutions
 is-deck: true
-card-image: https://commons.wikimedia.org/wiki/Special:FilePath/PCI_logo_(1951-1991).png
+card-image: https://commons.wikimedia.org/wiki/Special:FilePath/Tessera_PCI_1961.jpg
 
 - #policy_deck
 
@@ -136,7 +136,7 @@ Your party's economic programme gains traction. The economic pressure index fall
 
 @public_security
 title: Public Security
-card-image: https://commons.wikimedia.org/wiki/Special:FilePath/Montecitorio_interior_01.jpg
+card-image: https://commons.wikimedia.org/wiki/Special:FilePath/Foto21Statale.jpg
 is-card: true
 new-page: true
 choose-if: resources >= 1
@@ -161,7 +161,7 @@ Your party's public-security initiative improves the security index, though the 
 
 @institutional_reform
 title: Institutional Reform
-card-image: https://commons.wikimedia.org/wiki/Special:FilePath/Montecitorio_interior_01.jpg
+card-image: https://commons.wikimedia.org/wiki/Special:FilePath/Governo_Fanfani_IV.jpg
 is-card: true
 new-page: true
 choose-if: resources >= 1
@@ -212,7 +212,7 @@ The PCI backs a coordinated campaign for workers' rights. Support rises among or
 
 @party_unity
 title: Party Unity
-card-image: https://commons.wikimedia.org/wiki/Special:FilePath/PCI_logo_(1951-1991).png
+card-image: https://commons.wikimedia.org/wiki/Special:FilePath/Tessera_PCI_1961.jpg
 is-card: true
 new-page: true
 choose-if: resources >= 1
@@ -239,7 +239,7 @@ A party conference establishes a shared line for the next stage of the campaign.
 @advance_month
 title: Executive
 subtitle: Advance the campaign by one month
-card-image: https://commons.wikimedia.org/wiki/Special:FilePath/Montecitorio_interior_01.jpg
+card-image: https://commons.wikimedia.org/wiki/Special:FilePath/Governo_Fanfani_IV.jpg
 is-pinned-card: true
 tags: advance_month
 new-page: true
