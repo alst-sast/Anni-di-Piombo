@@ -44,7 +44,7 @@ const styles = [
   "body.anni-title-screen #content ul.choices li:first-child{border-top:0}",
   "body.anni-title-screen #content ul.choices li a{color:#922923;font:bold 1.15rem Georgia,'Times New Roman',serif;text-decoration:none}",
   "body.anni-title-screen #content ul.choices li:hover{background:rgba(220,202,165,.58)}",
-  "@media(max-width:700px){body{background-attachment:scroll}body.anni-title-screen #mid_panel{padding:8px}body.anni-title-screen #content{padding:8px 4px 18px}body.anni-title-screen .anni-menu-panel{padding:16px 12px 18px}body.anni-title-screen .anni-banner{max-height:250px}}",
+  "@media(max-width:700px){body.anni-title-screen{background-attachment:scroll}body.anni-title-screen #mid_panel{padding:8px}body.anni-title-screen #content{padding:8px 4px 18px}body.anni-title-screen .anni-menu-panel{padding:16px 12px 18px}body.anni-title-screen .anni-banner{max-height:250px}}",
   "</style>"
 ].join('\n');
 
