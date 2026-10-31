@@ -289,6 +289,7 @@ const gameplayScript = `
 (function () {
   'use strict';
   var monthNames = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+  var italianMonthNames = ['gennaio','febbraio','marzo','aprile','maggio','giugno','luglio','agosto','settembre','ottobre','novembre','dicembre'];
   var advisors = [
     {name:'Luigi Longo',image:'https://commons.wikimedia.org/wiki/Special:FilePath/Luigi_Longo_1968.jpg',source:'https://commons.wikimedia.org/wiki/File:Luigi_Longo_1968.jpg'},
     {name:'Enrico Berlinguer',image:'https://commons.wikimedia.org/wiki/Special:FilePath/Enrico_Berlinguer_1970.jpg',source:'https://commons.wikimedia.org/wiki/File:Enrico_Berlinguer_1970.jpg'},
@@ -377,7 +378,7 @@ const gameplayScript = `
     if(p.getAttribute('data-date')===key)return;
     p.setAttribute('data-date',key);
     var story=storyFor(d);
-    p.innerHTML='<div class="anni-paper-masthead">l’Unità</div><div class="anni-paper-kicker">Quotidiano del Partito Comunista Italiano</div><hr class="anni-paper-rule"><div class="anni-paper-date">Roma · '+d.monthName+' '+d.year+'</div><div class="anni-paper-headline">'+story[0]+'</div><p class="anni-paper-copy">'+story[1]+'</p><p class="anni-paper-copy">La direzione comunista valuta le prossime iniziative a difesa delle istituzioni democratiche, dei diritti dei lavoratori e della libertà politica.</p><hr class="anni-paper-rule"><div class="anni-paper-kicker">Il quotidiano fondato da Antonio Gramsci</div><div class="anni-paper-mark">☭</div>';
+    p.innerHTML='<div class="anni-paper-masthead">l’Unità</div><div class="anni-paper-kicker">Quotidiano del Partito Comunista Italiano</div><hr class="anni-paper-rule"><div class="anni-paper-date">Roma · '+italianMonthNames[d.month-1]+' '+d.year+'</div><div class="anni-paper-headline">'+story[0]+'</div><p class="anni-paper-copy">'+story[1]+'</p><p class="anni-paper-copy">La direzione comunista valuta le prossime iniziative a difesa delle istituzioni democratiche, dei diritti dei lavoratori e della libertà politica.</p><hr class="anni-paper-rule"><div class="anni-paper-kicker">Il quotidiano fondato da Antonio Gramsci</div><div class="anni-paper-mark">☭</div>';
   }
   function addProfile(d) {
     var c=document.getElementById('content');if(!c)return;
