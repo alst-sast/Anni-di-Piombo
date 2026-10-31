@@ -396,9 +396,9 @@ const gameplayScript = `
     addTabs();addHeaderLinks();
     var d=dateInfo();addPaper(d);addProfile(d);addAdvisors(s);
   }
-  function hookEngineNavigation() {
+  function hookEngineNavigation(engine) {
     try {
-      var engine = window.dendryUI && window.dendryUI.dendryEngine;
+      engine = engine || (window.dendryUI && window.dendryUI.dendryEngine);
       if (engine && typeof engine.goToScene === 'function' && !engine.__anniLayoutHooked) {
         var originalGoToScene = engine.goToScene;
         engine.goToScene = function () {
@@ -409,33 +409,49 @@ const gameplayScript = `
         engine.__anniLayoutHooked = true;
       }
     } catch (e) {
-      // The engine may not exist until DendryNexus finishes initialising.
+      // The game engine may not exist until DendryNexus initialises it.
     }
   }
+  function hookDendryModifyUI() {
+    if (typeof window.dendryModifyUI !== 'function' || window.__anniModifyUIHooked) return;
+    var originalModifyUI = window.dendryModifyUI;
+    window.dendryModifyUI = function (ui) {
+      var result = originalModifyUI.apply(this, arguments);
+      hookEngineNavigation(ui && ui.dendryEngine);
+      sync();
+      return result;
+    };
+    window.__anniModifyUIHooked = true;
+  }
   function install() {
-    sync();
+    hookDendryModifyUI();
     hookEngineNavigation();
+    sync();
     var c=document.getElementById('content');
     if(c&&typeof MutationObserver!=='undefined'){
       var observer=new MutationObserver(function(){
-        hookEngineNavigation();
         if(window.anniLayoutPending)return;
         window.anniLayoutPending=true;
         window.requestAnimationFrame(function(){sync();window.anniLayoutPending=false;});
       });
       observer.observe(c,{childList:true,subtree:true});
     }
-    if(typeof window.onNewPage==='function'){
-      var oldNew=window.onNewPage;window.onNewPage=function(){oldNew.apply(this,arguments);sync();};
+    if(typeof window.onNewPage==='function'&&!window.__anniNewPageHooked){
+      var oldNew=window.onNewPage;
+      window.onNewPage=function(){oldNew.apply(this,arguments);sync();};
+      window.__anniNewPageHooked=true;
     }
-    if(typeof window.onDisplayContent==='function'){
-      var oldDisplay=window.onDisplayContent;window.onDisplayContent=function(){oldDisplay.apply(this,arguments);sync();};
+    if(typeof window.onDisplayContent==='function'&&!window.__anniDisplayHooked){
+      var oldDisplay=window.onDisplayContent;
+      window.onDisplayContent=function(){oldDisplay.apply(this,arguments);sync();};
+      window.__anniDisplayHooked=true;
     }
-    window.addEventListener('load',function(){hookEngineNavigation();sync();});
-    window.setInterval(function(){hookEngineNavigation();sync();},750);
-    window.setTimeout(function(){hookEngineNavigation();sync();},250);
-    window.setTimeout(function(){hookEngineNavigation();sync();},1000);
+    window.addEventListener('load',function(){hookDendryModifyUI();hookEngineNavigation();sync();});
   }
+  // The generated game.js has already defined dendryModifyUI, but its ready
+  // callback has not run yet. Wrapping it here lets us attach to the engine
+  // before beginGame() renders the first scene.
+  hookDendryModifyUI();
   if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',install,{once:true});
   else install();
 })();
