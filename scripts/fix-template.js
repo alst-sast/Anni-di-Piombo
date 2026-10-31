@@ -65,7 +65,7 @@ const script = [
   "    var title=panel.querySelector('.anni-menu-title');",
   "    if(!title){title=document.createElement('h1');title.className='anni-menu-title';title.textContent='ANNI DI PIOMBO';}",
   "    var banner=panel.querySelector('.anni-banner');",
-  "    if(!banner){banner=document.createElement('img');banner.className='anni-banner';banner.src='assets/pci-banner.jpg';banner.alt='Vintage PCI campaign banner showing a red flag, workers and a crowd';banner.loading='eager';}",
+  "    if(!banner){banner=document.createElement('img');banner.className='anni-banner';banner.src='https://commons.wikimedia.org/wiki/Special:FilePath/Anni_di_piombo2.jpg';banner.alt='Giuseppe Memeo during the Via De Amicis clashes in Milan, 1977. Photograph by Paolo Pedrizzetti.';banner.loading='eager';}",
   "    if(title.parentNode!==panel)panel.appendChild(title);",
   "    if(banner.parentNode!==panel)panel.appendChild(banner);",
   "    if(choices.parentNode!==panel)panel.appendChild(choices);",
@@ -91,14 +91,7 @@ if (!html.includes('</body>')) throw new Error('Generated HTML has no closing </
 html = html.replace('</head>', styles + '\n</head>');
 html = html.replace('</body>', script + '\n</body>');
 
-/* Copy the committed banner image into the published website. */
-const bannerSource = path.join(__dirname, '..', 'assets', 'pci-banner.jpg');
-if (!fs.existsSync(bannerSource)) {
-  throw new Error('Missing assets/pci-banner.jpg. The title-menu banner cannot be published.');
-}
-const publicAssets = path.join(__dirname, '..', 'out', 'html', 'assets');
-fs.mkdirSync(publicAssets, { recursive: true });
-fs.copyFileSync(bannerSource, path.join(publicAssets, 'pci-banner.jpg'));
+/* The historical banner is loaded directly from Wikimedia Commons. */
 
 /* Persist the modified HTML. Without this write, all injected changes are lost. */
 fs.writeFileSync(indexPath, html, 'utf8');
@@ -107,8 +100,5 @@ const written = fs.readFileSync(indexPath, 'utf8');
 if (!written.includes('anni-title-screen-style') || !written.includes('anni-title-screen-script')) {
   throw new Error('Title-menu modifications were not written into index.html.');
 }
-if (!fs.existsSync(path.join(publicAssets, 'pci-banner.jpg'))) {
-  throw new Error('Banner file was not copied into out/html/assets.');
-}
-console.log('Title menu saved: title, PCI banner and menu choices are in one panel.');
+console.log('Title menu saved: title, historical Giuseppe Memeo banner and menu choices are in one panel.');
 console.log('Sidebar configured: Main, Politics, Polls.');
