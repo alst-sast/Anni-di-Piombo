@@ -222,16 +222,16 @@ body.anni-campaign-active #anni-advisors {
 }
 body.anni-campaign-active .anni-advisors-title { margin:0 0 .45rem; font-size:1.22rem; font-weight:bold; }
 body.anni-campaign-active .anni-advisor-meter {
-  display:grid; grid-template-columns:repeat(5,1fr); gap:2px; height:13px;
+  display:grid; grid-template-columns:repeat(4,1fr); gap:2px; height:13px;
   margin:0 auto .25rem; padding:2px; background:#202020; border:1px solid #171717;
 }
 body.anni-campaign-active .anni-advisor-meter span:nth-child(1) { background:#8bcdf1; }
 body.anni-campaign-active .anni-advisor-meter span:nth-child(2) { background:#c9a5d0; }
 body.anni-campaign-active .anni-advisor-meter span:nth-child(3) { background:#8d83ad; }
 body.anni-campaign-active .anni-advisor-meter span:nth-child(4) { background:#789e8d; }
-body.anni-campaign-active .anni-advisor-meter span:nth-child(5) { background:#164f3a; }
+body.anni-campaign-active .anni-advisor-meter span:nth-child(4) { background:#164f3a; }
 body.anni-campaign-active .anni-advisor-availability {
-  display:grid; grid-template-columns:repeat(5,1fr); gap:.2rem; margin:0 0 .8rem;
+  display:grid; grid-template-columns:repeat(4,1fr); gap:.2rem; margin:0 0 .8rem;
   color:#37673b; font-size:.76rem; font-weight:bold;
 }
 body.anni-campaign-active .anni-advisor-grid {
