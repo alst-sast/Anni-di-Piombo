@@ -120,10 +120,10 @@ body.anni-campaign-active #header-links a {
 body.anni-campaign-active #header-links a:hover { color:#315f79; text-decoration:underline; }
 body.anni-campaign-active #mid_panel {
   width:40rem; max-width:calc(100vw - 34rem); min-width:30rem;
-  box-sizing:border-box; margin:0 auto; padding:3.8rem 0 2rem;
+  box-sizing:border-box; margin:0 auto; padding:2.85rem 0 2rem;
 }
 body.anni-campaign-active #tools_wrapper {
-  position:absolute; z-index:5; top:3.9rem; left:50%; right:auto;
+  position:absolute; z-index:5; top:2.85rem; left:50%; right:auto;
   width:min(74rem,calc(100vw - 2rem)); max-width:none; height:1px;
   margin:0; padding:0; transform:translateX(-50%); pointer-events:none;
 }
@@ -251,9 +251,9 @@ body.anni-campaign-active .anni-advisor figcaption { color:#403322; font-size:.9
 body.anni-campaign-active .anni-image-credits { margin:.9rem 0 0; color:#716958; font-size:.7rem; line-height:1.3; }
 body.anni-campaign-active .anni-image-credits a { color:#5c7683; }
 body.anni-title-screen #header-links { display:none!important; }
-@media screen and (max-width:1180px) {
+@media screen and (max-width:960px) {
   body.anni-campaign-active #mid_panel {
-    width:min(46rem,calc(100vw - 2rem)); min-width:0; max-width:none; padding-top:3.7rem;
+    width:min(46rem,calc(100vw - 2rem)); min-width:0; max-width:none; padding-top:2.85rem;
   }
   body.anni-campaign-active #tools_wrapper {
     position:static; display:flex; align-items:flex-start; justify-content:center; flex-wrap:wrap;
@@ -287,9 +287,8 @@ const gameplayScript = `
   var advisors = [
     {name:'Luigi Longo',image:'https://commons.wikimedia.org/wiki/Special:FilePath/Luigi_Longo_1968.jpg',source:'https://commons.wikimedia.org/wiki/File:Luigi_Longo_1968.jpg'},
     {name:'Enrico Berlinguer',image:'https://commons.wikimedia.org/wiki/Special:FilePath/Enrico_Berlinguer_1970.jpg',source:'https://commons.wikimedia.org/wiki/File:Enrico_Berlinguer_1970.jpg'},
-    {name:'Pietro Ingrao',image:'https://commons.wikimedia.org/wiki/Special:FilePath/PietroIngrao.jpg',source:'https://commons.wikimedia.org/wiki/File:PietroIngrao.jpg'},
-    {name:'Giorgio Amendola',image:'https://commons.wikimedia.org/wiki/Special:FilePath/Giorgio_Amendola_1969.jpg',source:'https://commons.wikimedia.org/wiki/File:Giorgio_Amendola_1969.jpg'},
-    {name:'Nilde Iotti',image:'https://commons.wikimedia.org/wiki/Special:FilePath/Leonilde_Iotti.jpg',source:'https://commons.wikimedia.org/wiki/File:Leonilde_Iotti.jpg'}
+    {name:'Giorgio Amendola',image:'https://commons.wikimedia.org/wiki/Special:FilePath/Giorgio_Amendola.jpg',source:'https://commons.wikimedia.org/wiki/File:Giorgio_Amendola.jpg'},
+    {name:'Pietro Ingrao',image:'https://commons.wikimedia.org/wiki/Special:FilePath/PietroIngrao.jpg',source:'https://commons.wikimedia.org/wiki/File:PietroIngrao.jpg'}
   ];
   function sceneId() {
     try {
@@ -298,21 +297,19 @@ const gameplayScript = `
     } catch (e) { return ''; }
   }
   function isCampaign(scene) {
-    var excluded=['root','main','main.title_screen','main.party_select','main.pci_easy_start','main.pci_start','main.pci_hard_start','main.main_menu','main.credits','main.achievements'];
+    var excluded=['root','main','main.title_screen','main.party_select','main.pci_easy_start','main.pci_start','main.pci_hard_start','main.main_menu','main.credits'];
     return !!scene && excluded.indexOf(scene)===-1 && scene.indexOf('status.')!==0;
   }
   function dateInfo() {
-    var el=document.getElementById('content');
-    var txt=el ? (el.innerText || el.textContent || '') : '';
-    var re=/(January|February|March|April|May|June|July|August|September|October|November|December)\s*\/\s*(19\d{2})/i;
-    var m=txt.match(re);
-    if (!m && el) {
-      var h=el.querySelector('h2');
-      if (h) m=(h.innerText || h.textContent || '').match(re);
+    try {
+      var q=window.dendryUI.dendryEngine.state.qualities || {};
+      var month=Number(q.month)||1;
+      var year=Number(q.year)||1968;
+      month=Math.max(1,Math.min(12,month));
+      return {month:month,monthName:monthNames[month-1],year:year};
+    } catch(e) {
+      return {month:1,monthName:'January',year:1968};
     }
-    if (!m) return {month:1,monthName:'January',year:1968};
-    var ix=monthNames.map(function(x){return x.toLowerCase();}).indexOf(m[1].toLowerCase());
-    return {month:ix+1,monthName:monthNames[ix],year:Number(m[2])};
   }
   function storyFor(d) {
     var y=d.year,m=d.month;
@@ -364,26 +361,29 @@ const gameplayScript = `
     var w=document.getElementById('tools_wrapper');if(!w)return;
     var p=document.getElementById('anni-news-panel');
     if(!p){p=document.createElement('aside');p.id='anni-news-panel';p.className='tools right';w.appendChild(p);}
+    var key=d.month+'-'+d.year;
+    if(p.getAttribute('data-date')===key)return;
+    p.setAttribute('data-date',key);
     var s=storyFor(d);
-    p.innerHTML='<div class="anni-paper-masthead">L’UNITÀ</div><div class="anni-paper-kicker">Quotidiano fondato da Antonio Gramsci</div><hr class="anni-paper-rule"><div class="anni-paper-date">Roma · '+d.monthName+' '+d.year+'</div><div class="anni-paper-headline">'+s[0]+'</div><p class="anni-paper-copy">'+s[1]+'</p><p class="anni-paper-copy">The Communist opposition must decide how to respond while maintaining its commitment to democratic institutions and civil liberties.</p><hr class="anni-paper-rule"><div class="anni-paper-kicker">Il quotidiano dei comunisti italiani</div><div class="anni-paper-mark">✦ PCI ✦</div>';
+    p.innerHTML='<div class="anni-paper-masthead">l’Unità</div><div class="anni-paper-kicker">Quotidiano del Partito Comunista Italiano</div><hr class="anni-paper-rule"><div class="anni-paper-date">Roma · '+d.monthName+' '+d.year+'</div><div class="anni-paper-headline">'+s[0]+'</div><p class="anni-paper-copy">'+s[1]+'</p><p class="anni-paper-copy">The PCI leadership weighs its next move as Italy’s democratic institutions, workers and political parties face the challenges of the day.</p><hr class="anni-paper-rule"><div class="anni-paper-kicker">Il quotidiano fondato da Antonio Gramsci</div><div class="anni-paper-mark">☭</div>';
   }
   function addProfile(d) {
     var c=document.getElementById('content');if(!c)return;
     var p=document.getElementById('anni-party-profile');
     if(!p){p=document.createElement('section');p.id='anni-party-profile';c.parentNode.insertBefore(p,c);}
     var leader=d.year<1972?{name:'Luigi Longo',image:'https://commons.wikimedia.org/wiki/Special:FilePath/Luigi_Longo_1968.jpg'}:{name:'Enrico Berlinguer',image:'https://commons.wikimedia.org/wiki/Special:FilePath/Enrico_Berlinguer_1970.jpg'};
+    if(p.getAttribute('data-leader')===leader.name)return;
+    p.setAttribute('data-leader',leader.name);
     p.innerHTML='<div class="anni-profile-title">Partito Comunista Italiano <span>(PCI)</span></div><img class="anni-profile-photo" src="'+leader.image+'" alt="'+leader.name+'" loading="lazy"><div class="anni-profile-name">'+leader.name+'</div><div class="anni-profile-role">Segretario generale del PCI</div>';
   }
   function addAdvisors(scene) {
     var c=document.getElementById('content');if(!c)return;
     var p=document.getElementById('anni-advisors');
-    if(scene!=='main.monthly_briefing'){if(p)p.parentNode.removeChild(p);return;}
-    if(p&&p.getAttribute('data-scene')===scene)return;
-    if(p)p.parentNode.removeChild(p);
+    if(p)return;
     p=document.createElement('section');p.id='anni-advisors';p.setAttribute('data-scene',scene);
     var portraits=advisors.map(function(x){return '<figure class="anni-advisor"><img src="'+x.image+'" alt="'+x.name+'" loading="lazy"><figcaption>'+x.name+'</figcaption></figure>';}).join('');
     var refs=advisors.map(function(x){return '<a href="'+x.source+'" target="_blank" rel="noopener">'+x.name+'</a>';}).join(' · ');
-    p.innerHTML='<div class="anni-advisors-title">Advisors</div><div class="anni-advisor-meter"><span></span><span></span><span></span><span></span><span></span></div><div class="anni-advisor-availability"><span>Available</span><span>Available</span><span>Available</span><span>Available</span><span>Available</span></div><div class="anni-advisor-grid">'+portraits+'</div><div class="anni-image-credits">Portrait sources: '+refs+'. Credits and licences are listed on each Wikimedia Commons file page.</div>';
+    p.innerHTML='<div class="anni-advisors-title">Advisors</div><div class="anni-advisor-meter"><span></span><span></span><span></span><span></span></div><div class="anni-advisor-availability"><span>Available</span><span>Available</span><span>Available</span><span>Available</span></div><div class="anni-advisor-grid">'+portraits+'</div><div class="anni-image-credits">Portrait sources: '+refs+'. Credits and licences are listed on each Wikimedia Commons file page.</div>';
     c.appendChild(p);
   }
   function sync() {
