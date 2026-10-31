@@ -179,8 +179,12 @@ body.anni-campaign-active .anni-paper-headline {
   font-weight:bold; line-height:1.16; text-align:left;
 }
 body.anni-campaign-active .anni-paper-copy { margin:0 0 .75rem; font-size:.91rem; line-height:1.38; text-indent:.8rem; }
-body.anni-campaign-active .anni-paper-mark {
-  margin:.8rem 0 0; color:#8d241c; font-size:1.65rem; font-weight:bold; text-align:center; letter-spacing:.08em;
+body.anni-campaign-active .anni-paper-section {
+  margin:.45rem 0 .25rem; color:#6d251e; font-size:.67rem; font-weight:bold;
+  font-variant:small-caps; letter-spacing:.08em;
+}
+body.anni-campaign-active .anni-paper-footer {
+  color:#746a59; font-size:.63rem; font-variant:small-caps; letter-spacing:.07em; text-align:center;
 }
 body.anni-campaign-active #anni-party-profile {
   width:100%; max-width:40rem; box-sizing:border-box; margin:0 auto .65rem; padding:.55rem 1rem .7rem;
@@ -245,10 +249,7 @@ body.anni-campaign-active .anni-advisor-meter {
 }
 body.anni-campaign-active .anni-advisor-meter span { background:#8f897a; }
 body.anni-campaign-active .anni-advisor-meter span:nth-child(4) { background:#164f3a; }
-body.anni-campaign-active .anni-advisor-availability {
-  display:grid; grid-template-columns:repeat(4,1fr); gap:.2rem; margin:0 0 .65rem;
-  color:#625a4c; font-size:.67rem; font-variant:small-caps; letter-spacing:.03em;
-}
+
 body.anni-campaign-active .anni-advisor-grid {
   display:flex; flex-wrap:wrap; align-items:flex-start; justify-content:center; gap:.8rem 1rem;
 }
@@ -386,7 +387,15 @@ const gameplayScript = `
     if(p.getAttribute('data-date')===key)return;
     p.setAttribute('data-date',key);
     var story=storyFor(d);
-    p.innerHTML='<div class="anni-paper-masthead">l’Unità</div><div class="anni-paper-kicker">Quotidiano del Partito Comunista Italiano</div><hr class="anni-paper-rule"><div class="anni-paper-date">Roma · '+italianMonthNames[d.month-1]+' '+d.year+'</div><div class="anni-paper-headline">'+story[0]+'</div><p class="anni-paper-copy">'+story[1]+'</p><p class="anni-paper-copy">La direzione comunista valuta le prossime iniziative a difesa delle istituzioni democratiche, dei diritti dei lavoratori e della libertà politica.</p><hr class="anni-paper-rule"><div class="anni-paper-kicker">Il quotidiano fondato da Antonio Gramsci</div><div class="anni-paper-mark">☭</div>';
+    p.innerHTML='<div class="anni-paper-masthead">l’Unità</div>'+
+      '<div class="anni-paper-kicker">ORGANO DEL PARTITO COMUNISTA ITALIANO</div>'+
+      '<hr class="anni-paper-rule">'+
+      '<div class="anni-paper-date">ROMA · '+italianMonthNames[d.month-1]+' '+d.year+'</div>'+
+      '<div class="anni-paper-section">POLITICA NAZIONALE</div>'+
+      '<div class="anni-paper-headline">'+story[0]+'</div>'+
+      '<p class="anni-paper-copy">'+story[1]+'</p>'+
+      '<hr class="anni-paper-rule">'+
+      '<div class="anni-paper-footer">EDIZIONE QUOTIDIANA · CRONACA POLITICA</div>';
   }
   function addProfile(d) {
     var c=document.getElementById('content');if(!c)return;
@@ -406,8 +415,12 @@ const gameplayScript = `
     }
     p=document.createElement('section');p.id='anni-advisors';p.setAttribute('data-scene',scene);
     var portraits=advisors.map(function(x){return '<figure class="anni-advisor"><img src="'+x.image+'" alt="'+x.name+'" loading="lazy"><figcaption>'+x.name+'</figcaption><div class="anni-advisor-role">'+x.role+'</div></figure>';}).join('');
-    var refs=advisors.map(function(x){return '<a href="'+x.source+'" target="_blank" rel="noopener">'+x.name+'</a>';}).join(' · ');
-    p.innerHTML='<div class="anni-advisors-title">Dirigenti del partito</div><div class="anni-advisor-meter"><span></span><span></span><span></span><span></span></div><div class="anni-advisor-availability"><span>Direzione</span><span>Direzione</span><span>Parlamento</span><span>Parlamento</span></div><div class="anni-advisor-grid">'+portraits+'</div><div class="anni-image-credits">Ritratti d’archivio: '+refs+'. Fonti e licenze sulle schede fotografiche.</div>';
+    p.innerHTML=
+      '<div class="anni-advisors-title">Dirigenti del partito</div>'+
+      '<div class="anni-advisor-meter"><span></span><span></span><span></span><span></span></div>'+
+      '<div class="anni-advisor-grid">'+portraits+'</div>'+
+      '<div class="anni-image-credits">Ritratti: Longo — Giovanni Malagodi / Camera dei Deputati (CC BY-SA 4.0); Berlinguer e Amendola — fotografie storiche, dominio pubblico in Italia; Ingrao — dati.camera.it (CC BY-SA 4.0); Iotti — Severino Crescente, Archivio Centrale dello Stato.</div>'+
+      '<div class="anni-image-credits">Carte: tessera PCI 1961 — Fondazione Luigi Micheletti / Wikimedia Italia (CC BY-SA 4.0); sciopero 1969 — dominio pubblico; operai Fiat — Epoca, 1961; materiale parlamentare — Camera dei Deputati (CC BY-SA 4.0).</div>';
     c.appendChild(p);
   }
   function sync() {
