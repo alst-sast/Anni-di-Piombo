@@ -161,10 +161,8 @@ body.anni-campaign-active #stats_sidebar {
   top: 0;
   left: 0;
   float: none;
-  width: 14rem;
   max-height: calc(100vh - 5rem);
   overflow: auto;
-  box-sizing: border-box;
   pointer-events: auto;
 }
 /* Newspaper uses the framework's native .tools right panel. */
@@ -173,10 +171,8 @@ body.anni-campaign-active #anni-news-panel {
   top: 0;
   right: 0;
   float: none;
-  width: 14rem;
   max-height: calc(100vh - 5rem);
   overflow: auto;
-  box-sizing: border-box;
   pointer-events: auto;
 }
 
