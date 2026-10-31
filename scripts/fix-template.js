@@ -106,8 +106,7 @@ body.anni-campaign-active .background { background:transparent!important; backgr
 body.anni-campaign-active header {
   position:fixed; z-index:20; top:0; left:0; right:0; width:100%; max-width:none;
   box-sizing:border-box; padding:.3rem .8rem .4rem; margin:0; text-align:center;
-  background:rgba(246,240,225,.97); border-bottom:1px solid #aa9877;
-  box-shadow:0 2px 7px rgba(45,34,20,.16);
+  background:#eee8d9; border-bottom:1px solid #8f846f;
 }
 body.anni-campaign-active header h1,body.anni-campaign-active header h2 { display:none!important; }
 body.anni-campaign-active #header-links {
@@ -130,8 +129,8 @@ body.anni-campaign-active #tools_wrapper {
 body.anni-campaign-active #stats_sidebar {
   position:absolute; top:0; left:0; float:none; width:17rem;
   max-height:calc(100vh - 5rem); overflow:auto; box-sizing:border-box; padding:.65rem;
-  color:#3d3021; background:rgba(247,244,236,.97);
-  border:1px solid rgba(110,91,64,.55); box-shadow:2px 3px 12px rgba(0,0,0,.19);
+  color:#3d3021; background:#eeeadd;
+  border:1px solid #9e927c; box-shadow:none;
   pointer-events:auto;
 }
 body.anni-campaign-active #stats_sidebar .tab_container {
@@ -158,16 +157,17 @@ body.anni-campaign-active #qualities img {
 body.anni-campaign-active #anni-news-panel {
   position:absolute; top:0; right:0; float:none; width:17rem;
   max-height:calc(100vh - 5rem); overflow:auto; box-sizing:border-box;
-  padding:.9rem .9rem 1rem; color:#292521; background:rgba(250,249,245,.98);
-  border:1px solid rgba(110,91,64,.45); box-shadow:2px 3px 12px rgba(0,0,0,.19);
-  font-family:Georgia,"Times New Roman",serif; line-height:1.48; pointer-events:auto;
+  padding:.85rem .9rem 1rem; color:#292521; background:#f1ecdf;
+  border:1px solid #9e927c; box-shadow:none;
+  font-family:Georgia,"Times New Roman",serif; line-height:1.38; pointer-events:auto;
 }
 body.anni-campaign-active .anni-paper-masthead {
-  margin:0 0 .35rem; color:#49351f; font:bold 1.55rem/1.05 Georgia,"Times New Roman",serif;
-  text-align:center; letter-spacing:.015em;
+  margin:0 0 .25rem; color:#33291f; font:italic 1.7rem/1.05 Georgia,"Times New Roman",serif;
+  text-align:center; letter-spacing:0;
 }
 body.anni-campaign-active .anni-paper-kicker {
-  margin:0 0 .7rem; color:#796b55; font-size:.68rem; font-style:italic; text-align:center;
+  margin:0 0 .55rem; color:#62594b; font-size:.62rem; font-style:normal; font-variant:small-caps;
+  letter-spacing:.07em; text-align:center;
 }
 body.anni-campaign-active .anni-paper-rule { height:1px; margin:.5rem 0 .8rem; background:#8e806b; border:0; }
 body.anni-campaign-active .anni-paper-date {
@@ -175,33 +175,33 @@ body.anni-campaign-active .anni-paper-date {
   text-align:center; text-transform:uppercase; letter-spacing:.08em;
 }
 body.anni-campaign-active .anni-paper-headline {
-  margin:.5rem 0 .65rem; color:#33291e; font-size:1.15rem;
-  font-weight:bold; line-height:1.2; text-align:center;
+  margin:.35rem 0 .55rem; color:#28231d; font-size:1.16rem;
+  font-weight:bold; line-height:1.16; text-align:left;
 }
-body.anni-campaign-active .anni-paper-copy { margin:0 0 .85rem; font-size:.94rem; text-indent:0; }
+body.anni-campaign-active .anni-paper-copy { margin:0 0 .75rem; font-size:.91rem; line-height:1.38; text-indent:.8rem; }
 body.anni-campaign-active .anni-paper-mark {
   margin:.8rem 0 0; color:#8d241c; font-size:1.65rem; font-weight:bold; text-align:center; letter-spacing:.08em;
 }
 body.anni-campaign-active #anni-party-profile {
-  width:100%; max-width:40rem; box-sizing:border-box; margin:0 auto .8rem; padding:.65rem 1rem .8rem;
-  color:#3b2d1c; background:rgba(247,246,242,.97); border:1px solid rgba(113,96,72,.45);
-  box-shadow:2px 3px 12px rgba(0,0,0,.17); text-align:center;
+  width:100%; max-width:40rem; box-sizing:border-box; margin:0 auto .65rem; padding:.55rem 1rem .7rem;
+  color:#3b2d1c; background:#efede5; border:1px solid #a69b88;
+  box-shadow:none; text-align:center;
 }
 body.anni-campaign-active .anni-profile-title {
   margin:0 0 .4rem; color:#42311f; font-size:1.26rem; font-weight:normal; line-height:1.25;
 }
 body.anni-campaign-active .anni-profile-title span { color:#3d84a8; font-weight:bold; }
 body.anni-campaign-active .anni-profile-photo {
-  display:block; width:9rem; height:11.5rem; max-width:12rem; margin:.35rem auto .45rem;
-  padding:.22rem; object-fit:contain; background:#e5e2dc; border:2px solid #8e877c;
-  filter:grayscale(100%); box-shadow:2px 3px 8px rgba(0,0,0,.2);
+  display:block; width:auto; height:10.5rem; max-width:10rem; margin:.35rem auto .4rem;
+  padding:3px; object-fit:contain; background:#f3efe5; border:1px solid #716957;
+  filter:none; box-shadow:none;
 }
 body.anni-campaign-active .anni-profile-name { margin:.2rem 0 0; font-size:1.03rem; font-weight:bold; }
 body.anni-campaign-active .anni-profile-role { margin:.05rem 0 0; color:#77716a; font-size:.9rem; font-style:italic; }
 body.anni-campaign-active #content {
-  width:100%; max-width:none; box-sizing:border-box; margin:0 auto; padding:1rem 1.35rem 1.5rem;
-  color:#403322; background:rgba(247,247,245,.97); border:1px solid rgba(113,96,72,.38);
-  box-shadow:2px 3px 12px rgba(0,0,0,.2);
+  width:100%; max-width:none; box-sizing:border-box; margin:0 auto; padding:.9rem 1.35rem 1.3rem;
+  color:#403322; background:#efede6; border:1px solid #a69b88;
+  box-shadow:none;
 }
 body.anni-campaign-active #content h1 {
   margin-top:.25rem; color:#44321e; font-family:Georgia,"Times New Roman",serif; letter-spacing:.05em;
@@ -221,39 +221,47 @@ body.anni-campaign-active #content ul.hand,
 body.anni-campaign-active #content ul.pinned-cards {
   margin:.55rem 0 .9rem; padding:0; border:0;
 }
+body.anni-campaign-active #content a.card {
+  border:7px solid #c8c2b6; box-shadow:1px 1px 2px rgba(45,36,24,.12);
+}
+body.anni-campaign-active #content a.card:hover {
+  left:0; top:0; box-shadow:1px 1px 2px rgba(45,36,24,.12);
+}
+body.anni-campaign-active #content div.blank-card {
+  background:#e0ddd5; border:7px solid #c8c2b6;
+}
+body.anni-campaign-active #content .card-caption {
+  color:#403322; font-family:Georgia,"Times New Roman",serif; font-size:.92rem;
+}
+
 body.anni-campaign-active #anni-advisors {
-  margin:1.35rem -1.35rem -1.5rem; padding:.8rem 1rem 1rem;
-  color:#403322; background:rgba(233,232,228,.97); border-top:1px solid #d1cbc0; text-align:center;
+  margin:1.1rem -1.35rem -1.3rem; padding:.7rem 1rem .9rem;
+  color:#403322; background:#e6e3d9; border-top:1px solid #b8ae9a; text-align:center;
 }
-body.anni-campaign-active .anni-advisors-title { margin:0 0 .45rem; font-size:1.22rem; font-weight:bold; }
+body.anni-campaign-active .anni-advisors-title { margin:0 0 .35rem; font-size:1.08rem; font-weight:bold; font-variant:small-caps; letter-spacing:.04em; }
 body.anni-campaign-active .anni-advisor-meter {
-  display:grid; grid-template-columns:repeat(4,1fr); gap:2px; height:13px;
-  margin:0 auto .25rem; padding:2px; background:#202020; border:1px solid #171717;
+  display:grid; grid-template-columns:repeat(4,1fr); gap:2px; height:8px;
+  margin:0 auto .35rem; padding:1px; background:#eee9dd; border:1px solid #8a806c;
 }
-body.anni-campaign-active .anni-advisor-meter span:nth-child(1) { background:#8bcdf1; }
-body.anni-campaign-active .anni-advisor-meter span:nth-child(2) { background:#c9a5d0; }
-body.anni-campaign-active .anni-advisor-meter span:nth-child(3) { background:#8d83ad; }
-body.anni-campaign-active .anni-advisor-meter span:nth-child(4) { background:#789e8d; }
+body.anni-campaign-active .anni-advisor-meter span { background:#8f897a; }
 body.anni-campaign-active .anni-advisor-meter span:nth-child(4) { background:#164f3a; }
 body.anni-campaign-active .anni-advisor-availability {
-  display:grid; grid-template-columns:repeat(4,1fr); gap:.2rem; margin:0 0 .8rem;
-  color:#37673b; font-size:.76rem; font-weight:bold;
+  display:grid; grid-template-columns:repeat(4,1fr); gap:.2rem; margin:0 0 .65rem;
+  color:#625a4c; font-size:.67rem; font-variant:small-caps; letter-spacing:.03em;
 }
 body.anni-campaign-active .anni-advisor-grid {
-  display:flex; flex-wrap:wrap; align-items:end; justify-content:center; gap:1rem 1.1rem;
+  display:flex; flex-wrap:wrap; align-items:flex-start; justify-content:center; gap:.8rem 1rem;
 }
-body.anni-campaign-active .anni-advisor { width:7.5rem; margin:0; text-align:center; }
+body.anni-campaign-active .anni-advisor { width:7rem; margin:0; text-align:center; }
 body.anni-campaign-active .anni-advisor img {
-  display:block; width:7rem; height:9rem; box-sizing:border-box; margin:0 auto .35rem;
-  padding:.3rem; object-fit:cover; background:#e3e0d8; border:7px solid #9bc7df;
-  box-shadow:2px 3px 8px rgba(0,0,0,.2); filter:grayscale(100%);
+  display:block; width:auto; height:8rem; max-width:6.4rem; box-sizing:border-box; margin:0 auto .28rem;
+  padding:3px; object-fit:contain; background:#f2eee4; border:1px solid #746b5d;
+  box-shadow:none; filter:none;
 }
-body.anni-campaign-active .anni-advisor:nth-child(2) img { border-color:#cba7d0; }
-body.anni-campaign-active .anni-advisor:nth-child(3) img { border-color:#d5ad51; }
-body.anni-campaign-active .anni-advisor:nth-child(4) img { border-color:#9bc7df; }
-body.anni-campaign-active .anni-advisor:nth-child(5) img { border-color:#15513c; }
-body.anni-campaign-active .anni-advisor figcaption { color:#403322; font-size:.9rem; line-height:1.15; }
-body.anni-campaign-active .anni-image-credits { margin:.9rem 0 0; color:#716958; font-size:.7rem; line-height:1.3; }
+body.anni-campaign-active .anni-advisor figcaption { font-variant:small-caps; }
+body.anni-campaign-active .anni-advisor figcaption { color:#403322; font-size:.84rem; line-height:1.15; }
+body.anni-campaign-active .anni-advisor-role { margin-top:.12rem; color:#746a59; font-size:.68rem; font-style:italic; }
+body.anni-campaign-active .anni-image-credits { margin:.7rem 0 0; color:#756b5a; font-size:.65rem; line-height:1.35; }
 body.anni-campaign-active .anni-image-credits a { color:#5c7683; }
 body.anni-title-screen #header-links { display:none!important; }
 @media screen and (max-width:960px) {
@@ -291,10 +299,10 @@ const gameplayScript = `
   var monthNames = ['January','February','March','April','May','June','July','August','September','October','November','December'];
   var italianMonthNames = ['gennaio','febbraio','marzo','aprile','maggio','giugno','luglio','agosto','settembre','ottobre','novembre','dicembre'];
   var advisors = [
-    {name:'Luigi Longo',image:'https://commons.wikimedia.org/wiki/Special:FilePath/Luigi_Longo_1968.jpg',source:'https://commons.wikimedia.org/wiki/File:Luigi_Longo_1968.jpg'},
-    {name:'Enrico Berlinguer',image:'https://commons.wikimedia.org/wiki/Special:FilePath/Enrico_Berlinguer_1970.jpg',source:'https://commons.wikimedia.org/wiki/File:Enrico_Berlinguer_1970.jpg'},
-    {name:'Giorgio Amendola',image:'https://commons.wikimedia.org/wiki/Special:FilePath/Giorgio_Amendola.jpg',source:'https://commons.wikimedia.org/wiki/File:Giorgio_Amendola.jpg'},
-    {name:'Pietro Ingrao',image:'https://commons.wikimedia.org/wiki/Special:FilePath/PietroIngrao.jpg',source:'https://commons.wikimedia.org/wiki/File:PietroIngrao.jpg'}
+    {name:'Enrico Berlinguer',role:'Direzione',image:'https://commons.wikimedia.org/wiki/Special:FilePath/Enrico_Berlinguer.jpg',source:'https://commons.wikimedia.org/wiki/File:Enrico_Berlinguer.jpg'},
+    {name:'Giorgio Amendola',role:'Direzione',image:'https://commons.wikimedia.org/wiki/Special:FilePath/Giorgio_Amendola_1969.jpg',source:'https://commons.wikimedia.org/wiki/File:Giorgio_Amendola_1969.jpg'},
+    {name:'Pietro Ingrao',role:'Parlamento',image:'https://commons.wikimedia.org/wiki/Special:FilePath/PietroIngrao.jpg',source:'https://commons.wikimedia.org/wiki/File:PietroIngrao.jpg'},
+    {name:'Nilde Iotti',role:'Parlamento',image:'https://commons.wikimedia.org/wiki/Special:FilePath/Leonilde_Iotti.jpg',source:'https://commons.wikimedia.org/wiki/File:Leonilde_Iotti.jpg'}
   ];
   function sceneId() {
     try {
@@ -384,7 +392,7 @@ const gameplayScript = `
     var c=document.getElementById('content');if(!c)return;
     var p=document.getElementById('anni-party-profile');
     if(!p){p=document.createElement('section');p.id='anni-party-profile';c.parentNode.insertBefore(p,c);}
-    var leader=d.year<1972?{name:'Luigi Longo',image:'https://commons.wikimedia.org/wiki/Special:FilePath/Luigi_Longo_1968.jpg'}:{name:'Enrico Berlinguer',image:'https://commons.wikimedia.org/wiki/Special:FilePath/Enrico_Berlinguer_1970.jpg'};
+    var leader=d.year<1972?{name:'Luigi Longo',image:'https://commons.wikimedia.org/wiki/Special:FilePath/Luigi_Longo_1968.jpg'}:{name:'Enrico Berlinguer',image:'https://commons.wikimedia.org/wiki/Special:FilePath/Enrico_Berlinguer.jpg'};
     if(p.getAttribute('data-leader')===leader.name)return;
     p.setAttribute('data-leader',leader.name);
     p.innerHTML='<div class="anni-profile-title">Partito Comunista Italiano <span>(PCI)</span></div><img class="anni-profile-photo" src="'+leader.image+'" alt="'+leader.name+'" loading="lazy"><div class="anni-profile-name">'+leader.name+'</div><div class="anni-profile-role">Segretario generale del PCI</div>';
@@ -397,9 +405,9 @@ const gameplayScript = `
       return;
     }
     p=document.createElement('section');p.id='anni-advisors';p.setAttribute('data-scene',scene);
-    var portraits=advisors.map(function(x){return '<figure class="anni-advisor"><img src="'+x.image+'" alt="'+x.name+'" loading="lazy"><figcaption>'+x.name+'</figcaption></figure>';}).join('');
+    var portraits=advisors.map(function(x){return '<figure class="anni-advisor"><img src="'+x.image+'" alt="'+x.name+'" loading="lazy"><figcaption>'+x.name+'</figcaption><div class="anni-advisor-role">'+x.role+'</div></figure>';}).join('');
     var refs=advisors.map(function(x){return '<a href="'+x.source+'" target="_blank" rel="noopener">'+x.name+'</a>';}).join(' · ');
-    p.innerHTML='<div class="anni-advisors-title">Advisors</div><div class="anni-advisor-meter"><span></span><span></span><span></span><span></span></div><div class="anni-advisor-availability"><span>Available</span><span>Available</span><span>Available</span><span>Available</span></div><div class="anni-advisor-grid">'+portraits+'</div><div class="anni-image-credits">Portrait sources: '+refs+'. Credits and licences are listed on each Wikimedia Commons file page.</div>';
+    p.innerHTML='<div class="anni-advisors-title">Dirigenti del partito</div><div class="anni-advisor-meter"><span></span><span></span><span></span><span></span></div><div class="anni-advisor-availability"><span>Direzione</span><span>Direzione</span><span>Parlamento</span><span>Parlamento</span></div><div class="anni-advisor-grid">'+portraits+'</div><div class="anni-image-credits">Ritratti d’archivio: '+refs+'. Fonti e licenze sulle schede fotografiche.</div>';
     c.appendChild(p);
   }
   function sync() {
