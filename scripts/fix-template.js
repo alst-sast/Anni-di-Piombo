@@ -119,16 +119,16 @@ body.anni-campaign-active #header-links a {
 }
 body.anni-campaign-active #header-links a:hover { color:#315f79; text-decoration:underline; }
 body.anni-campaign-active #mid_panel {
-  width:40rem; max-width:calc(100vw - 34rem); min-width:30rem;
+  width:36rem; max-width:calc(100vw - 34rem); min-width:28rem;
   box-sizing:border-box; margin:0 auto; padding:2.85rem 0 2rem;
 }
 body.anni-campaign-active #tools_wrapper {
   position:absolute; z-index:5; top:2.85rem; left:50%; right:auto;
-  width:min(74rem,calc(100vw - 2rem)); max-width:none; height:1px;
+  width:min(76rem,calc(100vw - 2rem)); max-width:none; height:1px;
   margin:0; padding:0; transform:translateX(-50%); pointer-events:none;
 }
 body.anni-campaign-active #stats_sidebar {
-  position:absolute; top:0; left:0; float:none; width:14rem;
+  position:absolute; top:0; left:0; float:none; width:17rem;
   max-height:calc(100vh - 5rem); overflow:auto; box-sizing:border-box; padding:.65rem;
   color:#3d3021; background:rgba(247,244,236,.97);
   border:1px solid rgba(110,91,64,.55); box-shadow:2px 3px 12px rgba(0,0,0,.19);
@@ -156,7 +156,7 @@ body.anni-campaign-active #qualities img {
   border:1px solid #b9ad98; box-shadow:0 2px 7px rgba(0,0,0,.15);
 }
 body.anni-campaign-active #anni-news-panel {
-  position:absolute; top:0; right:0; float:none; width:14rem;
+  position:absolute; top:0; right:0; float:none; width:17rem;
   max-height:calc(100vh - 5rem); overflow:auto; box-sizing:border-box;
   padding:.9rem .9rem 1rem; color:#292521; background:rgba(250,249,245,.98);
   border:1px solid rgba(110,91,64,.45); box-shadow:2px 3px 12px rgba(0,0,0,.19);
@@ -318,19 +318,19 @@ const gameplayScript = `
   }
   function storyFor(d) {
     var y=d.year,m=d.month;
-    if(y===1968&&m<=5)return ['Italy prepares for a decisive vote','The country approaches the May general election amid student protest, labour unrest and debate over the future of the Republic. The Communist opposition seeks to turn its growing social influence into parliamentary strength.'];
-    if(y===1968)return ['The election leaves the PCI in opposition','The Christian Democrats remain the largest parliamentary force after the May vote. The PCI consolidates its position as the principal opposition party and faces the challenge of broadening its alliances.'];
-    if(y===1969)return ['Factories and streets enter the Hot Autumn','A wave of strikes and workplace assemblies presses for higher wages, safer conditions and new rights. The labour movement is reshaping Italian politics, while tensions over public order grow.'];
-    if(y===1970)return ['A new statute transforms workers’ rights','Parliament approves the Workers’ Statute, giving legal force to protections won through years of collective action. The question now is how far those reforms can reach across the country.'];
-    if(y===1973)return ['Oil shock brings new economic pressure','Rising energy costs threaten production and household budgets. Parties, unions and employers face difficult choices over wages, prices and the direction of economic policy.'];
-    if(y===1974)return ['The divorce referendum reshapes public debate','Voters reject repeal of the divorce law. The result reveals the strength of secular and progressive opinion and exposes divisions within Italy’s political establishment.'];
-    if(y===1976)return ['The PCI reaches a historic electoral high','The June election brings the Communist Party close to the governing parties in electoral strength. Debate intensifies over parliamentary cooperation and the possibility of a new political arrangement.'];
-    if(y===1978&&m<=4)return ['The kidnapping of Aldo Moro shocks the Republic','The former prime minister has been abducted by the Red Brigades and five members of his escort have been killed. The government and opposition face an extraordinary test of democratic resolve.'];
-    if(y===1978)return ['Italy mourns Aldo Moro','After 55 days in captivity, Aldo Moro has been found murdered. The killing deepens the national crisis and renews the debate over how democracy can withstand political terror.'];
-    if(y===1980&&m>=8)return ['Bologna bombing leaves the country in grief','The explosion at Bologna Centrale has killed 85 people. Calls for justice and accountability grow as Italy confronts one of the deadliest attacks in its post-war history.'];
-    if(y===1981)return ['P2 revelations shake the political system','The discovery of the P2 lodge’s membership lists exposes a clandestine network with links to influential public figures. Demands for transparency and institutional reform intensify.'];
-    if(y===1983)return ['A new political season begins','The June election weakens the Christian Democrats and opens the way to a new government. The PCI must assess its influence after fifteen years of political upheaval.'];
-    return ['The Republic faces another month of uncertainty','Economic pressure, social demands and political violence continue to shape public life. The PCI leadership must balance parliamentary strategy with the expectations of its members, allies and voters.'];
+    if(y===1968&&m<=5)return ['Il PCI rilancia la sua battaglia','L’Italia si avvicina alle elezioni politiche di maggio, mentre crescono le proteste studentesche e le rivendicazioni del movimento operaio. Il Partito Comunista punta a trasformare il proprio radicamento sociale in una maggiore rappresentanza parlamentare.'];
+    if(y===1968)return ['Il voto conferma il PCI come principale forza di opposizione','La Democrazia Cristiana resta il primo partito dopo le elezioni di maggio. Il PCI consolida il proprio ruolo di principale forza di opposizione e si prepara a rafforzare il dialogo con i lavoratori e le forze democratiche.'];
+    if(y===1969)return ['L’autunno caldo scuote le fabbriche italiane','Una vasta stagione di scioperi e assemblee operaie rivendica salari più equi, migliori condizioni di lavoro e nuovi diritti. Il movimento sindacale imprime una svolta alla vita politica del Paese.'];
+    if(y===1970)return ['Lo Statuto dei lavoratori diventa legge','Il Parlamento approva lo Statuto dei lavoratori, riconoscendo importanti tutele conquistate dopo anni di mobilitazione. Si apre ora la sfida della sua piena applicazione in tutti i luoghi di lavoro.'];
+    if(y===1973)return ['La crisi petrolifera mette sotto pressione l’economia','L’aumento dei costi energetici minaccia la produzione industriale e il potere d’acquisto delle famiglie. Governo, sindacati e imprese sono chiamati a confrontarsi su salari, prezzi e politiche economiche.'];
+    if(y===1974)return ['Il referendum sul divorzio segna una svolta','Gli italiani respingono l’abrogazione della legge sul divorzio. Il risultato conferma la forza delle posizioni laiche e progressiste e apre una nuova fase nel dibattito civile del Paese.'];
+    if(y===1976)return ['Il PCI raggiunge un risultato elettorale storico','Le elezioni di giugno portano il Partito Comunista a un risultato senza precedenti. Si riaccende il confronto sulla collaborazione parlamentare e sulle prospettive di una nuova stagione politica.'];
+    if(y===1978&&m<=4)return ['Il sequestro Moro sconvolge la Repubblica','Le Brigate Rosse hanno rapito l’ex presidente del Consiglio Aldo Moro e ucciso cinque uomini della sua scorta. Il Paese affronta una crisi drammatica e le istituzioni democratiche sono sottoposte a una prova durissima.'];
+    if(y===1978)return ['L’Italia piange Aldo Moro','Dopo cinquantacinque giorni di prigionia, Aldo Moro è stato assassinato. Il delitto lascia una ferita profonda nella vita nazionale e rinnova il confronto sulla difesa della democrazia contro il terrorismo.'];
+    if(y===1980&&m>=8)return ['La strage di Bologna colpisce il Paese','L’esplosione alla stazione di Bologna ha provocato ottantacinque vittime. Crescono le richieste di verità e giustizia mentre l’Italia affronta una delle più gravi stragi della sua storia repubblicana.'];
+    if(y===1981)return ['Lo scandalo P2 scuote le istituzioni','La scoperta degli elenchi della loggia P2 rivela una rete clandestina con legami in ambienti influenti dello Stato e della politica. Si rafforzano le richieste di trasparenza e di riforma istituzionale.'];
+    if(y===1983)return ['Si apre una nuova stagione politica','Le elezioni di giugno indeboliscono la Democrazia Cristiana e portano alla formazione di un nuovo governo. Il PCI valuta il proprio ruolo dopo quindici anni di profondi cambiamenti politici e sociali.'];
+    return ['La Repubblica affronta un nuovo mese di tensioni','Le difficoltà economiche, le richieste sociali e la violenza politica continuano a segnare la vita del Paese. La direzione del PCI deve conciliare la strategia parlamentare con le aspettative dei propri iscritti, degli alleati e degli elettori.'];
   }
   function addTabs() {
     var c=document.querySelector('#stats_sidebar .tab_container');
@@ -376,8 +376,8 @@ const gameplayScript = `
     var key=d.month+'-'+d.year;
     if(p.getAttribute('data-date')===key)return;
     p.setAttribute('data-date',key);
-    var s=storyFor(d);
-    p.innerHTML='<div class="anni-paper-masthead">l’Unità</div><div class="anni-paper-kicker">Quotidiano del Partito Comunista Italiano</div><hr class="anni-paper-rule"><div class="anni-paper-date">Roma · '+d.monthName+' '+d.year+'</div><div class="anni-paper-headline">'+s[0]+'</div><p class="anni-paper-copy">'+s[1]+'</p><p class="anni-paper-copy">The PCI leadership weighs its next move as Italy’s democratic institutions, workers and political parties face the challenges of the day.</p><hr class="anni-paper-rule"><div class="anni-paper-kicker">Il quotidiano fondato da Antonio Gramsci</div><div class="anni-paper-mark">☭</div>';
+    var story=storyFor(d);
+    p.innerHTML='<div class="anni-paper-masthead">l’Unità</div><div class="anni-paper-kicker">Quotidiano del Partito Comunista Italiano</div><hr class="anni-paper-rule"><div class="anni-paper-date">Roma · '+d.monthName+' '+d.year+'</div><div class="anni-paper-headline">'+story[0]+'</div><p class="anni-paper-copy">'+story[1]+'</p><p class="anni-paper-copy">La direzione comunista valuta le prossime iniziative a difesa delle istituzioni democratiche, dei diritti dei lavoratori e della libertà politica.</p><hr class="anni-paper-rule"><div class="anni-paper-kicker">Il quotidiano fondato da Antonio Gramsci</div><div class="anni-paper-mark">☭</div>';
   }
   function addProfile(d) {
     var c=document.getElementById('content');if(!c)return;
