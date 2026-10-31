@@ -292,12 +292,14 @@ const gameplayScript = `
     {name:'Nilde Iotti',image:'https://commons.wikimedia.org/wiki/Special:FilePath/Leonilde_Iotti.jpg',source:'https://commons.wikimedia.org/wiki/File:Leonilde_Iotti.jpg'}
   ];
   function sceneId() {
-    try { return window.dendryUI.dendryEngine.state.sceneId || ''; }
-    catch (e) { return ''; }
+    try {
+      var id = window.dendryUI.dendryEngine.state.sceneId;
+      return typeof id === 'string' ? id : String(id || '');
+    } catch (e) { return ''; }
   }
   function isCampaign(scene) {
-    var excluded=['main.title_screen','main.party_select','main.pci_easy_start','main.pci_start','main.pci_hard_start','main.main_menu','main.credits','main.achievements'];
-    return scene.indexOf('main.')===0 && excluded.indexOf(scene)===-1;
+    var excluded=['root','main','main.title_screen','main.party_select','main.pci_easy_start','main.pci_start','main.pci_hard_start','main.main_menu','main.credits','main.achievements'];
+    return !!scene && excluded.indexOf(scene)===-1 && scene.indexOf('status.')!==0;
   }
   function dateInfo() {
     var el=document.getElementById('content');
@@ -394,11 +396,29 @@ const gameplayScript = `
     addTabs();addHeaderLinks();
     var d=dateInfo();addPaper(d);addProfile(d);addAdvisors(s);
   }
+  function hookEngineNavigation() {
+    try {
+      var engine = window.dendryUI && window.dendryUI.dendryEngine;
+      if (engine && typeof engine.goToScene === 'function' && !engine.__anniLayoutHooked) {
+        var originalGoToScene = engine.goToScene;
+        engine.goToScene = function () {
+          var result = originalGoToScene.apply(this, arguments);
+          sync();
+          return result;
+        };
+        engine.__anniLayoutHooked = true;
+      }
+    } catch (e) {
+      // The engine may not exist until DendryNexus finishes initialising.
+    }
+  }
   function install() {
     sync();
+    hookEngineNavigation();
     var c=document.getElementById('content');
     if(c&&typeof MutationObserver!=='undefined'){
       var observer=new MutationObserver(function(){
+        hookEngineNavigation();
         if(window.anniLayoutPending)return;
         window.anniLayoutPending=true;
         window.requestAnimationFrame(function(){sync();window.anniLayoutPending=false;});
@@ -411,8 +431,10 @@ const gameplayScript = `
     if(typeof window.onDisplayContent==='function'){
       var oldDisplay=window.onDisplayContent;window.onDisplayContent=function(){oldDisplay.apply(this,arguments);sync();};
     }
-    window.addEventListener('load',sync);
-    window.setTimeout(sync,250);
+    window.addEventListener('load',function(){hookEngineNavigation();sync();});
+    window.setInterval(function(){hookEngineNavigation();sync();},750);
+    window.setTimeout(function(){hookEngineNavigation();sync();},250);
+    window.setTimeout(function(){hookEngineNavigation();sync();},1000);
   }
   if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',install,{once:true});
   else install();
