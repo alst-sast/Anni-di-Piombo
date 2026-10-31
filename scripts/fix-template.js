@@ -210,6 +210,11 @@ body.anni-campaign-active #content h2 {
   margin:.1rem 0 .7rem; padding:0 0 .6rem; color:#6b5b43;
   border-bottom:1px solid #b6ab99; font-size:1rem; font-weight:normal; text-align:center;
 }
+body.anni-campaign-active #content h2.anni-date-heading {
+  margin:0 0 .65rem; padding:.15rem 0 .55rem; color:#49351f;
+  font:bold 1.45rem/1.2 Georgia,"Times New Roman",serif;
+  border-bottom:1px solid #b6ab99; text-align:center; letter-spacing:.025em;
+}
 body.anni-campaign-active #content p { text-indent:0; }
 body.anni-campaign-active #content ul.decks,
 body.anni-campaign-active #content ul.hand,
@@ -357,6 +362,13 @@ const gameplayScript = `
       a3.onclick=function(e){if(e)e.preventDefault();window.dendryUI.dendryEngine.goToScene('main.title_screen');return false;};c.appendChild(a3);
     }
   }
+  function addDateHeading(d) {
+    var c=document.getElementById('content');if(!c)return;
+    var heading=document.getElementById('anni-date-heading');
+    if(!heading){heading=document.createElement('h2');heading.id='anni-date-heading';heading.className='anni-date-heading';}
+    heading.textContent=d.monthName+' '+d.year;
+    if(heading.parentNode!==c || heading!==c.firstElementChild)c.insertBefore(heading,c.firstChild);
+  }
   function addPaper(d) {
     var w=document.getElementById('tools_wrapper');if(!w)return;
     var p=document.getElementById('anni-news-panel');
@@ -397,7 +409,7 @@ const gameplayScript = `
       return;
     }
     addTabs();addHeaderLinks();
-    var d=dateInfo();addPaper(d);addProfile(d);addAdvisors(s);
+    var d=dateInfo();addDateHeading(d);addPaper(d);addProfile(d);addAdvisors(s);
   }
   function hookEngineNavigation(engine) {
     try {
