@@ -192,7 +192,7 @@ body.anni-campaign-active .anni-profile-title {
 }
 body.anni-campaign-active .anni-profile-title span { color:#3d84a8; font-weight:bold; }
 body.anni-campaign-active .anni-profile-photo {
-  display:block; width:auto; height:11.5rem; max-width:12rem; margin:.35rem auto .45rem;
+  display:block; width:9rem; height:11.5rem; max-width:12rem; margin:.35rem auto .45rem;
   padding:.22rem; object-fit:contain; background:#e5e2dc; border:2px solid #8e877c;
   filter:grayscale(100%); box-shadow:2px 3px 8px rgba(0,0,0,.2);
 }
@@ -379,7 +379,10 @@ const gameplayScript = `
   function addAdvisors(scene) {
     var c=document.getElementById('content');if(!c)return;
     var p=document.getElementById('anni-advisors');
-    if(p)return;
+    if(p){
+      if(p.parentNode!==c || p!==c.lastElementChild)c.appendChild(p);
+      return;
+    }
     p=document.createElement('section');p.id='anni-advisors';p.setAttribute('data-scene',scene);
     var portraits=advisors.map(function(x){return '<figure class="anni-advisor"><img src="'+x.image+'" alt="'+x.name+'" loading="lazy"><figcaption>'+x.name+'</figcaption></figure>';}).join('');
     var refs=advisors.map(function(x){return '<a href="'+x.source+'" target="_blank" rel="noopener">'+x.name+'</a>';}).join(' · ');
