@@ -30,7 +30,7 @@ html = html.replace(/<script id=["']anni-title-screen-script["']>[\s\S]*?<\/scri
 const styles = [
   "<style id='anni-title-screen-style'>",
   "html,body{min-height:100%}",
-  "body{color:#30251d;background:#30251d url('https://upload.wikimedia.org/wikipedia/commons/7/7c/Quarto_Stato.jpg') center center/cover fixed no-repeat}",
+  "body.anni-title-screen{color:#30251d;background:#30251d url('https://upload.wikimedia.org/wikipedia/commons/7/7c/Quarto_Stato.jpg') center center/cover fixed no-repeat}",
   "body.anni-title-screen{margin:0;color:#35251b;background:#332a21 url('https://upload.wikimedia.org/wikipedia/commons/7/7c/Quarto_Stato.jpg') center center/cover fixed no-repeat!important}",
   "body.anni-title-screen header h1,body.anni-title-screen header h2{display:none!important}",
   "body.anni-title-screen #tools_wrapper{display:none!important}",
@@ -161,28 +161,19 @@ body.anni-campaign-active #stats_sidebar {
   top: 0;
   left: 0;
   float: none;
-  width: 17rem;
+  width: 14rem;
   max-height: calc(100vh - 5rem);
   overflow: auto;
   box-sizing: border-box;
   pointer-events: auto;
 }
-body.anni-campaign-active #stats_sidebar .tab_container {
-  display: flex;
-  flex-wrap: wrap;
-}
-body.anni-campaign-active #stats_sidebar .tab_button {
-  flex: 1 0 25%;
-  min-width: 0;
-}
-
 /* Newspaper uses the framework's native .tools right panel. */
 body.anni-campaign-active #anni-news-panel {
   position: absolute;
   top: 0;
   right: 0;
   float: none;
-  width: 17rem;
+  width: 14rem;
   max-height: calc(100vh - 5rem);
   overflow: auto;
   box-sizing: border-box;
@@ -271,9 +262,7 @@ body.anni-campaign-active .anni-image-credits { margin: .7rem 0 0; font-size: .7
   body.anni-campaign-active #stats_sidebar,
   body.anni-campaign-active #anni-news-panel {
     position: static;
-    width: min(21.8rem, calc(50% - .4rem));
     max-height: none;
-    margin: 0;
   }
   body.anni-campaign-active #anni-party-profile { max-width: none; }
 }
@@ -285,9 +274,7 @@ body.anni-campaign-active .anni-image-credits { margin: .7rem 0 0; font-size: .7
   body.anni-campaign-active #tools_wrapper { display: block; width: 100%; }
   body.anni-campaign-active #stats_sidebar,
   body.anni-campaign-active #anni-news-panel {
-    width: 100%;
     max-height: none;
-    margin: 0 0 .7rem;
   }
   body.anni-campaign-active #content { padding: .8rem; }
   body.anni-campaign-active #anni-advisors { margin-top: .8rem; }
