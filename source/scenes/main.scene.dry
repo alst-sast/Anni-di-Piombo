@@ -187,6 +187,7 @@ Q.trade_union_backing = Math.min(100,Q.trade_union_backing+12);
 Q.public_support = Math.min(100,Q.public_support+2);
 Q.advisor_longo_month = Q.month; Q.advisor_longo_year = Q.year;
 !}
+
 Longo coordinates the party's links with factory sections and union organisers. Trade-union backing and public support increase.
 
 - @monthly_briefing: Return to campaign
@@ -202,6 +203,7 @@ Q.grassroots_fundraising = Math.min(100,Q.grassroots_fundraising+5);
 Q.stability = Math.min(100,Q.stability+2);
 Q.advisor_longo_month = Q.month; Q.advisor_longo_year = Q.year;
 !}
+
 Longo strengthens coordination between the national leadership and local federations. Internal dissent falls and local fundraising improves.
 
 - @monthly_briefing: Return to campaign
@@ -229,6 +231,7 @@ Q.relation_pri = Math.min(100,Q.relation_pri+7);
 Q.stability = Math.min(100,Q.stability+1);
 Q.advisor_amendola_month = Q.month; Q.advisor_amendola_year = Q.year;
 !}
+
 Amendola opens channels with the unified socialists and the Republicans, improving the PCI's parliamentary room for manoeuvre.
 
 - @monthly_briefing: Return to campaign
@@ -244,6 +247,7 @@ Q.relation_pli = Math.min(100,Q.relation_pli+4);
 Q.stability = Math.min(100,Q.stability+2);
 Q.advisor_amendola_month = Q.month; Q.advisor_amendola_year = Q.year;
 !}
+
 Amendola seeks common ground on constitutional government and opposition to political violence. Relations with democratic parties improve.
 
 - @monthly_briefing: Return to campaign
@@ -271,6 +275,7 @@ Q.grassroots_fundraising = Math.min(100,Q.grassroots_fundraising+4);
 Q.public_support = Math.min(100,Q.public_support+3);
 Q.advisor_ingrao_month = Q.month; Q.advisor_ingrao_year = Q.year;
 !}
+
 Ingrao helps coordinate workplace assemblies and local organisers. Trade-union backing, grassroots fundraising and public support rise.
 
 - @monthly_briefing: Return to campaign
@@ -287,6 +292,7 @@ Q.reformist_strength = Math.max(0,Q.reformist_strength-5);
 Q.dissent = 'Moderate';
 Q.advisor_ingrao_month = Q.month; Q.advisor_ingrao_year = Q.year;
 !}
+
 Ingrao calls for a more democratic and movement-oriented party line. The left current gains strength, while internal disagreement becomes more pronounced.
 
 - @monthly_briefing: Return to campaign
@@ -313,6 +319,7 @@ Q.grassroots_fundraising = Math.min(100,Q.grassroots_fundraising+10);
 Q.public_support = Math.min(100,Q.public_support+2);
 Q.advisor_iotti_month = Q.month; Q.advisor_iotti_year = Q.year;
 !}
+
 Iotti strengthens local civic committees and their ability to organise meetings, volunteers and small donations.
 
 - @monthly_briefing: Return to campaign
@@ -328,6 +335,7 @@ Q.grassroots_fundraising = Math.min(100,Q.grassroots_fundraising+5);
 Q.relation_psiup = Math.min(100,Q.relation_psiup+3);
 Q.advisor_iotti_month = Q.month; Q.advisor_iotti_year = Q.year;
 !}
+
 Iotti extends the party's civic work through women's organisations and local campaigns. Public support and grassroots fundraising improve.
 
 - @monthly_briefing: Return to campaign
@@ -353,6 +361,7 @@ Q.resources = Math.max(0,Q.resources-1);
 Q.trade_union_backing = Math.min(100,Q.trade_union_backing+12);
 Q.public_support = Math.min(100,Q.public_support+2);
 !}
+
 Industrial organisation and union links improve the party's ability to mobilise workers and sustain political activity.
 
 - @monthly_briefing: Return to campaign
@@ -377,6 +386,7 @@ Q.resources = Math.max(0,Q.resources-1);
 Q.grassroots_fundraising = Math.min(100,Q.grassroots_fundraising+14);
 Q.public_support = Math.min(100,Q.public_support+1);
 !}
+
 Local branches expand their contribution networks, making future party activity easier to finance.
 
 - @monthly_briefing: Return to campaign
@@ -413,6 +423,7 @@ Q.relation_psi_sdsi = Math.min(100,Q.relation_psi_sdsi+14);
 Q.relation_pri = Math.min(100,Q.relation_pri+4);
 Q.government_position = 'Opposition alliance';
 !}
+
 The PCI strengthens its working relationship with the unified socialists and opens a channel to the Republicans.
 
 - @monthly_briefing: Return to campaign
@@ -427,6 +438,7 @@ Q.relation_psiup = Math.min(100,Q.relation_psiup+14);
 Q.trade_union_backing = Math.min(100,Q.trade_union_backing+3);
 Q.government_position = 'Left opposition front';
 !}
+
 Cooperation with PSIUP strengthens the PCI's links with the socialist left and labour activists.
 
 - @monthly_briefing: Return to campaign
@@ -441,6 +453,7 @@ Q.relation_dc = Math.min(100,Q.relation_dc+12);
 Q.stability = Math.min(100,Q.stability+2);
 Q.government_position = 'Parliamentary support';
 !}
+
 The PCI opens negotiations over parliamentary support for a government programme. The party remains outside the cabinet, but gains influence over confidence votes and policy.
 
 - @monthly_briefing: Return to campaign
@@ -541,6 +554,7 @@ Q.stability = Math.min(100,Q.stability+3);
 Q.public_support = Math.min(100,Q.public_support+2);
 Q.relation_pri = Math.min(100,Q.relation_pri+2);
 !}
+
 The PCI calls for an impartial investigation, protection of civil liberties and accountability for the perpetrators. The party strengthens its democratic standing.
 
 - @monthly_briefing: Return to campaign
@@ -553,6 +567,7 @@ Q.security = Math.min(100,Q.security+5);
 Q.stability = Math.max(0,Q.stability-2);
 Q.public_support = Math.max(0,Q.public_support-1);
 !}
+
 The PCI supports a firm public response while warning against indiscriminate arrests and political repression. Security improves, but civil tensions remain.
 
 - @monthly_briefing: Return to campaign
@@ -581,6 +596,7 @@ Q.public_support = Math.min(100,Q.public_support+4);
 Q.relation_psiup = Math.min(100,Q.relation_psiup+5);
 Q.grassroots_fundraising = Math.min(100,Q.grassroots_fundraising+3);
 !}
+
 The PCI mobilises voters to defend the law. Secular and socialist allies welcome the campaign, and grassroots organisation improves.
 
 - @monthly_briefing: Return to campaign
@@ -592,6 +608,7 @@ on-arrival: {!
 Q.relation_dc = Math.min(100,Q.relation_dc+2);
 Q.public_support = Math.min(100,Q.public_support+1);
 !}
+
 The PCI avoids a confrontational campaign and stresses parliamentary compromise. Relations with Catholic political figures improve slightly, but progressive activists are less enthusiastic.
 
 - @monthly_briefing: Return to campaign
@@ -620,6 +637,7 @@ Q.security = Math.min(100,Q.security+3);
 Q.stability = Math.min(100,Q.stability+4);
 Q.relation_dc = Math.min(100,Q.relation_dc+5);
 !}
+
 The PCI supports the constitutional institutions and a united democratic response to terrorism. Cooperation with other democratic parties improves.
 
 - @monthly_briefing: Return to campaign
@@ -632,6 +650,7 @@ Q.public_support = Math.min(100,Q.public_support+2);
 Q.relation_dc = Math.max(0,Q.relation_dc-7);
 Q.stability = Math.max(0,Q.stability-2);
 !}
+
 The PCI calls for every possible channel to be explored to save Moro's life. The position earns sympathy from some voters but deepens disagreement with the government.
 
 - @monthly_briefing: Return to campaign
@@ -661,6 +680,7 @@ Q.stability = Math.min(100,Q.stability+3);
 Q.public_support = Math.min(100,Q.public_support+2);
 Q.relation_pri = Math.min(100,Q.relation_pri+2);
 !}
+
 The PCI demands a thorough investigation and protection for civil liberties. The party builds support for accountability and democratic oversight.
 
 - @monthly_briefing: Return to campaign
@@ -673,6 +693,7 @@ Q.security = Math.min(100,Q.security+6);
 Q.stability = Math.max(0,Q.stability-3);
 Q.public_support = Math.max(0,Q.public_support-2);
 !}
+
 The PCI backs stronger emergency measures. Security improves in the short term, but civil liberties and public trust come under strain.
 
 - @monthly_briefing: Return to campaign
