@@ -9,7 +9,7 @@ if (!fs.existsSync(indexPath)) {
 }
 let html = fs.readFileSync(indexPath, 'utf8');
 
-const campaignAssetVersion = 'remove-leadership-strip-20261101';
+const campaignAssetVersion = 'remove-unita-newspaper-20261101';
 
 /* Keep the three sidebar tabs used by this game. */
 html = html.replace(
@@ -167,16 +167,6 @@ body.anni-campaign-active #stats_sidebar {
   overflow: auto;
   pointer-events: auto;
 }
-/* Newspaper uses the framework's native .tools right panel. */
-body.anni-campaign-active #anni-news-panel {
-  position: absolute;
-  top: 0;
-  right: 0;
-  float: none;
-  max-height: calc(100vh - 5rem);
-  overflow: auto;
-  pointer-events: auto;
-}
 
 
 /* Party profile keeps the framework's native .tools panel appearance. */
@@ -227,8 +217,7 @@ body.anni-campaign-active #content ul.pinned-cards {
     margin: .2rem auto .8rem;
     transform: none;
   }
-  body.anni-campaign-active #stats_sidebar,
-  body.anni-campaign-active #anni-news-panel {
+  body.anni-campaign-active #stats_sidebar {
     position: static;
     max-height: none;
   }
@@ -240,8 +229,7 @@ body.anni-campaign-active #content ul.pinned-cards {
     padding-top: 3.6rem;
   }
   body.anni-campaign-active #tools_wrapper { display: block; width: 100%; }
-  body.anni-campaign-active #stats_sidebar,
-  body.anni-campaign-active #anni-news-panel {
+  body.anni-campaign-active #stats_sidebar {
     max-height: none;
   }
   body.anni-campaign-active #content { padding: .8rem; }
@@ -254,7 +242,6 @@ const gameplayScript = `
 (function () {
   'use strict';
   var monthNames = ['January','February','March','April','May','June','July','August','September','October','November','December'];
-  var italianMonthNames = ['gennaio','febbraio','marzo','aprile','maggio','giugno','luglio','agosto','settembre','ottobre','novembre','dicembre'];
   function sceneId() {
     try {
       var id = window.dendryUI.dendryEngine.state.sceneId;
@@ -275,22 +262,6 @@ const gameplayScript = `
     } catch(e) {
       return {month:1,monthName:'January',year:1968};
     }
-  }
-  function storyFor(d) {
-    var y=d.year,m=d.month;
-    if(y===1968&&m<=5)return ['Il PCI rilancia la sua battaglia','L’Italia si avvicina alle elezioni politiche di maggio, mentre crescono le proteste studentesche e le rivendicazioni del movimento operaio. Il Partito Comunista punta a trasformare il proprio radicamento sociale in una maggiore rappresentanza parlamentare.'];
-    if(y===1968)return ['Il voto conferma il PCI come principale forza di opposizione','La Democrazia Cristiana resta il primo partito dopo le elezioni di maggio. Il PCI consolida il proprio ruolo di principale forza di opposizione e si prepara a rafforzare il dialogo con i lavoratori e le forze democratiche.'];
-    if(y===1969)return ['L’autunno caldo scuote le fabbriche italiane','Una vasta stagione di scioperi e assemblee operaie rivendica salari più equi, migliori condizioni di lavoro e nuovi diritti. Il movimento sindacale imprime una svolta alla vita politica del Paese.'];
-    if(y===1970)return ['Lo Statuto dei lavoratori diventa legge','Il Parlamento approva lo Statuto dei lavoratori, riconoscendo importanti tutele conquistate dopo anni di mobilitazione. Si apre ora la sfida della sua piena applicazione in tutti i luoghi di lavoro.'];
-    if(y===1973)return ['La crisi petrolifera mette sotto pressione l’economia','L’aumento dei costi energetici minaccia la produzione industriale e il potere d’acquisto delle famiglie. Governo, sindacati e imprese sono chiamati a confrontarsi su salari, prezzi e politiche economiche.'];
-    if(y===1974)return ['Il referendum sul divorzio segna una svolta','Gli italiani respingono l’abrogazione della legge sul divorzio. Il risultato conferma la forza delle posizioni laiche e progressiste e apre una nuova fase nel dibattito civile del Paese.'];
-    if(y===1976)return ['Il PCI raggiunge un risultato elettorale storico','Le elezioni di giugno portano il Partito Comunista a un risultato senza precedenti. Si riaccende il confronto sulla collaborazione parlamentare e sulle prospettive di una nuova stagione politica.'];
-    if(y===1978&&m<=4)return ['Il sequestro Moro sconvolge la Repubblica','Le Brigate Rosse hanno rapito l’ex presidente del Consiglio Aldo Moro e ucciso cinque uomini della sua scorta. Il Paese affronta una crisi drammatica e le istituzioni democratiche sono sottoposte a una prova durissima.'];
-    if(y===1978)return ['L’Italia piange Aldo Moro','Dopo cinquantacinque giorni di prigionia, Aldo Moro è stato assassinato. Il delitto lascia una ferita profonda nella vita nazionale e rinnova il confronto sulla difesa della democrazia contro il terrorismo.'];
-    if(y===1980&&m>=8)return ['La strage di Bologna colpisce il Paese','L’esplosione alla stazione di Bologna ha provocato ottantacinque vittime. Crescono le richieste di verità e giustizia mentre l’Italia affronta una delle più gravi stragi della sua storia repubblicana.'];
-    if(y===1981)return ['Lo scandalo P2 scuote le istituzioni','La scoperta degli elenchi della loggia P2 rivela una rete clandestina con legami in ambienti influenti dello Stato e della politica. Si rafforzano le richieste di trasparenza e di riforma istituzionale.'];
-    if(y===1983)return ['Si apre una nuova stagione politica','Le elezioni di giugno indeboliscono la Democrazia Cristiana e portano alla formazione di un nuovo governo. Il PCI valuta il proprio ruolo dopo quindici anni di profondi cambiamenti politici e sociali.'];
-    return ['La Repubblica affronta un nuovo mese di tensioni','Le difficoltà economiche, le richieste sociali e la violenza politica continuano a segnare la vita del Paese. La direzione del PCI deve conciliare la strategia parlamentare con le aspettative dei propri iscritti, degli alleati e degli elettori.'];
   }
   function addTabs() {
     var c=document.querySelector('#stats_sidebar .tab_container');
@@ -329,24 +300,6 @@ const gameplayScript = `
     heading.textContent=d.monthName+' '+d.year;
     if(heading.parentNode!==c || heading!==c.firstElementChild)c.insertBefore(heading,c.firstChild);
   }
-  function addPaper(d) {
-    var w=document.getElementById('tools_wrapper');if(!w)return;
-    var p=document.getElementById('anni-news-panel');
-    if(!p){p=document.createElement('aside');p.id='anni-news-panel';p.className='tools right';w.appendChild(p);}
-    var key=d.month+'-'+d.year;
-    if(p.getAttribute('data-date')===key)return;
-    p.setAttribute('data-date',key);
-    var story=storyFor(d);
-    p.innerHTML='<div class="anni-paper-masthead">l’Unità</div>'+
-      '<div class="anni-paper-kicker">ORGANO DEL PARTITO COMUNISTA ITALIANO</div>'+
-      '<hr class="anni-paper-rule">'+
-      '<div class="anni-paper-date">ROMA · '+italianMonthNames[d.month-1]+' '+d.year+'</div>'+
-      '<div class="anni-paper-section">POLITICA NAZIONALE</div>'+
-      '<div class="anni-paper-headline">'+story[0]+'</div>'+
-      '<p class="anni-paper-copy">'+story[1]+'</p>'+
-      '<hr class="anni-paper-rule">'+
-      '<div class="anni-paper-footer">EDIZIONE QUOTIDIANA · CRONACA POLITICA</div>';
-  }
   function addProfile(d) {
     var c=document.getElementById('content');if(!c)return;
     var p=document.getElementById('anni-party-profile');
@@ -359,18 +312,17 @@ const gameplayScript = `
   function sync() {
     var s=sceneId(),active=isCampaign(s);
     document.body.classList.toggle('anni-campaign-active',active);
+    var oldPaper=document.getElementById('anni-news-panel');
+    if(oldPaper&&oldPaper.parentNode)oldPaper.parentNode.removeChild(oldPaper);
     if(!active){
-      ['anni-party-profile','anni-news-panel'].forEach(function(id){
-        var e=document.getElementById(id);
-        if(e&&e.parentNode)e.parentNode.removeChild(e);
-      });
+      var oldProfile=document.getElementById('anni-party-profile');
+      if(oldProfile&&oldProfile.parentNode)oldProfile.parentNode.removeChild(oldProfile);
       return;
     }
     addTabs();addHeaderLinks();
     var d=dateInfo();
     addProfile(d);
     addDateHeading(d);
-    addPaper(d);
   }
   function hookEngineNavigation(engine) {
     try {
