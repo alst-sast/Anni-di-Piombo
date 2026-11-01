@@ -549,6 +549,10 @@ new-page: true
 on-arrival: {!
 Q.resources = Math.max(0, Q.resources - 1);
 Q.inflation = Math.max(0, Q.inflation - 8);
+Q.inflation_rate = Math.max(0, Q.inflation_rate - 0.2);
+Q.economy_health = Math.min(100, Q.economy_health + 4);
+Q.budget_balance = Q.budget_balance - 0.1;
+Q.unemployment_rate = Math.max(0, Q.unemployment_rate - 0.1);
 Q.public_support = Math.min(100, Q.public_support + 5);
 !}
 
@@ -599,6 +603,7 @@ new-page: true
 on-arrival: {!
 Q.resources = Math.max(0, Q.resources - 1);
 Q.stability = Math.min(100, Q.stability + 8);
+Q.economy_health = Math.min(100, Q.economy_health + 2);
 Q.public_support = Math.min(100, Q.public_support + 3);
 !}
 
@@ -624,7 +629,9 @@ new-page: true
 on-arrival: {!
 Q.resources = Math.max(0, Q.resources - 1);
 Q.public_support = Math.min(100, Q.public_support + 7);
+Q.trade_union_backing = Math.min(100, Q.trade_union_backing + 8);
 Q.inflation = Math.min(100, Q.inflation + 3);
+Q.economy_health = Math.max(0, Q.economy_health - 1);
 Q.stability = Math.max(0, Q.stability - 1);
 !}
 
@@ -651,6 +658,7 @@ on-arrival: {!
 Q.resources = Math.max(0, Q.resources - 1);
 Q.stability = Math.min(100, Q.stability + 4);
 Q.public_support = Math.min(100, Q.public_support + 2);
+Q.grassroots_fundraising = Math.min(100, Q.grassroots_fundraising + 3);
 Q.dissent = 'Low';
 !}
 
@@ -699,9 +707,34 @@ if (Q.year === 1982 && Q.month === 9) {
     Q.security = Math.max(0, Q.security - 8);
     Q.stability = Math.max(0, Q.stability - 3);
 }
-/* Apply quarterly economic pressure on March, June, September and December. */
+/* Oil shocks and quarterly economic conditions. */
+if (Q.year === 1973 && Q.month === 10) {
+    Q.inflation = Math.min(100, Q.inflation + 14);
+    Q.inflation_rate = Math.min(100, Q.inflation_rate + 4);
+    Q.economy_health = Math.max(0, Q.economy_health - 8);
+    Q.unemployment_rate = Math.min(30, Q.unemployment_rate + 0.4);
+    Q.budget_balance = Q.budget_balance - 0.3;
+}
+if (Q.year === 1979 && Q.month === 1) {
+    Q.inflation = Math.min(100, Q.inflation + 8);
+    Q.inflation_rate = Math.min(100, Q.inflation_rate + 2);
+    Q.economy_health = Math.max(0, Q.economy_health - 5);
+    Q.unemployment_rate = Math.min(30, Q.unemployment_rate + 0.2);
+    Q.budget_balance = Q.budget_balance - 0.2;
+}
+/* Quarterly macroeconomic adjustments. */
 if (Q.month === 3 || Q.month === 6 || Q.month === 9 || Q.month === 12) {
     Q.inflation = Math.min(100, Q.inflation + 2);
+    Q.inflation_rate = Math.min(100, Q.inflation_rate + (Q.inflation >= 60 ? 0.25 : 0.1));
+    if (Q.inflation >= 75 || Q.unemployment_rate >= 7) {
+        Q.economy_health = Math.max(0, Q.economy_health - 2);
+        Q.unemployment_rate = Math.min(30, Q.unemployment_rate + 0.1);
+        Q.budget_balance = Q.budget_balance - 0.05;
+    } else if (Q.economy_health >= 70 && Q.inflation < 45) {
+        Q.economy_health = Math.min(100, Q.economy_health + 1);
+        Q.unemployment_rate = Math.max(1, Q.unemployment_rate - 0.03);
+        Q.budget_balance = Q.budget_balance + 0.03;
+    }
     if (Q.inflation >= 85 || Q.security < 25) {
         Q.stability = Math.max(0, Q.stability - 2);
     } else if (Q.public_support >= 60 && Q.security >= 40) {
@@ -710,7 +743,12 @@ if (Q.month === 3 || Q.month === 6 || Q.month === 9 || Q.month === 12) {
         Q.stability = Math.max(0, Q.stability - 1);
     }
 }
-Q.resources = Math.min(6, Q.resources + 1);
+/* Deficits accumulate into public debt. Backing networks improve party income. */
+Q.public_debt = Math.min(150, Q.public_debt + Math.max(0, -Q.budget_balance) * 0.04);
+var monthlyIncome = 1;
+if (Q.trade_union_backing >= 70) monthlyIncome += 1;
+if (Q.grassroots_fundraising >= 75) monthlyIncome += 1;
+Q.resources = Math.min(6, Q.resources + monthlyIncome);
 if (Q.month >= 12) {
     Q.month = 1;
     Q.year = Q.year + 1;
@@ -778,14 +816,16 @@ new-page: true
 
 ACHIEVEMENTS
 
-Milestones are calculated from your current campaign state. They are not a permanent cross-save record.
+Achievements unlock permanently and remain available across campaigns.
 
-[? if stability >= 65 and security >= 50 : **Guardian of the Republic** — Political stability and public security remain strong. ?]
-[? if public_support >= 65 : **Popular Mandate** — Your party enjoys broad public support. ?]
-[? if inflation <= 50 : **Economic Relief** — Economic pressure has been brought under control. ?]
-[? if resources >= 6 : **Party Organisation** — Your party has built up its maximum available resources. ?]
-[? if year >= 1983 : **Veteran of the Years of Lead** — You have reached the final campaign year. ?]
-[? if stability < 30 or security < 20 : **Republic in Peril** — The state is facing a severe political or security crisis. ?]
-[? if (stability < 65 or security < 50) and public_support < 65 and inflation > 50 and resources < 6 and year < 1983 and stability >= 30 and security >= 20 : No campaign milestone has been reached yet. Continue making decisions to shape the Republic's future. ?]
+[? if achievement_guardian = 1 : **Guardian of the Republic** — Unlocked. ?][? if achievement_guardian = 0 : **Guardian of the Republic** — Maintain stability of 65 and public security of 60. ?]
+
+[? if achievement_popular_mandate = 1 : **Popular Mandate** — Unlocked. ?][? if achievement_popular_mandate = 0 : **Popular Mandate** — Reach public support of 65. ?]
+
+[? if achievement_party_organiser = 1 : **Party Organiser** — Unlocked. ?][? if achievement_party_organiser = 0 : **Party Organiser** — Reach maximum resources with strong trade-union backing and grassroots fundraising. ?]
+
+[? if achievement_good_relations = 1 : **Parliamentary Network** — Unlocked. ?][? if achievement_good_relations = 0 : **Parliamentary Network** — Build friendly relations with the socialists and Republicans. ?]
+
+[? if achievement_endured = 1 : **Veteran of the Years of Lead** — Unlocked. ?][? if achievement_endured = 0 : **Veteran of the Years of Lead** — Reach the final campaign year. ?]
 
 - @main_menu: Return to title
