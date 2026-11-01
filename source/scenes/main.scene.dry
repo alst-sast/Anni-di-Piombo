@@ -24,6 +24,7 @@ new-page: true
 on-arrival: {!
 Q.party_name = 'Partito Comunista Italiano (PCI)';
 Q.government_position = 'Opposition';
+Q.faction = 'Centre';
 Q.dissent = 'Low';
 Q.resources = 6;
 Q.public_support = 60;
@@ -42,6 +43,7 @@ new-page: true
 on-arrival: {!
 Q.party_name = 'Partito Comunista Italiano (PCI)';
 Q.government_position = 'Opposition';
+Q.faction = 'Centre';
 Q.dissent = 'Moderate';
 Q.resources = 2;
 Q.public_support = 35;
@@ -60,6 +62,7 @@ new-page: true
 on-arrival: {!
 Q.party_name = 'Partito Comunista Italiano (PCI)';
 Q.government_position = 'Opposition';
+Q.faction = 'Centre';
 Q.dissent = 'Low';
 Q.resources = 4;
 Q.public_support = 45;
@@ -81,6 +84,7 @@ is-hand: true
 max-cards: 3
 
 - @policy_deck
+- @leadership_deck
 - @mobilisation_deck
 - @economic_policy_deck
 - #advance_month
@@ -92,6 +96,14 @@ is-deck: true
 card-image: https://commons.wikimedia.org/wiki/Special:FilePath/Tessera_PCI_1961.jpg
 
 - #policy_deck
+
+@leadership_deck
+title: Shuffle Leadership
+subtitle: Choose the PCI's internal political line
+is-deck: true
+card-image: https://immaginidelnovecento.fondazionegramsci.org/image-h/HD1/2010-07-05/imgs/000055.jpg
+
+- #leadership_deck
 
 @mobilisation_deck
 title: Mobilisation
@@ -108,6 +120,75 @@ is-deck: true
 card-image: https://commons.wikimedia.org/wiki/Special:FilePath/Workers_in_Fiat_factories,_Turin.jpg
 
 - #policy_deck
+
+@leadership_conference
+title: Leadership Conference
+subtitle: Debate the future direction of the PCI
+card-image: https://immaginidelnovecento.fondazionegramsci.org/image-h/HD1/2010-07-05/imgs/000055.jpg
+is-card: true
+new-page: true
+choose-if: resources >= 1
+tags: leadership_deck
+
+A meeting of the national leadership has been called to reconsider the balance between parliamentary reform, the party's established centre and the forces pressing for a more assertive left-wing course.
+
+Choose the political line that should guide the PCI. Changing the leadership balance costs one party resource. Your decision will remain in force until you choose to reshuffle the leadership again.
+
+Photograph: XII Congresso nazionale del PCI, Bologna, February 1969 — Fondazione Gramsci, Archivio fotografico.
+
+- @set_reformists: Reformists
+- @set_centre: Centre
+- @set_left: Left
+
+@set_reformists
+title: Reformists
+new-page: true
+on-arrival: {!
+Q.resources = Math.max(0, Q.resources - 1);
+Q.faction = 'Reformists';
+Q.public_support = Math.min(100, Q.public_support + 2);
+Q.stability = Math.min(100, Q.stability + 3);
+!}
+
+**The Reformists take the lead**
+
+The party places greater emphasis on parliamentary negotiation, gradual social reform and cooperation with democratic forces beyond the PCI. This line improves the party's public standing and strengthens institutional stability, while risking impatience among members who favour a more confrontational course.
+
+- @monthly_briefing: Return to government
+
+@set_centre
+title: Centre
+new-page: true
+on-arrival: {!
+Q.resources = Math.max(0, Q.resources - 1);
+Q.faction = 'Centre';
+Q.stability = Math.min(100, Q.stability + 2);
+Q.dissent = 'Low';
+!}
+
+**The Centre retains the balance**
+
+The party seeks to preserve unity between its parliamentary leadership, trade-union organisation and local branches. A careful compromise lowers internal tension and modestly strengthens political stability, though it does not produce the rapid gains promised by either wing.
+
+- @monthly_briefing: Return to government
+
+@set_left
+title: Left
+new-page: true
+on-arrival: {!
+Q.resources = Math.max(0, Q.resources - 1);
+Q.faction = 'Left';
+Q.public_support = Math.min(100, Q.public_support + 4);
+Q.stability = Math.max(0, Q.stability - 2);
+Q.dissent = 'Moderate';
+!}
+
+**The Left gains influence**
+
+The leadership gives greater weight to workplace mobilisation, internal party democracy and a more forceful opposition to the centre-left political establishment. The decision energises the party's activist base, but increases tension with moderate figures and unsettles the wider political climate.
+
+- @monthly_briefing: Return to government
+
 
 @economic_relief
 title: Economic Relief
