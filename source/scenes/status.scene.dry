@@ -48,6 +48,62 @@ DC: 38.28% (260 seats) · PCI: 25.26% (166) · PSI: 13.84% (87) · PLI: 6.97% (3
 
 The party must navigate parliamentary conflict, street violence and pressure from competing political movements.
 
+# Inter-party Relations
+
+**DC**: cold
+
+**PSI–PSDI (Unified Socialists)**: cold
+
+**PSIUP**: friendly
+
+**PRI**: neutral
+
+**PLI**: cold
+
+**MSI**: hostile
+
+*Opening political alignment, 1968. The PSI and PSDI remain united at the start of the campaign and split later in 1968.*
+
+# Internal Factions of the **PCI**
+
+**Reformists (Amendola current)**
+
+Strength: [? if faction = 'Reformists' : very strong ?][? if faction = 'Centre' or faction = 'Left' : moderate ?]
+
+Dissent: [? if faction = 'Reformists' : Low ?][? if faction = 'Centre' or faction = 'Left' : Medium ?]
+
+**Centre (Longo and Berlinguer)**
+
+Strength: [? if faction = 'Centre' : very strong ?][? if faction = 'Reformists' or faction = 'Left' : moderate ?]
+
+Dissent: [? if faction = 'Centre' : Low ?][? if faction = 'Reformists' or faction = 'Left' : Medium ?]
+
+**Left (Ingrao current)**
+
+Strength: [? if faction = 'Left' : very strong ?][? if faction = 'Reformists' or faction = 'Centre' : moderate ?]
+
+Dissent: [? if faction = 'Left' : Low ?][? if faction = 'Reformists' or faction = 'Centre' : Medium ?]
+
+# Party Leadership
+
+**DC**: Christian Democracy (Mariano Rumor)
+
+**PCI**: Italian Communism (Luigi Longo; Enrico Berlinguer becomes deputy secretary in 1969 and secretary in 1972)
+
+**PSI–PSDI**: Unified Socialism (Francesco De Martino and Mauro Ferri)
+
+**PSIUP**: Socialist Left (Tullio Vecchietti)
+
+**PRI**: Social Liberalism (Ugo La Malfa)
+
+**PLI**: Liberalism (Giovanni Malagodi)
+
+**MSI**: Neo-fascism (Arturo Michelini)
+
+**PDIUM**: Monarchist Conservatism (Alfredo Covelli)
+
+*Principal party figures at the opening of the 1968 campaign.*
+
 @polls
 
 = Polls
