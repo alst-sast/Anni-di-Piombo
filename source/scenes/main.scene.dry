@@ -154,7 +154,6 @@ is-deck: true
 card-image: https://commons.wikimedia.org/wiki/Special:FilePath/Tessera_PCI_1961.jpg
 
 - #policy_deck
-- #policy_deck
 
 @leadership_deck
 title: Shuffle Leadership
