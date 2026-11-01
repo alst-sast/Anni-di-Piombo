@@ -16,6 +16,10 @@ Party resources: [+ resources +]
 
 Internal dissent: [+ dissent +]
 
+Trade-union backing: [+ trade_union_backing +] / 100
+
+Grassroots fundraising: [+ grassroots_fundraising +] / 100
+
 # Government
 
 President: [? if year <= 1971 : Giuseppe Saragat ?][? if year >= 1972 and year <= 1977 or year = 1978 and month <= 6 : Giovanni Leone ?][? if year > 1978 or year = 1978 and month >= 7 : Sandro Pertini ?]
@@ -50,39 +54,37 @@ The party must navigate parliamentary conflict, street violence and pressure fro
 
 # Inter-party Relations
 
-**DC**: cold
+**DC**: [? if relation_dc >= 70 : very friendly ?][? if relation_dc >= 55 and relation_dc < 70 : friendly ?][? if relation_dc >= 40 and relation_dc < 55 : neutral ?][? if relation_dc >= 20 and relation_dc < 40 : cold ?][? if relation_dc < 20 : hostile ?]
 
-**PSI–PSDI (Unified Socialists)**: cold
+**PSI–PSDI**: [? if relation_psi_sdsi >= 70 : very friendly ?][? if relation_psi_sdsi >= 55 and relation_psi_sdsi < 70 : friendly ?][? if relation_psi_sdsi >= 40 and relation_psi_sdsi < 55 : neutral ?][? if relation_psi_sdsi >= 20 and relation_psi_sdsi < 40 : cold ?][? if relation_psi_sdsi < 20 : hostile ?]
 
-**PSIUP**: friendly
+**PSIUP**: [? if relation_psiup >= 70 : very friendly ?][? if relation_psiup >= 55 and relation_psiup < 70 : friendly ?][? if relation_psiup >= 40 and relation_psiup < 55 : neutral ?][? if relation_psiup >= 20 and relation_psiup < 40 : cold ?][? if relation_psiup < 20 : hostile ?]
 
-**PRI**: neutral
+**PRI**: [? if relation_pri >= 70 : very friendly ?][? if relation_pri >= 55 and relation_pri < 70 : friendly ?][? if relation_pri >= 40 and relation_pri < 55 : neutral ?][? if relation_pri >= 20 and relation_pri < 40 : cold ?][? if relation_pri < 20 : hostile ?]
 
-**PLI**: cold
+**PLI**: [? if relation_pli >= 70 : very friendly ?][? if relation_pli >= 55 and relation_pli < 70 : friendly ?][? if relation_pli >= 40 and relation_pli < 55 : neutral ?][? if relation_pli >= 20 and relation_pli < 40 : cold ?][? if relation_pli < 20 : hostile ?]
 
-**MSI**: hostile
-
-*Opening political alignment, 1968. The PSI and PSDI remain united at the start of the campaign and split later in 1968.*
+**MSI**: [? if relation_msi >= 70 : very friendly ?][? if relation_msi >= 55 and relation_msi < 70 : friendly ?][? if relation_msi >= 40 and relation_msi < 55 : neutral ?][? if relation_msi >= 20 and relation_msi < 40 : cold ?][? if relation_msi < 20 : hostile ?]
 
 # Internal Factions of the **PCI**
 
 **Reformists (Amendola current)**
 
-Strength: [? if faction = 'Reformists' : very strong ?][? if faction = 'Centre' or faction = 'Left' : moderate ?]
+Strength: [? if reformist_strength >= 65 : very strong ?][? if reformist_strength >= 45 and reformist_strength < 65 : strong ?][? if reformist_strength >= 25 and reformist_strength < 45 : moderate ?][? if reformist_strength < 25 : weak ?]
 
-Dissent: [? if faction = 'Reformists' : Low ?][? if faction = 'Centre' or faction = 'Left' : Medium ?]
+Dissent: [? if reformist_strength >= 65 : Low ?][? if reformist_strength >= 35 and reformist_strength < 65 : Medium ?][? if reformist_strength < 35 : High ?]
 
 **Centre (Longo and Berlinguer)**
 
-Strength: [? if faction = 'Centre' : very strong ?][? if faction = 'Reformists' or faction = 'Left' : moderate ?]
+Strength: [? if centre_strength >= 65 : very strong ?][? if centre_strength >= 45 and centre_strength < 65 : strong ?][? if centre_strength >= 25 and centre_strength < 45 : moderate ?][? if centre_strength < 25 : weak ?]
 
-Dissent: [? if faction = 'Centre' : Low ?][? if faction = 'Reformists' or faction = 'Left' : Medium ?]
+Dissent: [? if centre_strength >= 65 : Low ?][? if centre_strength >= 35 and centre_strength < 65 : Medium ?][? if centre_strength < 35 : High ?]
 
 **Left (Ingrao current)**
 
-Strength: [? if faction = 'Left' : very strong ?][? if faction = 'Reformists' or faction = 'Centre' : moderate ?]
+Strength: [? if left_strength >= 65 : very strong ?][? if left_strength >= 45 and left_strength < 65 : strong ?][? if left_strength >= 25 and left_strength < 45 : moderate ?][? if left_strength < 25 : weak ?]
 
-Dissent: [? if faction = 'Left' : Low ?][? if faction = 'Reformists' or faction = 'Centre' : Medium ?]
+Dissent: [? if left_strength >= 65 : Low ?][? if left_strength >= 35 and left_strength < 65 : Medium ?][? if left_strength < 35 : High ?]
 
 # Party Leadership
 
@@ -160,21 +162,19 @@ The Christian Democrats remain the largest parliamentary force. The left is infl
 
 = Economy
 
-**Economic pressure**
+**Economy:** [? if economy_health >= 70 : Healthy ?][? if economy_health >= 45 and economy_health < 70 : Sluggish ?][? if economy_health < 45 : Weak ?] ([+ economy_health +] / 100)
 
-[+ inflation +] / 100
+**Budget balance:** [+ budget_balance +]% of GDP
 
-[? if inflation < 35 : Price pressures are relatively contained, but employment, wages and regional inequality remain major political issues. ?]
-[? if inflation >= 35 and inflation < 70 : Household budgets are under pressure. Wage bargaining and the cost of living are becoming central political questions. ?]
-[? if inflation >= 70 : Severe economic pressure threatens living standards and risks intensifying strikes, polarisation and public distrust. ?]
+**Public debt:** [+ public_debt +]% of GDP
 
-**Policy priorities**
+**Unemployment:** [+ unemployment_rate +]%
 
-Priorities: protect real wages and purchasing power; expand public services and reduce regional inequality; balance immediate relief with long-term economic stability.
+**Inflation:** [+ inflation_rate +]%
 
-Party resources: [+ resources +] / 6
+**Economic pressure:** [+ inflation +] / 100
 
-Economic initiatives cost political resources. Use policy cards carefully; the effects of economic decisions can spill into public support and institutional stability.
+Trade-union backing and grassroots fundraising sustain the PCI's political work. Economic pressure, employment and the public finances affect the stability of the Republic.
 
 @defense
 
@@ -210,6 +210,10 @@ Public support: [+ public_support +] / 100
 
 Internal dissent: [+ dissent +]
 
+Trade-union backing: [+ trade_union_backing +] / 100
+
+Grassroots fundraising: [+ grassroots_fundraising +] / 100
+
 Party resources: [+ resources +] / 6
 
 **Strategic challenges**
@@ -228,6 +232,10 @@ Strategic priorities: maintain unity between parliamentary strategy and extra-pa
 
 [? if year = 1968 and month <= 5 : May 1968 ?][? if year = 1968 and month > 5 or year = 1969 or year = 1970 or year = 1971 or year = 1972 and month <= 5 : 1972 ?][? if year = 1972 and month > 5 or year > 1972 and year < 1976 or year = 1976 and month <= 6 : 1976 ?][? if year = 1976 and month > 6 or year > 1976 and year < 1979 or year = 1979 and month <= 6 : 1979 ?][? if year = 1979 and month > 6 or year > 1979 and year < 1983 or year = 1983 and month <= 6 : 1983 ?][? if year = 1983 and month > 6 or year > 1983 : 1987 ?]
 
+**Current party position**
+
+[+ government_position +]
+
 **1963 Chamber of Deputies — 630 seats**
 
 DC: 260 · PCI: 166 · PSI: 87 · PLI: 39 · PSDI: 33 · MSI: 27 · Others: 18
@@ -239,37 +247,18 @@ The PCI's long-term challenge is to turn a large opposition electorate into a cr
 
 = Mission
 
-**The PCI campaign — January 1968 to December 1983**
+**The PCI campaign — 1968–1983**
 
-Lead the Partito Comunista Italiano through a period of intense social change, electoral competition and political violence. Your task is to expand the party's democratic influence while defending civil liberties and the institutions of the Republic.
+**Objectives**
 
-**Campaign priorities**
+Expand democratic support among workers, students and local communities.
 
-Build support among industrial workers, students, public employees and younger voters.
+Build parliamentary alliances without surrendering the PCI's independence.
 
-Maintain cooperation with trade unions and democratic socialist forces while preserving the PCI's political independence.
+Maintain internal party unity and defend constitutional democracy.
 
-Navigate parliamentary opposition, electoral campaigns and the debate over the historic compromise.
+Oppose terrorism and political violence.
 
-Oppose terrorism and political violence without abandoning constitutional rights and democratic safeguards.
+**Long-term goal**
 
-Manage party unity, public confidence, economic pressure and the stability of the Republic.
-
-**Your monthly decisions**
-
-Use the strategy deck to choose one initiative at a time. Each policy costs party resources; resources recover as the calendar advances. The pinned End the Month card advances the campaign and resolves historical developments.
-
-**Campaign endpoint**
-
-The scenario concludes in December 1983. Your final outcome reflects the public support, security, stability and economic pressures produced by your decisions.
-
-
-@map
-
-= Italy — Historical Map
-
-**The Italian Republic, 1905**
-
-The campaign is set against a period-style map of Italy. The historical map shown behind the game panels dates to 1905, before the events represented in this simulation.
-
-Map source: Wikimedia Commons, “Map of Italy - 1905”.
+Reach December 1983 with the PCI influential in national politics and the Republic's democratic institutions intact.
