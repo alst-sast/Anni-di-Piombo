@@ -85,8 +85,6 @@ max-cards: 3
 
 - @policy_deck
 - @leadership_deck
-- @mobilisation_deck
-- @economic_policy_deck
 - #advance_month
 
 @policy_deck
