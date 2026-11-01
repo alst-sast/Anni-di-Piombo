@@ -1,0 +1,4 @@
+name: Public debt ratio
+initial: 33.4
+min: 0
+max: 200
