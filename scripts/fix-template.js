@@ -338,7 +338,7 @@ const gameplayScript = `
       m.onclick=function(){window.changeTab('status.mission','mission_tab');};
       if(poll)c.insertBefore(m,poll);else c.appendChild(m);
     }
-    [{id:'government_tab',label:'Government',target:'status.government'},{id:'economy_tab',label:'Economy',target:'status.economy'}].forEach(function(x){
+    [{id:'government_tab',label:'Government',target:'status.government'}].forEach(function(x){
       if(document.getElementById(x.id))return;
       var b=document.createElement('button');b.type='button';b.className='tab_button';b.id=x.id;b.textContent=x.label;
       b.onclick=function(){window.changeTab(x.target,x.id);};c.appendChild(b);
