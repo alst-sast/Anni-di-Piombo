@@ -489,7 +489,7 @@ html = html.replace('</body>', gameplayScript + '\n</body>');
 /* The historical banner is loaded directly from Wikimedia Commons. */
 
 /* Bust cached framework assets whenever the campaign bundle changes. */
-const campaignAssetVersion = 'leadership-factions-20261101';
+const campaignAssetVersion = 'remove-extra-decks-20261101';
 html = html.replace(
   /(src|href)=("|')((?:\.\/)?(?:jquery-1\.11\.1\.min\.js|core\.js|game\.js|game\.css))\2/gi,
   function (match, attribute, quote, asset) {
