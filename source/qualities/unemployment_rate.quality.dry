@@ -1,0 +1,4 @@
+name: Unemployment rate
+initial: 3.5
+min: 0
+max: 30
