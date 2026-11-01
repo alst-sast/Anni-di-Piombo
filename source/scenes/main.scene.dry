@@ -4,9 +4,57 @@ new-page: true
 
 # ANNI DI PIOMBO
 
-- @pci_start: Start Campaign
+- @party_select: Start Campaign
 - @credits: Credits
 - @achievements: Achievements
+
+@party_select
+title: Select Difficulty
+new-page: true
+
+- @pci_easy_start: Easy
+- @pci_start: Normal
+- @pci_hard_start: Hard
+- @main_menu: Return to title
+
+
+@pci_easy_start
+title: Easy Difficulty
+new-page: true
+on-arrival: {!
+Q.party_name = 'Partito Comunista Italiano (PCI)';
+Q.government_position = 'Opposition';
+Q.faction = 'Centre';
+Q.dissent = 'Low';
+Q.resources = 6;
+Q.public_support = 60;
+Q.stability = 65;
+Q.security = 65;
+Q.inflation = 15;
+Q.month = 1;
+Q.year = 1968;
+!}
+go-to: monthly_briefing
+
+
+@pci_hard_start
+title: Hard Difficulty
+new-page: true
+on-arrival: {!
+Q.party_name = 'Partito Comunista Italiano (PCI)';
+Q.government_position = 'Opposition';
+Q.faction = 'Centre';
+Q.dissent = 'Moderate';
+Q.resources = 2;
+Q.public_support = 35;
+Q.stability = 45;
+Q.security = 45;
+Q.inflation = 40;
+Q.month = 1;
+Q.year = 1968;
+!}
+go-to: monthly_briefing
+
 
 @pci_start
 title: Partito Comunista Italiano
@@ -21,32 +69,11 @@ Q.public_support = 45;
 Q.stability = 55;
 Q.security = 55;
 Q.inflation = 25;
-Q.trade_union_backing = 38;
-Q.grassroots_fundraising = 34;
-Q.relation_dc = 30;
-Q.relation_psi_sdsi = 38;
-Q.relation_psiup = 64;
-Q.relation_pri = 50;
-Q.relation_pli = 32;
-Q.relation_msi = 10;
-Q.reformist_strength = 20;
-Q.centre_strength = 65;
-Q.left_strength = 15;
-Q.economy_health = 73;
-Q.budget_balance = -1.8;
-Q.public_debt = 33.4;
-Q.unemployment_rate = 3.5;
-Q.inflation_rate = 1.5;
-Q.pci_vote_share = 25.3;
-Q.last_election_year = 0;
-Q.advisor_longo_month = 0; Q.advisor_longo_year = 0;
-Q.advisor_amendola_month = 0; Q.advisor_amendola_year = 0;
-Q.advisor_ingrao_month = 0; Q.advisor_ingrao_year = 0;
-Q.advisor_iotti_month = 0; Q.advisor_iotti_year = 0;
 Q.month = 1;
 Q.year = 1968;
 !}
 go-to: monthly_briefing
+
 
 
 @monthly_briefing
@@ -58,8 +85,8 @@ max-cards: 3
 
 - @policy_deck
 - @leadership_deck
-- #election_card
-- #historical_event
+- @mobilisation_deck
+- @economic_policy_deck
 - #advance_month
 
 @policy_deck
@@ -77,6 +104,22 @@ is-deck: true
 card-image: https://immaginidelnovecento.fondazionegramsci.org/image-h/HD1/2010-07-05/imgs/000055.jpg
 
 - #leadership_deck
+
+@mobilisation_deck
+title: Mobilisation
+subtitle: Workers, unions and public campaigns
+is-deck: true
+card-image: https://commons.wikimedia.org/wiki/Special:FilePath/Sciopero_autunno_caldo.jpg
+
+- #policy_deck
+
+@economic_policy_deck
+title: Economic Policy
+subtitle: Wages, industry and the cost of living
+is-deck: true
+card-image: https://commons.wikimedia.org/wiki/Special:FilePath/Workers_in_Fiat_factories,_Turin.jpg
+
+- #policy_deck
 
 @leadership_conference
 title: Leadership Conference
@@ -103,9 +146,6 @@ new-page: true
 on-arrival: {!
 Q.resources = Math.max(0, Q.resources - 1);
 Q.faction = 'Reformists';
-Q.reformist_strength = 70; Q.centre_strength = 20; Q.left_strength = 10;
-Q.relation_dc = Math.min(100, Q.relation_dc + 3);
-Q.relation_pri = Math.min(100, Q.relation_pri + 3);
 Q.public_support = Math.min(100, Q.public_support + 2);
 Q.stability = Math.min(100, Q.stability + 3);
 !}
@@ -122,7 +162,6 @@ new-page: true
 on-arrival: {!
 Q.resources = Math.max(0, Q.resources - 1);
 Q.faction = 'Centre';
-Q.reformist_strength = 20; Q.centre_strength = 65; Q.left_strength = 15;
 Q.stability = Math.min(100, Q.stability + 2);
 Q.dissent = 'Low';
 !}
@@ -139,8 +178,6 @@ new-page: true
 on-arrival: {!
 Q.resources = Math.max(0, Q.resources - 1);
 Q.faction = 'Left';
-Q.reformist_strength = 15; Q.centre_strength = 20; Q.left_strength = 65;
-Q.relation_psiup = Math.min(100, Q.relation_psiup + 5);
 Q.public_support = Math.min(100, Q.public_support + 4);
 Q.stability = Math.max(0, Q.stability - 2);
 Q.dissent = 'Moderate';
@@ -151,611 +188,6 @@ Q.dissent = 'Moderate';
 The leadership gives greater weight to workplace mobilisation, internal party democracy and a more forceful opposition to the centre-left political establishment. The decision energises the party's activist base, but increases tension with moderate figures and unsettles the wider political climate.
 
 - @monthly_briefing: Return to government
-
-
-@advisor_hub
-title: Party Advisors
-new-page: true
-
-Choose an adviser to consult. Each adviser can be used once per month, and most interventions require one party resource.
-
-- @advisor_longo: Luigi Longo
-- @advisor_amendola: Giorgio Amendola
-- @advisor_ingrao: Pietro Ingrao
-- @advisor_iotti: Nilde Iotti
-- @monthly_briefing: Return to campaign
-
-@advisor_longo
-title: Luigi Longo
-new-page: true
-
-**Secretary of the PCI**
-
-Longo's office focuses on party organisation, trade-union coordination and maintaining a workable balance between the leadership currents.
-
-- @longo_union_network: Coordinate the trade-union network
-- @longo_party_discipline: Consolidate the party organisation
-- @advisor_hub: Return to advisors
-
-@longo_union_network
-title: Trade-union Network
-new-page: true
-choose-if: resources >= 1 and (advisor_longo_year != year or advisor_longo_month != month)
-on-arrival: {!
-Q.resources = Math.max(0,Q.resources-1);
-Q.trade_union_backing = Math.min(100,Q.trade_union_backing+12);
-Q.public_support = Math.min(100,Q.public_support+2);
-Q.advisor_longo_month = Q.month; Q.advisor_longo_year = Q.year;
-!}
-
-Longo coordinates the party's links with factory sections and union organisers. Trade-union backing and public support increase.
-
-- @monthly_briefing: Return to campaign
-
-@longo_party_discipline
-title: Party Organisation
-new-page: true
-choose-if: resources >= 1 and (advisor_longo_year != year or advisor_longo_month != month)
-on-arrival: {!
-Q.resources = Math.max(0,Q.resources-1);
-Q.dissent = 'Low';
-Q.grassroots_fundraising = Math.min(100,Q.grassroots_fundraising+5);
-Q.stability = Math.min(100,Q.stability+2);
-Q.advisor_longo_month = Q.month; Q.advisor_longo_year = Q.year;
-!}
-
-Longo strengthens coordination between the national leadership and local federations. Internal dissent falls and local fundraising improves.
-
-- @monthly_briefing: Return to campaign
-
-@advisor_amendola
-title: Giorgio Amendola
-new-page: true
-
-**Reformist current**
-
-Amendola works to maintain parliamentary links and cooperation with democratic and socialist forces.
-
-- @amendola_parliamentary: Cultivate parliamentary contacts
-- @amendola_democratic_front: Build a democratic front
-- @advisor_hub: Return to advisors
-
-@amendola_parliamentary
-title: Parliamentary Contacts
-new-page: true
-choose-if: resources >= 1 and (advisor_amendola_year != year or advisor_amendola_month != month)
-on-arrival: {!
-Q.resources = Math.max(0,Q.resources-1);
-Q.relation_psi_sdsi = Math.min(100,Q.relation_psi_sdsi+10);
-Q.relation_pri = Math.min(100,Q.relation_pri+7);
-Q.stability = Math.min(100,Q.stability+1);
-Q.advisor_amendola_month = Q.month; Q.advisor_amendola_year = Q.year;
-!}
-
-Amendola opens channels with the unified socialists and the Republicans, improving the PCI's parliamentary room for manoeuvre.
-
-- @monthly_briefing: Return to campaign
-
-@amendola_democratic_front
-title: Democratic Front
-new-page: true
-choose-if: resources >= 1 and (advisor_amendola_year != year or advisor_amendola_month != month)
-on-arrival: {!
-Q.resources = Math.max(0,Q.resources-1);
-Q.relation_dc = Math.min(100,Q.relation_dc+7);
-Q.relation_pli = Math.min(100,Q.relation_pli+4);
-Q.stability = Math.min(100,Q.stability+2);
-Q.advisor_amendola_month = Q.month; Q.advisor_amendola_year = Q.year;
-!}
-
-Amendola seeks common ground on constitutional government and opposition to political violence. Relations with democratic parties improve.
-
-- @monthly_briefing: Return to campaign
-
-@advisor_ingrao
-title: Pietro Ingrao
-new-page: true
-
-**Left current**
-
-Ingrao gives priority to internal party democracy, workplace mobilisation and the demands of social movements.
-
-- @ingrao_assemblies: Organise workplace assemblies
-- @ingrao_left_current: Strengthen the left current
-- @advisor_hub: Return to advisors
-
-@ingrao_assemblies
-title: Workplace Assemblies
-new-page: true
-choose-if: resources >= 1 and (advisor_ingrao_year != year or advisor_ingrao_month != month)
-on-arrival: {!
-Q.resources = Math.max(0,Q.resources-1);
-Q.trade_union_backing = Math.min(100,Q.trade_union_backing+8);
-Q.grassroots_fundraising = Math.min(100,Q.grassroots_fundraising+4);
-Q.public_support = Math.min(100,Q.public_support+3);
-Q.advisor_ingrao_month = Q.month; Q.advisor_ingrao_year = Q.year;
-!}
-
-Ingrao helps coordinate workplace assemblies and local organisers. Trade-union backing, grassroots fundraising and public support rise.
-
-- @monthly_briefing: Return to campaign
-
-@ingrao_left_current
-title: Internal Debate
-new-page: true
-choose-if: resources >= 1 and (advisor_ingrao_year != year or advisor_ingrao_month != month)
-on-arrival: {!
-Q.resources = Math.max(0,Q.resources-1);
-Q.left_strength = Math.min(100,Q.left_strength+10);
-Q.centre_strength = Math.max(0,Q.centre_strength-5);
-Q.reformist_strength = Math.max(0,Q.reformist_strength-5);
-Q.dissent = 'Moderate';
-Q.advisor_ingrao_month = Q.month; Q.advisor_ingrao_year = Q.year;
-!}
-
-Ingrao calls for a more democratic and movement-oriented party line. The left current gains strength, while internal disagreement becomes more pronounced.
-
-- @monthly_briefing: Return to campaign
-
-@advisor_iotti
-title: Nilde Iotti
-new-page: true
-
-**Parliamentary and civic organisation**
-
-Iotti builds links with local associations, women's organisations and civic networks.
-
-- @iotti_civic_network: Expand civic committees
-- @iotti_womens_network: Organise women's organisations
-- @advisor_hub: Return to advisors
-
-@iotti_civic_network
-title: Civic Committees
-new-page: true
-choose-if: resources >= 1 and (advisor_iotti_year != year or advisor_iotti_month != month)
-on-arrival: {!
-Q.resources = Math.max(0,Q.resources-1);
-Q.grassroots_fundraising = Math.min(100,Q.grassroots_fundraising+10);
-Q.public_support = Math.min(100,Q.public_support+2);
-Q.advisor_iotti_month = Q.month; Q.advisor_iotti_year = Q.year;
-!}
-
-Iotti strengthens local civic committees and their ability to organise meetings, volunteers and small donations.
-
-- @monthly_briefing: Return to campaign
-
-@iotti_womens_network
-title: Women's Organisations
-new-page: true
-choose-if: resources >= 1 and (advisor_iotti_year != year or advisor_iotti_month != month)
-on-arrival: {!
-Q.resources = Math.max(0,Q.resources-1);
-Q.public_support = Math.min(100,Q.public_support+3);
-Q.grassroots_fundraising = Math.min(100,Q.grassroots_fundraising+5);
-Q.relation_psiup = Math.min(100,Q.relation_psiup+3);
-Q.advisor_iotti_month = Q.month; Q.advisor_iotti_year = Q.year;
-!}
-
-Iotti extends the party's civic work through women's organisations and local campaigns. Public support and grassroots fundraising improve.
-
-- @monthly_briefing: Return to campaign
-
-
-@trade_union_network
-title: Trade-union Network
-card-image: https://commons.wikimedia.org/wiki/Special:FilePath/Sciopero_autunno_caldo.jpg
-is-card: true
-new-page: true
-choose-if: resources >= 1
-tags: policy_deck
-
-Strengthen the PCI's links with workplace sections and the CGIL.
-
-- @trade_union_network_result: Organise a union campaign
-
-@trade_union_network_result
-title: Trade-union Campaign
-new-page: true
-on-arrival: {!
-Q.resources = Math.max(0,Q.resources-1);
-Q.trade_union_backing = Math.min(100,Q.trade_union_backing+12);
-Q.public_support = Math.min(100,Q.public_support+2);
-!}
-
-Industrial organisation and union links improve the party's ability to mobilise workers and sustain political activity.
-
-- @monthly_briefing: Return to campaign
-
-@grassroots_fundraising_card
-title: Grassroots Fundraising
-card-image: https://commons.wikimedia.org/wiki/Special:FilePath/Tessera_PCI_1961.jpg
-is-card: true
-new-page: true
-choose-if: resources >= 1
-tags: policy_deck
-
-Build a reliable network of small donations and local party contributions.
-
-- @grassroots_fundraising_result: Organise a fundraising drive
-
-@grassroots_fundraising_result
-title: Grassroots Fundraising
-new-page: true
-on-arrival: {!
-Q.resources = Math.max(0,Q.resources-1);
-Q.grassroots_fundraising = Math.min(100,Q.grassroots_fundraising+14);
-Q.public_support = Math.min(100,Q.public_support+1);
-!}
-
-Local branches expand their contribution networks, making future party activity easier to finance.
-
-- @monthly_briefing: Return to campaign
-
-@parliamentary_contacts_card
-title: Parliamentary Contacts
-card-image: https://commons.wikimedia.org/wiki/Special:FilePath/Governo_Fanfani_IV.jpg
-is-card: true
-new-page: true
-choose-if: resources >= 1
-tags: policy_deck
-
-The PCI must decide which parliamentary relationships to prioritise as it seeks influence without abandoning its independent position.
-
-- @parliamentary_contacts_result: Open negotiations
-
-@parliamentary_contacts_result
-title: Parliamentary Negotiations
-new-page: true
-
-Choose a political route. Relationships affect the PCI's ability to build agreements and influence parliamentary business.
-
-- @contacts_socialists: Work with the unified socialists
-- @contacts_psiup: Coordinate with the socialist left
-- @contacts_dc: Open a confidence-and-supply channel
-- @coalition_builder: Build a parliamentary coalition
-
-@coalition_builder
-title: Coalition Builder
-new-page: true
-
-Assemble a parliamentary bloc from parties willing to cooperate with the PCI. Agreements require political relationships and party resources.
-
-- @coalition_left: Progressive opposition bloc
-- @coalition_republican: Democratic opposition alliance
-- @coalition_historic: Historic compromise negotiations
-- @monthly_briefing: Return to campaign
-
-@coalition_left
-title: Progressive Opposition Bloc
-new-page: true
-choose-if: resources >= 2 and relation_psi_sdsi >= 50 and relation_psiup >= 50
-on-arrival: {!
-Q.resources = Math.max(0,Q.resources-2);
-Q.government_position = 'Progressive opposition bloc';
-Q.public_support = Math.min(100,Q.public_support+2);
-Q.stability = Math.min(100,Q.stability+2);
-!}
-
-The PCI brings the unified socialists and PSIUP into a coordinated parliamentary opposition. The bloc increases the left's ability to influence debate and committee work.
-
-- @monthly_briefing: Return to campaign
-
-@coalition_republican
-title: Democratic Opposition Alliance
-new-page: true
-choose-if: resources >= 2 and relation_psi_sdsi >= 45 and relation_pri >= 50
-on-arrival: {!
-Q.resources = Math.max(0,Q.resources-2);
-Q.government_position = 'Democratic opposition alliance';
-Q.relation_pri = Math.min(100,Q.relation_pri+4);
-Q.public_support = Math.min(100,Q.public_support+1);
-Q.stability = Math.min(100,Q.stability+3);
-!}
-
-The PCI and its socialist and republican partners coordinate around constitutional reform, civil liberties and parliamentary scrutiny.
-
-- @monthly_briefing: Return to campaign
-
-@coalition_historic
-title: Historic Compromise Negotiations
-new-page: true
-choose-if: year >= 1976 and resources >= 2 and relation_dc >= 35 and relation_psi_sdsi >= 45
-on-arrival: {!
-Q.resources = Math.max(0,Q.resources-2);
-Q.government_position = 'Historic compromise negotiations';
-Q.relation_dc = Math.min(100,Q.relation_dc+5);
-Q.stability = Math.min(100,Q.stability+4);
-!}
-
-The PCI begins negotiations with Christian Democracy over a programme of parliamentary cooperation. The party gains influence but faces criticism from sections of the left.
-
-- @monthly_briefing: Return to campaign
-
-
-@contacts_socialists
-title: Socialist Cooperation
-new-page: true
-choose-if: resources >= 1
-on-arrival: {!
-Q.resources = Math.max(0,Q.resources-1);
-Q.relation_psi_sdsi = Math.min(100,Q.relation_psi_sdsi+14);
-Q.relation_pri = Math.min(100,Q.relation_pri+4);
-Q.government_position = 'Opposition alliance';
-!}
-
-The PCI strengthens its working relationship with the unified socialists and opens a channel to the Republicans.
-
-- @monthly_briefing: Return to campaign
-
-@contacts_psiup
-title: Socialist Left Cooperation
-new-page: true
-choose-if: resources >= 1
-on-arrival: {!
-Q.resources = Math.max(0,Q.resources-1);
-Q.relation_psiup = Math.min(100,Q.relation_psiup+14);
-Q.trade_union_backing = Math.min(100,Q.trade_union_backing+3);
-Q.government_position = 'Left opposition front';
-!}
-
-Cooperation with PSIUP strengthens the PCI's links with the socialist left and labour activists.
-
-- @monthly_briefing: Return to campaign
-
-@contacts_dc
-title: Parliamentary Support Agreement
-new-page: true
-choose-if: year >= 1976 and resources >= 1 and relation_dc >= 20
-on-arrival: {!
-Q.resources = Math.max(0,Q.resources-1);
-Q.relation_dc = Math.min(100,Q.relation_dc+12);
-Q.stability = Math.min(100,Q.stability+2);
-Q.government_position = 'Parliamentary support';
-!}
-
-The PCI opens negotiations over parliamentary support for a government programme. The party remains outside the cabinet, but gains influence over confidence votes and policy.
-
-- @monthly_briefing: Return to campaign
-
-
-@election_card
-title: General Election
-subtitle: Choose the PCI's campaign strategy
-card-image: https://commons.wikimedia.org/wiki/Special:FilePath/Manifestazione_PCI_1968.jpg
-is-pinned-card: true
-tags: election_card
-new-page: true
-choose-if: last_election_year != year and ((year = 1968 and month = 5) or (year = 1972 and month = 5) or (year = 1976 and month = 6) or (year = 1979 and month = 6) or (year = 1983 and month = 6))
-
-The general election is approaching. Decide how the PCI should conduct its campaign.
-
-- @election_strategy: Organise the campaign
-
-@election_strategy
-title: Election Campaign
-new-page: true
-
-Choose the emphasis for this election.
-
-- @election_workers: Workers and factory committees
-- @election_alliance: Democratic and socialist alliance
-- @election_mass: Broad popular campaign
-
-@election_workers
-title: Workers' Campaign
-new-page: true
-on-arrival: {!
-Q.pci_vote_share = Math.min(45, Q.pci_vote_share + 0.7 + (Q.trade_union_backing - 40) * 0.025 + (Q.public_support - 45) * 0.02);
-Q.public_support = Math.min(100, Q.public_support + 2);
-Q.trade_union_backing = Math.min(100, Q.trade_union_backing + 3);
-Q.last_election_year = Q.year;
-if (Q.pci_vote_share >= 30) Q.government_position = 'Leading opposition';
-!}
-
-The PCI campaigns through factories, union branches and workplace committees. The strategy strengthens the party's industrial base and can improve its vote share.
-
-- @monthly_briefing: Return to campaign
-
-@election_alliance
-title: Democratic Alliance
-new-page: true
-on-arrival: {!
-Q.pci_vote_share = Math.min(45, Q.pci_vote_share + 0.5 + (Q.relation_psi_sdsi - 40) * 0.025 + (Q.relation_pri - 40) * 0.02);
-Q.relation_psi_sdsi = Math.min(100, Q.relation_psi_sdsi + 3);
-Q.relation_pri = Math.min(100, Q.relation_pri + 2);
-Q.last_election_year = Q.year;
-if (Q.pci_vote_share >= 30) Q.government_position = 'Leading opposition';
-!}
-
-The PCI seeks cooperation with democratic socialist and republican forces. Better relations can improve the campaign's reach, though compromises must be made.
-
-- @monthly_briefing: Return to campaign
-
-@election_mass
-title: Popular Campaign
-new-page: true
-on-arrival: {!
-Q.pci_vote_share = Math.min(45, Q.pci_vote_share + 0.4 + (Q.public_support - 45) * 0.04 + (Q.grassroots_fundraising - 40) * 0.02);
-Q.public_support = Math.min(100, Q.public_support + 3);
-Q.grassroots_fundraising = Math.min(100, Q.grassroots_fundraising + 4);
-Q.last_election_year = Q.year;
-if (Q.pci_vote_share >= 30) Q.government_position = 'Leading opposition';
-!}
-
-The campaign focuses on local branches, public meetings and door-to-door mobilisation. Public support and grassroots organisation improve.
-
-- @monthly_briefing: Return to campaign
-
-
-@piazza_event
-title: Piazza Fontana
-subtitle: Milan, December 1969
-card-image: https://commons.wikimedia.org/wiki/Special:FilePath/Piazza_Fontana_bombing_1969.jpg
-is-pinned-card: true
-new-page: true
-tags: historical_event
-choose-if: year = 1969 and month = 12 and event_piazza_done = 0
-on-arrival: {! Q.event_piazza_done = 1; !}
-
-On 12 December 1969, a bomb explodes at the Banca Nazionale dell'Agricoltura in Milan, killing 17 people. The attack intensifies fear and political polarisation.
-
-Choose the PCI's response.
-
-- @piazza_inquiry: Demand an independent investigation
-- @piazza_safeguards: Defend public order and civil safeguards
-
-@piazza_inquiry
-title: Independent Investigation
-new-page: true
-on-arrival: {!
-Q.security = Math.min(100,Q.security+3);
-Q.stability = Math.min(100,Q.stability+3);
-Q.public_support = Math.min(100,Q.public_support+2);
-Q.relation_pri = Math.min(100,Q.relation_pri+2);
-!}
-
-The PCI calls for an impartial investigation, protection of civil liberties and accountability for the perpetrators. The party strengthens its democratic standing.
-
-- @monthly_briefing: Return to campaign
-
-@piazza_safeguards
-title: Public Order and Civil Safeguards
-new-page: true
-on-arrival: {!
-Q.security = Math.min(100,Q.security+5);
-Q.stability = Math.max(0,Q.stability-2);
-Q.public_support = Math.max(0,Q.public_support-1);
-!}
-
-The PCI supports a firm public response while warning against indiscriminate arrests and political repression. Security improves, but civil tensions remain.
-
-- @monthly_briefing: Return to campaign
-
-
-@divorce_event
-title: Divorce Referendum
-subtitle: Italy, May 1974
-card-image: https://commons.wikimedia.org/wiki/Special:FilePath/Referendum_sul_divorzio_1974.jpg
-is-pinned-card: true
-new-page: true
-tags: historical_event
-choose-if: year = 1974 and month = 5 and event_divorce_done = 0
-on-arrival: {! Q.event_divorce_done = 1; !}
-
-Italy votes on whether to repeal the divorce law. The referendum becomes a defining test of secular, Catholic and progressive political forces.
-
-- @divorce_campaign: Defend the divorce law
-- @divorce_caution: Take a cautious parliamentary line
-
-@divorce_campaign
-title: Defend the Divorce Law
-new-page: true
-on-arrival: {!
-Q.public_support = Math.min(100,Q.public_support+4);
-Q.relation_psiup = Math.min(100,Q.relation_psiup+5);
-Q.grassroots_fundraising = Math.min(100,Q.grassroots_fundraising+3);
-!}
-
-The PCI mobilises voters to defend the law. Secular and socialist allies welcome the campaign, and grassroots organisation improves.
-
-- @monthly_briefing: Return to campaign
-
-@divorce_caution
-title: Cautious Referendum Campaign
-new-page: true
-on-arrival: {!
-Q.relation_dc = Math.min(100,Q.relation_dc+2);
-Q.public_support = Math.min(100,Q.public_support+1);
-!}
-
-The PCI avoids a confrontational campaign and stresses parliamentary compromise. Relations with Catholic political figures improve slightly, but progressive activists are less enthusiastic.
-
-- @monthly_briefing: Return to campaign
-
-
-@moro_event
-title: The Moro Kidnapping
-subtitle: Rome, March 1978
-card-image: https://commons.wikimedia.org/wiki/Special:FilePath/Aldo_Moro_1978.jpg
-is-pinned-card: true
-new-page: true
-tags: historical_event
-choose-if: year = 1978 and month = 3 and event_moro_done = 0
-on-arrival: {! Q.event_moro_done = 1; !}
-
-On 16 March 1978, the Red Brigades kidnap former prime minister Aldo Moro and kill five members of his escort. The Republic faces an extraordinary crisis.
-
-- @moro_democratic_unity: Defend democratic unity
-- @moro_negotiation: Support a negotiated settlement
-
-@moro_democratic_unity
-title: Democratic Unity
-new-page: true
-on-arrival: {!
-Q.security = Math.min(100,Q.security+3);
-Q.stability = Math.min(100,Q.stability+4);
-Q.relation_dc = Math.min(100,Q.relation_dc+5);
-!}
-
-The PCI supports the constitutional institutions and a united democratic response to terrorism. Cooperation with other democratic parties improves.
-
-- @monthly_briefing: Return to campaign
-
-@moro_negotiation
-title: Negotiated Settlement
-new-page: true
-on-arrival: {!
-Q.public_support = Math.min(100,Q.public_support+2);
-Q.relation_dc = Math.max(0,Q.relation_dc-7);
-Q.stability = Math.max(0,Q.stability-2);
-!}
-
-The PCI calls for every possible channel to be explored to save Moro's life. The position earns sympathy from some voters but deepens disagreement with the government.
-
-- @monthly_briefing: Return to campaign
-
-
-@bologna_event
-title: Bologna Station Bombing
-subtitle: Bologna, August 1980
-card-image: https://commons.wikimedia.org/wiki/Special:FilePath/Bologna_strage_1980.jpg
-is-pinned-card: true
-new-page: true
-tags: historical_event
-choose-if: year = 1980 and month = 8 and event_bologna_done = 0
-on-arrival: {! Q.event_bologna_done = 1; !}
-
-On 2 August 1980, a bomb at Bologna Centrale kills 85 people and wounds more than 200. The attack shocks the country and prompts demands for justice.
-
-- @bologna_investigation: Demand a full independent inquiry
-- @bologna_emergency: Support emergency security measures
-
-@bologna_investigation
-title: Independent Inquiry
-new-page: true
-on-arrival: {!
-Q.security = Math.min(100,Q.security+3);
-Q.stability = Math.min(100,Q.stability+3);
-Q.public_support = Math.min(100,Q.public_support+2);
-Q.relation_pri = Math.min(100,Q.relation_pri+2);
-!}
-
-The PCI demands a thorough investigation and protection for civil liberties. The party builds support for accountability and democratic oversight.
-
-- @monthly_briefing: Return to campaign
-
-@bologna_emergency
-title: Emergency Security Measures
-new-page: true
-on-arrival: {!
-Q.security = Math.min(100,Q.security+6);
-Q.stability = Math.max(0,Q.stability-3);
-Q.public_support = Math.max(0,Q.public_support-2);
-!}
-
-The PCI backs stronger emergency measures. Security improves in the short term, but civil liberties and public trust come under strain.
-
-- @monthly_briefing: Return to campaign
 
 
 @economic_relief
@@ -776,10 +208,6 @@ new-page: true
 on-arrival: {!
 Q.resources = Math.max(0, Q.resources - 1);
 Q.inflation = Math.max(0, Q.inflation - 8);
-Q.inflation_rate = Math.max(0, Q.inflation_rate - 0.2);
-Q.economy_health = Math.min(100, Q.economy_health + 4);
-Q.budget_balance = Q.budget_balance - 0.1;
-Q.unemployment_rate = Math.max(0, Q.unemployment_rate - 0.1);
 Q.public_support = Math.min(100, Q.public_support + 5);
 !}
 
@@ -830,7 +258,6 @@ new-page: true
 on-arrival: {!
 Q.resources = Math.max(0, Q.resources - 1);
 Q.stability = Math.min(100, Q.stability + 8);
-Q.economy_health = Math.min(100, Q.economy_health + 2);
 Q.public_support = Math.min(100, Q.public_support + 3);
 !}
 
@@ -856,9 +283,7 @@ new-page: true
 on-arrival: {!
 Q.resources = Math.max(0, Q.resources - 1);
 Q.public_support = Math.min(100, Q.public_support + 7);
-Q.trade_union_backing = Math.min(100, Q.trade_union_backing + 8);
 Q.inflation = Math.min(100, Q.inflation + 3);
-Q.economy_health = Math.max(0, Q.economy_health - 1);
 Q.stability = Math.max(0, Q.stability - 1);
 !}
 
@@ -885,7 +310,6 @@ on-arrival: {!
 Q.resources = Math.max(0, Q.resources - 1);
 Q.stability = Math.min(100, Q.stability + 4);
 Q.public_support = Math.min(100, Q.public_support + 2);
-Q.grassroots_fundraising = Math.min(100, Q.grassroots_fundraising + 3);
 Q.dissent = 'Low';
 !}
 
@@ -934,34 +358,9 @@ if (Q.year === 1982 && Q.month === 9) {
     Q.security = Math.max(0, Q.security - 8);
     Q.stability = Math.max(0, Q.stability - 3);
 }
-/* Oil shocks and quarterly economic conditions. */
-if (Q.year === 1973 && Q.month === 10) {
-    Q.inflation = Math.min(100, Q.inflation + 14);
-    Q.inflation_rate = Math.min(100, Q.inflation_rate + 4);
-    Q.economy_health = Math.max(0, Q.economy_health - 8);
-    Q.unemployment_rate = Math.min(30, Q.unemployment_rate + 0.4);
-    Q.budget_balance = Q.budget_balance - 0.3;
-}
-if (Q.year === 1979 && Q.month === 1) {
-    Q.inflation = Math.min(100, Q.inflation + 8);
-    Q.inflation_rate = Math.min(100, Q.inflation_rate + 2);
-    Q.economy_health = Math.max(0, Q.economy_health - 5);
-    Q.unemployment_rate = Math.min(30, Q.unemployment_rate + 0.2);
-    Q.budget_balance = Q.budget_balance - 0.2;
-}
-/* Quarterly macroeconomic adjustments. */
+/* Apply quarterly economic pressure on March, June, September and December. */
 if (Q.month === 3 || Q.month === 6 || Q.month === 9 || Q.month === 12) {
     Q.inflation = Math.min(100, Q.inflation + 2);
-    Q.inflation_rate = Math.min(100, Q.inflation_rate + (Q.inflation >= 60 ? 0.25 : 0.1));
-    if (Q.inflation >= 75 || Q.unemployment_rate >= 7) {
-        Q.economy_health = Math.max(0, Q.economy_health - 2);
-        Q.unemployment_rate = Math.min(30, Q.unemployment_rate + 0.1);
-        Q.budget_balance = Q.budget_balance - 0.05;
-    } else if (Q.economy_health >= 70 && Q.inflation < 45) {
-        Q.economy_health = Math.min(100, Q.economy_health + 1);
-        Q.unemployment_rate = Math.max(1, Q.unemployment_rate - 0.03);
-        Q.budget_balance = Q.budget_balance + 0.03;
-    }
     if (Q.inflation >= 85 || Q.security < 25) {
         Q.stability = Math.max(0, Q.stability - 2);
     } else if (Q.public_support >= 60 && Q.security >= 40) {
@@ -970,12 +369,7 @@ if (Q.month === 3 || Q.month === 6 || Q.month === 9 || Q.month === 12) {
         Q.stability = Math.max(0, Q.stability - 1);
     }
 }
-/* Deficits accumulate into public debt. Backing networks improve party income. */
-Q.public_debt = Math.min(150, Q.public_debt + Math.max(0, -Q.budget_balance) * 0.04);
-var monthlyIncome = 1;
-if (Q.trade_union_backing >= 70) monthlyIncome += 1;
-if (Q.grassroots_fundraising >= 75) monthlyIncome += 1;
-Q.resources = Math.min(6, Q.resources + monthlyIncome);
+Q.resources = Math.min(6, Q.resources + 1);
 if (Q.month >= 12) {
     Q.month = 1;
     Q.year = Q.year + 1;
@@ -1023,31 +417,6 @@ title: Main Menu
 new-page: true
 go-to: title_screen
 
-@library
-title: Library
-new-page: true
-
-**Italy, 1968–1983**
-
-**Partito Comunista Italiano (PCI)** — The Italian Communist Party, the principal force of the parliamentary left during the campaign.
-
-**CGIL** — Italy's major trade-union confederation, closely associated with the labour movement and the PCI's industrial base.
-
-**Hot Autumn (Autunno caldo), 1969** — A wave of strikes and workplace mobilisation over wages, working conditions and workers' rights.
-
-**Statute of Workers, 1970** — Legislation that extended workplace rights and protections.
-
-**Historic Compromise (Compromesso storico)** — Enrico Berlinguer's strategy for democratic cooperation between the PCI and Christian Democracy after the Chilean coup of 1973.
-
-**Years of Lead (Anni di piombo)** — The period of political violence, terrorism and social conflict that forms the campaign's setting.
-
-**Red Brigades (Brigate Rosse)** — A far-left armed organisation responsible for kidnappings and assassinations, including the 1978 murder of Aldo Moro.
-
-**Strategy of Tension (Strategia della tensione)** — The use of bombings and political violence to destabilise Italy and influence public opinion.
-
-- @monthly_briefing: Return to campaign
-
-
 @credits
 title: Credits
 new-page: true
@@ -1068,16 +437,14 @@ new-page: true
 
 ACHIEVEMENTS
 
-Achievements unlock permanently and remain available across campaigns.
+Milestones are calculated from your current campaign state. They are not a permanent cross-save record.
 
-[? if achievement_guardian = 1 : **Guardian of the Republic** — Unlocked. ?][? if achievement_guardian = 0 : **Guardian of the Republic** — Maintain stability of 65 and public security of 60. ?]
-
-[? if achievement_popular_mandate = 1 : **Popular Mandate** — Unlocked. ?][? if achievement_popular_mandate = 0 : **Popular Mandate** — Reach public support of 65. ?]
-
-[? if achievement_party_organiser = 1 : **Party Organiser** — Unlocked. ?][? if achievement_party_organiser = 0 : **Party Organiser** — Reach maximum resources with strong trade-union backing and grassroots fundraising. ?]
-
-[? if achievement_good_relations = 1 : **Parliamentary Network** — Unlocked. ?][? if achievement_good_relations = 0 : **Parliamentary Network** — Build friendly relations with the socialists and Republicans. ?]
-
-[? if achievement_endured = 1 : **Veteran of the Years of Lead** — Unlocked. ?][? if achievement_endured = 0 : **Veteran of the Years of Lead** — Reach the final campaign year. ?]
+[? if stability >= 65 and security >= 50 : **Guardian of the Republic** — Political stability and public security remain strong. ?]
+[? if public_support >= 65 : **Popular Mandate** — Your party enjoys broad public support. ?]
+[? if inflation <= 50 : **Economic Relief** — Economic pressure has been brought under control. ?]
+[? if resources >= 6 : **Party Organisation** — Your party has built up its maximum available resources. ?]
+[? if year >= 1983 : **Veteran of the Years of Lead** — You have reached the final campaign year. ?]
+[? if stability < 30 or security < 20 : **Republic in Peril** — The state is facing a severe political or security crisis. ?]
+[? if (stability < 65 or security < 50) and public_support < 65 and inflation > 50 and resources < 6 and year < 1983 and stability >= 30 and security >= 20 : No campaign milestone has been reached yet. Continue making decisions to shape the Republic's future. ?]
 
 - @main_menu: Return to title

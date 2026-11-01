@@ -287,10 +287,10 @@ const gameplayScript = `
   var monthNames = ['January','February','March','April','May','June','July','August','September','October','November','December'];
   var italianMonthNames = ['gennaio','febbraio','marzo','aprile','maggio','giugno','luglio','agosto','settembre','ottobre','novembre','dicembre'];
   var advisors = [
-    {id:'longo',name:'Luigi Longo',role:'Segretario generale',image:'https://commons.wikimedia.org/wiki/Special:FilePath/Luigi_Longo_1968.jpg',source:'https://commons.wikimedia.org/wiki/File:Luigi_Longo_1968.jpg'},
-    {id:'amendola',name:'Giorgio Amendola',role:'Direzione',image:'https://commons.wikimedia.org/wiki/Special:FilePath/Giorgio_Amendola_1969.jpg',source:'https://commons.wikimedia.org/wiki/File:Giorgio_Amendola_1969.jpg'},
-    {id:'ingrao',name:'Pietro Ingrao',role:'Sinistra interna',image:'https://commons.wikimedia.org/wiki/Special:FilePath/PietroIngrao.jpg',source:'https://commons.wikimedia.org/wiki/File:PietroIngrao.jpg'},
-    {id:'iotti',name:'Nilde Iotti',role:'Parlamento',image:'https://commons.wikimedia.org/wiki/Special:FilePath/Leonilde_Iotti.jpg',source:'https://commons.wikimedia.org/wiki/File:Leonilde_Iotti.jpg'}
+    {name:'Enrico Berlinguer',role:'Direzione',image:'https://commons.wikimedia.org/wiki/Special:FilePath/Enrico_Berlinguer.jpg',source:'https://commons.wikimedia.org/wiki/File:Enrico_Berlinguer.jpg'},
+    {name:'Giorgio Amendola',role:'Direzione',image:'https://commons.wikimedia.org/wiki/Special:FilePath/Giorgio_Amendola_1969.jpg',source:'https://commons.wikimedia.org/wiki/File:Giorgio_Amendola_1969.jpg'},
+    {name:'Pietro Ingrao',role:'Parlamento',image:'https://commons.wikimedia.org/wiki/Special:FilePath/PietroIngrao.jpg',source:'https://commons.wikimedia.org/wiki/File:PietroIngrao.jpg'},
+    {name:'Nilde Iotti',role:'Parlamento',image:'https://commons.wikimedia.org/wiki/Special:FilePath/Leonilde_Iotti.jpg',source:'https://commons.wikimedia.org/wiki/File:Leonilde_Iotti.jpg'}
   ];
   function sceneId() {
     try {
@@ -338,7 +338,7 @@ const gameplayScript = `
       m.onclick=function(){window.changeTab('status.mission','mission_tab');};
       if(poll)c.insertBefore(m,poll);else c.appendChild(m);
     }
-    [{id:'government_tab',label:'Government',target:'status.government'}].forEach(function(x){
+    [{id:'government_tab',label:'Government',target:'status.government'},{id:'map_tab',label:'Map',target:'status.map'}].forEach(function(x){
       if(document.getElementById(x.id))return;
       var b=document.createElement('button');b.type='button';b.className='tab_button';b.id=x.id;b.textContent=x.label;
       b.onclick=function(){window.changeTab(x.target,x.id);};c.appendChild(b);
@@ -348,7 +348,7 @@ const gameplayScript = `
     var c=document.getElementById('header-links');if(!c)return;
     if(!document.getElementById('anni-library-link')){
       var a=document.createElement('a');a.id='anni-library-link';a.href='#';a.textContent='Library';
-      a.onclick=function(e){if(e)e.preventDefault();window.dendryUI.dendryEngine.goToScene('main.library');return false;};c.insertBefore(a,c.firstChild);
+      a.onclick=function(e){if(e)e.preventDefault();window.changeTab('status.mission','mission_tab');return false;};c.insertBefore(a,c.firstChild);
     }
     if(!document.getElementById('anni-achievements-link')){
       var a2=document.createElement('a');a2.id='anni-achievements-link';a2.href='#';a2.textContent='Achievements';
@@ -401,37 +401,14 @@ const gameplayScript = `
       return;
     }
     p=document.createElement('section');p.id='anni-advisors';p.className='tools';p.setAttribute('data-scene',scene);
-    var portraits=advisors.map(function(x){
-      return '<figure class="anni-advisor"><img src="'+x.image+'" alt="'+x.name+'" loading="lazy"><figcaption>'+x.name+'</figcaption><div class="anni-advisor-role">'+x.role+'</div><button type="button" class="anni-advisor-consult" data-advisor="'+x.id+'">Consult</button></figure>';
-    }).join('');
+    var portraits=advisors.map(function(x){return '<figure class="anni-advisor"><img src="'+x.image+'" alt="'+x.name+'" loading="lazy"><figcaption>'+x.name+'</figcaption><div class="anni-advisor-role">'+x.role+'</div></figure>';}).join('');
     p.innerHTML=
-      '<div class="anni-advisors-title">Party Advisors</div>'+
+      '<div class="anni-advisors-title">Dirigenti del partito</div>'+
+      '<div class="anni-advisor-meter"><span></span><span></span><span></span><span></span></div>'+
       '<div class="anni-advisor-grid">'+portraits+'</div>'+
-      '<div class="anni-image-credits">Consult an adviser to organise the party, strengthen public support or improve parliamentary relations.</div>';
-    p.querySelectorAll('button[data-advisor]').forEach(function(button){
-      button.addEventListener('click',function(){
-        var engine=window.dendryUI && window.dendryUI.dendryEngine;
-        var id=button.getAttribute('data-advisor');
-        if(engine && id)engine.goToScene('main.advisor_'+id);
-      });
-    });
+      '<div class="anni-image-credits">Ritratti: Longo — Giovanni Malagodi / Camera dei Deputati (CC BY-SA 4.0); Berlinguer e Amendola — fotografie storiche, dominio pubblico in Italia; Ingrao — dati.camera.it (CC BY-SA 4.0); Iotti — Severino Crescente, Archivio Centrale dello Stato.</div>'+
+      '<div class="anni-image-credits">Carte: tessera PCI 1961 — Fondazione Luigi Micheletti / Wikimedia Italia (CC BY-SA 4.0); sciopero 1969 — dominio pubblico; operai Fiat — Epoca, 1961; materiale parlamentare — Camera dei Deputati (CC BY-SA 4.0).</div>';
     c.appendChild(p);
-  }
-  function awardAchievements() {
-    try {
-      var engine=window.dendryUI && window.dendryUI.dendryEngine;
-      if(!engine || !engine.state || !engine.state.qualities || typeof engine.achieve!=='function')return;
-      var q=engine.state.qualities;
-      var unlocked=engine.state.achievements || {};
-      function award(id,condition){if(condition && !unlocked[id])engine.achieve(id);}
-      award('guardian',Number(q.stability)>=65 && Number(q.security)>=60);
-      award('popular_mandate',Number(q.public_support)>=65);
-      award('party_organiser',Number(q.resources)>=6 && Number(q.trade_union_backing)>=70 && Number(q.grassroots_fundraising)>=70);
-      award('good_relations',(Number(q.relation_psi_sdsi)>=70 && Number(q.relation_pri)>=55) || (Number(q.relation_psiup)>=70 && Number(q.relation_pri)>=55));
-      award('endured',Number(q.year)>=1983);
-    } catch(e) {
-      // Do not interrupt gameplay if local achievement storage is unavailable.
-    }
   }
   function sync() {
     var s=sceneId(),active=isCampaign(s);
@@ -440,7 +417,7 @@ const gameplayScript = `
       ['anni-party-profile','anni-news-panel','anni-advisors'].forEach(function(id){var e=document.getElementById(id);if(e&&e.parentNode)e.parentNode.removeChild(e);});
       return;
     }
-    addTabs();addHeaderLinks();awardAchievements();
+    addTabs();addHeaderLinks();
     var d=dateInfo();addDateHeading(d);addPaper(d);addProfile(d);addAdvisors(s);
   }
   function hookEngineNavigation(engine) {
@@ -512,7 +489,7 @@ html = html.replace('</body>', gameplayScript + '\n</body>');
 /* The historical banner is loaded directly from Wikimedia Commons. */
 
 /* Bust cached framework assets whenever the campaign bundle changes. */
-const campaignAssetVersion = 'gts-events-elections-20261102';;;
+const campaignAssetVersion = 'leadership-factions-20261101';
 html = html.replace(
   /(src|href)=("|')((?:\.\/)?(?:jquery-1\.11\.1\.min\.js|core\.js|game\.js|game\.css))\2/gi,
   function (match, attribute, quote, asset) {
