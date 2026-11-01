@@ -59,6 +59,7 @@ max-cards: 3
 - @policy_deck
 - @leadership_deck
 - #election_card
+- #historical_event
 - #advance_month
 
 @policy_deck
@@ -510,6 +511,169 @@ if (Q.pci_vote_share >= 30) Q.government_position = 'Leading opposition';
 !}
 
 The campaign focuses on local branches, public meetings and door-to-door mobilisation. Public support and grassroots organisation improve.
+
+- @monthly_briefing: Return to campaign
+
+
+@piazza_event
+title: Piazza Fontana
+subtitle: Milan, December 1969
+card-image: https://commons.wikimedia.org/wiki/Special:FilePath/Piazza_Fontana_bombing_1969.jpg
+is-pinned-card: true
+new-page: true
+tags: historical_event
+choose-if: year = 1969 and month = 12 and event_piazza_done = 0
+on-arrival: {! Q.event_piazza_done = 1; !}
+
+On 12 December 1969, a bomb explodes at the Banca Nazionale dell'Agricoltura in Milan, killing 17 people. The attack intensifies fear and political polarisation.
+
+Choose the PCI's response.
+
+- @piazza_inquiry: Demand an independent investigation
+- @piazza_safeguards: Defend public order and civil safeguards
+
+@piazza_inquiry
+title: Independent Investigation
+new-page: true
+on-arrival: {!
+Q.security = Math.min(100,Q.security+3);
+Q.stability = Math.min(100,Q.stability+3);
+Q.public_support = Math.min(100,Q.public_support+2);
+Q.relation_pri = Math.min(100,Q.relation_pri+2);
+!}
+The PCI calls for an impartial investigation, protection of civil liberties and accountability for the perpetrators. The party strengthens its democratic standing.
+
+- @monthly_briefing: Return to campaign
+
+@piazza_safeguards
+title: Public Order and Civil Safeguards
+new-page: true
+on-arrival: {!
+Q.security = Math.min(100,Q.security+5);
+Q.stability = Math.max(0,Q.stability-2);
+Q.public_support = Math.max(0,Q.public_support-1);
+!}
+The PCI supports a firm public response while warning against indiscriminate arrests and political repression. Security improves, but civil tensions remain.
+
+- @monthly_briefing: Return to campaign
+
+
+@divorce_event
+title: Divorce Referendum
+subtitle: Italy, May 1974
+card-image: https://commons.wikimedia.org/wiki/Special:FilePath/Referendum_sul_divorzio_1974.jpg
+is-pinned-card: true
+new-page: true
+tags: historical_event
+choose-if: year = 1974 and month = 5 and event_divorce_done = 0
+on-arrival: {! Q.event_divorce_done = 1; !}
+
+Italy votes on whether to repeal the divorce law. The referendum becomes a defining test of secular, Catholic and progressive political forces.
+
+- @divorce_campaign: Defend the divorce law
+- @divorce_caution: Take a cautious parliamentary line
+
+@divorce_campaign
+title: Defend the Divorce Law
+new-page: true
+on-arrival: {!
+Q.public_support = Math.min(100,Q.public_support+4);
+Q.relation_psiup = Math.min(100,Q.relation_psiup+5);
+Q.grassroots_fundraising = Math.min(100,Q.grassroots_fundraising+3);
+!}
+The PCI mobilises voters to defend the law. Secular and socialist allies welcome the campaign, and grassroots organisation improves.
+
+- @monthly_briefing: Return to campaign
+
+@divorce_caution
+title: Cautious Referendum Campaign
+new-page: true
+on-arrival: {!
+Q.relation_dc = Math.min(100,Q.relation_dc+2);
+Q.public_support = Math.min(100,Q.public_support+1);
+!}
+The PCI avoids a confrontational campaign and stresses parliamentary compromise. Relations with Catholic political figures improve slightly, but progressive activists are less enthusiastic.
+
+- @monthly_briefing: Return to campaign
+
+
+@moro_event
+title: The Moro Kidnapping
+subtitle: Rome, March 1978
+card-image: https://commons.wikimedia.org/wiki/Special:FilePath/Aldo_Moro_1978.jpg
+is-pinned-card: true
+new-page: true
+tags: historical_event
+choose-if: year = 1978 and month = 3 and event_moro_done = 0
+on-arrival: {! Q.event_moro_done = 1; !}
+
+On 16 March 1978, the Red Brigades kidnap former prime minister Aldo Moro and kill five members of his escort. The Republic faces an extraordinary crisis.
+
+- @moro_democratic_unity: Defend democratic unity
+- @moro_negotiation: Support a negotiated settlement
+
+@moro_democratic_unity
+title: Democratic Unity
+new-page: true
+on-arrival: {!
+Q.security = Math.min(100,Q.security+3);
+Q.stability = Math.min(100,Q.stability+4);
+Q.relation_dc = Math.min(100,Q.relation_dc+5);
+!}
+The PCI supports the constitutional institutions and a united democratic response to terrorism. Cooperation with other democratic parties improves.
+
+- @monthly_briefing: Return to campaign
+
+@moro_negotiation
+title: Negotiated Settlement
+new-page: true
+on-arrival: {!
+Q.public_support = Math.min(100,Q.public_support+2);
+Q.relation_dc = Math.max(0,Q.relation_dc-7);
+Q.stability = Math.max(0,Q.stability-2);
+!}
+The PCI calls for every possible channel to be explored to save Moro's life. The position earns sympathy from some voters but deepens disagreement with the government.
+
+- @monthly_briefing: Return to campaign
+
+
+@bologna_event
+title: Bologna Station Bombing
+subtitle: Bologna, August 1980
+card-image: https://commons.wikimedia.org/wiki/Special:FilePath/Bologna_strage_1980.jpg
+is-pinned-card: true
+new-page: true
+tags: historical_event
+choose-if: year = 1980 and month = 8 and event_bologna_done = 0
+on-arrival: {! Q.event_bologna_done = 1; !}
+
+On 2 August 1980, a bomb at Bologna Centrale kills 85 people and wounds more than 200. The attack shocks the country and prompts demands for justice.
+
+- @bologna_investigation: Demand a full independent inquiry
+- @bologna_emergency: Support emergency security measures
+
+@bologna_investigation
+title: Independent Inquiry
+new-page: true
+on-arrival: {!
+Q.security = Math.min(100,Q.security+3);
+Q.stability = Math.min(100,Q.stability+3);
+Q.public_support = Math.min(100,Q.public_support+2);
+Q.relation_pri = Math.min(100,Q.relation_pri+2);
+!}
+The PCI demands a thorough investigation and protection for civil liberties. The party builds support for accountability and democratic oversight.
+
+- @monthly_briefing: Return to campaign
+
+@bologna_emergency
+title: Emergency Security Measures
+new-page: true
+on-arrival: {!
+Q.security = Math.min(100,Q.security+6);
+Q.stability = Math.max(0,Q.stability-3);
+Q.public_support = Math.max(0,Q.public_support-2);
+!}
+The PCI backs stronger emergency measures. Security improves in the short term, but civil liberties and public trust come under strain.
 
 - @monthly_briefing: Return to campaign
 
