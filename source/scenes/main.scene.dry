@@ -4,97 +4,9 @@ new-page: true
 
 # ANNI DI PIOMBO
 
-- @party_select: Start Campaign
+- @pci_start: Start Campaign
 - @credits: Credits
 - @achievements: Achievements
-
-@party_select
-title: Select Difficulty
-new-page: true
-
-- @pci_easy_start: Easy
-- @pci_start: Normal
-- @pci_hard_start: Hard
-- @main_menu: Return to title
-
-
-@pci_easy_start
-title: Easy Difficulty
-new-page: true
-on-arrival: {!
-Q.party_name = 'Partito Comunista Italiano (PCI)';
-Q.government_position = 'Opposition';
-Q.faction = 'Centre';
-Q.dissent = 'Low';
-Q.resources = 6;
-Q.public_support = 60;
-Q.stability = 65;
-Q.security = 65;
-Q.inflation = 15;
-Q.trade_union_backing = 55;
-Q.grassroots_fundraising = 48;
-Q.relation_dc = 32;
-Q.relation_psi_sdsi = 44;
-Q.relation_psiup = 70;
-Q.relation_pri = 55;
-Q.relation_pli = 32;
-Q.relation_msi = 10;
-Q.reformist_strength = 30;
-Q.centre_strength = 45;
-Q.left_strength = 25;
-Q.economy_health = 78;
-Q.budget_balance = -1.6;
-Q.public_debt = 33.4;
-Q.unemployment_rate = 3.2;
-Q.inflation_rate = 1.5;
-Q.advisor_longo_month = 0; Q.advisor_longo_year = 0;
-Q.advisor_amendola_month = 0; Q.advisor_amendola_year = 0;
-Q.advisor_ingrao_month = 0; Q.advisor_ingrao_year = 0;
-Q.advisor_iotti_month = 0; Q.advisor_iotti_year = 0;
-Q.month = 1;
-Q.year = 1968;
-!}
-go-to: monthly_briefing
-
-
-@pci_hard_start
-title: Hard Difficulty
-new-page: true
-on-arrival: {!
-Q.party_name = 'Partito Comunista Italiano (PCI)';
-Q.government_position = 'Opposition';
-Q.faction = 'Centre';
-Q.dissent = 'Moderate';
-Q.resources = 2;
-Q.public_support = 35;
-Q.stability = 45;
-Q.security = 45;
-Q.inflation = 40;
-Q.trade_union_backing = 24;
-Q.grassroots_fundraising = 22;
-Q.relation_dc = 20;
-Q.relation_psi_sdsi = 28;
-Q.relation_psiup = 50;
-Q.relation_pri = 40;
-Q.relation_pli = 25;
-Q.relation_msi = 8;
-Q.reformist_strength = 30;
-Q.centre_strength = 45;
-Q.left_strength = 25;
-Q.economy_health = 61;
-Q.budget_balance = -2.2;
-Q.public_debt = 33.4;
-Q.unemployment_rate = 3.8;
-Q.inflation_rate = 1.5;
-Q.advisor_longo_month = 0; Q.advisor_longo_year = 0;
-Q.advisor_amendola_month = 0; Q.advisor_amendola_year = 0;
-Q.advisor_ingrao_month = 0; Q.advisor_ingrao_year = 0;
-Q.advisor_iotti_month = 0; Q.advisor_iotti_year = 0;
-Q.month = 1;
-Q.year = 1968;
-!}
-go-to: monthly_briefing
-
 
 @pci_start
 title: Partito Comunista Italiano
@@ -117,14 +29,16 @@ Q.relation_psiup = 64;
 Q.relation_pri = 50;
 Q.relation_pli = 32;
 Q.relation_msi = 10;
-Q.reformist_strength = 30;
-Q.centre_strength = 45;
-Q.left_strength = 25;
+Q.reformist_strength = 20;
+Q.centre_strength = 65;
+Q.left_strength = 15;
 Q.economy_health = 73;
 Q.budget_balance = -1.8;
 Q.public_debt = 33.4;
 Q.unemployment_rate = 3.5;
 Q.inflation_rate = 1.5;
+Q.pci_vote_share = 25.3;
+Q.last_election_year = 0;
 Q.advisor_longo_month = 0; Q.advisor_longo_year = 0;
 Q.advisor_amendola_month = 0; Q.advisor_amendola_year = 0;
 Q.advisor_ingrao_month = 0; Q.advisor_ingrao_year = 0;
@@ -133,7 +47,6 @@ Q.month = 1;
 Q.year = 1968;
 !}
 go-to: monthly_briefing
-
 
 
 @monthly_briefing
@@ -145,6 +58,7 @@ max-cards: 3
 
 - @policy_deck
 - @leadership_deck
+- #election_card
 - #advance_month
 
 @policy_deck
@@ -531,6 +445,75 @@ The PCI opens negotiations over parliamentary support for a government programme
 - @monthly_briefing: Return to campaign
 
 
+@election_card
+title: General Election
+subtitle: Choose the PCI's campaign strategy
+card-image: https://commons.wikimedia.org/wiki/Special:FilePath/Manifestazione_PCI_1968.jpg
+is-pinned-card: true
+tags: election_card
+new-page: true
+choose-if: last_election_year != year and ((year = 1968 and month = 5) or (year = 1972 and month = 5) or (year = 1976 and month = 6) or (year = 1979 and month = 6) or (year = 1983 and month = 6))
+
+The general election is approaching. Decide how the PCI should conduct its campaign.
+
+- @election_strategy: Organise the campaign
+
+@election_strategy
+title: Election Campaign
+new-page: true
+
+Choose the emphasis for this election.
+
+- @election_workers: Workers and factory committees
+- @election_alliance: Democratic and socialist alliance
+- @election_mass: Broad popular campaign
+
+@election_workers
+title: Workers' Campaign
+new-page: true
+on-arrival: {!
+Q.pci_vote_share = Math.min(45, Q.pci_vote_share + 0.7 + (Q.trade_union_backing - 40) * 0.025 + (Q.public_support - 45) * 0.02);
+Q.public_support = Math.min(100, Q.public_support + 2);
+Q.trade_union_backing = Math.min(100, Q.trade_union_backing + 3);
+Q.last_election_year = Q.year;
+if (Q.pci_vote_share >= 30) Q.government_position = 'Leading opposition';
+!}
+
+The PCI campaigns through factories, union branches and workplace committees. The strategy strengthens the party's industrial base and can improve its vote share.
+
+- @monthly_briefing: Return to campaign
+
+@election_alliance
+title: Democratic Alliance
+new-page: true
+on-arrival: {!
+Q.pci_vote_share = Math.min(45, Q.pci_vote_share + 0.5 + (Q.relation_psi_sdsi - 40) * 0.025 + (Q.relation_pri - 40) * 0.02);
+Q.relation_psi_sdsi = Math.min(100, Q.relation_psi_sdsi + 3);
+Q.relation_pri = Math.min(100, Q.relation_pri + 2);
+Q.last_election_year = Q.year;
+if (Q.pci_vote_share >= 30) Q.government_position = 'Leading opposition';
+!}
+
+The PCI seeks cooperation with democratic socialist and republican forces. Better relations can improve the campaign's reach, though compromises must be made.
+
+- @monthly_briefing: Return to campaign
+
+@election_mass
+title: Popular Campaign
+new-page: true
+on-arrival: {!
+Q.pci_vote_share = Math.min(45, Q.pci_vote_share + 0.4 + (Q.public_support - 45) * 0.04 + (Q.grassroots_fundraising - 40) * 0.02);
+Q.public_support = Math.min(100, Q.public_support + 3);
+Q.grassroots_fundraising = Math.min(100, Q.grassroots_fundraising + 4);
+Q.last_election_year = Q.year;
+if (Q.pci_vote_share >= 30) Q.government_position = 'Leading opposition';
+!}
+
+The campaign focuses on local branches, public meetings and door-to-door mobilisation. Public support and grassroots organisation improve.
+
+- @monthly_briefing: Return to campaign
+
+
 @economic_relief
 title: Economic Relief
 card-image: https://commons.wikimedia.org/wiki/Special:FilePath/Workers_in_Fiat_factories,_Turin.jpg
@@ -795,6 +778,31 @@ Economic pressure: [+ inflation +] / 100
 title: Main Menu
 new-page: true
 go-to: title_screen
+
+@library
+title: Library
+new-page: true
+
+**Italy, 1968–1983**
+
+**Partito Comunista Italiano (PCI)** — The Italian Communist Party, the principal force of the parliamentary left during the campaign.
+
+**CGIL** — Italy's major trade-union confederation, closely associated with the labour movement and the PCI's industrial base.
+
+**Hot Autumn (Autunno caldo), 1969** — A wave of strikes and workplace mobilisation over wages, working conditions and workers' rights.
+
+**Statute of Workers, 1970** — Legislation that extended workplace rights and protections.
+
+**Historic Compromise (Compromesso storico)** — Enrico Berlinguer's strategy for democratic cooperation between the PCI and Christian Democracy after the Chilean coup of 1973.
+
+**Years of Lead (Anni di piombo)** — The period of political violence, terrorism and social conflict that forms the campaign's setting.
+
+**Red Brigades (Brigate Rosse)** — A far-left armed organisation responsible for kidnappings and assassinations, including the 1978 murder of Aldo Moro.
+
+**Strategy of Tension (Strategia della tensione)** — The use of bombings and political violence to destabilise Italy and influence public opinion.
+
+- @monthly_briefing: Return to campaign
+
 
 @credits
 title: Credits
