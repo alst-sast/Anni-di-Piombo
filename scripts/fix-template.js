@@ -488,6 +488,15 @@ html = html.replace('</body>', gameplayScript + '\n</body>');
 
 /* The historical banner is loaded directly from Wikimedia Commons. */
 
+/* Bust cached framework assets whenever the campaign bundle changes. */
+const campaignAssetVersion = 'main-cleanup-20261101';
+html = html.replace(
+  /(src|href)=("|')((?:\.\/)?(?:jquery-1\.11\.1\.min\.js|core\.js|game\.js|game\.css))\2/gi,
+  function (match, attribute, quote, asset) {
+    return attribute + '=' + quote + asset + '?v=' + campaignAssetVersion + quote;
+  }
+);
+
 /* Persist the modified HTML. Without this write, all injected changes are lost. */
 fs.writeFileSync(indexPath, html, 'utf8');
 
