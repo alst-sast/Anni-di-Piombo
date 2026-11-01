@@ -14,16 +14,6 @@ Party resources: [+ resources +]
 
 Internal dissent: [+ dissent +]
 
-**Political indicators**
-
-Public support: [+ public_support +] / 100
-
-Political stability: [+ stability +] / 100
-
-Public security: [+ security +] / 100
-
-Economic pressure: [+ inflation +] / 100
-
 # Government
 
 President: [? if year <= 1971 : Giuseppe Saragat ?][? if year >= 1972 and year <= 1977 or year = 1978 and month <= 6 : Giovanni Leone ?][? if year > 1978 or year = 1978 and month >= 7 : Sandro Pertini ?]
