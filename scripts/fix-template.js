@@ -176,7 +176,8 @@ body.anni-campaign-active #anni-news-panel {
   pointer-events: auto;
 }
 
-/* Profile and advisors also use the native .tools panel appearance. */
+
+/* Party profile keeps the framework's native .tools panel appearance. */
 body.anni-campaign-active #anni-party-profile {
   width: 100%;
   max-width: 40rem;
@@ -205,37 +206,6 @@ body.anni-campaign-active #content ul.pinned-cards {
   margin: .55rem 0 .9rem;
   padding: 0;
 }
-body.anni-campaign-active #anni-advisors {
-  width: auto;
-  max-width: none;
-  box-sizing: border-box;
-  margin: 1.1rem 0 0;
-  text-align: center;
-}
-body.anni-campaign-active .anni-advisor-grid {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: flex-start;
-  justify-content: center;
-  gap: .8rem 1rem;
-}
-body.anni-campaign-active .anni-advisor {
-  display: inline-block;
-  width: 7rem;
-  margin: 0;
-  vertical-align: top;
-  text-align: center;
-}
-body.anni-campaign-active .anni-advisor img {
-  display: block;
-  width: auto;
-  height: 8rem;
-  max-width: 6.4rem;
-  margin: 0 auto .28rem;
-  object-fit: contain;
-}
-body.anni-campaign-active .anni-image-credits { margin: .7rem 0 0; font-size: .75em; }
-
 @media screen and (max-width: 960px) {
   body.anni-campaign-active #mid_panel {
     width: min(46rem, calc(100vw - 2rem));
@@ -273,9 +243,6 @@ body.anni-campaign-active .anni-image-credits { margin: .7rem 0 0; font-size: .7
     max-height: none;
   }
   body.anni-campaign-active #content { padding: .8rem; }
-  body.anni-campaign-active #anni-advisors { margin-top: .8rem; }
-  body.anni-campaign-active .anni-advisor { width: 6.3rem; }
-  body.anni-campaign-active .anni-advisor img { height: 7.5rem; max-width: 5.8rem; }
 }
 </style>
 `;
@@ -286,12 +253,6 @@ const gameplayScript = `
   'use strict';
   var monthNames = ['January','February','March','April','May','June','July','August','September','October','November','December'];
   var italianMonthNames = ['gennaio','febbraio','marzo','aprile','maggio','giugno','luglio','agosto','settembre','ottobre','novembre','dicembre'];
-  var advisors = [
-    {name:'Enrico Berlinguer',role:'Direzione',image:'https://commons.wikimedia.org/wiki/Special:FilePath/Enrico_Berlinguer.jpg',source:'https://commons.wikimedia.org/wiki/File:Enrico_Berlinguer.jpg'},
-    {name:'Giorgio Amendola',role:'Direzione',image:'https://commons.wikimedia.org/wiki/Special:FilePath/Giorgio_Amendola_1969.jpg',source:'https://commons.wikimedia.org/wiki/File:Giorgio_Amendola_1969.jpg'},
-    {name:'Pietro Ingrao',role:'Parlamento',image:'https://commons.wikimedia.org/wiki/Special:FilePath/PietroIngrao.jpg',source:'https://commons.wikimedia.org/wiki/File:PietroIngrao.jpg'},
-    {name:'Nilde Iotti',role:'Parlamento',image:'https://commons.wikimedia.org/wiki/Special:FilePath/Leonilde_Iotti.jpg',source:'https://commons.wikimedia.org/wiki/File:Leonilde_Iotti.jpg'}
-  ];
   function sceneId() {
     try {
       var id = window.dendryUI.dendryEngine.state.sceneId;
@@ -393,32 +354,15 @@ const gameplayScript = `
     p.setAttribute('data-leader',leader.name);
     p.innerHTML='<div class="anni-profile-title">Partito Comunista Italiano <span>(PCI)</span></div><img class="anni-profile-photo" src="'+leader.image+'" alt="'+leader.name+'" loading="lazy"><div class="anni-profile-name">'+leader.name+'</div><div class="anni-profile-role">Segretario generale del PCI</div>';
   }
-  function addAdvisors(scene) {
-    var c=document.getElementById('content');if(!c)return;
-    var p=document.getElementById('anni-advisors');
-    if(p){
-      if(p.parentNode!==c || p!==c.lastElementChild)c.appendChild(p);
-      return;
-    }
-    p=document.createElement('section');p.id='anni-advisors';p.className='tools';p.setAttribute('data-scene',scene);
-    var portraits=advisors.map(function(x){return '<figure class="anni-advisor"><img src="'+x.image+'" alt="'+x.name+'" loading="lazy"><figcaption>'+x.name+'</figcaption><div class="anni-advisor-role">'+x.role+'</div></figure>';}).join('');
-    p.innerHTML=
-      '<div class="anni-advisors-title">Dirigenti del partito</div>'+
-      '<div class="anni-advisor-meter"><span></span><span></span><span></span><span></span></div>'+
-      '<div class="anni-advisor-grid">'+portraits+'</div>'+
-      '<div class="anni-image-credits">Ritratti: Longo — Giovanni Malagodi / Camera dei Deputati (CC BY-SA 4.0); Berlinguer e Amendola — fotografie storiche, dominio pubblico in Italia; Ingrao — dati.camera.it (CC BY-SA 4.0); Iotti — Severino Crescente, Archivio Centrale dello Stato.</div>'+
-      '<div class="anni-image-credits">Carte: tessera PCI 1961 — Fondazione Luigi Micheletti / Wikimedia Italia (CC BY-SA 4.0); sciopero 1969 — dominio pubblico; operai Fiat — Epoca, 1961; materiale parlamentare — Camera dei Deputati (CC BY-SA 4.0).</div>';
-    c.appendChild(p);
-  }
   function sync() {
     var s=sceneId(),active=isCampaign(s);
     document.body.classList.toggle('anni-campaign-active',active);
     if(!active){
-      ['anni-party-profile','anni-news-panel','anni-advisors'].forEach(function(id){var e=document.getElementById(id);if(e&&e.parentNode)e.parentNode.removeChild(e);});
+
       return;
     }
     addTabs();addHeaderLinks();
-    var d=dateInfo();addDateHeading(d);addPaper(d);addProfile(d);addAdvisors(s);
+
   }
   function hookEngineNavigation(engine) {
     try {
@@ -489,7 +433,7 @@ html = html.replace('</body>', gameplayScript + '\n</body>');
 /* The historical banner is loaded directly from Wikimedia Commons. */
 
 /* Bust cached framework assets whenever the campaign bundle changes. */
-const campaignAssetVersion = 'remove-extra-decks-20261101';
+
 html = html.replace(
   /(src|href)=("|')((?:\.\/)?(?:jquery-1\.11\.1\.min\.js|core\.js|game\.js|game\.css))\2/gi,
   function (match, attribute, quote, asset) {
