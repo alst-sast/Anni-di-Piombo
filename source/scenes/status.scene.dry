@@ -34,19 +34,50 @@ DC: 38.28% (260 seats) · PCI: 25.26% (166) · PSI: 13.84% (87) · PLI: 6.97% (3
 
 = Politics
 
-**Your party**
+**Inter-party Relations**
 
-[+ party_name +]
+Z: cold
 
-**Political stability**
+DVP: neutral
 
-[+ stability +] / 100
+WP: neutral
 
-**Public security**
+RLB: friendly
 
-[+ security +] / 100
+DDP: cold
 
-The party must navigate parliamentary conflict, street violence and pressure from competing political movements.
+SPD: hostile
+
+KPD: hostile
+
+# Internal Factions of the DNVP
+
+Völkisch strength: moderate, dissent: Medium
+
+Authoritarian Conservative strength: very strong, dissent: Low
+
+Christian Social strength: strong, dissent: Low
+
+Volkskonservativ strength: moderate, dissent: Medium
+
+# Party Leadership
+
+DVP: Conservative Liberalism (Stresemann)
+
+Z: Political Catholicism (Marx)
+
+BVP: Bavarian Regionalism (Held)
+
+DDP: Left Liberalism (Koch-Weser)
+
+WP: Corporatism (Drewitz)
+
+RLB: Agrarianism (Hepp)
+
+SPD: Reformist Socialism (Wels-Müller)
+
+KPD: Communism (Thälmann)
+
 
 @polls
 
