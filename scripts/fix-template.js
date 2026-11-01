@@ -512,7 +512,7 @@ html = html.replace('</body>', gameplayScript + '\n</body>');
 /* The historical banner is loaded directly from Wikimedia Commons. */
 
 /* Bust cached framework assets whenever the campaign bundle changes. */
-const campaignAssetVersion = 'full-gts-systems-20261102';;
+const campaignAssetVersion = 'gts-events-elections-20261102';;;
 html = html.replace(
   /(src|href)=("|')((?:\.\/)?(?:jquery-1\.11\.1\.min\.js|core\.js|game\.js|game\.css))\2/gi,
   function (match, attribute, quote, asset) {
