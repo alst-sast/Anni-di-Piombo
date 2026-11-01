@@ -360,11 +360,17 @@ const gameplayScript = `
     var s=sceneId(),active=isCampaign(s);
     document.body.classList.toggle('anni-campaign-active',active);
     if(!active){
-
+      ['anni-party-profile','anni-news-panel'].forEach(function(id){
+        var e=document.getElementById(id);
+        if(e&&e.parentNode)e.parentNode.removeChild(e);
+      });
       return;
     }
     addTabs();addHeaderLinks();
-
+    var d=dateInfo();
+    addProfile(d);
+    addDateHeading(d);
+    addPaper(d);
   }
   function hookEngineNavigation(engine) {
     try {
