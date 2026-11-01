@@ -348,7 +348,7 @@ const gameplayScript = `
     var c=document.getElementById('header-links');if(!c)return;
     if(!document.getElementById('anni-library-link')){
       var a=document.createElement('a');a.id='anni-library-link';a.href='#';a.textContent='Library';
-      a.onclick=function(e){if(e)e.preventDefault();window.changeTab('status.mission','mission_tab');return false;};c.insertBefore(a,c.firstChild);
+      a.onclick=function(e){if(e)e.preventDefault();window.dendryUI.dendryEngine.goToScene('main.library');return false;};c.insertBefore(a,c.firstChild);
     }
     if(!document.getElementById('anni-achievements-link')){
       var a2=document.createElement('a');a2.id='anni-achievements-link';a2.href='#';a2.textContent='Achievements';
@@ -512,7 +512,7 @@ html = html.replace('</body>', gameplayScript + '\n</body>');
 /* The historical banner is loaded directly from Wikimedia Commons. */
 
 /* Bust cached framework assets whenever the campaign bundle changes. */
-const campaignAssetVersion = 'italy-systems-20261102';
+const campaignAssetVersion = 'full-gts-systems-20261102';;
 html = html.replace(
   /(src|href)=("|')((?:\.\/)?(?:jquery-1\.11\.1\.min\.js|core\.js|game\.js|game\.css))\2/gi,
   function (match, attribute, quote, asset) {
