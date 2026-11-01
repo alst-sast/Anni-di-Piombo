@@ -103,22 +103,6 @@ card-image: https://immaginidelnovecento.fondazionegramsci.org/image-h/HD1/2010-
 
 - #leadership_deck
 
-@mobilisation_deck
-title: Mobilisation
-subtitle: Workers, unions and public campaigns
-is-deck: true
-card-image: https://commons.wikimedia.org/wiki/Special:FilePath/Sciopero_autunno_caldo.jpg
-
-- #policy_deck
-
-@economic_policy_deck
-title: Economic Policy
-subtitle: Wages, industry and the cost of living
-is-deck: true
-card-image: https://commons.wikimedia.org/wiki/Special:FilePath/Workers_in_Fiat_factories,_Turin.jpg
-
-- #policy_deck
-
 @leadership_conference
 title: Leadership Conference
 subtitle: Debate the future direction of the PCI
