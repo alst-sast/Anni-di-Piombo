@@ -140,6 +140,12 @@ MSI: 5.1%
 
 Others: 4.4%
 
+**PCI result at the most recent election**
+
+[+ pci_vote_share +]%
+
+Last election: [? if last_election_year = 0 : Not yet held ?][? if last_election_year > 0 : [+ last_election_year +] ?]
+
 **PCI political indicators**
 
 Public support index: [+ public_support +] / 100
