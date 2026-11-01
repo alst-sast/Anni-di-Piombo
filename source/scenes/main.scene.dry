@@ -412,6 +412,65 @@ Choose a political route. Relationships affect the PCI's ability to build agreem
 - @contacts_socialists: Work with the unified socialists
 - @contacts_psiup: Coordinate with the socialist left
 - @contacts_dc: Open a confidence-and-supply channel
+- @coalition_builder: Build a parliamentary coalition
+
+@coalition_builder
+title: Coalition Builder
+new-page: true
+
+Assemble a parliamentary bloc from parties willing to cooperate with the PCI. Agreements require political relationships and party resources.
+
+- @coalition_left: Progressive opposition bloc
+- @coalition_republican: Democratic opposition alliance
+- @coalition_historic: Historic compromise negotiations
+- @monthly_briefing: Return to campaign
+
+@coalition_left
+title: Progressive Opposition Bloc
+new-page: true
+choose-if: resources >= 2 and relation_psi_sdsi >= 50 and relation_psiup >= 50
+on-arrival: {!
+Q.resources = Math.max(0,Q.resources-2);
+Q.government_position = 'Progressive opposition bloc';
+Q.public_support = Math.min(100,Q.public_support+2);
+Q.stability = Math.min(100,Q.stability+2);
+!}
+
+The PCI brings the unified socialists and PSIUP into a coordinated parliamentary opposition. The bloc increases the left's ability to influence debate and committee work.
+
+- @monthly_briefing: Return to campaign
+
+@coalition_republican
+title: Democratic Opposition Alliance
+new-page: true
+choose-if: resources >= 2 and relation_psi_sdsi >= 45 and relation_pri >= 50
+on-arrival: {!
+Q.resources = Math.max(0,Q.resources-2);
+Q.government_position = 'Democratic opposition alliance';
+Q.relation_pri = Math.min(100,Q.relation_pri+4);
+Q.public_support = Math.min(100,Q.public_support+1);
+Q.stability = Math.min(100,Q.stability+3);
+!}
+
+The PCI and its socialist and republican partners coordinate around constitutional reform, civil liberties and parliamentary scrutiny.
+
+- @monthly_briefing: Return to campaign
+
+@coalition_historic
+title: Historic Compromise Negotiations
+new-page: true
+choose-if: year >= 1976 and resources >= 2 and relation_dc >= 35 and relation_psi_sdsi >= 45
+on-arrival: {!
+Q.resources = Math.max(0,Q.resources-2);
+Q.government_position = 'Historic compromise negotiations';
+Q.relation_dc = Math.min(100,Q.relation_dc+5);
+Q.stability = Math.min(100,Q.stability+4);
+!}
+
+The PCI begins negotiations with Christian Democracy over a programme of parliamentary cooperation. The party gains influence but faces criticism from sections of the left.
+
+- @monthly_briefing: Return to campaign
+
 
 @contacts_socialists
 title: Socialist Cooperation
