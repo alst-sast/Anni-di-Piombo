@@ -10,6 +10,8 @@ Party: [+ party_name +]
 
 Position: [+ government_position +]
 
+Faction: [+ faction +]
+
 Party resources: [+ resources +]
 
 Internal dissent: [+ dissent +]
@@ -139,6 +141,14 @@ The PCI must decide how to respond to political violence while defending civil l
 = Party Organisation
 
 **Partito Comunista Italiano (PCI)**
+
+**Internal faction**
+
+[+ faction +]
+
+[? if faction = 'Reformists' : The Reformists favour parliamentary negotiation, gradual social reform and cooperation with democratic forces. ?]
+[? if faction = 'Centre' : The Centre seeks to balance parliamentary strategy, trade-union organisation and party unity. ?]
+[? if faction = 'Left' : The Left prioritises workplace mobilisation, internal party democracy and a more forceful opposition. ?]
 
 Public support: [+ public_support +] / 100
 
