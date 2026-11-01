@@ -9,6 +9,8 @@ if (!fs.existsSync(indexPath)) {
 }
 let html = fs.readFileSync(indexPath, 'utf8');
 
+const campaignAssetVersion = 'remove-leadership-strip-20261101';
+
 /* Keep the three sidebar tabs used by this game. */
 html = html.replace(
   /\s*<button\b(?=[^>]*\bid=["']paramilitary_tab["'])[^>]*>[\s\S]*?<\/button>/i,
