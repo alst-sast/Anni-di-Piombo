@@ -113,12 +113,12 @@ body.anni-campaign-active .background {
 body.anni-campaign-active #stats_sidebar .anni-party-colour {
   font-weight: 700;
 }
-body.anni-campaign-active #stats_sidebar .anni-party-pci { color: #E34234; }
+body.anni-campaign-active #stats_sidebar .anni-party-pci { color: #C62828; }
 body.anni-campaign-active #stats_sidebar .anni-party-psu { color: #FF4040; }
 body.anni-campaign-active #stats_sidebar .anni-party-psiup { color: #733635; }
 body.anni-campaign-active #stats_sidebar .anni-party-dc { color: #C8A2C8; }
 body.anni-campaign-active #stats_sidebar .anni-party-pli { color: #6495ED; }
-body.anni-campaign-active #stats_sidebar .anni-party-pdium { color: #4169E1; }
+body.anni-campaign-active #stats_sidebar .anni-party-pdium { color: #7851A9; }
 body.anni-campaign-active #stats_sidebar .anni-party-msi { color: #343434; }
 
 /* Top navigation: positioning only. */
