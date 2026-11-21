@@ -109,6 +109,18 @@ body.anni-campaign-active .background {
   background-image: none;
 }
 
+/* Party-name highlights, matching the colour-coded party labels in Germany to Save. */
+body.anni-campaign-active #stats_sidebar .anni-party-colour {
+  font-weight: 700;
+}
+body.anni-campaign-active #stats_sidebar .anni-party-pci { color: #E34234; }
+body.anni-campaign-active #stats_sidebar .anni-party-psu { color: #FF4040; }
+body.anni-campaign-active #stats_sidebar .anni-party-psiup { color: #733635; }
+body.anni-campaign-active #stats_sidebar .anni-party-dc { color: #C8A2C8; }
+body.anni-campaign-active #stats_sidebar .anni-party-pli { color: #6495ED; }
+body.anni-campaign-active #stats_sidebar .anni-party-pdium { color: #4169E1; }
+body.anni-campaign-active #stats_sidebar .anni-party-msi { color: #343434; }
+
 /* Top navigation: positioning only. */
 body.anni-campaign-active header {
   position: fixed;
@@ -309,6 +321,33 @@ const gameplayScript = `
     p.setAttribute('data-leader',leader.name);
     p.innerHTML='<div class="anni-profile-title">Partito Comunista Italiano <span>(PCI)</span></div><img class="anni-profile-photo" src="'+leader.image+'" alt="'+leader.name+'" loading="lazy"><div class="anni-profile-name">'+leader.name+'</div><div class="anni-profile-role">Segretario generale del PCI</div>';
   }
+  function colourPartyLabels() {
+    var sidebar = document.getElementById('stats_sidebar');
+    if (!sidebar || !document.body.classList.contains('anni-campaign-active')) return;
+    var names = /\\b(PSIUP|PDIUM|PCI|PSU|DC|CD|PLI|MSI)\\b/g;
+    var walker = document.createTreeWalker(sidebar, NodeFilter.SHOW_TEXT, null);
+    var nodes = [], node;
+    while ((node = walker.nextNode())) {
+      if (!node.nodeValue || !names.test(node.nodeValue)) { names.lastIndex = 0; continue; }
+      names.lastIndex = 0;
+      if (node.parentElement && node.parentElement.closest('.anni-party-colour,script,style')) continue;
+      nodes.push(node);
+    }
+    nodes.forEach(function (textNode) {
+      var value = textNode.nodeValue, fragment = document.createDocumentFragment(), last = 0, match;
+      names.lastIndex = 0;
+      while ((match = names.exec(value))) {
+        fragment.appendChild(document.createTextNode(value.slice(last, match.index)));
+        var span = document.createElement('span');
+        span.className = 'anni-party-colour anni-party-' + (match[0] === 'CD' ? 'dc' : match[0].toLowerCase());
+        span.textContent = match[0];
+        fragment.appendChild(span);
+        last = names.lastIndex;
+      }
+      fragment.appendChild(document.createTextNode(value.slice(last)));
+      if (textNode.parentNode) textNode.parentNode.replaceChild(fragment, textNode);
+    });
+  }
   function sync() {
     var s=sceneId(),active=isCampaign(s);
     document.body.classList.toggle('anni-campaign-active',active);
@@ -320,6 +359,7 @@ const gameplayScript = `
       return;
     }
     addTabs();addHeaderLinks();
+    colourPartyLabels();
     var d=dateInfo();
     addProfile(d);
     addDateHeading(d);
@@ -354,6 +394,15 @@ const gameplayScript = `
   function install() {
     hookDendryModifyUI();
     hookEngineNavigation();
+    if (typeof window.changeTab === 'function' && !window.__anniPartyColoursTabHooked) {
+      var originalChangeTab = window.changeTab;
+      window.changeTab = function () {
+        var result = originalChangeTab.apply(this, arguments);
+        colourPartyLabels();
+        return result;
+      };
+      window.__anniPartyColoursTabHooked = true;
+    }
     sync();
     var c=document.getElementById('content');
     if(c&&typeof MutationObserver!=='undefined'){
