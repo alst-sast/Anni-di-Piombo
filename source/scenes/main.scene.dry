@@ -81,7 +81,7 @@ title: Political Strategy
 subtitle: [+ month : month +] [+ year +]
 new-page: true
 is-hand: true
-max-cards: 3
+max-cards: 4
 
 - @policy_deck
 - @leadership_deck
