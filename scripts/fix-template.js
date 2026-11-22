@@ -9,7 +9,7 @@ if (!fs.existsSync(indexPath)) {
 }
 let html = fs.readFileSync(indexPath, 'utf8');
 
-const campaignAssetVersion = 'original-sidebar-proportions-20261122';
+const campaignAssetVersion = 'final-pci-factions-centre-right-left-orthodox-20261122';
 
 /* Keep the three sidebar tabs used by this game. */
 html = html.replace(
