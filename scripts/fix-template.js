@@ -9,7 +9,7 @@ if (!fs.existsSync(indexPath)) {
 }
 let html = fs.readFileSync(indexPath, 'utf8');
 
-const campaignAssetVersion = 'hide-sidebar-on-difficulty-20261122';
+const campaignAssetVersion = 'original-sidebar-proportions-20261122';
 
 /* Keep the three sidebar tabs used by this game. */
 html = html.replace(
@@ -129,14 +129,14 @@ body.anni-difficulty-selection #stats_sidebar {
 
 /* Use the available sidebar area efficiently without changing its original skin. */
 body.anni-campaign-active #stats_sidebar {
-  width: 13.5rem;
+  width: 14rem;
   box-sizing: border-box;
-  padding: .45rem;
+  padding: .6em;
 }
 body.anni-campaign-active #stats_sidebar .tab_container {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
-  margin: -.45rem -.45rem .45rem;
+  margin: -.6em -.6em .45rem;
 }
 body.anni-campaign-active #stats_sidebar .tab_button {
   box-sizing: border-box;
