@@ -24,9 +24,9 @@ Prime Minister: [? if year = 1968 and month <= 5 : Aldo Moro ?][? if year = 1968
 
 Next general election: [? if year = 1968 and month <= 5 : 1968 ?][? if year = 1968 and month > 5 or year = 1969 or year = 1970 or year = 1971 or year = 1972 and month <= 5 : 1972 ?][? if year = 1972 and month > 5 or year > 1972 and year < 1976 or year = 1976 and month <= 6 : 1976 ?][? if year = 1976 and month > 6 or year > 1976 and year < 1979 or year = 1979 and month <= 6 : 1979 ?][? if year = 1979 and month > 6 or year > 1979 and year < 1983 or year = 1983 and month <= 6 : 1983 ?][? if year = 1983 and month > 6 or year > 1983 : 1987 ?]
 
-# Chamber of Deputies
+# Parliamentary Composition
 
-**1963 general election — 630 seats**
+**1963 general election — percentages**
 
 DC: 38.28% · PCI: 25.26% · PSI: 13.84% · PLI: 6.97% · PSDI: 6.10% · MSI: 5.11% · Others: 4.44%
 
@@ -129,7 +129,7 @@ Prime Minister: [? if year = 1968 and month <= 5 : Aldo Moro ?][? if year = 1968
 
 The PCI begins the campaign in opposition. Parliamentary influence depends on electoral strength, alliances, public legitimacy and the ability to sustain pressure on the governing parties.
 
-**Parliamentary balance — 1963 election**
+**Parliamentary Composition — 1963 election**
 
 DC: 38.28% · PCI: 25.26% · PSI: 13.84% · PLI: 6.97% · PSDI: 6.10% · MSI: 5.11% · Others: 4.44%
 
@@ -207,7 +207,7 @@ Strategic priorities: maintain unity between parliamentary strategy and extra-pa
 
 [? if year = 1968 and month <= 5 : May 1968 ?][? if year = 1968 and month > 5 or year = 1969 or year = 1970 or year = 1971 or year = 1972 and month <= 5 : 1972 ?][? if year = 1972 and month > 5 or year > 1972 and year < 1976 or year = 1976 and month <= 6 : 1976 ?][? if year = 1976 and month > 6 or year > 1976 and year < 1979 or year = 1979 and month <= 6 : 1979 ?][? if year = 1979 and month > 6 or year > 1979 and year < 1983 or year = 1983 and month <= 6 : 1983 ?][? if year = 1983 and month > 6 or year > 1983 : 1987 ?]
 
-**1963 Chamber of Deputies — 630 seats**
+**Parliamentary Composition — 1963 election**
 
 DC: 38.28% · PCI: 25.26% · PSI: 13.84% · PLI: 6.97% · PSDI: 6.10% · MSI: 5.11% · Others: 4.44%
 
