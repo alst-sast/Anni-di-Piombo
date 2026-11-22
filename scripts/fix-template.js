@@ -9,7 +9,7 @@ if (!fs.existsSync(indexPath)) {
 }
 let html = fs.readFileSync(indexPath, 'utf8');
 
-const campaignAssetVersion = 'slimmer-sidebar-20261122';
+const campaignAssetVersion = 'leader-panel-gts-20261122';
 
 /* Keep the three sidebar tabs used by this game. */
 html = html.replace(
@@ -234,21 +234,49 @@ body.anni-campaign-active #stats_sidebar {
 }
 
 
-/* Party profile keeps the framework's native .tools panel appearance. */
+/* Germany to Save-style party leader panel, using the native DendryNexus skin. */
 body.anni-campaign-active #anni-party-profile {
   width: 100%;
   max-width: 40rem;
   box-sizing: border-box;
   margin: 0 auto .65rem;
+  padding: .9rem 1.15rem 1.2rem;
   text-align: center;
+  font-family: "Minion Pro", Georgia, serif;
 }
-body.anni-campaign-active .anni-profile-photo {
+body.anni-campaign-active #anni-party-profile .anni-profile-title {
+  margin: 0 0 1rem;
+  padding: 0 .2rem .7rem;
+  border-bottom: 2px solid #201912;
+  font-size: clamp(1.4rem, 2.4vw, 2rem);
+  font-weight: 600;
+  line-height: 1.25;
+  letter-spacing: .01em;
+}
+body.anni-campaign-active #anni-party-profile .anni-profile-title span {
+  color: #C62828;
+}
+body.anni-campaign-active #anni-party-profile .anni-profile-photo {
   display: block;
-  width: auto;
-  height: 10.5rem;
-  max-width: 10rem;
-  margin: .35rem auto .4rem;
-  object-fit: contain;
+  width: 12.5rem;
+  max-width: 85%;
+  height: 15rem;
+  box-sizing: border-box;
+  margin: 0 auto .65rem;
+  border: 3px solid #161616;
+  object-fit: cover;
+  object-position: center top;
+}
+body.anni-campaign-active #anni-party-profile .anni-profile-name {
+  font-size: 1.45rem;
+  font-weight: 700;
+  line-height: 1.25;
+  margin: .3rem 0 .15rem;
+}
+body.anni-campaign-active #anni-party-profile .anni-profile-role {
+  color: #777;
+  font-size: 1.1rem;
+  line-height: 1.3;
 }
 body.anni-campaign-active #content {
   width: 100%;
