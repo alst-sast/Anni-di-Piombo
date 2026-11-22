@@ -9,7 +9,7 @@ if (!fs.existsSync(indexPath)) {
 }
 let html = fs.readFileSync(indexPath, 'utf8');
 
-const campaignAssetVersion = 'parliamentary-composition-20261122';
+const campaignAssetVersion = 'screenshot-sidebar-headings-20261122';
 
 /* Keep the three sidebar tabs used by this game. */
 html = html.replace(
@@ -120,6 +120,41 @@ body.anni-campaign-active #stats_sidebar .anni-party-dc { color: #C8A2C8; }
 body.anni-campaign-active #stats_sidebar .anni-party-pli { color: #4779C9; }
 body.anni-campaign-active #stats_sidebar .anni-party-pdium { color: #7851A9; }
 body.anni-campaign-active #stats_sidebar .anni-party-msi { color: #343434; }
+
+/* Screenshot-inspired typography for every sidebar section title. */
+body.anni-campaign-active #stats_sidebar h1,
+body.anni-campaign-active #stats_sidebar h2,
+body.anni-campaign-active #stats_sidebar h3,
+body.anni-campaign-active #stats_sidebar h4 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(1.55rem, 2.6vw, 2.15rem);
+  font-weight: 700;
+  line-height: 1.16;
+  letter-spacing: .075em;
+  text-transform: uppercase;
+  text-align: center;
+  overflow-wrap: break-word;
+  margin: 1.25rem 0 1.35rem;
+}
+body.anni-campaign-active #stats_sidebar .anni-relation-row {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.4rem;
+  line-height: 1.35;
+  margin: 1.3rem 0;
+}
+body.anni-campaign-active #stats_sidebar .anni-relation-row .anni-party-colour {
+  text-decoration-line: underline;
+  text-decoration-style: dotted;
+  text-underline-offset: .12em;
+  text-decoration-thickness: 2px;
+}
+@media screen and (max-width: 640px) {
+  body.anni-campaign-active #stats_sidebar h1,
+  body.anni-campaign-active #stats_sidebar h2,
+  body.anni-campaign-active #stats_sidebar h3,
+  body.anni-campaign-active #stats_sidebar h4 { font-size: 1.6rem; }
+  body.anni-campaign-active #stats_sidebar .anni-relation-row { font-size: 1.2rem; }
+}
 
 /* Top navigation: positioning only. */
 body.anni-campaign-active header {
@@ -324,7 +359,7 @@ const gameplayScript = `
   function colourPartyLabels() {
     var sidebar = document.getElementById('stats_sidebar');
     if (!sidebar || !document.body.classList.contains('anni-campaign-active')) return;
-    var names = /\\b(PSIUP|PDIUM|PCI|PSU|DC|CD|PLI|MSI)\\b/g;
+    var names = /\\b(PSIUP|PDIUM|PCI|PSU|DC|CD|PLI|MSI|PRI)\\b/g;
     var walker = document.createTreeWalker(sidebar, NodeFilter.SHOW_TEXT, null);
     var nodes = [], node;
     while ((node = walker.nextNode())) {
@@ -348,6 +383,20 @@ const gameplayScript = `
       if (textNode.parentNode) textNode.parentNode.replaceChild(fragment, textNode);
     });
   }
+  function formatPoliticsRelations() {
+    var sidebar=document.getElementById('stats_sidebar');
+    if(!sidebar || !document.body.classList.contains('anni-campaign-active'))return;
+    Array.prototype.forEach.call(sidebar.querySelectorAll('h1,h2,h3,h4'),function(heading){
+      if((heading.textContent||'').trim().toLowerCase()!=='inter-party relations')return;
+      var item=heading.nextElementSibling;
+      while(item && !/^H[1-6]$/.test(item.tagName)){
+        if(item.tagName==='P' && /^(DC|PCI|PSU|PSIUP|PRI|PLI|MSI|PDIUM):/.test((item.textContent||'').trim())){
+          item.classList.add('anni-relation-row');
+        }
+        item=item.nextElementSibling;
+      }
+    });
+  }
   function sync() {
     var s=sceneId(),active=isCampaign(s);
     document.body.classList.toggle('anni-campaign-active',active);
@@ -360,6 +409,7 @@ const gameplayScript = `
     }
     addTabs();addHeaderLinks();
     colourPartyLabels();
+    formatPoliticsRelations();
     var d=dateInfo();
     addProfile(d);
     addDateHeading(d);
@@ -399,6 +449,7 @@ const gameplayScript = `
       window.changeTab = function () {
         var result = originalChangeTab.apply(this, arguments);
         colourPartyLabels();
+        formatPoliticsRelations();
         return result;
       };
       window.__anniPartyColoursTabHooked = true;
