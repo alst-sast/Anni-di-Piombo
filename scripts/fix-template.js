@@ -284,6 +284,7 @@ body.anni-campaign-active #content ul.pinned-cards {
   }
   body.anni-campaign-active #stats_sidebar {
     position: static;
+    width: 100%;
     max-height: none;
   }
   body.anni-campaign-active #anni-party-profile { max-width: none; }
