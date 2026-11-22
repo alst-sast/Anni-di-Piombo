@@ -9,7 +9,7 @@ if (!fs.existsSync(indexPath)) {
 }
 let html = fs.readFileSync(indexPath, 'utf8');
 
-const campaignAssetVersion = 'compact-sidebar-use-space-20261122';
+const campaignAssetVersion = 'slimmer-sidebar-20261122';
 
 /* Keep the three sidebar tabs used by this game. */
 html = html.replace(
@@ -123,7 +123,7 @@ body.anni-campaign-active #stats_sidebar .anni-party-msi { color: #343434; }
 
 /* Use the available sidebar area efficiently without changing its original skin. */
 body.anni-campaign-active #stats_sidebar {
-  width: 16rem;
+  width: 13.5rem;
   box-sizing: border-box;
   padding: .45rem;
 }
@@ -136,7 +136,7 @@ body.anni-campaign-active #stats_sidebar .tab_button {
   box-sizing: border-box;
   min-width: 0;
   padding: .38rem .12rem;
-  font-size: .84rem;
+  font-size: .8rem;
   line-height: 1.15;
   white-space: nowrap;
   text-align: center;
