@@ -9,7 +9,7 @@ if (!fs.existsSync(indexPath)) {
 }
 let html = fs.readFileSync(indexPath, 'utf8');
 
-const campaignAssetVersion = 'one-decimal-composition-20261122';
+const campaignAssetVersion = 'remove-government-map-tabs-20261122';
 
 /* Keep the three sidebar tabs used by this game. */
 html = html.replace(
@@ -315,10 +315,9 @@ const gameplayScript = `
       m.onclick=function(){window.changeTab('status.mission','mission_tab');};
       if(poll)c.insertBefore(m,poll);else c.appendChild(m);
     }
-    [{id:'government_tab',label:'Government',target:'status.government'},{id:'map_tab',label:'Map',target:'status.map'}].forEach(function(x){
-      if(document.getElementById(x.id))return;
-      var b=document.createElement('button');b.type='button';b.className='tab_button';b.id=x.id;b.textContent=x.label;
-      b.onclick=function(){window.changeTab(x.target,x.id);};c.appendChild(b);
+    ['government_tab','map_tab'].forEach(function(id){
+      var old=document.getElementById(id);
+      if(old && old.parentNode)old.parentNode.removeChild(old);
     });
   }
   function addHeaderLinks() {
