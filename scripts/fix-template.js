@@ -9,7 +9,7 @@ if (!fs.existsSync(indexPath)) {
 }
 let html = fs.readFileSync(indexPath, 'utf8');
 
-const campaignAssetVersion = 'leader-panel-gts-20261122';
+const campaignAssetVersion = 'smaller-serif-leader-panel-20261122';
 
 /* Keep the three sidebar tabs used by this game. */
 html = html.replace(
@@ -234,48 +234,50 @@ body.anni-campaign-active #stats_sidebar {
 }
 
 
-/* Germany to Save-style party leader panel, using the native DendryNexus skin. */
+/* Compact leader card with the traditional serif lettering in the reference image. */
 body.anni-campaign-active #anni-party-profile {
   width: 100%;
-  max-width: 40rem;
+  max-width: 31rem;
   box-sizing: border-box;
-  margin: 0 auto .65rem;
-  padding: .9rem 1.15rem 1.2rem;
+  margin: 0 auto .5rem;
+  padding: .65rem .8rem .85rem;
   text-align: center;
-  font-family: "Minion Pro", Georgia, serif;
+  font-family: Georgia, 'Times New Roman', serif;
 }
 body.anni-campaign-active #anni-party-profile .anni-profile-title {
-  margin: 0 0 1rem;
-  padding: 0 .2rem .7rem;
+  margin: 0 0 .7rem;
+  padding: 0 .15rem .5rem;
   border-bottom: 2px solid #201912;
-  font-size: clamp(1.4rem, 2.4vw, 2rem);
-  font-weight: 600;
+  font-size: 1.4rem;
+  font-weight: 400;
   line-height: 1.25;
-  letter-spacing: .01em;
+  letter-spacing: .015em;
 }
 body.anni-campaign-active #anni-party-profile .anni-profile-title span {
   color: #C62828;
 }
 body.anni-campaign-active #anni-party-profile .anni-profile-photo {
   display: block;
-  width: 12.5rem;
+  width: 9.5rem;
   max-width: 85%;
-  height: 15rem;
+  height: 11.75rem;
   box-sizing: border-box;
-  margin: 0 auto .65rem;
-  border: 3px solid #161616;
+  margin: 0 auto .45rem;
+  border: 2px solid #161616;
   object-fit: cover;
   object-position: center top;
 }
 body.anni-campaign-active #anni-party-profile .anni-profile-name {
-  font-size: 1.45rem;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.2rem;
   font-weight: 700;
   line-height: 1.25;
-  margin: .3rem 0 .15rem;
+  margin: .2rem 0 .1rem;
 }
 body.anni-campaign-active #anni-party-profile .anni-profile-role {
+  font-family: Georgia, 'Times New Roman', serif;
   color: #777;
-  font-size: 1.1rem;
+  font-size: 1rem;
   line-height: 1.3;
 }
 body.anni-campaign-active #content {
