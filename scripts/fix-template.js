@@ -9,7 +9,7 @@ if (!fs.existsSync(indexPath)) {
 }
 let html = fs.readFileSync(indexPath, 'utf8');
 
-const campaignAssetVersion = 'compact-gts-sidebar-20261122';
+const campaignAssetVersion = 'remove-old-election-heading-20261122b';
 
 /* Keep the three sidebar tabs used by this game. */
 html = html.replace(
@@ -393,6 +393,16 @@ const gameplayScript = `
       }
     });
   }
+  function removeObsoleteElectionHeading() {
+    var qualities=document.getElementById('qualities');
+    if(!qualities)return;
+    Array.prototype.forEach.call(qualities.querySelectorAll('h1,h2,h3,h4,p'),function(el){
+      var text=(el.textContent||'').replace(/\\s+/g,' ').trim().toLowerCase();
+      if(text==='1963 general election — percentages' || text==='1963 general election - percentages'){
+        if(el.parentNode)el.parentNode.removeChild(el);
+      }
+    });
+  }
   function sync() {
     var s=sceneId(),active=isCampaign(s);
     document.body.classList.toggle('anni-campaign-active',active);
@@ -406,6 +416,7 @@ const gameplayScript = `
     addTabs();addHeaderLinks();
     colourPartyLabels();
     formatPoliticsRelations();
+    removeObsoleteElectionHeading();
     var d=dateInfo();
     addProfile(d);
     addDateHeading(d);
@@ -446,6 +457,7 @@ const gameplayScript = `
         var result = originalChangeTab.apply(this, arguments);
         colourPartyLabels();
         formatPoliticsRelations();
+        removeObsoleteElectionHeading();
         return result;
       };
       window.__anniPartyColoursTabHooked = true;
