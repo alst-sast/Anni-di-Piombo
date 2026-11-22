@@ -56,13 +56,16 @@ PDIUM: hostile
 
 = Internal Factions of the **PCI**
 
-**Amendola Current** strength: strong, dissent: Medium
+**Centre** strength: very strong, dissent: Low
 
 
-**Party Centre** strength: very strong, dissent: Low
+**Right** strength: strong, dissent: Medium
 
 
-**Ingrao Current** strength: moderate, dissent: Medium
+**Left** strength: moderate, dissent: Medium
+
+
+**Orthodox** strength: moderate, dissent: Medium
 
 
 = Party Leadership — January 1968
@@ -189,9 +192,10 @@ The PCI must decide how to respond to political violence while defending civil l
 
 [+ faction +]
 
-[? if faction = 'Reformists' : The Reformists favour parliamentary negotiation, gradual social reform and cooperation with democratic forces. ?]
 [? if faction = 'Centre' : The Centre seeks to balance parliamentary strategy, trade-union organisation and party unity. ?]
+[? if faction = 'Right' : The Right favours parliamentary negotiation, gradual social reform and cooperation with democratic forces. ?]
 [? if faction = 'Left' : The Left prioritises workplace mobilisation, internal party democracy and a more forceful opposition. ?]
+[? if faction = 'Orthodox' : The Orthodox current stresses ideological continuity, party discipline and traditional communist principles. ?]
 
 Public support: [+ public_support +] / 100
 
