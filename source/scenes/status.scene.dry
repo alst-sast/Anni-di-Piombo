@@ -16,7 +16,7 @@ Party resources: [+ resources +]
 
 Internal dissent: [+ dissent +]
 
-# Government
+= Government
 
 President: [? if year <= 1971 : Giuseppe Saragat ?][? if year >= 1972 and year <= 1977 or year = 1978 and month <= 6 : Giovanni Leone ?][? if year > 1978 or year = 1978 and month >= 7 : Sandro Pertini ?]
 
@@ -24,17 +24,15 @@ Prime Minister: [? if year = 1968 and month <= 5 : Aldo Moro ?][? if year = 1968
 
 Next general election: [? if year = 1968 and month <= 5 : 1968 ?][? if year = 1968 and month > 5 or year = 1969 or year = 1970 or year = 1971 or year = 1972 and month <= 5 : 1972 ?][? if year = 1972 and month > 5 or year > 1972 and year < 1976 or year = 1976 and month <= 6 : 1976 ?][? if year = 1976 and month > 6 or year > 1976 and year < 1979 or year = 1979 and month <= 6 : 1979 ?][? if year = 1979 and month > 6 or year > 1979 and year < 1983 or year = 1983 and month <= 6 : 1983 ?][? if year = 1983 and month > 6 or year > 1983 : 1987 ?]
 
-# Parliamentary Composition
+= Parliamentary Composition
 
-# 1963 General Election — Percentages
+= 1963 General Election — Percentages
 
 DC: 38.28% · PCI: 25.26% · PSI: 13.84% · PLI: 6.97% · PSDI: 6.10% · MSI: 5.11% · Others: 4.44%
 
 @politics
 
-= Politics
-
-# Inter-party Relations
+= Inter-party Relations
 
 DC: cold
 
@@ -52,7 +50,7 @@ PDIUM: hostile
 
 
 
-# Internal Factions of the **PCI**
+= Internal Factions of the **PCI**
 
 **Amendola Current** strength: strong, dissent: Medium
 
@@ -63,7 +61,7 @@ PDIUM: hostile
 **Ingrao Current** strength: moderate, dissent: Medium
 
 
-# Party Leadership — January 1968
+= Party Leadership — January 1968
 
 DC: Christian Democracy (Rumor)
 
@@ -87,7 +85,7 @@ PDIUM: Monarchism (Covelli)
 
 = Polls
 
-# Baseline Election Results — 1963
+= Baseline Election Results — 1963
 
 The following figures are the actual national vote shares from the 1963 Chamber of Deputies election. They are a historical baseline, not a live opinion poll.
 
@@ -105,7 +103,7 @@ MSI: 5.1%
 
 Others: 4.4%
 
-# PCI Political Indicators
+= PCI Political Indicators
 
 Public support index: [+ public_support +] / 100
 
@@ -117,19 +115,19 @@ Public security: [+ security +] / 100
 
 = Government
 
-# The Italian Republic
+= The Italian Republic
 
 President: [? if year <= 1971 : Giuseppe Saragat ?][? if year >= 1972 and year <= 1977 or year = 1978 and month <= 6 : Giovanni Leone ?][? if year > 1978 or year = 1978 and month >= 7 : Sandro Pertini ?]
 
 Prime Minister: [? if year = 1968 and month <= 5 : Aldo Moro ?][? if year = 1968 and month >= 6 and month <= 11 : Giovanni Leone ?][? if year = 1968 and month >= 12 : Mariano Rumor ?][? if year = 1969 or year = 1970 and month <= 7 : Mariano Rumor ?][? if year = 1970 and month >= 8 or year = 1971 or year = 1972 and month <= 2 : Emilio Colombo ?][? if year = 1972 and month >= 3 and year <= 1973 and month <= 6 : Giulio Andreotti ?][? if year = 1973 and month > 6 or year = 1974 and month <= 11 : Mariano Rumor ?][? if year = 1974 and month > 11 or year = 1975 or year = 1976 and month < 7 : Aldo Moro ?][? if year = 1976 and month >= 7 or year = 1977 or year = 1978 or year = 1979 and month < 8 : Giulio Andreotti ?][? if year = 1979 and month >= 8 or year = 1980 and month <= 10 : Francesco Cossiga ?][? if year = 1980 and month > 10 or year = 1981 and month <= 6 : Arnaldo Forlani ?][? if year = 1981 and month > 6 or year = 1982 and month <= 11 : Giovanni Spadolini ?][? if year = 1982 and month > 11 or year = 1983 and month < 8 : Amintore Fanfani ?][? if year = 1983 and month >= 8 : Bettino Craxi ?]
 
-# Your Position
+= Your Position
 
 [+ government_position +]
 
 The PCI begins the campaign in opposition. Parliamentary influence depends on electoral strength, alliances, public legitimacy and the ability to sustain pressure on the governing parties.
 
-# Parliamentary Composition — 1963 Election
+= Parliamentary Composition — 1963 Election
 
 DC: 38.28% · PCI: 25.26% · PSI: 13.84% · PLI: 6.97% · PSDI: 6.10% · MSI: 5.11% · Others: 4.44%
 
@@ -139,7 +137,7 @@ The Christian Democrats remain the largest parliamentary force. The left is infl
 
 = Economy
 
-# Economic Pressure
+= Economic Pressure
 
 [+ inflation +] / 100
 
@@ -147,7 +145,7 @@ The Christian Democrats remain the largest parliamentary force. The left is infl
 [? if inflation >= 35 and inflation < 70 : Household budgets are under pressure. Wage bargaining and the cost of living are becoming central political questions. ?]
 [? if inflation >= 70 : Severe economic pressure threatens living standards and risks intensifying strikes, polarisation and public distrust. ?]
 
-# Policy Priorities
+= Policy Priorities
 
 Priorities: protect real wages and purchasing power; expand public services and reduce regional inequality; balance immediate relief with long-term economic stability.
 
@@ -159,7 +157,7 @@ Economic initiatives cost political resources. Use policy cards carefully; the e
 
 = Public Security
 
-# Security Index
+= Security Index
 
 [+ security +] / 100
 
@@ -167,7 +165,7 @@ Economic initiatives cost political resources. Use policy cards carefully; the e
 [? if security >= 35 and security < 65 : The security situation is fragile. Terrorist attacks, extremist mobilisation and heavy-handed state responses could deepen the crisis. ?]
 [? if security < 35 : Public security is in a dangerous state. The government faces mounting pressure to act, while democratic legitimacy is at risk. ?]
 
-# Democratic Safeguards
+= Democratic Safeguards
 
 The PCI must decide how to respond to political violence while defending civil liberties, due process and democratic institutions. Security measures may improve immediate stability but can also carry political costs.
 
@@ -175,9 +173,9 @@ The PCI must decide how to respond to political violence while defending civil l
 
 = Party Organisation
 
-# Partito Comunista Italiano (PCI)
+= Partito Comunista Italiano (PCI)
 
-# Internal Faction
+= Internal Faction
 
 [+ faction +]
 
@@ -191,7 +189,7 @@ Internal dissent: [+ dissent +]
 
 Party resources: [+ resources +] / 6
 
-# Strategic Challenges
+= Strategic Challenges
 
 Strategic priorities: maintain unity between parliamentary strategy and extra-parliamentary movements; work with socialist and trade-union forces without losing the PCI's independent identity; convert labour mobilisation into lasting political influence; respond to terrorism without allowing political violence to define the entire left.
 
@@ -203,7 +201,7 @@ Strategic priorities: maintain unity between parliamentary strategy and extra-pa
 
 = Elections
 
-# Next General Election
+= Next General Election
 
 [? if year = 1968 and month <= 5 : May 1968 ?][? if year = 1968 and month > 5 or year = 1969 or year = 1970 or year = 1971 or year = 1972 and month <= 5 : 1972 ?][? if year = 1972 and month > 5 or year > 1972 and year < 1976 or year = 1976 and month <= 6 : 1976 ?][? if year = 1976 and month > 6 or year > 1976 and year < 1979 or year = 1979 and month <= 6 : 1979 ?][? if year = 1979 and month > 6 or year > 1979 and year < 1983 or year = 1983 and month <= 6 : 1983 ?][? if year = 1983 and month > 6 or year > 1983 : 1987 ?]
 
@@ -218,11 +216,11 @@ The PCI's long-term challenge is to turn a large opposition electorate into a cr
 
 = Mission
 
-# The PCI Campaign — January 1968 to December 1983
+= The PCI Campaign — January 1968 to December 1983
 
 Lead the Partito Comunista Italiano through a period of intense social change, electoral competition and political violence. Your task is to expand the party's democratic influence while defending civil liberties and the institutions of the Republic.
 
-# Campaign Priorities
+= Campaign Priorities
 
 Build support among industrial workers, students, public employees and younger voters.
 
@@ -234,11 +232,11 @@ Oppose terrorism and political violence without abandoning constitutional rights
 
 Manage party unity, public confidence, economic pressure and the stability of the Republic.
 
-# Your Monthly Decisions
+= Your Monthly Decisions
 
 Use the strategy deck to choose one initiative at a time. Each policy costs party resources; resources recover as the calendar advances. The pinned End the Month card advances the campaign and resolves historical developments.
 
-# Campaign Endpoint
+= Campaign Endpoint
 
 The scenario concludes in December 1983. Your final outcome reflects the public support, security, stability and economic pressures produced by your decisions.
 
@@ -247,7 +245,7 @@ The scenario concludes in December 1983. Your final outcome reflects the public 
 
 = Italy — Historical Map
 
-# The Italian Republic, 1905
+= The Italian Republic, 1905
 
 The campaign is set against a period-style map of Italy. The historical map shown behind the game panels dates to 1905, before the events represented in this simulation.
 
