@@ -112,29 +112,30 @@ new-page: true
 choose-if: resources >= 1
 tags: leadership_deck
 
-A meeting of the national leadership has been called to reconsider the balance between parliamentary reform, the party's established centre and the forces pressing for a more assertive left-wing course.
+A meeting of the national leadership has been called to reconsider the balance between the Centre, Right, Left and Orthodox currents within the PCI.
 
 Choose the political line that should guide the PCI. Changing the leadership balance costs one party resource. Your decision will remain in force until you choose to reshuffle the leadership again.
 
 Photograph: XII Congresso nazionale del PCI, Bologna, February 1969 — Fondazione Gramsci, Archivio fotografico.
 
-- @set_reformists: Reformists
 - @set_centre: Centre
+- @set_right: Right
 - @set_left: Left
+- @set_orthodox: Orthodox
 
-@set_reformists
-title: Reformists
+@set_right
+title: Right
 new-page: true
 on-arrival: {!
 Q.resources = Math.max(0, Q.resources - 1);
-Q.faction = 'Reformists';
+Q.faction = 'Right';
 Q.public_support = Math.min(100, Q.public_support + 2);
 Q.stability = Math.min(100, Q.stability + 3);
 !}
 
-**The Reformists take the lead**
+**The Right takes the lead**
 
-The party places greater emphasis on parliamentary negotiation, gradual social reform and cooperation with democratic forces beyond the PCI. This line improves the party's public standing and strengthens institutional stability, while risking impatience among members who favour a more confrontational course.
+The Right places greater emphasis on parliamentary negotiation, gradual social reform and cooperation with democratic forces beyond the PCI. This line improves the party's public standing and strengthens institutional stability, while risking impatience among members who favour a more confrontational course.
 
 - @monthly_briefing: Return to government
 
@@ -168,6 +169,20 @@ Q.dissent = 'Moderate';
 **The Left gains influence**
 
 The leadership gives greater weight to workplace mobilisation, internal party democracy and a more forceful opposition to the centre-left political establishment. The decision energises the party's activist base, but increases tension with moderate figures and unsettles the wider political climate.
+
+- @monthly_briefing: Return to government
+
+@set_orthodox
+title: Orthodox
+new-page: true
+on-arrival: {!
+Q.resources = Math.max(0, Q.resources - 1);
+Q.faction = 'Orthodox';
+!}
+
+**The Orthodox current takes the lead**
+
+The party reinforces ideological continuity, internal discipline and traditional communist principles. The Orthodox leadership prioritises party organisation and a consistent political line over tactical experimentation.
 
 - @monthly_briefing: Return to government
 
