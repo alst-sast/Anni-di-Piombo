@@ -9,7 +9,7 @@ if (!fs.existsSync(indexPath)) {
 }
 let html = fs.readFileSync(indexPath, 'utf8');
 
-const campaignAssetVersion = 'screenshot-sidebar-headings-20261122';
+const campaignAssetVersion = 'qualities-heading-style-20261122';
 
 /* Keep the three sidebar tabs used by this game. */
 html = html.replace(
@@ -121,20 +121,21 @@ body.anni-campaign-active #stats_sidebar .anni-party-pli { color: #4779C9; }
 body.anni-campaign-active #stats_sidebar .anni-party-pdium { color: #7851A9; }
 body.anni-campaign-active #stats_sidebar .anni-party-msi { color: #343434; }
 
-/* Screenshot-inspired typography for every sidebar section title. */
+/* Exact qualities-heading typography, shared by all sidebar section titles. */
+body.anni-campaign-active #qualities h1,
+body.anni-campaign-active #qualities h2,
+body.anni-campaign-active #qualities h3,
+body.anni-campaign-active #qualities h4,
 body.anni-campaign-active #stats_sidebar h1,
 body.anni-campaign-active #stats_sidebar h2,
 body.anni-campaign-active #stats_sidebar h3,
 body.anni-campaign-active #stats_sidebar h4 {
-  font-family: Georgia, 'Times New Roman', serif;
-  font-size: clamp(1.55rem, 2.6vw, 2.15rem);
-  font-weight: 700;
-  line-height: 1.16;
-  letter-spacing: .075em;
-  text-transform: uppercase;
+  font-size: 1.1em;
+  font-weight: 400;
   text-align: center;
-  overflow-wrap: break-word;
-  margin: 1.25rem 0 1.35rem;
+  text-transform: uppercase;
+  letter-spacing: .1em;
+  text-shadow: rgba(255, 255, 255, .75) 2px 2px 2px, rgba(0, 0, 0, .1) -1px -1px 2px;
 }
 body.anni-campaign-active #stats_sidebar .anni-relation-row {
   font-family: Georgia, 'Times New Roman', serif;
@@ -149,10 +150,6 @@ body.anni-campaign-active #stats_sidebar .anni-relation-row .anni-party-colour {
   text-decoration-thickness: 2px;
 }
 @media screen and (max-width: 640px) {
-  body.anni-campaign-active #stats_sidebar h1,
-  body.anni-campaign-active #stats_sidebar h2,
-  body.anni-campaign-active #stats_sidebar h3,
-  body.anni-campaign-active #stats_sidebar h4 { font-size: 1.6rem; }
   body.anni-campaign-active #stats_sidebar .anni-relation-row { font-size: 1.2rem; }
 }
 
