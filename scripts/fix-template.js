@@ -9,7 +9,7 @@ if (!fs.existsSync(indexPath)) {
 }
 let html = fs.readFileSync(indexPath, 'utf8');
 
-const campaignAssetVersion = 'remove-government-map-tabs-20261122';
+const campaignAssetVersion = 'compact-sidebar-use-space-20261122';
 
 /* Keep the three sidebar tabs used by this game. */
 html = html.replace(
@@ -121,10 +121,32 @@ body.anni-campaign-active #stats_sidebar .anni-party-pli { color: #4779C9; }
 body.anni-campaign-active #stats_sidebar .anni-party-pdium { color: #7851A9; }
 body.anni-campaign-active #stats_sidebar .anni-party-msi { color: #343434; }
 
-/* Native Germany-to-Save scale: compact sidebar, modest centred headings. */
+/* Use the available sidebar area efficiently without changing its original skin. */
+body.anni-campaign-active #stats_sidebar {
+  width: 16rem;
+  box-sizing: border-box;
+  padding: .45rem;
+}
+body.anni-campaign-active #stats_sidebar .tab_container {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  margin: -.45rem -.45rem .45rem;
+}
+body.anni-campaign-active #stats_sidebar .tab_button {
+  box-sizing: border-box;
+  min-width: 0;
+  padding: .38rem .12rem;
+  font-size: .84rem;
+  line-height: 1.15;
+  white-space: nowrap;
+  text-align: center;
+}
 body.anni-campaign-active #stats_sidebar #qualities {
-  font-size: 1rem;
-  line-height: 1.3em;
+  font-size: .95rem;
+  line-height: 1.25;
+}
+body.anni-campaign-active #stats_sidebar #qualities p {
+  margin: .4em 0;
 }
 body.anni-campaign-active #stats_sidebar #qualities h1,
 body.anni-campaign-active #stats_sidebar #qualities h2,
@@ -136,14 +158,14 @@ body.anni-campaign-active #stats_sidebar #qualities h4 {
   text-transform: uppercase;
   letter-spacing: .1em;
   text-shadow: rgba(255, 255, 255, .75) 2px 2px 2px, rgba(0, 0, 0, .1) -1px -1px 2px;
-  line-height: 1.3;
-  margin: 1.1em 0 .85em;
+  line-height: 1.25;
+  margin: .8em 0 .5em;
 }
 body.anni-campaign-active #stats_sidebar #qualities .anni-relation-row {
   font-family: inherit;
   font-size: 1em;
   line-height: inherit;
-  margin: .9em 0;
+  margin: .45em 0;
 }
 body.anni-campaign-active #stats_sidebar #qualities .anni-relation-row .anni-party-colour {
   text-decoration-line: underline;
