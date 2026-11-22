@@ -9,7 +9,7 @@ if (!fs.existsSync(indexPath)) {
 }
 let html = fs.readFileSync(indexPath, 'utf8');
 
-const campaignAssetVersion = 'smaller-serif-leader-panel-20261122';
+const campaignAssetVersion = 'hide-sidebar-on-difficulty-20261122';
 
 /* Keep the three sidebar tabs used by this game. */
 html = html.replace(
@@ -120,6 +120,12 @@ body.anni-campaign-active #stats_sidebar .anni-party-dc { color: #C8A2C8; }
 body.anni-campaign-active #stats_sidebar .anni-party-pli { color: #4779C9; }
 body.anni-campaign-active #stats_sidebar .anni-party-pdium { color: #7851A9; }
 body.anni-campaign-active #stats_sidebar .anni-party-msi { color: #343434; }
+
+/* Hide the information bar during difficulty selection only. */
+body.anni-difficulty-selection #tools_wrapper,
+body.anni-difficulty-selection #stats_sidebar {
+  display: none !important;
+}
 
 /* Use the available sidebar area efficiently without changing its original skin. */
 body.anni-campaign-active #stats_sidebar {
@@ -457,6 +463,7 @@ const gameplayScript = `
   }
   function sync() {
     var s=sceneId(),active=isCampaign(s);
+    document.body.classList.toggle('anni-difficulty-selection', s==='main.party_select' || s==='party_select');
     document.body.classList.toggle('anni-campaign-active',active);
     var oldPaper=document.getElementById('anni-news-panel');
     if(oldPaper&&oldPaper.parentNode)oldPaper.parentNode.removeChild(oldPaper);
