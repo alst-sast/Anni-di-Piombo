@@ -9,7 +9,7 @@ if (!fs.existsSync(indexPath)) {
 }
 let html = fs.readFileSync(indexPath, 'utf8');
 
-const campaignAssetVersion = 'simplified-party-ideologies-20261101';
+const campaignAssetVersion = 'parliamentary-composition-20261122';
 
 /* Keep the three sidebar tabs used by this game. */
 html = html.replace(
