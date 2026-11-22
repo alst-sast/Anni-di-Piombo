@@ -9,7 +9,7 @@ if (!fs.existsSync(indexPath)) {
 }
 let html = fs.readFileSync(indexPath, 'utf8');
 
-const campaignAssetVersion = 'remove-old-election-heading-20261122b';
+const campaignAssetVersion = 'senate-composition-1963-20261122';
 
 /* Keep the three sidebar tabs used by this game. */
 html = html.replace(
