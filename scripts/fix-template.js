@@ -9,7 +9,7 @@ if (!fs.existsSync(indexPath)) {
 }
 let html = fs.readFileSync(indexPath, 'utf8');
 
-const campaignAssetVersion = 'dc-empty-leadership-hover-20261124';
+const campaignAssetVersion = 'dc-popup-above-sidebar-no-inner-scroll-20261124';
 
 /* Keep the three sidebar tabs used by this game. */
 html = html.replace(
@@ -258,8 +258,8 @@ body.anni-campaign-active #stats_sidebar {
   top: 0;
   left: 0;
   float: none;
-  max-height: calc(100vh - 5rem);
-  overflow: auto;
+  max-height: none;
+  overflow: visible;
   pointer-events: auto;
 }
 
@@ -492,13 +492,14 @@ const gameplayScript = `
     dc.setAttribute('tabindex','0');
     function openPopup(){
       var rect=dc.getBoundingClientRect();
-      var side=sidebar.getBoundingClientRect();
       var width=popup.offsetWidth, height=popup.offsetHeight;
-      var x=Math.max(rect.right+12,side.right+12);
-      x=Math.max(8,Math.min(x,window.innerWidth-width-8));
-      var y=Math.max(8,Math.min(rect.top-12,window.innerHeight-height-8));
+      // Align the popup with DC, immediately above its name.
+      var x=Math.max(8,Math.min(rect.left,window.innerWidth-width-8));
+      var y=rect.top-height-8;
+      // If there is no room above on screen, place it immediately below.
+      if(y<8)y=Math.min(rect.bottom+8,window.innerHeight-height-8);
       popup.style.left=x+'px';
-      popup.style.top=y+'px';
+      popup.style.top=Math.max(8,y)+'px';
       popup.classList.add('anni-popup-open');
     }
     function closePopup(){popup.classList.remove('anni-popup-open');}
