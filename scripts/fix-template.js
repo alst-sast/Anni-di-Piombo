@@ -9,7 +9,7 @@ if (!fs.existsSync(indexPath)) {
 }
 let html = fs.readFileSync(indexPath, 'utf8');
 
-const campaignAssetVersion = 'dc-popup-above-sidebar-no-inner-scroll-20261124';
+const campaignAssetVersion = 'narrower-taller-dc-tooltip-20261124';
 
 /* Keep the three sidebar tabs used by this game. */
 html = html.replace(
@@ -131,8 +131,8 @@ body.anni-campaign-active #stats_sidebar .anni-dc-hover-trigger {
   position: fixed;
   z-index: 100;
   box-sizing: border-box;
-  width: min(20rem, calc(100vw - 1rem));
-  height: 12rem;
+  width: min(16rem, calc(100vw - 1rem));
+  height: 14rem;
   background: #f3f3f3;
   border: 2px solid #929292;
   box-shadow: 3px 4px 11px rgba(0,0,0,.27);
