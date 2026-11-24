@@ -9,7 +9,7 @@ if (!fs.existsSync(indexPath)) {
 }
 let html = fs.readFileSync(indexPath, 'utf8');
 
-const campaignAssetVersion = 'final-pci-factions-centre-right-left-orthodox-20261122';
+const campaignAssetVersion = 'dc-empty-leadership-hover-20261124';
 
 /* Keep the three sidebar tabs used by this game. */
 html = html.replace(
@@ -120,6 +120,30 @@ body.anni-campaign-active #stats_sidebar .anni-party-dc { color: #C8A2C8; }
 body.anni-campaign-active #stats_sidebar .anni-party-pli { color: #4779C9; }
 body.anni-campaign-active #stats_sidebar .anni-party-pdium { color: #7851A9; }
 body.anni-campaign-active #stats_sidebar .anni-party-msi { color: #343434; }
+
+/* Empty DC hover popup, matching the understated Germany to Save information panels. */
+body.anni-campaign-active #stats_sidebar .anni-dc-hover-trigger {
+  cursor: help;
+  text-decoration: underline dotted;
+  text-underline-offset: .12em;
+}
+#anni-dc-hover-popup {
+  position: fixed;
+  z-index: 100;
+  box-sizing: border-box;
+  width: min(20rem, calc(100vw - 1rem));
+  height: 12rem;
+  background: #f3f3f3;
+  border: 2px solid #929292;
+  box-shadow: 3px 4px 11px rgba(0,0,0,.27);
+  pointer-events: none;
+  visibility: hidden;
+  opacity: 0;
+}
+#anni-dc-hover-popup.anni-popup-open {
+  visibility: visible;
+  opacity: 1;
+}
 
 /* Hide the information bar during difficulty selection only. */
 body.anni-difficulty-selection #tools_wrapper,
@@ -437,6 +461,52 @@ const gameplayScript = `
       if (textNode.parentNode) textNode.parentNode.replaceChild(fragment, textNode);
     });
   }
+  function enableDcLeadershipHover() {
+    var sidebar=document.getElementById('stats_sidebar');
+    if(!sidebar || !document.body.classList.contains('anni-campaign-active'))return;
+    var popup=document.getElementById('anni-dc-hover-popup');
+    if(!popup){
+      popup=document.createElement('div');
+      popup.id='anni-dc-hover-popup';
+      popup.setAttribute('aria-hidden','true');
+      document.body.appendChild(popup);
+    }
+    var dc=null;
+    Array.prototype.forEach.call(sidebar.querySelectorAll('#qualities h1, #qualities h2, #qualities h3, #qualities h4'),function(heading){
+      if((heading.textContent||'').trim().toLowerCase().indexOf('party leadership')!==0)return;
+      var row=heading.nextElementSibling;
+      while(row && !/^H[1-6]$/.test(row.tagName)){
+        if(row.tagName==='P' && /^DC\\s*:/.test((row.textContent||'').trim())){
+          dc=row.querySelector('.anni-party-dc');
+          break;
+        }
+        row=row.nextElementSibling;
+      }
+    });
+    if(!dc){
+      popup.classList.remove('anni-popup-open');
+      return;
+    }
+    if(dc.classList.contains('anni-dc-hover-trigger'))return;
+    dc.classList.add('anni-dc-hover-trigger');
+    dc.setAttribute('tabindex','0');
+    function openPopup(){
+      var rect=dc.getBoundingClientRect();
+      var side=sidebar.getBoundingClientRect();
+      var width=popup.offsetWidth, height=popup.offsetHeight;
+      var x=Math.max(rect.right+12,side.right+12);
+      x=Math.max(8,Math.min(x,window.innerWidth-width-8));
+      var y=Math.max(8,Math.min(rect.top-12,window.innerHeight-height-8));
+      popup.style.left=x+'px';
+      popup.style.top=y+'px';
+      popup.classList.add('anni-popup-open');
+    }
+    function closePopup(){popup.classList.remove('anni-popup-open');}
+    dc.addEventListener('mouseenter',openPopup);
+    dc.addEventListener('mouseleave',closePopup);
+    dc.addEventListener('focus',openPopup);
+    dc.addEventListener('blur',closePopup);
+  }
   function formatPoliticsRelations() {
     var sidebar=document.getElementById('stats_sidebar');
     if(!sidebar || !document.body.classList.contains('anni-campaign-active'))return;
@@ -474,6 +544,7 @@ const gameplayScript = `
     }
     addTabs();addHeaderLinks();
     colourPartyLabels();
+    enableDcLeadershipHover();
     formatPoliticsRelations();
     removeObsoleteElectionHeading();
     var d=dateInfo();
@@ -515,6 +586,7 @@ const gameplayScript = `
       window.changeTab = function () {
         var result = originalChangeTab.apply(this, arguments);
         colourPartyLabels();
+        enableDcLeadershipHover();
         formatPoliticsRelations();
         removeObsoleteElectionHeading();
         return result;
