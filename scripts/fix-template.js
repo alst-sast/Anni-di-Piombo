@@ -9,7 +9,7 @@ if (!fs.existsSync(indexPath)) {
 }
 let html = fs.readFileSync(indexPath, 'utf8');
 
-const campaignAssetVersion = 'dc-popup-13x16-20261124';
+const campaignAssetVersion = 'pci-italian-socialism-black-parentheses-20261124';
 
 /* Keep the three sidebar tabs used by this game. */
 html = html.replace(
@@ -283,8 +283,11 @@ body.anni-campaign-active #anni-party-profile .anni-profile-title {
   line-height: 1.25;
   letter-spacing: .015em;
 }
-body.anni-campaign-active #anni-party-profile .anni-profile-title span {
+body.anni-campaign-active #anni-party-profile .anni-profile-title .anni-profile-acronym {
   color: #C62828;
+}
+body.anni-campaign-active #anni-party-profile .anni-profile-title .anni-profile-parenthesis {
+  color: #000;
 }
 body.anni-campaign-active #anni-party-profile .anni-profile-photo {
   display: block;
@@ -432,7 +435,7 @@ const gameplayScript = `
     var leader=d.year<1972?{name:'Luigi Longo',image:'https://commons.wikimedia.org/wiki/Special:FilePath/Luigi_Longo_1968.jpg'}:{name:'Enrico Berlinguer',image:'https://commons.wikimedia.org/wiki/Special:FilePath/Enrico_Berlinguer.jpg'};
     if(p.getAttribute('data-leader')===leader.name)return;
     p.setAttribute('data-leader',leader.name);
-    p.innerHTML='<div class="anni-profile-title">Partito Comunista Italiano <span>(PCI)</span></div><img class="anni-profile-photo" src="'+leader.image+'" alt="'+leader.name+'" loading="lazy"><div class="anni-profile-name">'+leader.name+'</div><div class="anni-profile-role">Segretario generale del PCI</div>';
+    p.innerHTML='<div class="anni-profile-title">Partito Comunista Italiano <span class="anni-profile-parenthesis">(</span><span class="anni-profile-acronym">PCI</span><span class="anni-profile-parenthesis">)</span></div><img class="anni-profile-photo" src="'+leader.image+'" alt="'+leader.name+'" loading="lazy"><div class="anni-profile-name">'+leader.name+'</div><div class="anni-profile-role">Segretario generale del PCI</div>';
   }
   function colourPartyLabels() {
     var sidebar = document.getElementById('stats_sidebar');
