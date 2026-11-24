@@ -9,7 +9,7 @@ if (!fs.existsSync(indexPath)) {
 }
 let html = fs.readFileSync(indexPath, 'utf8');
 
-const campaignAssetVersion = 'slimmer-taller-dc-popup-20261124';
+const campaignAssetVersion = 'dc-popup-13x16-20261124';
 
 /* Keep the three sidebar tabs used by this game. */
 html = html.replace(
@@ -131,8 +131,8 @@ body.anni-campaign-active #stats_sidebar .anni-dc-hover-trigger {
   position: fixed;
   z-index: 100;
   box-sizing: border-box;
-  width: min(14rem, calc(100vw - 1rem));
-  height: 15rem;
+  width: min(13rem, calc(100vw - 1rem));
+  height: 16rem;
   background: #f3f3f3;
   border: 2px solid #929292;
   box-shadow: 3px 4px 11px rgba(0,0,0,.27);
